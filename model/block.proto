@@ -1,0 +1,50 @@
+syntax="proto3";
+
+package model;
+
+option go_package = "github.com/zoobc/zoobc-core/common/schema/model";
+
+// Block represent the block data structure stored in the database
+message Block {
+    int64 ID = 1;
+    string PreviousBlockHash = 2;
+    uint32 Height = 3;
+    uint32 Timestamp = 4;
+    bytes BlockSeed = 5;
+    bytes BlockSignature = 6;
+    string CumulativeDifficult = 7;
+    int64 SmithScale = 8;
+    bytes BlocksmithID = 9;
+    int64 TotalAmount = 10;
+    int64 TotalFee = 11;
+    int64 TotalCoinBase = 12;
+    uint32 Version = 13;
+    uint32 PayloadLength = 14;
+    string PayloadHash = 15;
+    // repeated Transaction Transactions = 16;
+}
+
+// GetBlocksRequest create request to get a list block
+message GetBlocksRequest {
+    // Number of block to fetch
+    uint32 BlockSize = 1;
+    // Fetch block from `n` height
+    int32 BlockHeight = 2;
+}
+
+// GetBlockRequest create request for single block
+message GetBlockRequest {
+    // Block ID
+    int64 ID = 1;
+    // number of block to fetch
+    int32 BlockHeight = 2;
+}
+
+message GetBlocksResponse {
+    // Number of block returned
+    uint32 BlockSize = 1;
+    // Blocks height returned from
+    int32 BlockHeight = 2;
+    // Blocks returned
+    repeated Block blocks = 3;
+}
