@@ -1,0 +1,7 @@
+vendor
+.env
+
+*.pb.go
+*.pb.gw.go
+
+service/*swagger.json
