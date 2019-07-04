@@ -14,7 +14,7 @@ message Block {
     bytes BlockSignature = 6;
     string CumulativeDifficult = 7;
     int64 SmithScale = 8;
-    bytes BlocksmithAddress = 9;
+    bytes BlocksmithID = 9;
     int64 TotalAmount = 10;
     int64 TotalFee = 11;
     int64 TotalCoinBase = 12;
