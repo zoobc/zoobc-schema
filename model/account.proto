@@ -1,0 +1,23 @@
+syntax="proto3";
+
+package model;
+
+option go_package = "github.com/zoobc/zoobc-core/common/schema/model";
+
+// Account represent the transaction data structure stored in the database
+message Account {
+    bytes ID = 1;
+    int32 AccountType = 2;
+    string Account = 3;
+}
+
+message GetAccountRequest {
+    // Fetch Account by its ID
+    uint32 ID = 1;
+    // Fetch Account by its account name (note: this in case of zoobc account type is the public key)
+    uint32 Account = 2;
+}
+
+message GetAccountResponse {
+    repeated Account Account = 3;
+}
