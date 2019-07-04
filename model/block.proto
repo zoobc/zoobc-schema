@@ -24,10 +24,19 @@ message Block {
     // repeated Transaction Transactions = 16;
 }
 
+// GetBlocksRequest create request to get a list block
 message GetBlocksRequest {
     // Number of block to fetch
     uint32 BlockSize = 1;
     // Fetch block from `n` height
+    int32 BlockHeight = 2;
+}
+
+// GetBlockRequest create request for single block
+message GetBlockRequest {
+    // Block ID
+    int64 ID = 1;
+    // number of block to fetch
     int32 BlockHeight = 2;
 }
 
