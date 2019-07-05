@@ -1,0 +1,38 @@
+syntax="proto3";
+
+package model;
+
+option go_package = "github.com/zoobc/zoobc-core/common/schema/model";
+
+// Transaction represent the transaction data structure stored in the database
+message Transaction {
+    bytes TransactionID = 1;
+    int64 BlockID = 2;    
+    uint32 BlockHeight = 3;    
+    string SenderAccountID = 4;
+    string RecipientAccountID = 5;
+    uint32 TransactionType = 6;
+    int64 Fee = 7;
+    bytes TransactionHash = 8;
+    uint32 TransactionBodyLength = 9;
+    bytes TransactionBodyBytes = 10;
+    bytes Signature = 11;
+    //TODO: protobuf only (not reflected in db)
+    // TransactionBody
+}
+
+message GetTransactionsRequest {
+    // Fetch Transaction by its ID
+    uint32 TransactionID = 1;
+    // Fetch Transaction by its Block ID
+    uint32 BlockID = 2;
+    // Fetch Transaction by block Height 
+    int64 BlockHeight = 3;
+}
+
+message GetTransactionsResponse {
+    // Number of transactions returned
+    uint32 TransactionSize = 1;
+    // Transaction returned
+    repeated Transaction Transactions = 3;
+}
