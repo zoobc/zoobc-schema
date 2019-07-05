@@ -265,6 +265,12 @@
           "type": "string",
           "format": "int64"
         },
+        "Transactions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelTransaction"
+          }
+        },
         "Version": {
           "type": "integer",
           "format": "int64"
