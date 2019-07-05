@@ -224,7 +224,7 @@
           "type": "string",
           "format": "byte"
         },
-        "CumulativeDifficult": {
+        "CumulativeDifficulty": {
           "type": "string"
         },
         "Height": {
@@ -236,21 +236,23 @@
           "format": "int64"
         },
         "PayloadHash": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "PayloadLength": {
           "type": "integer",
           "format": "int64"
         },
         "PreviousBlockHash": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "SmithScale": {
           "type": "string",
           "format": "int64"
         },
         "Timestamp": {
-          "type": "integer",
+          "type": "string",
           "format": "int64"
         },
         "TotalAmount": {
