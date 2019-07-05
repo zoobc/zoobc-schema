@@ -1,0 +1,45 @@
+syntax="proto3";
+
+package model;
+
+option go_package = "github.com/zoobc/zoobc-core/common/schema/model";
+
+// AccountBalance represent the transaction data structure stored in the database
+message AccountBalance {
+    bytes ID = 1;
+    uint32 BlockHeight = 2;
+    int64 SpendableBalance = 3;
+    int64 Balance = 4;
+    int64 PopRevenue = 5;
+}
+
+message GetAccountBalanceRequest {
+    // Fetch AccountBalance by its ID
+    uint32 ID = 1;
+    // Fetch AccountBalance by its Block height
+    uint32 BlockHeight = 2;
+}
+
+message GetAccountBalancesRequest {
+    // Fetch AccountBalance by its balance (account balance <  BalanceLowerThan)
+    uint32 BalanceLowerThan = 1;
+    // Fetch AccountBalance by its balance (account balance >  BalanceHigherThan)
+    uint32 BalanceHigherThan = 2;
+    // Fetch AccountBalance by its spendablebalance (account spendablebalance <  BalanceLowerThan)
+    uint32 SpendableBalanceLowerThan = 3;
+    // Fetch AccountBalance by its spendablebalance (account spendablebalance >  BalanceHigherThan)
+    uint32 SpendableBalanceHigherThan = 4;
+    // Fetch AccountBalance by its spendablebalance (account spendablebalance <  BalanceLowerThan)
+    uint32 PopRevenueBalanceLowerThan = 5;
+    // Fetch AccountBalance by its popRevenuebalance (account popRevenuebalance >  BalanceHigherThan)
+    uint32 PopRevenueBalanceHigherThan = 6;
+    // Fetch AccountBalance by its Block height
+    uint32 BlockHeight = 7;
+}
+
+message GetAccountBalancesResponse {
+    // Number of accounts returned
+    uint32 AccountBalanceSize = 1;
+    // AccountBalances returned
+    repeated AccountBalance AccountBalance = 2;
+}
