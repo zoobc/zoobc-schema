@@ -28,25 +28,31 @@ message Block {
 
 // GetBlocksRequest create request to get a list block
 message GetBlocksRequest {
+    // Number indicating chaintype
+    int32 ChainType = 1;
     // Number of block to fetch
-    uint32 BlockSize = 1;
+    uint32 BlockSize = 2;
     // Fetch block from `n` height
-    int32 BlockHeight = 2;
+    uint32 BlockHeight = 3;
 }
 
 // GetBlockRequest create request for single block
 message GetBlockRequest {
+    // Number indicating chaintype
+    int32 ChainType = 1;
     // Block ID
-    int64 ID = 1;
+    int64 ID = 2;
     // number of block to fetch
-    int32 BlockHeight = 2;
+    uint32 BlockHeight = 3;
 }
 
 message GetBlocksResponse {
+    // Number indicating chaintype
+    int32 ChainType = 1;
     // Number of block returned
-    uint32 BlockSize = 1;
+    uint32 BlockSize = 2;
     // Blocks height returned from
-    int32 BlockHeight = 2;
+    uint32 BlockHeight = 3;
     // Blocks returned
-    repeated Block blocks = 3;
+    repeated Block blocks = 4;
 }
