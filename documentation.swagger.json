@@ -1,0 +1,442 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "service/account.proto",
+    "version": "version not set"
+  },
+  "paths": {
+    "/v1/account/GetAccount": {
+      "get": {
+        "tags": [
+          "AccountService"
+        ],
+        "operationId": "GetAccounts",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Account by its ID.",
+            "name": "AccountID",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Account by its account name (note: this in case of zoobc account type is the public key).",
+            "name": "Account",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetAccountResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/block/GetBlock": {
+      "get": {
+        "tags": [
+          "BlockService"
+        ],
+        "operationId": "GetBlock",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "int64",
+            "description": "Block ID.",
+            "name": "ID",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "number of block to fetch.",
+            "name": "BlockHeight",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelBlock"
+            }
+          }
+        }
+      }
+    },
+    "/v1/block/GetBlocks": {
+      "get": {
+        "tags": [
+          "BlockService"
+        ],
+        "operationId": "GetBlocks",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of block to fetch.",
+            "name": "BlockSize",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Fetch block from `n` height.",
+            "name": "BlockHeight",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetBlocksResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/mempool/GetMempoolTransactions": {
+      "get": {
+        "tags": [
+          "MempoolService"
+        ],
+        "operationId": "GetMempoolTransactions",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of Mempool transactions to fetch.",
+            "name": "MempoolSize",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "description": "Fetch Mempool transactions from timestamp.",
+            "name": "From",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "description": "Fetch Mempool transactions to timestamp.",
+            "name": "To",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetMempoolsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/transaction/GetTransactions": {
+      "get": {
+        "tags": [
+          "TransactionService"
+        ],
+        "operationId": "GetTransactions",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Transaction by its ID.",
+            "name": "TransactionID",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Transaction by its Block ID.",
+            "name": "BlockID",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "description": "Fetch Transaction by block Height.",
+            "name": "BlockHeight",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetTransactionsResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "modelAccount": {
+      "type": "object",
+      "title": "Account represent the transaction data structure stored in the database",
+      "properties": {
+        "Account": {
+          "type": "string"
+        },
+        "AccountID": {
+          "type": "string",
+          "format": "byte"
+        },
+        "AccountType": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "modelBlock": {
+      "type": "object",
+      "title": "Block represent the block data structure stored in the database",
+      "properties": {
+        "BlockSeed": {
+          "type": "string",
+          "format": "byte"
+        },
+        "BlockSignature": {
+          "type": "string",
+          "format": "byte"
+        },
+        "BlocksmithID": {
+          "type": "string",
+          "format": "byte"
+        },
+        "CumulativeDifficult": {
+          "type": "string"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ID": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PayloadHash": {
+          "type": "string"
+        },
+        "PayloadLength": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "PreviousBlockHash": {
+          "type": "string"
+        },
+        "SmithScale": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Timestamp": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "TotalAmount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TotalCoinBase": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TotalFee": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Version": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "modelGetAccountResponse": {
+      "type": "object",
+      "properties": {
+        "Account": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelAccount"
+          }
+        }
+      }
+    },
+    "modelGetBlocksResponse": {
+      "type": "object",
+      "properties": {
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Blocks height returned from"
+        },
+        "BlockSize": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of block returned"
+        },
+        "blocks": {
+          "type": "array",
+          "title": "Blocks returned",
+          "items": {
+            "$ref": "#/definitions/modelBlock"
+          }
+        }
+      }
+    },
+    "modelGetMempoolsResponse": {
+      "type": "object",
+      "properties": {
+        "MempoolSize": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of transactions returned"
+        },
+        "MempoolTransactions": {
+          "type": "array",
+          "title": "Mempool Transactions returned",
+          "items": {
+            "$ref": "#/definitions/modelMempool"
+          }
+        }
+      }
+    },
+    "modelGetTransactionsResponse": {
+      "type": "object",
+      "properties": {
+        "TransactionSize": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of transactions returned"
+        },
+        "Transactions": {
+          "type": "array",
+          "title": "Transaction returned",
+          "items": {
+            "$ref": "#/definitions/modelTransaction"
+          }
+        }
+      }
+    },
+    "modelMempool": {
+      "type": "object",
+      "title": "Mempool represent the mempool data structure stored in the database",
+      "properties": {
+        "Fee": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RecipientAccount": {
+          "type": "string"
+        },
+        "RecipientAccountType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "SenderAccount": {
+          "type": "string"
+        },
+        "SenderAccountType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Signature": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Timestamp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TransactionBodyBytes": {
+          "type": "string",
+          "format": "byte"
+        },
+        "TransactionBodyLength": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "TransactionHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "TransactionID": {
+          "type": "string",
+          "format": "byte"
+        },
+        "TransactionType": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "modelTransaction": {
+      "type": "object",
+      "title": "Transaction represent the transaction data structure stored in the database",
+      "properties": {
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "BlockID": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Fee": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RecipientAccountID": {
+          "type": "string"
+        },
+        "SenderAccountID": {
+          "type": "string"
+        },
+        "Signature": {
+          "type": "string",
+          "format": "byte"
+        },
+        "TransactionBodyBytes": {
+          "type": "string",
+          "format": "byte"
+        },
+        "TransactionBodyLength": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "TransactionHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "TransactionID": {
+          "type": "string",
+          "format": "byte"
+        },
+        "TransactionType": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}
