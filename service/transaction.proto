@@ -2,7 +2,11 @@ syntax="proto3";
 
 package service;
 
+<<<<<<< HEAD
 option go_package = "github.com/zoobc/zoobc-core/common/schema/service";
+=======
+option go_package = "github.com/zoobc/zoobc-core/common/service";
+>>>>>>> develop
 
 import "google/api/annotations.proto";
 import "model/transaction.proto";
@@ -14,10 +18,13 @@ service TransactionService {
             get: "/v1/transaction/GetTransactions"
         };
     }
+<<<<<<< HEAD
 
     rpc GetTransaction(model.GetTransactionRequest) returns (model.Transaction) {
         option (google.api.http) = {
             get: "/v1/transaction/GetTransaction"
         };
     }    
+=======
+>>>>>>> develop
 }

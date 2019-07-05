@@ -2,11 +2,19 @@ syntax="proto3";
 
 package model;
 
+<<<<<<< HEAD
 option go_package = "github.com/zoobc/zoobc-core/common/schema/model";
 
 // Transaction represent the transaction data structure stored in the database
 message Transaction {
     bytes ID = 1;
+=======
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+// Transaction represent the transaction data structure stored in the database
+message Transaction {
+    bytes TransactionID = 1;
+>>>>>>> develop
     int64 BlockID = 2;    
     uint32 BlockHeight = 3;    
     string SenderAccountID = 4;
@@ -21,6 +29,7 @@ message Transaction {
     // TransactionBody
 }
 
+<<<<<<< HEAD
 message GetTransactionRequest {
     // Fetch Transaction by its ID
     uint32 ID = 1;
@@ -48,11 +57,26 @@ message GetTransactionsRequest {
     // Fetch Transactions higher than a given block timestamp (note: relative query will lookup the block table to get timestaps)
     int64 ToTimestamp = 8;
 
+=======
+message GetTransactionsRequest {
+    // Fetch Transaction by its ID
+    uint32 TransactionID = 1;
+    // Fetch Transaction by its Block ID
+    uint32 BlockID = 2;
+    // Fetch Transaction by block Height 
+    int64 BlockHeight = 3;
+>>>>>>> develop
 }
 
 message GetTransactionsResponse {
     // Number of transactions returned
     uint32 TransactionSize = 1;
+<<<<<<< HEAD
     // Transaction transactions returned
     repeated Transaction Transactions = 2;
 }
+=======
+    // Transaction returned
+    repeated Transaction Transactions = 3;
+}
+>>>>>>> develop

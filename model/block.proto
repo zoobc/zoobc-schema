@@ -2,7 +2,9 @@ syntax="proto3";
 
 package model;
 
-option go_package = "github.com/zoobc/zoobc-core/common/schema/model";
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+import "model/transaction.proto";
 
 // Block represent the block data structure stored in the database
 message Block {
@@ -21,7 +23,7 @@ message Block {
     uint32 Version = 13;
     uint32 PayloadLength = 14;
     string PayloadHash = 15;
-    // repeated Transaction Transactions = 16;
+    repeated Transaction Transactions = 16;
 }
 
 // GetBlocksRequest create request to get a list block
