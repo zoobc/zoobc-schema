@@ -2,19 +2,11 @@ syntax="proto3";
 
 package model;
 
-<<<<<<< HEAD
 option go_package = "github.com/zoobc/zoobc-core/common/schema/model";
 
 // Mempool represent the mempool data structure stored in the database
 message MempoolTransaction {
     bytes ID = 1;
-=======
-option go_package = "github.com/zoobc/zoobc-core/common/model";
-
-// Mempool represent the mempool data structure stored in the database
-message Mempool {
-    bytes TransactionID = 1;
->>>>>>> develop
     int32 SenderAccountType = 2;
     string SenderAccount = 3;
     int32 RecipientAccountType = 4;
@@ -30,7 +22,6 @@ message Mempool {
     // TransactionBody
 }
 
-<<<<<<< HEAD
 message GetMempoolTransactionRequest {
     // Fetch Mempool Transaction by its ID
     uint32 ID = 1;
@@ -39,16 +30,12 @@ message GetMempoolTransactionRequest {
 }
 
 message GetMempoolTransactionsRequest {
-=======
-message GetMempoolsRequest {
->>>>>>> develop
     // Number of Mempool transactions to fetch
     uint32 MempoolSize = 1;
     // Fetch Mempool transactions from timestamp 
     int64 From = 2;
     // Fetch Mempool transactions to timestamp 
     int64 To = 3;
-<<<<<<< HEAD
 
 }
 
@@ -57,13 +44,4 @@ message GetMempoolTransactionsResponse {
     uint32 MempoolSize = 1;
     // Mempool transactions returned
     repeated MempoolTransaction MempoolTransactions = 2;
-=======
-}
-
-message GetMempoolsResponse {
-    // Number of transactions returned
-    uint32 MempoolSize = 1;
-    // Mempool Transactions returned
-    repeated Mempool MempoolTransactions = 3;
->>>>>>> develop
 }

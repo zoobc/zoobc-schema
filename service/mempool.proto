@@ -2,33 +2,22 @@ syntax="proto3";
 
 package service;
 
-<<<<<<< HEAD
 option go_package = "github.com/zoobc/zoobc-core/common/schema/service";
-=======
-option go_package = "github.com/zoobc/zoobc-core/common/service";
->>>>>>> develop
 
 import "google/api/annotations.proto";
 import "model/mempool.proto";
 
 // MempoolService represent request on db Mempool
 service MempoolService {
-<<<<<<< HEAD
     rpc GetMempoolTransactions(model.GetMempoolTransactionsRequest) returns (model.GetMempoolTransactionsResponse) {
-=======
-    rpc GetMempoolTransactions(model.GetMempoolsRequest) returns (model.GetMempoolsResponse) {
->>>>>>> develop
         option (google.api.http) = {
             get: "/v1/mempool/GetMempoolTransactions"
         };
     }
-<<<<<<< HEAD
 
     rpc GetMempoolTransaction(model.GetMempoolTransactionRequest) returns (model.MempoolTransaction) {
         option (google.api.http) = {
             get: "/v1/mempool/GetMempoolTransaction"
         };
     }    
-=======
->>>>>>> develop
 }
