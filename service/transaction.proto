@@ -2,7 +2,7 @@ syntax="proto3";
 
 package service;
 
-option go_package = "github.com/zoobc/zoobc-core/common/schema/service";
+option go_package = "github.com/zoobc/zoobc-core/common/service";
 
 import "google/api/annotations.proto";
 import "model/transaction.proto";

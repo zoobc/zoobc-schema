@@ -2,7 +2,7 @@ syntax="proto3";
 
 package model;
 
-option go_package = "github.com/zoobc/zoobc-core/common/schema/model";
+option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 // Block represent the block data structure stored in the database
 message Block {
