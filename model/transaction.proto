@@ -44,7 +44,7 @@ message GetTransactionsRequest {
     // Fetch Transactions by transaction type
     uint32 TransactionType = 6;
     // Fetch Transactions lower than a given block timestamp (note: relative query will lookup the block table to get timestaps)
-    int64 FromTimestapm = 7;
+    int64 FromTimestamp = 7;
     // Fetch Transactions higher than a given block timestamp (note: relative query will lookup the block table to get timestaps)
     int64 ToTimestamp = 8;
 
