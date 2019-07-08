@@ -5,8 +5,8 @@ package model;
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 // Mempool represent the mempool data structure stored in the database
-message Mempool {
-    bytes TransactionID = 1;
+message MempoolTransaction {
+    bytes ID = 1;
     int32 SenderAccountType = 2;
     string SenderAccount = 3;
     int32 RecipientAccountType = 4;
@@ -22,18 +22,26 @@ message Mempool {
     // TransactionBody
 }
 
-message GetMempoolsRequest {
+message GetMempoolTransactionRequest {
+    // Fetch Mempool Transaction by its ID
+    uint32 ID = 1;
+    // Fetch Mempool Transaction by its signature
+    uint32 Signature = 2;
+}
+
+message GetMempoolTransactionsRequest {
     // Number of Mempool transactions to fetch
     uint32 MempoolSize = 1;
     // Fetch Mempool transactions from timestamp 
     int64 From = 2;
     // Fetch Mempool transactions to timestamp 
     int64 To = 3;
+
 }
 
-message GetMempoolsResponse {
+message GetMempoolTransactionsResponse {
     // Number of transactions returned
     uint32 MempoolSize = 1;
-    // Mempool Transactions returned
-    repeated Mempool MempoolTransactions = 3;
+    // Mempool transactions returned
+    repeated MempoolTransaction MempoolTransactions = 2;
 }
