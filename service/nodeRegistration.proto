@@ -1,0 +1,23 @@
+syntax="proto3";
+
+package service;
+
+option go_package = "github.com/zoobc/zoobc-core/common/service";
+
+import "google/api/annotations.proto";
+import "model/nodeRegistration.proto";
+
+// NodeRegistration represent request on db NodeRegistration
+service NodeRegistrationService {
+    rpc GetAccounts(model.GetNodeRegistrationsRequest) returns (model.GetNodeRegistrationsResponse) {
+        option (google.api.http) = {
+            get: "/v1/nodeRegistration/GetNodeRegistrations"
+        };
+    }
+
+    rpc GetAccount(model.GetNodeRegistrationRequest) returns (model.NodeRegistration) {
+        option (google.api.http) = {
+            get: "/v1/nodeRegistration/GetNodeRegistration"
+        };
+    }    
+}
