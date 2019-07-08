@@ -6,18 +6,26 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 // Account represent the transaction data structure stored in the database
 message Account {
-    bytes AccountID = 1;
+    bytes ID = 1;
     int32 AccountType = 2;
-    string Account = 3;
+    string Address = 3;
 }
 
 message GetAccountRequest {
     // Fetch Account by its ID
-    uint32 AccountID = 1;
-    // Fetch Account by its account name (note: this in case of zoobc account type is the public key)
-    uint32 Account = 2;
+    uint32 ID = 1;
+    // Fetch Account by its account address (note: this in case of zoobc account type is the public key)
+    uint32 Address = 2;
 }
 
-message GetAccountResponse {
-    repeated Account Account = 3;
+message GetAccountsRequest {
+    // Fetch Accounts by its account type
+    uint32 AccountType = 2;
+}
+
+message GetAccountsResponse {
+    // Number of accounts returned
+    uint32 AccountSize = 1;
+    // Accounts returned
+    repeated Account Account = 2;
 }

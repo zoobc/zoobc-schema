@@ -14,4 +14,10 @@ service TransactionService {
             get: "/v1/transaction/GetTransactions"
         };
     }
+
+    rpc GetTransaction(model.GetTransactionRequest) returns (model.Transaction) {
+        option (google.api.http) = {
+            get: "/v1/transaction/GetTransaction"
+        };
+    }    
 }
