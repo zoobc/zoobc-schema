@@ -257,17 +257,10 @@
         "operationId": "GetMempoolTransaction",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch Mempool Transaction by its ID.",
-            "name": "ID",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch Mempool Transaction by its signature.",
-            "name": "Signature",
+            "type": "string",
+            "format": "byte",
+            "description": "Fetch Mempool Transaction by its TransactionBytes.",
+            "name": "TransactionBytes",
             "in": "query"
           }
         ],
@@ -289,23 +282,16 @@
         "operationId": "GetMempoolTransactions",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
-            "description": "Number of Mempool transactions to fetch.",
-            "name": "MempoolSize",
-            "in": "query"
-          },
-          {
             "type": "string",
             "format": "int64",
-            "description": "Fetch Mempool transactions from timestamp.",
+            "description": "Fetch Mempool transactions from arrival timestamp.",
             "name": "From",
             "in": "query"
           },
           {
             "type": "string",
             "format": "int64",
-            "description": "Fetch Mempool transactions to timestamp.",
+            "description": "Fetch Mempool transactions to arrival timestamp.",
             "name": "To",
             "in": "query"
           }
@@ -315,6 +301,78 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetMempoolTransactionsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nodeRegistration/GetNodeRegistration": {
+      "get": {
+        "tags": [
+          "NodeRegistrationService"
+        ],
+        "operationId": "GetNodeRegistration",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "byte",
+            "name": "NodePublicKey",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "byte",
+            "name": "AccountId",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "name": "RegistrationHeight",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelNodeRegistration"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nodeRegistration/GetNodeRegistrations": {
+      "get": {
+        "tags": [
+          "NodeRegistrationService"
+        ],
+        "operationId": "GetNodeRegistrations",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "byte",
+            "name": "NodePublicKey",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "byte",
+            "name": "AccountId",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "name": "RegistrationHeight",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetNodeRegistrationsResponse"
             }
           }
         }
@@ -370,7 +428,40 @@
             "type": "string",
             "format": "int64",
             "description": "Fetch Transaction at block Height.",
-            "name": "BlockHeight",
+            "name": "Height",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "description": "Fetch Transactions lower than block height.",
+            "name": "FromHeight",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "description": "Fetch Transactions higher than block height.",
+            "name": "ToHeight",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Fetch Transactions by sender.",
+            "name": "SenderAccountID",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Fetch Transactions by recipient.",
+            "name": "RecipientAccountID",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Transactions by transaction type.",
+            "name": "TransactionType",
             "in": "query"
           },
           {
@@ -625,6 +716,30 @@
         }
       }
     },
+    "modelGetNodeRegistrationsResponse": {
+      "type": "object",
+      "properties": {
+        "AccountId": {
+          "type": "string",
+          "format": "byte"
+        },
+        "LockedBalance": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NodeAddress": {
+          "type": "string"
+        },
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RegistrationHeight": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
     "modelGetTransactionsResponse": {
       "type": "object",
       "properties": {
@@ -646,50 +761,51 @@
       "type": "object",
       "title": "Mempool represent the mempool data structure stored in the database",
       "properties": {
-        "Fee": {
-          "type": "string",
-          "format": "int64"
+        "ArrivalTimestamp": {
+          "type": "string"
+        },
+        "FeePerByte": {
+          "type": "integer",
+          "format": "int32"
         },
         "ID": {
           "type": "string",
           "format": "byte"
         },
-        "RecipientAccount": {
-          "type": "string"
-        },
-        "RecipientAccountType": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "SenderAccount": {
-          "type": "string"
-        },
-        "SenderAccountType": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "Signature": {
+        "TransactionBytes": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "modelNodeRegistration": {
+      "type": "object",
+      "properties": {
+        "AccountId": {
           "type": "string",
           "format": "byte"
         },
-        "Timestamp": {
-          "type": "string",
-          "format": "int64"
-        },
-        "TransactionBodyBytes": {
-          "type": "string",
-          "format": "byte"
-        },
-        "TransactionBodyLength": {
+        "Height": {
           "type": "integer",
           "format": "int64"
         },
-        "TransactionHash": {
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "LockedBalance": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NodeAddress": {
+          "type": "string"
+        },
+        "NodePublicKey": {
           "type": "string",
           "format": "byte"
         },
-        "TransactionType": {
-          "type": "integer",
+        "RegistrationHeight": {
+          "type": "string",
           "format": "int64"
         }
       }
@@ -714,16 +830,16 @@
       "type": "object",
       "title": "Transaction represent the transaction data structure stored in the database",
       "properties": {
-        "BlockHeight": {
-          "type": "integer",
-          "format": "int64"
-        },
         "BlockID": {
           "type": "string",
           "format": "int64"
         },
         "Fee": {
           "type": "string",
+          "format": "int64"
+        },
+        "Height": {
+          "type": "integer",
           "format": "int64"
         },
         "ID": {
@@ -739,6 +855,10 @@
         "Signature": {
           "type": "string",
           "format": "byte"
+        },
+        "Timestamp": {
+          "type": "string",
+          "format": "int64"
         },
         "TransactionBodyBytes": {
           "type": "string",
