@@ -1,0 +1,38 @@
+syntax="proto3";
+
+package model;
+
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+
+message NodeRegistration {
+    bytes   NodePublicKey = 1;
+    bytes  AccountId = 2;
+	int64  RegistrationHeight = 3;
+    string  NodeAddress = 4;
+    int64   LockedBalance = 5;
+    bool Latest = 6;
+    uint32 Height = 7;
+}
+
+// GetNodeRegisterRequest create request to get a list node
+message GetNodeRegistrationsRequest {
+    bytes   NodePublicKey = 1;
+    bytes  AccountId = 2;
+	int64  RegistrationHeight = 3;
+}
+
+// GetNodeRegistrationRequest create request for single node register
+message GetNodeRegistrationRequest {
+    bytes   NodePublicKey = 1;
+    bytes  AccountId = 2;
+	int64  RegistrationHeight = 3;
+}
+
+message GetNodeRegistrationsResponse {
+    bytes   NodePublicKey = 1;
+    bytes  AccountId = 2;
+    int64  RegistrationHeight = 3;
+    string  NodeAddress = 4;
+    int64   LockedBalance = 5;
+}
