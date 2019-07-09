@@ -8,15 +8,16 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 message Transaction {
     bytes ID = 1;
     int64 BlockID = 2;    
-    uint32 BlockHeight = 3;    
+    uint32 Height = 3;    
     string SenderAccountID = 4;
     string RecipientAccountID = 5;
     uint32 TransactionType = 6;
     int64 Fee = 7;
-    bytes TransactionHash = 8;
-    uint32 TransactionBodyLength = 9;
-    bytes TransactionBodyBytes = 10;
-    bytes Signature = 11;
+    int64 Timestamp = 8;
+    bytes TransactionHash = 9;
+    uint32 TransactionBodyLength = 10;
+    bytes TransactionBodyBytes = 11;
+    bytes Signature = 12;
     //TODO: protobuf only (not reflected in db)
     // TransactionBody
 }
@@ -32,7 +33,7 @@ message GetTransactionRequest {
 
 message GetTransactionsRequest {
     // Fetch Transaction at block Height 
-    int64 BlockHeight = 1;
+    int64 Height = 1;
     // Fetch Transactions lower than block height
     int64 FromHeight = 2;
     // Fetch Transactions higher than block height
@@ -43,10 +44,6 @@ message GetTransactionsRequest {
     string RecipientAccountID = 5;
     // Fetch Transactions by transaction type
     uint32 TransactionType = 6;
-    // Fetch Transactions lower than a given block timestamp (note: relative query will lookup the block table to get timestaps)
-    int64 FromTimestamp = 7;
-    // Fetch Transactions higher than a given block timestamp (note: relative query will lookup the block table to get timestaps)
-    int64 ToTimestamp = 8;
 
 }
 
