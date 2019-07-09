@@ -257,17 +257,10 @@
         "operationId": "GetMempoolTransaction",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch Mempool Transaction by its ID.",
-            "name": "ID",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch Mempool Transaction by its signature.",
-            "name": "Signature",
+            "type": "string",
+            "format": "byte",
+            "description": "Fetch Mempool Transaction by its TransactionBytes.",
+            "name": "TransactionBytes",
             "in": "query"
           }
         ],
@@ -289,23 +282,16 @@
         "operationId": "GetMempoolTransactions",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
-            "description": "Number of Mempool transactions to fetch.",
-            "name": "MempoolSize",
-            "in": "query"
-          },
-          {
             "type": "string",
             "format": "int64",
-            "description": "Fetch Mempool transactions from timestamp.",
+            "description": "Fetch Mempool transactions from arrival timestamp.",
             "name": "From",
             "in": "query"
           },
           {
             "type": "string",
             "format": "int64",
-            "description": "Fetch Mempool transactions to timestamp.",
+            "description": "Fetch Mempool transactions to arrival timestamp.",
             "name": "To",
             "in": "query"
           }
@@ -442,7 +428,7 @@
             "type": "string",
             "format": "int64",
             "description": "Fetch Transaction at block Height.",
-            "name": "BlockHeight",
+            "name": "Height",
             "in": "query"
           },
           {
@@ -476,20 +462,6 @@
             "format": "int64",
             "description": "Fetch Transactions by transaction type.",
             "name": "TransactionType",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "description": "Fetch Transactions lower than a given block timestamp (note: relative query will lookup the block table to get timestaps).",
-            "name": "FromTimestamp",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "description": "Fetch Transactions higher than a given block timestamp (note: relative query will lookup the block table to get timestaps).",
-            "name": "ToTimestamp",
             "in": "query"
           }
         ],
@@ -742,51 +714,20 @@
       "type": "object",
       "title": "Mempool represent the mempool data structure stored in the database",
       "properties": {
-        "Fee": {
-          "type": "string",
-          "format": "int64"
+        "ArrivalTimestamp": {
+          "type": "string"
+        },
+        "FeePerByte": {
+          "type": "integer",
+          "format": "int32"
         },
         "ID": {
           "type": "string",
           "format": "byte"
         },
-        "RecipientAccount": {
-          "type": "string"
-        },
-        "RecipientAccountType": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "SenderAccount": {
-          "type": "string"
-        },
-        "SenderAccountType": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "Signature": {
+        "TransactionBytes": {
           "type": "string",
           "format": "byte"
-        },
-        "Timestamp": {
-          "type": "string",
-          "format": "int64"
-        },
-        "TransactionBodyBytes": {
-          "type": "string",
-          "format": "byte"
-        },
-        "TransactionBodyLength": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "TransactionHash": {
-          "type": "string",
-          "format": "byte"
-        },
-        "TransactionType": {
-          "type": "integer",
-          "format": "int64"
         }
       }
     },
@@ -826,16 +767,16 @@
       "type": "object",
       "title": "Transaction represent the transaction data structure stored in the database",
       "properties": {
-        "BlockHeight": {
-          "type": "integer",
-          "format": "int64"
-        },
         "BlockID": {
           "type": "string",
           "format": "int64"
         },
         "Fee": {
           "type": "string",
+          "format": "int64"
+        },
+        "Height": {
+          "type": "integer",
           "format": "int64"
         },
         "ID": {
@@ -851,6 +792,10 @@
         "Signature": {
           "type": "string",
           "format": "byte"
+        },
+        "Timestamp": {
+          "type": "string",
+          "format": "int64"
         },
         "TransactionBodyBytes": {
           "type": "string",
