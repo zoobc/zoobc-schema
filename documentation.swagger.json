@@ -11,11 +11,142 @@
   ],
   "swagger": "2.0",
   "info": {
-    "title": "service/account.proto",
+    "title": "service/accountBalance.proto",
     "version": "version not set"
   },
   "paths": {
     "/v1/account/GetAccount": {
+      "get": {
+        "tags": [
+          "AccountService"
+        ],
+        "operationId": "GetAccount",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Account by its ID.",
+            "name": "ID",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Account by its account address (note: this in case of zoobc account type is the public key).",
+            "name": "Address",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelAccount"
+            }
+          }
+        }
+      }
+    },
+    "/v1/account/GetAccountBalance": {
+      "get": {
+        "tags": [
+          "AccountBalanceService"
+        ],
+        "operationId": "GetAccountBalance",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its ID.",
+            "name": "ID",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its Block height.",
+            "name": "BlockHeight",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelAccountBalance"
+            }
+          }
+        }
+      }
+    },
+    "/v1/account/GetAccountBalances": {
+      "get": {
+        "tags": [
+          "AccountBalanceService"
+        ],
+        "operationId": "GetAccountBalances",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its balance (account balance \u003c  BalanceLowerThan).",
+            "name": "BalanceLowerThan",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its balance (account balance \u003e  BalanceHigherThan).",
+            "name": "BalanceHigherThan",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its spendablebalance (account spendablebalance \u003c  BalanceLowerThan).",
+            "name": "SpendableBalanceLowerThan",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its spendablebalance (account spendablebalance \u003e  BalanceHigherThan).",
+            "name": "SpendableBalanceHigherThan",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its spendablebalance (account spendablebalance \u003c  BalanceLowerThan).",
+            "name": "PopRevenueBalanceLowerThan",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its popRevenuebalance (account popRevenuebalance \u003e  BalanceHigherThan).",
+            "name": "PopRevenueBalanceHigherThan",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its Block height.",
+            "name": "BlockHeight",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetAccountBalancesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/account/GetAccounts": {
       "get": {
         "tags": [
           "AccountService"
@@ -25,15 +156,8 @@
           {
             "type": "integer",
             "format": "int64",
-            "description": "Fetch Account by its ID.",
-            "name": "AccountID",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch Account by its account name (note: this in case of zoobc account type is the public key).",
-            "name": "Account",
+            "description": "Fetch Accounts by its account type.",
+            "name": "AccountType",
             "in": "query"
           }
         ],
@@ -41,7 +165,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelGetAccountResponse"
+              "$ref": "#/definitions/modelGetAccountsResponse"
             }
           }
         }
@@ -55,6 +179,13 @@
         "operationId": "GetBlock",
         "parameters": [
           {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number indicating chaintype.",
+            "name": "ChainType",
+            "in": "query"
+          },
+          {
             "type": "string",
             "format": "int64",
             "description": "Block ID.",
@@ -63,7 +194,7 @@
           },
           {
             "type": "integer",
-            "format": "int32",
+            "format": "int64",
             "description": "number of block to fetch.",
             "name": "BlockHeight",
             "in": "query"
@@ -88,6 +219,13 @@
         "parameters": [
           {
             "type": "integer",
+            "format": "int32",
+            "description": "Number indicating chaintype.",
+            "name": "ChainType",
+            "in": "query"
+          },
+          {
+            "type": "integer",
             "format": "int64",
             "description": "Number of block to fetch.",
             "name": "BlockSize",
@@ -95,7 +233,7 @@
           },
           {
             "type": "integer",
-            "format": "int32",
+            "format": "int64",
             "description": "Fetch block from `n` height.",
             "name": "BlockHeight",
             "in": "query"
@@ -106,6 +244,38 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetBlocksResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/mempool/GetMempoolTransaction": {
+      "get": {
+        "tags": [
+          "MempoolService"
+        ],
+        "operationId": "GetMempoolTransaction",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Mempool Transaction by its ID.",
+            "name": "ID",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Mempool Transaction by its signature.",
+            "name": "Signature",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelMempoolTransaction"
             }
           }
         }
@@ -144,7 +314,46 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelGetMempoolsResponse"
+              "$ref": "#/definitions/modelGetMempoolTransactionsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/transaction/GetTransaction": {
+      "get": {
+        "tags": [
+          "TransactionService"
+        ],
+        "operationId": "GetTransaction",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Transaction by its ID.",
+            "name": "ID",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Transaction by its signature.",
+            "name": "Signature",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Transaction by its hash.",
+            "name": "TransactionHash",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelTransaction"
             }
           }
         }
@@ -158,24 +367,57 @@
         "operationId": "GetTransactions",
         "parameters": [
           {
-            "type": "integer",
+            "type": "string",
             "format": "int64",
-            "description": "Fetch Transaction by its ID.",
-            "name": "TransactionID",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch Transaction by its Block ID.",
-            "name": "BlockID",
+            "description": "Fetch Transaction at block Height.",
+            "name": "BlockHeight",
             "in": "query"
           },
           {
             "type": "string",
             "format": "int64",
-            "description": "Fetch Transaction by block Height.",
-            "name": "BlockHeight",
+            "description": "Fetch Transactions lower than block height.",
+            "name": "FromHeight",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "description": "Fetch Transactions higher than block height.",
+            "name": "ToHeight",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Fetch Transactions by sender.",
+            "name": "SenderAccountID",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Fetch Transactions by recipient.",
+            "name": "RecipientAccountID",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Transactions by transaction type.",
+            "name": "TransactionType",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "description": "Fetch Transactions lower than a given block timestamp (note: relative query will lookup the block table to get timestaps).",
+            "name": "FromTimestamp",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "description": "Fetch Transactions higher than a given block timestamp (note: relative query will lookup the block table to get timestaps).",
+            "name": "ToTimestamp",
             "in": "query"
           }
         ],
@@ -195,16 +437,42 @@
       "type": "object",
       "title": "Account represent the transaction data structure stored in the database",
       "properties": {
-        "Account": {
-          "type": "string"
-        },
-        "AccountID": {
-          "type": "string",
-          "format": "byte"
-        },
         "AccountType": {
           "type": "integer",
           "format": "int32"
+        },
+        "Address": {
+          "type": "string"
+        },
+        "ID": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "modelAccountBalance": {
+      "type": "object",
+      "title": "AccountBalance represent the transaction data structure stored in the database",
+      "properties": {
+        "Balance": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ID": {
+          "type": "string",
+          "format": "byte"
+        },
+        "PopRevenue": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SpendableBalance": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },
@@ -224,7 +492,7 @@
           "type": "string",
           "format": "byte"
         },
-        "CumulativeDifficult": {
+        "CumulativeDifficulty": {
           "type": "string"
         },
         "Height": {
@@ -236,21 +504,23 @@
           "format": "int64"
         },
         "PayloadHash": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "PayloadLength": {
           "type": "integer",
           "format": "int64"
         },
         "PreviousBlockHash": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "SmithScale": {
           "type": "string",
           "format": "int64"
         },
         "Timestamp": {
-          "type": "integer",
+          "type": "string",
           "format": "int64"
         },
         "TotalAmount": {
@@ -277,14 +547,37 @@
         }
       }
     },
-    "modelGetAccountResponse": {
+    "modelGetAccountBalancesResponse": {
+      "type": "object",
+      "properties": {
+        "AccountBalance": {
+          "type": "array",
+          "title": "AccountBalances returned",
+          "items": {
+            "$ref": "#/definitions/modelAccountBalance"
+          }
+        },
+        "AccountBalanceSize": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of accounts returned"
+        }
+      }
+    },
+    "modelGetAccountsResponse": {
       "type": "object",
       "properties": {
         "Account": {
           "type": "array",
+          "title": "Accounts returned",
           "items": {
             "$ref": "#/definitions/modelAccount"
           }
+        },
+        "AccountSize": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of accounts returned"
         }
       }
     },
@@ -293,13 +586,18 @@
       "properties": {
         "BlockHeight": {
           "type": "integer",
-          "format": "int32",
+          "format": "int64",
           "title": "Blocks height returned from"
         },
         "BlockSize": {
           "type": "integer",
           "format": "int64",
           "title": "Number of block returned"
+        },
+        "ChainType": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Number indicating chaintype"
         },
         "blocks": {
           "type": "array",
@@ -310,7 +608,7 @@
         }
       }
     },
-    "modelGetMempoolsResponse": {
+    "modelGetMempoolTransactionsResponse": {
       "type": "object",
       "properties": {
         "MempoolSize": {
@@ -320,9 +618,9 @@
         },
         "MempoolTransactions": {
           "type": "array",
-          "title": "Mempool Transactions returned",
+          "title": "Mempool transactions returned",
           "items": {
-            "$ref": "#/definitions/modelMempool"
+            "$ref": "#/definitions/modelMempoolTransaction"
           }
         }
       }
@@ -337,20 +635,24 @@
         },
         "Transactions": {
           "type": "array",
-          "title": "Transaction returned",
+          "title": "Transaction transactions returned",
           "items": {
             "$ref": "#/definitions/modelTransaction"
           }
         }
       }
     },
-    "modelMempool": {
+    "modelMempoolTransaction": {
       "type": "object",
       "title": "Mempool represent the mempool data structure stored in the database",
       "properties": {
         "Fee": {
           "type": "string",
           "format": "int64"
+        },
+        "ID": {
+          "type": "string",
+          "format": "byte"
         },
         "RecipientAccount": {
           "type": "string"
@@ -386,13 +688,25 @@
           "type": "string",
           "format": "byte"
         },
-        "TransactionID": {
-          "type": "string",
-          "format": "byte"
-        },
         "TransactionType": {
           "type": "integer",
           "format": "int64"
+        }
+      }
+    },
+    "modelNode": {
+      "type": "object",
+      "title": "NodeInfo represent the node information data structure",
+      "properties": {
+        "Address": {
+          "type": "string"
+        },
+        "Port": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "SharedAddress": {
+          "type": "string"
         }
       }
     },
@@ -411,6 +725,10 @@
         "Fee": {
           "type": "string",
           "format": "int64"
+        },
+        "ID": {
+          "type": "string",
+          "format": "byte"
         },
         "RecipientAccountID": {
           "type": "string"
@@ -431,10 +749,6 @@
           "format": "int64"
         },
         "TransactionHash": {
-          "type": "string",
-          "format": "byte"
-        },
-        "TransactionID": {
           "type": "string",
           "format": "byte"
         },

@@ -1,0 +1,34 @@
+syntax="proto3";
+
+package model;
+
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+import "model/node.proto";
+
+message Peer {
+    Node Info     = 1;          
+    // State              PeerState
+    uint32  LastInboundRequest = 2;
+    string BlacklistingCause  = 3;
+    uint32 BlacklistingTime   = 4;
+    // Conn               *grpc.ClientConn
+}
+
+message PeerBasicResponse {
+	bool success = 1;
+	string error = 2;
+}
+
+message GetPeerInfoRequest {
+    string Address =1;
+}
+
+message PostAddPeersRequest {
+    repeated Node peers = 1;
+}
+
+message PostAddPeersResponse {
+    repeated Node peers = 1;
+}
+  
