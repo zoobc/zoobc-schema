@@ -463,53 +463,6 @@
             "description": "Fetch Transactions by transaction type.",
             "name": "TransactionType",
             "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "description": "Fetch Transactions lower than block height.",
-            "name": "FromHeight",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "description": "Fetch Transactions higher than block height.",
-            "name": "ToHeight",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Fetch Transactions by sender.",
-            "name": "SenderAccountID",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Fetch Transactions by recipient.",
-            "name": "RecipientAccountID",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch Transactions by transaction type.",
-            "name": "TransactionType",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "description": "Fetch Transactions lower than a given block timestamp (note: relative query will lookup the block table to get timestaps).",
-            "name": "FromTimestamp",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "description": "Fetch Transactions higher than a given block timestamp (note: relative query will lookup the block table to get timestaps).",
-            "name": "ToTimestamp",
-            "in": "query"
           }
         ],
         "responses": {
@@ -778,6 +731,22 @@
         }
       }
     },
+    "modelNode": {
+      "type": "object",
+      "title": "NodeInfo represent the node information data structure",
+      "properties": {
+        "Address": {
+          "type": "string"
+        },
+        "Port": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "SharedAddress": {
+          "type": "string"
+        }
+      }
+    },
     "modelNodeRegistration": {
       "type": "object",
       "properties": {
@@ -807,22 +776,6 @@
         "RegistrationHeight": {
           "type": "string",
           "format": "int64"
-        }
-      }
-    },
-    "modelNode": {
-      "type": "object",
-      "title": "NodeInfo represent the node information data structure",
-      "properties": {
-        "Address": {
-          "type": "string"
-        },
-        "Port": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "SharedAddress": {
-          "type": "string"
         }
       }
     },

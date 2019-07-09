@@ -16,19 +16,19 @@ message Peer {
 }
 
 message PeerBasicResponse {
-	bool success = 1;
-	string error = 2;
+	bool Success = 1;
+	string Error = 2;
 }
 
 message GetPeerInfoRequest {
-    string Address =1;
+    string Version =1;
 }
 
 message PostAddPeersRequest {
-    repeated Node peers = 1;
+    repeated Node Peers = 1;
 }
 
 message PostAddPeersResponse {
-    repeated Node peers = 1;
+    repeated Node Peers = 1;
 }
   
