@@ -2,7 +2,8 @@ syntax="proto3";
 
 package model;
 
-option go_package = "github.com/BlockchainZoo/spinechain-api-prototype/common/schema/model";
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
 
 message NodeRegistration {
     bytes   NodePublicKey = 1;
