@@ -7,12 +7,19 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 import "model/node.proto";
 
 message Peer {
-    Node Info     = 1;          
-    // State              PeerState
-    uint32  LastInboundRequest = 2;
-    string BlacklistingCause  = 3;
-    uint32 BlacklistingTime   = 4;
+    Node Info     = 1;
+    PeerState State = 2;
+    uint32  LastInboundRequest = 3;
+    string BlacklistingCause  = 4;
+    uint32 BlacklistingTime   = 5;
     // Conn               *grpc.ClientConn
+}
+
+enum PeerState {
+    NON_CONNECTED = 0;
+    CONNECTED = 1;
+    DISCONNECTED = 2;
+    BLACKLISTED = 3;
 }
 
 message PeerBasicResponse {
