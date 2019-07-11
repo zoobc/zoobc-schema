@@ -11,7 +11,7 @@
   ],
   "swagger": "2.0",
   "info": {
-    "title": "service/accountBalance.proto",
+    "title": "service/account.proto",
     "version": "version not set"
   },
   "paths": {
@@ -665,6 +665,17 @@
           "title": "Mempool transactions returned",
           "items": {
             "$ref": "#/definitions/modelMempoolTransaction"
+          }
+        }
+      }
+    },
+    "modelGetMorePeersResponse": {
+      "type": "object",
+      "properties": {
+        "Peers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelNode"
           }
         }
       }

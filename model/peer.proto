@@ -24,11 +24,7 @@ message GetPeerInfoRequest {
     string Version =1;
 }
 
-message PostAddPeersRequest {
-    repeated Node Peers = 1;
-}
-
-message PostAddPeersResponse {
+message GetMorePeersResponse {
     repeated Node Peers = 1;
 }
   
