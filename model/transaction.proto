@@ -9,8 +9,8 @@ message Transaction {
     bytes ID = 1;
     int64 BlockID = 2;    
     uint32 Height = 3;    
-    string SenderAccountID = 4;
-    string RecipientAccountID = 5;
+    bytes SenderAccountID = 4;
+    bytes RecipientAccountID = 5;
     uint32 TransactionType = 6;
     int64 Fee = 7;
     int64 Timestamp = 8;
@@ -19,7 +19,18 @@ message Transaction {
     bytes TransactionBodyBytes = 11;
     bytes Signature = 12;
     //TODO: protobuf only (not reflected in db)
+
     // TransactionBody
+    oneof TransactionBody {
+        EmptyTransactionBody emptyTransactionBody = 13;
+        SendMoneyTransactionBody sendMoneyTransactionBody = 14;
+    }
+}
+
+message EmptyTransactionBody {}
+
+message SendMoneyTransactionBody {
+    int64 Amount = 1;
 }
 
 message GetTransactionRequest {
