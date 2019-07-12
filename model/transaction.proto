@@ -6,26 +6,27 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 // Transaction represent the transaction data structure stored in the database
 message Transaction {
-    bytes ID = 1;
-    int64 BlockID = 2;    
-    uint32 Height = 3;
-    bytes SenderAccountType = 4;
-    string SenderAccountAddress = 5;
-    bytes RecipientAccountType = 6;
-    string RecipientAccountAddress = 7;
-    uint32 TransactionType = 8;
-    int64 Fee = 9;
-    int64 Timestamp = 10;
-    bytes TransactionHash = 11;
-    uint32 TransactionBodyLength = 12;
-    bytes TransactionBodyBytes = 13;
-    bytes Signature = 14;
+    bytes Version = 1;
+    bytes ID = 2;
+    int64 BlockID = 3;
+    uint32 Height = 4;
+    bytes SenderAccountType = 5;
+    string SenderAccountAddress = 6;
+    bytes RecipientAccountType = 7;
+    string RecipientAccountAddress = 8;
+    uint32 TransactionType = 9;
+    int64 Fee = 10;
+    int64 Timestamp = 11;
+    bytes TransactionHash = 12;
+    uint32 TransactionBodyLength = 13;
+    bytes TransactionBodyBytes = 14;
+    bytes Signature = 15;
     //TODO: protobuf only (not reflected in db)
 
     // TransactionBody
     oneof TransactionBody {
-        EmptyTransactionBody emptyTransactionBody = 15;
-        SendMoneyTransactionBody sendMoneyTransactionBody = 16;
+        EmptyTransactionBody emptyTransactionBody = 16;
+        SendMoneyTransactionBody sendMoneyTransactionBody = 17;
     }
 }
 
