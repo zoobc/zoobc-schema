@@ -13,6 +13,7 @@ import "model/empty.proto";
 service P2PCommunication {
     rpc GetPeerInfo(model.GetPeerInfoRequest) returns (model.Node) {}
     rpc GetMorePeers(model.Empty) returns (model.GetMorePeersResponse) {}
+    rpc SendPeers(model.SendPeersRequest) returns (model.Empty) {}
     // rpc SendTransaction(model.PostUnconfirmedTransactionRequest) returns(model.PeerBasicResponse) {}
     // rpc SendBlock(model.Block) returns(model.PeerBasicResponse) {}
     // rpc GetCumulativeDifficulty(Empty) returns (CumulativeDifficulty) {}

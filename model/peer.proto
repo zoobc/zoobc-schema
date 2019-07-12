@@ -35,3 +35,6 @@ message GetMorePeersResponse {
     repeated Node Peers = 1;
 }
   
+message SendPeersRequest {
+    repeated Node Peers = 1;
+}
