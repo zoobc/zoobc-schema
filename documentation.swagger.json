@@ -11,7 +11,7 @@
   ],
   "swagger": "2.0",
   "info": {
-    "title": "service/accountBalance.proto",
+    "title": "service/account.proto",
     "version": "version not set"
   },
   "paths": {
@@ -796,11 +796,17 @@
           "type": "string",
           "format": "byte"
         },
-        "RecipientAccountID": {
+        "RecipientAccountAddress": {
+          "type": "string"
+        },
+        "RecipientAccountType": {
           "type": "string",
           "format": "byte"
         },
-        "SenderAccountID": {
+        "SenderAccountAddress": {
+          "type": "string"
+        },
+        "SenderAccountType": {
           "type": "string",
           "format": "byte"
         },
@@ -827,6 +833,10 @@
         "TransactionType": {
           "type": "integer",
           "format": "int64"
+        },
+        "Version": {
+          "type": "string",
+          "format": "byte"
         },
         "emptyTransactionBody": {
           "$ref": "#/definitions/modelEmptyTransactionBody"
