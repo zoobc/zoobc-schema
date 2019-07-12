@@ -483,7 +483,7 @@
       "properties": {
         "AccountType": {
           "type": "integer",
-          "format": "int32"
+          "format": "int64"
         },
         "Address": {
           "type": "string"
@@ -800,15 +800,15 @@
           "type": "string"
         },
         "RecipientAccountType": {
-          "type": "string",
-          "format": "byte"
+          "type": "integer",
+          "format": "int64"
         },
         "SenderAccountAddress": {
           "type": "string"
         },
         "SenderAccountType": {
-          "type": "string",
-          "format": "byte"
+          "type": "integer",
+          "format": "int64"
         },
         "Signature": {
           "type": "string",
@@ -835,8 +835,8 @@
           "format": "int64"
         },
         "Version": {
-          "type": "string",
-          "format": "byte"
+          "type": "integer",
+          "format": "int64"
         },
         "emptyTransactionBody": {
           "$ref": "#/definitions/modelEmptyTransactionBody"
