@@ -718,7 +718,8 @@
       "title": "Mempool represent the mempool data structure stored in the database",
       "properties": {
         "ArrivalTimestamp": {
-          "type": "string"
+          "type": "string",
+          "format": "int64"
         },
         "FeePerByte": {
           "type": "integer",
@@ -832,6 +833,10 @@
         "TransactionType": {
           "type": "integer",
           "format": "int64"
+        },
+        "Version": {
+          "type": "string",
+          "format": "byte"
         },
         "emptyTransactionBody": {
           "$ref": "#/definitions/modelEmptyTransactionBody"
