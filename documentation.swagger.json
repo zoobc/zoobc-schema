@@ -58,7 +58,7 @@
             "type": "integer",
             "format": "int64",
             "description": "Fetch AccountBalance by its ID.",
-            "name": "ID",
+            "name": "AccountID",
             "in": "query"
           },
           {
@@ -498,6 +498,10 @@
       "type": "object",
       "title": "AccountBalance represent the transaction data structure stored in the database",
       "properties": {
+        "AccountID": {
+          "type": "string",
+          "format": "byte"
+        },
         "Balance": {
           "type": "string",
           "format": "int64"
@@ -505,10 +509,6 @@
         "BlockHeight": {
           "type": "integer",
           "format": "int64"
-        },
-        "ID": {
-          "type": "string",
-          "format": "byte"
         },
         "PopRevenue": {
           "type": "string",
@@ -590,6 +590,9 @@
           "format": "int64"
         }
       }
+    },
+    "modelEmptyTransactionBody": {
+      "type": "object"
     },
     "modelGetAccountBalancesResponse": {
       "type": "object",
@@ -763,6 +766,15 @@
         }
       }
     },
+    "modelSendMoneyTransactionBody": {
+      "type": "object",
+      "properties": {
+        "Amount": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
     "modelTransaction": {
       "type": "object",
       "title": "Transaction represent the transaction data structure stored in the database",
@@ -783,11 +795,19 @@
           "type": "string",
           "format": "byte"
         },
-        "RecipientAccountID": {
+        "RecipientAccountAddress": {
           "type": "string"
         },
-        "SenderAccountID": {
+        "RecipientAccountType": {
+          "type": "string",
+          "format": "byte"
+        },
+        "SenderAccountAddress": {
           "type": "string"
+        },
+        "SenderAccountType": {
+          "type": "string",
+          "format": "byte"
         },
         "Signature": {
           "type": "string",
@@ -812,6 +832,12 @@
         "TransactionType": {
           "type": "integer",
           "format": "int64"
+        },
+        "emptyTransactionBody": {
+          "$ref": "#/definitions/modelEmptyTransactionBody"
+        },
+        "sendMoneyTransactionBody": {
+          "$ref": "#/definitions/modelSendMoneyTransactionBody"
         }
       }
     }

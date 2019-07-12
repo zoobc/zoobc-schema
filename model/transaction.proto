@@ -8,22 +8,24 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 message Transaction {
     bytes ID = 1;
     int64 BlockID = 2;    
-    uint32 Height = 3;    
-    bytes SenderAccountID = 4;
-    bytes RecipientAccountID = 5;
-    uint32 TransactionType = 6;
-    int64 Fee = 7;
-    int64 Timestamp = 8;
-    bytes TransactionHash = 9;
-    uint32 TransactionBodyLength = 10;
-    bytes TransactionBodyBytes = 11;
-    bytes Signature = 12;
+    uint32 Height = 3;
+    bytes SenderAccountType = 4;
+    string SenderAccountAddress = 5;
+    bytes RecipientAccountType = 6;
+    string RecipientAccountAddress = 7;
+    uint32 TransactionType = 8;
+    int64 Fee = 9;
+    int64 Timestamp = 10;
+    bytes TransactionHash = 11;
+    uint32 TransactionBodyLength = 12;
+    bytes TransactionBodyBytes = 13;
+    bytes Signature = 14;
     //TODO: protobuf only (not reflected in db)
 
     // TransactionBody
     oneof TransactionBody {
-        EmptyTransactionBody emptyTransactionBody = 13;
-        SendMoneyTransactionBody sendMoneyTransactionBody = 14;
+        EmptyTransactionBody emptyTransactionBody = 15;
+        SendMoneyTransactionBody sendMoneyTransactionBody = 16;
     }
 }
 
