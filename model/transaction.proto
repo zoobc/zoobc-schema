@@ -20,14 +20,12 @@ message Transaction {
     bytes TransactionHash = 12;
     uint32 TransactionBodyLength = 13;
     bytes TransactionBodyBytes = 14;
-    bytes Signature = 15;
-    //TODO: protobuf only (not reflected in db)
-
     // TransactionBody
     oneof TransactionBody {
-        EmptyTransactionBody emptyTransactionBody = 16;
-        SendMoneyTransactionBody sendMoneyTransactionBody = 17;
+        EmptyTransactionBody emptyTransactionBody = 15;
+        SendMoneyTransactionBody sendMoneyTransactionBody = 16;
     }
+    bytes Signature = 17;
 }
 
 message EmptyTransactionBody {}
