@@ -794,7 +794,7 @@
         },
         "ID": {
           "type": "string",
-          "format": "byte"
+          "format": "int64"
         },
         "RecipientAccountAddress": {
           "type": "string"
