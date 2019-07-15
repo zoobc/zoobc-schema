@@ -37,31 +37,20 @@ message SendMoneyTransactionBody {
 message GetTransactionRequest {
     // Fetch Transaction by its ID
     int64 ID = 1;
-    // Fetch Transaction by its signature
-    uint32 Signature = 4;
-    // Fetch Transaction by its hash
-    uint32 TransactionHash = 5;
 }
 
 message GetTransactionsRequest {
-    // Fetch Transaction at block Height 
-    int64 Height = 1;
-    // Fetch Transactions lower than block height
-    int64 FromHeight = 2;
-    // Fetch Transactions higher than block height
-    int64 ToHeight = 3;
-    // Fetch Transactions by sender
-    string SenderAccountID = 4;
-    // Fetch Transactions by recipient
-    string RecipientAccountID = 5;
-    // Fetch Transactions by transaction type
-    uint32 TransactionType = 6;
-
+    // Transactions set limit to be fetched
+    uint32 Limit = 1;
+    // Transactions set offset to be fetched
+    uint64 Offset = 2;
 }
 
 message GetTransactionsResponse {
+    // Number of transactions in total
+    uint64 Total = 1;
     // Number of transactions returned
-    uint32 TransactionSize = 1;
+    uint32 Count = 2;
     // Transaction transactions returned
-    repeated Transaction Transactions = 2;
+    repeated Transaction Transactions = 3;
 }
