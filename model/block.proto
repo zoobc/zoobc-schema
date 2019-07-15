@@ -26,16 +26,6 @@ message Block {
     repeated Transaction Transactions = 16;
 }
 
-// GetBlocksRequest create request to get a list block
-message GetBlocksRequest {
-    // Number indicating chaintype
-    int32 ChainType = 1;
-    // Number of block to fetch
-    uint32 BlockSize = 2;
-    // Fetch block from `n` height
-    uint32 BlockHeight = 3;
-}
-
 // GetBlockRequest create request for single block
 message GetBlockRequest {
     // Number indicating chaintype
@@ -43,16 +33,26 @@ message GetBlockRequest {
     // Block ID
     int64 ID = 2;
     // number of block to fetch
-    uint32 BlockHeight = 3;
+    uint32 Height = 3;
+}
+
+// GetBlocksRequest create request to get a list block
+message GetBlocksRequest {
+    // Number indicating chaintype
+    int32 ChainType = 1;
+    // Number of block to fetch
+    uint32 Limit = 2;
+    // Fetch block from `n` height
+    uint32 Height = 3;
 }
 
 message GetBlocksResponse {
     // Number indicating chaintype
     int32 ChainType = 1;
     // Number of block returned
-    uint32 BlockSize = 2;
+    uint32 Count = 2;
     // Blocks height returned from
-    uint32 BlockHeight = 3;
+    uint32 Height = 3;
     // Blocks returned
     repeated Block blocks = 4;
 }
