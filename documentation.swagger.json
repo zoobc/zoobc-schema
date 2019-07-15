@@ -386,7 +386,7 @@
         "operationId": "GetTransaction",
         "parameters": [
           {
-            "type": "integer",
+            "type": "string",
             "format": "int64",
             "description": "Fetch Transaction by its ID.",
             "name": "ID",
@@ -794,7 +794,7 @@
         },
         "ID": {
           "type": "string",
-          "format": "byte"
+          "format": "int64"
         },
         "RecipientAccountAddress": {
           "type": "string"

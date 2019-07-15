@@ -7,7 +7,7 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 // Transaction represent the transaction data structure stored in the database
 message Transaction {
     uint32 Version = 1;
-    bytes ID = 2;
+    int64 ID = 2;
     int64 BlockID = 3;
     uint32 Height = 4;
     uint32 SenderAccountType = 5;
@@ -36,7 +36,7 @@ message SendMoneyTransactionBody {
 
 message GetTransactionRequest {
     // Fetch Transaction by its ID
-    uint32 ID = 1;
+    int64 ID = 1;
     // Fetch Transaction by its signature
     uint32 Signature = 4;
     // Fetch Transaction by its hash
