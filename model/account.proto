@@ -7,7 +7,7 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 // Account represent the transaction data structure stored in the database
 message Account {
     bytes ID = 1;
-    int32 AccountType = 2;
+    uint32 AccountType = 2;
     string Address = 3;
 }
 

@@ -196,7 +196,7 @@
             "type": "integer",
             "format": "int64",
             "description": "number of block to fetch.",
-            "name": "BlockHeight",
+            "name": "Height",
             "in": "query"
           }
         ],
@@ -228,14 +228,14 @@
             "type": "integer",
             "format": "int64",
             "description": "Number of block to fetch.",
-            "name": "BlockSize",
+            "name": "Limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
             "description": "Fetch block from `n` height.",
-            "name": "BlockHeight",
+            "name": "Height",
             "in": "query"
           }
         ],
@@ -483,7 +483,7 @@
       "properties": {
         "AccountType": {
           "type": "integer",
-          "format": "int32"
+          "format": "int64"
         },
         "Address": {
           "type": "string"
@@ -631,20 +631,20 @@
     "modelGetBlocksResponse": {
       "type": "object",
       "properties": {
-        "BlockHeight": {
-          "type": "integer",
-          "format": "int64",
-          "title": "Blocks height returned from"
-        },
-        "BlockSize": {
-          "type": "integer",
-          "format": "int64",
-          "title": "Number of block returned"
-        },
         "ChainType": {
           "type": "integer",
           "format": "int32",
           "title": "Number indicating chaintype"
+        },
+        "Count": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of block returned"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Blocks height returned from"
         },
         "blocks": {
           "type": "array",
@@ -727,7 +727,7 @@
         },
         "ID": {
           "type": "string",
-          "format": "byte"
+          "format": "int64"
         },
         "TransactionBytes": {
           "type": "string",
@@ -796,13 +796,19 @@
           "type": "string",
           "format": "byte"
         },
-        "RecipientAccountID": {
-          "type": "string",
-          "format": "byte"
+        "RecipientAccountAddress": {
+          "type": "string"
         },
-        "SenderAccountID": {
-          "type": "string",
-          "format": "byte"
+        "RecipientAccountType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "SenderAccountAddress": {
+          "type": "string"
+        },
+        "SenderAccountType": {
+          "type": "integer",
+          "format": "int64"
         },
         "Signature": {
           "type": "string",
@@ -825,6 +831,10 @@
           "format": "byte"
         },
         "TransactionType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Version": {
           "type": "integer",
           "format": "int64"
         },
