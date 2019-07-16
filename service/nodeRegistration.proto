@@ -4,8 +4,8 @@ package service;
 
 option go_package = "github.com/zoobc/zoobc-core/common/service";
 
-import "google/api/annotations.proto";
 import "model/nodeRegistration.proto";
+import "google/api/annotations.proto";
 
 // NodeRegistration represent request on db NodeRegistration
 service NodeRegistrationService {
