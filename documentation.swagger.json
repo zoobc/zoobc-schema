@@ -391,20 +391,6 @@
             "description": "Fetch Transaction by its ID.",
             "name": "ID",
             "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch Transaction by its signature.",
-            "name": "Signature",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch Transaction by its hash.",
-            "name": "TransactionHash",
-            "in": "query"
           }
         ],
         "responses": {
@@ -425,43 +411,17 @@
         "operationId": "GetTransactions",
         "parameters": [
           {
-            "type": "string",
-            "format": "int64",
-            "description": "Fetch Transaction at block Height.",
-            "name": "Height",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "description": "Fetch Transactions lower than block height.",
-            "name": "FromHeight",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "description": "Fetch Transactions higher than block height.",
-            "name": "ToHeight",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Fetch Transactions by sender.",
-            "name": "SenderAccountID",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Fetch Transactions by recipient.",
-            "name": "RecipientAccountID",
-            "in": "query"
-          },
-          {
             "type": "integer",
             "format": "int64",
-            "description": "Fetch Transactions by transaction type.",
-            "name": "TransactionType",
+            "description": "Transactions set limit to be fetched.",
+            "name": "Limit",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "uint64",
+            "description": "Transactions set offset to be fetched.",
+            "name": "Offset",
             "in": "query"
           }
         ],
@@ -699,10 +659,15 @@
     "modelGetTransactionsResponse": {
       "type": "object",
       "properties": {
-        "TransactionSize": {
+        "Count": {
           "type": "integer",
           "format": "int64",
           "title": "Number of transactions returned"
+        },
+        "Total": {
+          "type": "string",
+          "format": "uint64",
+          "title": "Number of transactions in total"
         },
         "Transactions": {
           "type": "array",
