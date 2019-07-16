@@ -4,8 +4,8 @@ package service;
 
 option go_package = "github.com/zoobc/zoobc-core/common/service";
 
-import "google/api/annotations.proto";
 import "model/mempool.proto";
+import "google/api/annotations.proto";
 
 // MempoolService represent request on db Mempool
 service MempoolService {
