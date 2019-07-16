@@ -1,14 +1,7 @@
 {
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
-  "schemes": [
-    "http",
-    "https"
-  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "schemes": ["http", "https"],
   "swagger": "2.0",
   "info": {
     "title": "service/account.proto",
@@ -17,9 +10,7 @@
   "paths": {
     "/v1/account/GetAccount": {
       "get": {
-        "tags": [
-          "AccountService"
-        ],
+        "tags": ["AccountService"],
         "operationId": "GetAccount",
         "parameters": [
           {
@@ -49,9 +40,7 @@
     },
     "/v1/account/GetAccountBalance": {
       "get": {
-        "tags": [
-          "AccountBalanceService"
-        ],
+        "tags": ["AccountBalanceService"],
         "operationId": "GetAccountBalance",
         "parameters": [
           {
@@ -81,9 +70,7 @@
     },
     "/v1/account/GetAccountBalances": {
       "get": {
-        "tags": [
-          "AccountBalanceService"
-        ],
+        "tags": ["AccountBalanceService"],
         "operationId": "GetAccountBalances",
         "parameters": [
           {
@@ -148,9 +135,7 @@
     },
     "/v1/account/GetAccounts": {
       "get": {
-        "tags": [
-          "AccountService"
-        ],
+        "tags": ["AccountService"],
         "operationId": "GetAccounts",
         "parameters": [
           {
@@ -173,9 +158,7 @@
     },
     "/v1/block/GetBlock": {
       "get": {
-        "tags": [
-          "BlockService"
-        ],
+        "tags": ["BlockService"],
         "operationId": "GetBlock",
         "parameters": [
           {
@@ -212,9 +195,7 @@
     },
     "/v1/block/GetBlocks": {
       "get": {
-        "tags": [
-          "BlockService"
-        ],
+        "tags": ["BlockService"],
         "operationId": "GetBlocks",
         "parameters": [
           {
@@ -251,9 +232,7 @@
     },
     "/v1/mempool/GetMempoolTransaction": {
       "get": {
-        "tags": [
-          "MempoolService"
-        ],
+        "tags": ["MempoolService"],
         "operationId": "GetMempoolTransaction",
         "parameters": [
           {
@@ -276,9 +255,7 @@
     },
     "/v1/mempool/GetMempoolTransactions": {
       "get": {
-        "tags": [
-          "MempoolService"
-        ],
+        "tags": ["MempoolService"],
         "operationId": "GetMempoolTransactions",
         "parameters": [
           {
@@ -308,9 +285,7 @@
     },
     "/v1/nodeRegistration/GetNodeRegistration": {
       "get": {
-        "tags": [
-          "NodeRegistrationService"
-        ],
+        "tags": ["NodeRegistrationService"],
         "operationId": "GetNodeRegistration",
         "parameters": [
           {
@@ -344,9 +319,7 @@
     },
     "/v1/nodeRegistration/GetNodeRegistrations": {
       "get": {
-        "tags": [
-          "NodeRegistrationService"
-        ],
+        "tags": ["NodeRegistrationService"],
         "operationId": "GetNodeRegistrations",
         "parameters": [
           {
@@ -380,9 +353,7 @@
     },
     "/v1/transaction/GetTransaction": {
       "get": {
-        "tags": [
-          "TransactionService"
-        ],
+        "tags": ["TransactionService"],
         "operationId": "GetTransaction",
         "parameters": [
           {
@@ -419,9 +390,7 @@
     },
     "/v1/transaction/GetTransactions": {
       "get": {
-        "tags": [
-          "TransactionService"
-        ],
+        "tags": ["TransactionService"],
         "operationId": "GetTransactions",
         "parameters": [
           {
