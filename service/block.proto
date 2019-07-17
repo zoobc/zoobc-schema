@@ -4,8 +4,8 @@ package service;
 
 option go_package = "github.com/zoobc/zoobc-core/common/service";
 
-import "google/api/annotations.proto";
 import "model/block.proto";
+import "google/api/annotations.proto";
 
 // BlockService represent request on Blockchain's Block
 service BlockService {
