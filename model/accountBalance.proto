@@ -11,6 +11,7 @@ message AccountBalance {
     int64 SpendableBalance = 3;
     int64 Balance = 4;
     int64 PopRevenue = 5;
+    bool Latest = 6;
 }
 
 message GetAccountBalanceRequest {
