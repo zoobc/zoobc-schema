@@ -1,0 +1,17 @@
+syntax="proto3";
+
+package model;
+
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+message ProofOfOwnershipRequest {
+    bytes   Signature = 1;
+}
+
+message ProofOfOwnershipResponse {
+    uint32 AccountType = 1;
+    string AccountAddress = 2;
+    bytes BlockHash = 3;
+    uint32 BlockHeight = 4;
+    bytes Signature = 5;
+}
