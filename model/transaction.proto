@@ -24,14 +24,34 @@ message Transaction {
     oneof TransactionBody {
         EmptyTransactionBody emptyTransactionBody = 15;
         SendMoneyTransactionBody sendMoneyTransactionBody = 16;
+        NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 17;
     }
-    bytes Signature = 17;
+    bytes Signature = 18;
 }
 
 message EmptyTransactionBody {}
 
 message SendMoneyTransactionBody {
     int64 Amount = 1;
+}
+
+message NodeRegistrationTransactionBody {
+    bytes   NodePublicKey = 1;
+    uint32 AccountType = 2;
+    string AccountAddress = 3;
+  	int64  RegistrationHeight = 4;
+    string  NodeAddress = 5;
+    int64   LockedBalance = 6;
+    ProofOfOwnership    Poown = 7;
+}
+
+//TODO: shall we move this to a different file? 
+message ProofOfOwnership {
+    uint32 AccountType = 1;
+    string AccountAddress = 2;
+    bytes blockHash = 3;
+    uint32 blockHeight = 4;
+    bytes signature = 5;
 }
 
 message GetTransactionRequest {
