@@ -756,6 +756,10 @@
         "RegistrationHeight": {
           "type": "string",
           "format": "int64"
+        },
+        "queued": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
