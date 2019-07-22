@@ -11,7 +11,7 @@
   ],
   "swagger": "2.0",
   "info": {
-    "title": "service/account.proto",
+    "title": "service/accountBalance.proto",
     "version": "version not set"
   },
   "paths": {
@@ -57,8 +57,13 @@
           {
             "type": "integer",
             "format": "int64",
-            "description": "Fetch AccountBalance by its ID.",
-            "name": "AccountID",
+            "description": "Fetch AccountBalance by type/address.",
+            "name": "AccountType",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "AccountAddress",
             "in": "query"
           },
           {
@@ -320,15 +325,25 @@
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "name": "AccountType",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "format": "byte",
-            "name": "AccountId",
+            "name": "AccountAddress",
             "in": "query"
           },
           {
             "type": "string",
             "format": "int64",
             "name": "RegistrationHeight",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "NodeAddress",
             "in": "query"
           }
         ],
@@ -356,9 +371,14 @@
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "name": "AccountType",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "format": "byte",
-            "name": "AccountId",
+            "name": "AccountAddress",
             "in": "query"
           },
           {
@@ -639,9 +659,12 @@
     "modelGetNodeRegistrationsResponse": {
       "type": "object",
       "properties": {
-        "AccountId": {
-          "type": "string",
-          "format": "byte"
+        "AccountAddress": {
+          "type": "string"
+        },
+        "AccountType": {
+          "type": "integer",
+          "format": "int64"
         },
         "LockedBalance": {
           "type": "string",
@@ -696,7 +719,7 @@
         },
         "ID": {
           "type": "string",
-          "format": "byte"
+          "format": "int64"
         },
         "TransactionBytes": {
           "type": "string",
@@ -729,6 +752,10 @@
         "NodePublicKey": {
           "type": "string",
           "format": "byte"
+        },
+        "Queued": {
+          "type": "boolean",
+          "format": "boolean"
         },
         "RegistrationHeight": {
           "type": "string",
