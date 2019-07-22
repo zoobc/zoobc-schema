@@ -763,6 +763,61 @@
         }
       }
     },
+    "modelNodeRegistrationTransactionBody": {
+      "type": "object",
+      "properties": {
+        "AccountAddress": {
+          "type": "string"
+        },
+        "AccountType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "LockedBalance": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NodeAddress": {
+          "type": "string"
+        },
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Poown": {
+          "$ref": "#/definitions/modelProofOfOwnership"
+        },
+        "RegistrationHeight": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "modelProofOfOwnership": {
+      "type": "object",
+      "title": "TODO: shall we move this to a different file?",
+      "properties": {
+        "AccountAddress": {
+          "type": "string"
+        },
+        "AccountType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "blockHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "blockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "signature": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
     "modelSendMoneyTransactionBody": {
       "type": "object",
       "properties": {
@@ -836,6 +891,9 @@
         },
         "emptyTransactionBody": {
           "$ref": "#/definitions/modelEmptyTransactionBody"
+        },
+        "nodeRegistrationTransactionBody": {
+          "$ref": "#/definitions/modelNodeRegistrationTransactionBody"
         },
         "sendMoneyTransactionBody": {
           "$ref": "#/definitions/modelSendMoneyTransactionBody"
