@@ -754,8 +754,8 @@
           "format": "byte"
         },
         "Queued": {
-          "type": "integer",
-          "format": "int64"
+          "type": "boolean",
+          "format": "boolean"
         },
         "RegistrationHeight": {
           "type": "string",
