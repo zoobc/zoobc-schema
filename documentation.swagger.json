@@ -753,12 +753,12 @@
           "type": "string",
           "format": "byte"
         },
-        "RegistrationHeight": {
-          "type": "string",
+        "Queued": {
+          "type": "integer",
           "format": "int64"
         },
-        "queued": {
-          "type": "integer",
+        "RegistrationHeight": {
+          "type": "string",
           "format": "int64"
         }
       }

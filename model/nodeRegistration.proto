@@ -11,7 +11,7 @@ message NodeRegistration {
 	int64  RegistrationHeight = 3;
     string  NodeAddress = 4;
     int64   LockedBalance = 5;
-    uint32  queued = 6;
+    uint32  Queued = 6;
     bool Latest = 7;
     uint32 Height = 8;
 }
