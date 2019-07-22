@@ -11,7 +11,7 @@
   ],
   "swagger": "2.0",
   "info": {
-    "title": "service/account.proto",
+    "title": "service/accountBalance.proto",
     "version": "version not set"
   },
   "paths": {
@@ -707,7 +707,7 @@
         },
         "ID": {
           "type": "string",
-          "format": "byte"
+          "format": "int64"
         },
         "TransactionBytes": {
           "type": "string",
