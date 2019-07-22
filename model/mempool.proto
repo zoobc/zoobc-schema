@@ -6,9 +6,9 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 // Mempool represent the mempool data structure stored in the database
 message MempoolTransaction {
-    bytes ID = 1;
+    int64 ID = 1;
     int32 FeePerByte = 2;
-    string ArrivalTimestamp = 3;
+    int64 ArrivalTimestamp = 3;
     bytes TransactionBytes = 4;
 }
 

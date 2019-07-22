@@ -58,7 +58,7 @@
             "type": "integer",
             "format": "int64",
             "description": "Fetch AccountBalance by its ID.",
-            "name": "ID",
+            "name": "AccountID",
             "in": "query"
           },
           {
@@ -196,7 +196,7 @@
             "type": "integer",
             "format": "int64",
             "description": "number of block to fetch.",
-            "name": "BlockHeight",
+            "name": "Height",
             "in": "query"
           }
         ],
@@ -228,14 +228,14 @@
             "type": "integer",
             "format": "int64",
             "description": "Number of block to fetch.",
-            "name": "BlockSize",
+            "name": "Limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
             "description": "Fetch block from `n` height.",
-            "name": "BlockHeight",
+            "name": "Height",
             "in": "query"
           }
         ],
@@ -386,24 +386,10 @@
         "operationId": "GetTransaction",
         "parameters": [
           {
-            "type": "integer",
+            "type": "string",
             "format": "int64",
             "description": "Fetch Transaction by its ID.",
             "name": "ID",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch Transaction by its signature.",
-            "name": "Signature",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch Transaction by its hash.",
-            "name": "TransactionHash",
             "in": "query"
           }
         ],
@@ -425,43 +411,17 @@
         "operationId": "GetTransactions",
         "parameters": [
           {
-            "type": "string",
-            "format": "int64",
-            "description": "Fetch Transaction at block Height.",
-            "name": "Height",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "description": "Fetch Transactions lower than block height.",
-            "name": "FromHeight",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "description": "Fetch Transactions higher than block height.",
-            "name": "ToHeight",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Fetch Transactions by sender.",
-            "name": "SenderAccountID",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Fetch Transactions by recipient.",
-            "name": "RecipientAccountID",
-            "in": "query"
-          },
-          {
             "type": "integer",
             "format": "int64",
-            "description": "Fetch Transactions by transaction type.",
-            "name": "TransactionType",
+            "description": "Transactions set limit to be fetched.",
+            "name": "Limit",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "uint64",
+            "description": "Transactions set offset to be fetched.",
+            "name": "Offset",
             "in": "query"
           }
         ],
@@ -483,7 +443,7 @@
       "properties": {
         "AccountType": {
           "type": "integer",
-          "format": "int32"
+          "format": "int64"
         },
         "Address": {
           "type": "string"
@@ -498,6 +458,10 @@
       "type": "object",
       "title": "AccountBalance represent the transaction data structure stored in the database",
       "properties": {
+        "AccountID": {
+          "type": "string",
+          "format": "byte"
+        },
         "Balance": {
           "type": "string",
           "format": "int64"
@@ -506,9 +470,9 @@
           "type": "integer",
           "format": "int64"
         },
-        "ID": {
-          "type": "string",
-          "format": "byte"
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
         },
         "PopRevenue": {
           "type": "string",
@@ -591,6 +555,9 @@
         }
       }
     },
+    "modelEmptyTransactionBody": {
+      "type": "object"
+    },
     "modelGetAccountBalancesResponse": {
       "type": "object",
       "properties": {
@@ -628,20 +595,20 @@
     "modelGetBlocksResponse": {
       "type": "object",
       "properties": {
-        "BlockHeight": {
-          "type": "integer",
-          "format": "int64",
-          "title": "Blocks height returned from"
-        },
-        "BlockSize": {
-          "type": "integer",
-          "format": "int64",
-          "title": "Number of block returned"
-        },
         "ChainType": {
           "type": "integer",
           "format": "int32",
           "title": "Number indicating chaintype"
+        },
+        "Count": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of block returned"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Blocks height returned from"
         },
         "blocks": {
           "type": "array",
@@ -707,10 +674,15 @@
     "modelGetTransactionsResponse": {
       "type": "object",
       "properties": {
-        "TransactionSize": {
+        "Count": {
           "type": "integer",
           "format": "int64",
           "title": "Number of transactions returned"
+        },
+        "Total": {
+          "type": "string",
+          "format": "uint64",
+          "title": "Number of transactions in total"
         },
         "Transactions": {
           "type": "array",
@@ -726,7 +698,8 @@
       "title": "Mempool represent the mempool data structure stored in the database",
       "properties": {
         "ArrivalTimestamp": {
-          "type": "string"
+          "type": "string",
+          "format": "int64"
         },
         "FeePerByte": {
           "type": "integer",
@@ -790,6 +763,15 @@
         }
       }
     },
+    "modelSendMoneyTransactionBody": {
+      "type": "object",
+      "properties": {
+        "Amount": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
     "modelTransaction": {
       "type": "object",
       "title": "Transaction represent the transaction data structure stored in the database",
@@ -808,13 +790,21 @@
         },
         "ID": {
           "type": "string",
-          "format": "byte"
+          "format": "int64"
         },
-        "RecipientAccountID": {
+        "RecipientAccountAddress": {
           "type": "string"
         },
-        "SenderAccountID": {
+        "RecipientAccountType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "SenderAccountAddress": {
           "type": "string"
+        },
+        "SenderAccountType": {
+          "type": "integer",
+          "format": "int64"
         },
         "Signature": {
           "type": "string",
@@ -839,6 +829,16 @@
         "TransactionType": {
           "type": "integer",
           "format": "int64"
+        },
+        "Version": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "emptyTransactionBody": {
+          "$ref": "#/definitions/modelEmptyTransactionBody"
+        },
+        "sendMoneyTransactionBody": {
+          "$ref": "#/definitions/modelSendMoneyTransactionBody"
         }
       }
     }
