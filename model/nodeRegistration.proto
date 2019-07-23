@@ -11,28 +11,33 @@ message NodeRegistration {
 	int64  RegistrationHeight = 3;
     string  NodeAddress = 4;
     int64   LockedBalance = 5;
-    bool Latest = 6;
-    uint32 Height = 7;
+    bool  Queued = 6;
+    bool Latest = 7;
+    uint32 Height = 8;
 }
 
 // GetNodeRegisterRequest create request to get a list node
 message GetNodeRegistrationsRequest {
     bytes   NodePublicKey = 1;
-    bytes  AccountId = 2;
-	int64  RegistrationHeight = 3;
+    uint32 AccountType = 2;
+    string AccountAddress = 3;
+	int64  RegistrationHeight = 4;
 }
 
 // GetNodeRegistrationRequest create request for single node register
 message GetNodeRegistrationRequest {
     bytes   NodePublicKey = 1;
-    bytes  AccountId = 2;
-	int64  RegistrationHeight = 3;
+    uint32 AccountType = 2;
+    string AccountAddress = 3;
+	int64  RegistrationHeight = 4;
+    string  NodeAddress = 5;
 }
 
 message GetNodeRegistrationsResponse {
     bytes   NodePublicKey = 1;
-    bytes  AccountId = 2;
-    int64  RegistrationHeight = 3;
-    string  NodeAddress = 4;
-    int64   LockedBalance = 5;
+    uint32 AccountType = 2;
+    string AccountAddress = 3;
+	int64  RegistrationHeight = 4;
+    string  NodeAddress = 5;
+    int64   LockedBalance = 6;
 }
