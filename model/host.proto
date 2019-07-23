@@ -10,7 +10,7 @@ import "model/peer.proto";
 // Host represent
 message Host {
 	Node Info = 1;
-	map<string, Peer> Peers = 2;
+	map<string, Peer> ConnectedPeers = 2;
 	map<string, Peer> KnownPeers = 3;
 	map<string, Peer> UnresolvedPeers = 4;
 	bool Stopped = 5;

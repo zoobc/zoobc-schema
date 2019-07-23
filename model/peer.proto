@@ -8,11 +8,11 @@ import "model/node.proto";
 
 message Peer {
     Node Info     = 1;
-    PeerState State = 2;
-    uint32  LastInboundRequest = 3;
-    string BlacklistingCause  = 4;
-    uint32 BlacklistingTime   = 5;
-    int64 LastUpdated = 6;
+    uint32  LastInboundRequest = 2;
+    string BlacklistingCause  = 3;
+    uint32 BlacklistingTime   = 4;
+    int64 LastUpdated = 5;
+    int32 LastConnectionAttempted = 6;
 }
 
 enum PeerState {
