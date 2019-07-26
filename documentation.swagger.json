@@ -11,7 +11,7 @@
   ],
   "swagger": "2.0",
   "info": {
-    "title": "service/accountBalance.proto",
+    "title": "service/account.proto",
     "version": "version not set"
   },
   "paths": {
@@ -450,6 +450,22 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetTransactionsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/transaction/PostTransaction": {
+      "post": {
+        "tags": [
+          "TransactionService"
+        ],
+        "operationId": "PostTransaction",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelTransaction"
             }
           }
         }
