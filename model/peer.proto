@@ -10,16 +10,9 @@ message Peer {
     Node Info     = 1;
     uint32  LastInboundRequest = 2;
     string BlacklistingCause  = 3;
-    uint32 BlacklistingTime   = 4;
+    uint64 BlacklistingTime   = 4;
     int64 LastUpdated = 5;
-    int32 LastConnectionAttempted = 6;
-}
-
-enum PeerState {
-    NON_CONNECTED = 0;
-    CONNECTED = 1;
-    DISCONNECTED = 2;
-    BLACKLISTED = 3;
+    int32 connectionAttempted = 6;
 }
 
 message PeerBasicResponse {
