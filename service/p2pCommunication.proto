@@ -1,0 +1,14 @@
+syntax="proto3";
+
+package service;
+
+option go_package = "github.com/zoobc/zoobc-core/common/service";
+
+import "model/peer.proto";
+import "model/node.proto";
+import "model/empty.proto";
+
+service P2PCommunication {
+    rpc GetPeerInfo(model.GetPeerInfoRequest) returns (model.Node) {}
+    rpc GetMorePeers(model.Empty) returns (model.GetMorePeersResponse) {}
+}

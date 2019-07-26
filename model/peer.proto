@@ -1,0 +1,36 @@
+syntax="proto3";
+
+package model;
+
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+import "model/node.proto";
+
+message Peer {
+    Node Info     = 1;
+    PeerState State = 2;
+    uint32  LastInboundRequest = 3;
+    string BlacklistingCause  = 4;
+    uint32 BlacklistingTime   = 5;
+}
+
+enum PeerState {
+    NON_CONNECTED = 0;
+    CONNECTED = 1;
+    DISCONNECTED = 2;
+    BLACKLISTED = 3;
+}
+
+message PeerBasicResponse {
+    bool Success = 1;
+    string Error = 2;
+}
+
+message GetPeerInfoRequest {
+    string Version =1;
+}
+
+message GetMorePeersResponse {
+    repeated Node Peers = 1;
+}
+  

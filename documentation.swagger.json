@@ -656,6 +656,17 @@
         }
       }
     },
+    "modelGetMorePeersResponse": {
+      "type": "object",
+      "properties": {
+        "Peers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelNode"
+          }
+        }
+      }
+    },
     "modelGetNodeRegistrationsResponse": {
       "type": "object",
       "properties": {
@@ -724,6 +735,22 @@
         "TransactionBytes": {
           "type": "string",
           "format": "byte"
+        }
+      }
+    },
+    "modelNode": {
+      "type": "object",
+      "title": "NodeInfo represent the node information data structure",
+      "properties": {
+        "Address": {
+          "type": "string"
+        },
+        "Port": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "SharedAddress": {
+          "type": "string"
         }
       }
     },
