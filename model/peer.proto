@@ -12,7 +12,6 @@ message Peer {
     uint32  LastInboundRequest = 3;
     string BlacklistingCause  = 4;
     uint32 BlacklistingTime   = 5;
-    // Conn               *grpc.ClientConn
 }
 
 enum PeerState {
