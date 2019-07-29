@@ -16,8 +16,8 @@ message Peer {
 }
 
 message PeerBasicResponse {
-	bool Success = 1;
-	string Error = 2;
+    bool Success = 1;
+    string Error = 2;
 }
 
 message GetPeerInfoRequest {
