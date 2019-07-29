@@ -1,0 +1,18 @@
+syntax="proto3";
+
+package model;
+
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+import "model/node.proto";
+import "model/peer.proto";
+
+// Host represent
+message Host {
+	Node Info = 1;
+	map<string, Peer> ResolvedPeers = 2;
+	map<string, Peer> UnresolvedPeers = 3;
+	map<string, Peer> KnownPeers = 4;
+	map<string, Peer> BlacklistedPeers = 5;
+	bool Stopped = 6;
+}

@@ -254,6 +254,22 @@
         }
       }
     },
+    "/v1/host/GetHostInfo": {
+      "get": {
+        "tags": [
+          "HostService"
+        ],
+        "operationId": "GetHostInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelHost"
+            }
+          }
+        }
+      }
+    },
     "/v1/mempool/GetMempoolTransaction": {
       "get": {
         "tags": [
@@ -591,6 +607,10 @@
         }
       }
     },
+    "modelEmpty": {
+      "type": "object",
+      "title": "Empty structure to represent empty parameter in proto"
+    },
     "modelEmptyTransactionBody": {
       "type": "object"
     },
@@ -672,6 +692,17 @@
         }
       }
     },
+    "modelGetMorePeersResponse": {
+      "type": "object",
+      "properties": {
+        "Peers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelNode"
+          }
+        }
+      }
+    },
     "modelGetNodeRegistrationsResponse": {
       "type": "object",
       "properties": {
@@ -721,6 +752,43 @@
         }
       }
     },
+    "modelHost": {
+      "type": "object",
+      "title": "Host represent",
+      "properties": {
+        "BlacklistedPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        },
+        "Info": {
+          "$ref": "#/definitions/modelNode"
+        },
+        "KnownPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        },
+        "ResolvedPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        },
+        "Stopped": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "UnresolvedPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        }
+      }
+    },
     "modelMempoolTransaction": {
       "type": "object",
       "title": "Mempool represent the mempool data structure stored in the database",
@@ -740,6 +808,22 @@
         "TransactionBytes": {
           "type": "string",
           "format": "byte"
+        }
+      }
+    },
+    "modelNode": {
+      "type": "object",
+      "title": "NodeInfo represent the node information data structure",
+      "properties": {
+        "Address": {
+          "type": "string"
+        },
+        "Port": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "SharedAddress": {
+          "type": "string"
         }
       }
     },
@@ -806,6 +890,33 @@
         "RegistrationHeight": {
           "type": "string",
           "format": "int64"
+        }
+      }
+    },
+    "modelPeer": {
+      "type": "object",
+      "properties": {
+        "BlacklistingCause": {
+          "type": "string"
+        },
+        "BlacklistingTime": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "Info": {
+          "$ref": "#/definitions/modelNode"
+        },
+        "LastInboundRequest": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "LastUpdated": {
+          "type": "string",
+          "format": "int64"
+        },
+        "connectionAttempted": {
+          "type": "integer",
+          "format": "int32"
         }
       }
     },

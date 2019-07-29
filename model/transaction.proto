@@ -83,3 +83,9 @@ message GetTransactionsResponse {
     // Transaction transactions returned
     repeated Transaction Transactions = 3;
 }
+
+message PostUnconfirmedTransactionRequest {
+	Transaction      Transaction = 1;
+	uint32 ArrivalTimestamp = 2;
+	int64 FeePerByte = 3;
+}
