@@ -66,6 +66,15 @@ message GetTransactionsRequest {
     uint64 Offset = 2;
 }
 
+message PostTransactionRequest {
+    // Signed transaction bytes
+    bytes TransactionBytes = 1;
+}
+
+message PostTransactionResponse {
+    Transaction Transaction = 1;
+}
+
 message GetTransactionsResponse {
     // Number of transactions in total
     uint64 Total = 1;
