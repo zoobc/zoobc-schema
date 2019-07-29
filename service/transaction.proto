@@ -21,7 +21,7 @@ service TransactionService {
         };
     }
 
-    rpc PostTransaction(model.PostTransactionRequest) returns (model.Transaction) {
+    rpc PostTransaction(model.PostTransactionRequest) returns (model.PostTransactionResponse) {
         option (google.api.http) = {
             post: "/v1/transaction/PostTransaction"
         };

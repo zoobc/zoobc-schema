@@ -465,7 +465,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelTransaction"
+              "$ref": "#/definitions/modelPostTransactionResponse"
             }
           }
         }
@@ -806,6 +806,14 @@
         "RegistrationHeight": {
           "type": "string",
           "format": "int64"
+        }
+      }
+    },
+    "modelPostTransactionResponse": {
+      "type": "object",
+      "properties": {
+        "Transaction": {
+          "$ref": "#/definitions/modelTransaction"
         }
       }
     },
