@@ -8,10 +8,12 @@ import "model/peer.proto";
 import "model/node.proto";
 import "model/empty.proto";
 import "model/block.proto";
+import "model/transaction.proto";
 
 service P2PCommunication {
     rpc GetPeerInfo(model.GetPeerInfoRequest) returns (model.Node) {}
     rpc GetMorePeers(model.Empty) returns (model.GetMorePeersResponse) {}
     rpc SendPeers(model.SendPeersRequest) returns (model.Empty) {}
     rpc SendBlock (model.Block) returns (model.Empty) {}
+    rpc SendTransaction (model.Transaction) returns (model.Empty) {}
 }
