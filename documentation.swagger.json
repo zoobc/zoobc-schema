@@ -11,7 +11,7 @@
   ],
   "swagger": "2.0",
   "info": {
-    "title": "service/account.proto",
+    "title": "service/accountBalance.proto",
     "version": "version not set"
   },
   "paths": {
@@ -754,7 +754,7 @@
     },
     "modelHost": {
       "type": "object",
-      "title": "Host represent",
+      "title": "Host represent node and listed peers information",
       "properties": {
         "BlacklistedPeers": {
           "type": "object",

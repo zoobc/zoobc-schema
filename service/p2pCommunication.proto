@@ -15,5 +15,5 @@ service P2PCommunication {
     rpc GetMorePeers(model.Empty) returns (model.GetMorePeersResponse) {}
     rpc SendPeers(model.SendPeersRequest) returns (model.Empty) {}
     rpc SendBlock (model.Block) returns (model.Empty) {}
-    rpc SendTransaction (model.Transaction) returns (model.Empty) {}
+    rpc SendTransaction (model.SendTransactionRequest) returns (model.Empty) {}
 }

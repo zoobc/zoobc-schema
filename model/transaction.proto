@@ -84,6 +84,12 @@ message GetTransactionsResponse {
     repeated Transaction Transactions = 3;
 }
 
+// SendTransaction request in p2pCommunication service
+message SendTransactionRequest {
+    bytes TransactionBytes = 1;
+}
+
+// TODO: Currently not yet used. Should we delete it?
 message PostUnconfirmedTransactionRequest {
 	Transaction      Transaction = 1;
 	uint32 ArrivalTimestamp = 2;
