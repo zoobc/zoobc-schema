@@ -7,7 +7,7 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 import "model/node.proto";
 import "model/peer.proto";
 
-// Host represent
+// Host represent data sructure node and listed peers in node it's self 
 message Host {
 	Node Info = 1;
 	map<string, Peer> ResolvedPeers = 2;
