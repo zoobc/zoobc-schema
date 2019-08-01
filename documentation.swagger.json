@@ -352,7 +352,7 @@
             "in": "query"
           },
           {
-            "type": "string",
+            "type": "integer",
             "format": "int64",
             "name": "RegistrationHeight",
             "in": "query"
@@ -398,7 +398,7 @@
             "in": "query"
           },
           {
-            "type": "string",
+            "type": "integer",
             "format": "int64",
             "name": "RegistrationHeight",
             "in": "query"
@@ -725,7 +725,7 @@
           "format": "byte"
         },
         "RegistrationHeight": {
-          "type": "string",
+          "type": "integer",
           "format": "int64"
         }
       }
@@ -858,7 +858,7 @@
           "format": "boolean"
         },
         "RegistrationHeight": {
-          "type": "string",
+          "type": "integer",
           "format": "int64"
         }
       }
@@ -880,6 +880,10 @@
         "NodeAddress": {
           "type": "string"
         },
+        "NodeAddressLength": {
+          "type": "integer",
+          "format": "int64"
+        },
         "NodePublicKey": {
           "type": "string",
           "format": "byte"
@@ -888,7 +892,7 @@
           "$ref": "#/definitions/modelProofOfOwnership"
         },
         "RegistrationHeight": {
-          "type": "string",
+          "type": "integer",
           "format": "int64"
         }
       }
