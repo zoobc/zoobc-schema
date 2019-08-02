@@ -25,8 +25,9 @@ message Transaction {
         EmptyTransactionBody emptyTransactionBody = 15;
         SendMoneyTransactionBody sendMoneyTransactionBody = 16;
         NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 17;
+        UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 18;
     }
-    bytes Signature = 18;
+    bytes Signature = 19;
 }
 
 message EmptyTransactionBody {}
@@ -40,6 +41,14 @@ message NodeRegistrationTransactionBody {
     uint32 AccountType = 2;
     string AccountAddress = 3;
     uint32  RegistrationHeight = 4;
+    uint32 NodeAddressLength = 5;
+    string  NodeAddress = 6;
+    int64   LockedBalance = 7;
+    ProofOfOwnership Poown = 8;
+}
+
+message UpdateNodeRegistrationTransactionBody {
+    bytes   NodePublicKey = 1;
     uint32 NodeAddressLength = 5;
     string  NodeAddress = 6;
     int64   LockedBalance = 7;

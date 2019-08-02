@@ -414,6 +414,58 @@
         }
       }
     },
+    "/v1/nodeRegistration/UpdateNodeRegistration": {
+      "get": {
+        "tags": [
+          "NodeRegistrationService"
+        ],
+        "operationId": "UpdateNodeRegistration",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "byte",
+            "name": "ID",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "byte",
+            "name": "NodePublicKey",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "AccountType",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "AccountAddress",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "NodeAddress",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "name": "LockedBalance",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelNodeRegistration"
+            }
+          }
+        }
+      }
+    },
     "/v1/transaction/GetTransaction": {
       "get": {
         "tags": [
@@ -713,6 +765,18 @@
           "type": "integer",
           "format": "int64"
         },
+        "Height": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ID": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
+        },
         "LockedBalance": {
           "type": "string",
           "format": "int64"
@@ -723,6 +787,10 @@
         "NodePublicKey": {
           "type": "string",
           "format": "byte"
+        },
+        "Queued": {
+          "type": "boolean",
+          "format": "boolean"
         },
         "RegistrationHeight": {
           "type": "integer",
@@ -754,7 +822,7 @@
     },
     "modelHost": {
       "type": "object",
-      "title": "Host represent node and listed peers information",
+      "title": "Host represent data sructure node and listed peers in node it's self",
       "properties": {
         "BlacklistedPeers": {
           "type": "object",
@@ -836,6 +904,10 @@
         },
         "Height": {
           "type": "integer",
+          "format": "int64"
+        },
+        "ID": {
+          "type": "string",
           "format": "int64"
         },
         "Latest": {
@@ -1036,6 +1108,32 @@
         },
         "sendMoneyTransactionBody": {
           "$ref": "#/definitions/modelSendMoneyTransactionBody"
+        },
+        "updateNodeRegistrationTransactionBody": {
+          "$ref": "#/definitions/modelUpdateNodeRegistrationTransactionBody"
+        }
+      }
+    },
+    "modelUpdateNodeRegistrationTransactionBody": {
+      "type": "object",
+      "properties": {
+        "LockedBalance": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NodeAddress": {
+          "type": "string"
+        },
+        "NodeAddressLength": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Poown": {
+          "$ref": "#/definitions/modelProofOfOwnership"
         }
       }
     }
