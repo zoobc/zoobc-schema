@@ -6,7 +6,7 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 
 message NodeRegistration {
-    int64   ID = 1;
+    int64   NodeID = 1;
     bytes   NodePublicKey = 2;
     bytes  AccountId = 3;
 	uint32  RegistrationHeight = 4;

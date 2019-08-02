@@ -906,10 +906,6 @@
           "type": "integer",
           "format": "int64"
         },
-        "ID": {
-          "type": "string",
-          "format": "int64"
-        },
         "Latest": {
           "type": "boolean",
           "format": "boolean"
@@ -920,6 +916,10 @@
         },
         "NodeAddress": {
           "type": "string"
+        },
+        "NodeID": {
+          "type": "string",
+          "format": "int64"
         },
         "NodePublicKey": {
           "type": "string",
