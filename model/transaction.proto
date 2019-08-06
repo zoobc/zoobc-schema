@@ -48,11 +48,16 @@ message NodeRegistrationTransactionBody {
 
 //TODO: shall we move this to a different file? 
 message ProofOfOwnership {
+    bytes MessageBytes = 1;
+    bytes Signature = 2;
+}
+
+//TODO: shall we move this to a different file? 
+message ProofOfOwnershipMessage {
     uint32 AccountType = 1;
     string AccountAddress = 2;
-    bytes blockHash = 3;
-    uint32 blockHeight = 4;
-    bytes signature = 5;
+    bytes BlockHash = 3;
+    uint32 BlockHeight = 4;
 }
 
 

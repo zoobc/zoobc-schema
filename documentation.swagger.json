@@ -65,20 +65,13 @@
             "type": "string",
             "name": "AccountAddress",
             "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch AccountBalance by its Block height.",
-            "name": "BlockHeight",
-            "in": "query"
           }
         ],
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelAccountBalance"
+              "$ref": "#/definitions/modelGetAccountBalanceResponse"
             }
           }
         }
@@ -614,6 +607,14 @@
     "modelEmptyTransactionBody": {
       "type": "object"
     },
+    "modelGetAccountBalanceResponse": {
+      "type": "object",
+      "properties": {
+        "AccountBalance": {
+          "$ref": "#/definitions/modelAccountBalance"
+        }
+      }
+    },
     "modelGetAccountBalancesResponse": {
       "type": "object",
       "properties": {
@@ -754,7 +755,7 @@
     },
     "modelHost": {
       "type": "object",
-      "title": "Host represent node and listed peers information",
+      "title": "Host represent data sructure node and listed peers in node it's self",
       "properties": {
         "BlacklistedPeers": {
           "type": "object",
@@ -936,22 +937,11 @@
       "type": "object",
       "title": "TODO: shall we move this to a different file?",
       "properties": {
-        "AccountAddress": {
-          "type": "string"
-        },
-        "AccountType": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "blockHash": {
+        "MessageBytes": {
           "type": "string",
           "format": "byte"
         },
-        "blockHeight": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "signature": {
+        "Signature": {
           "type": "string",
           "format": "byte"
         }
