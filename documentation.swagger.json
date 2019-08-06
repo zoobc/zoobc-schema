@@ -65,20 +65,13 @@
             "type": "string",
             "name": "AccountAddress",
             "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch AccountBalance by its Block height.",
-            "name": "BlockHeight",
-            "in": "query"
           }
         ],
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelAccountBalance"
+              "$ref": "#/definitions/modelGetAccountBalanceResponse"
             }
           }
         }
@@ -613,6 +606,14 @@
     },
     "modelEmptyTransactionBody": {
       "type": "object"
+    },
+    "modelGetAccountBalanceResponse": {
+      "type": "object",
+      "properties": {
+        "AccountBalance": {
+          "$ref": "#/definitions/modelAccountBalance"
+        }
+      }
     },
     "modelGetAccountBalancesResponse": {
       "type": "object",
