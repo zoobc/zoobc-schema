@@ -80,27 +80,25 @@ message ProofOfOwnershipMessage {
     uint32 BlockHeight = 4;
 }
 
+
+//------------
+// P2P Content
+//------------
+
+// GetTransactionRequest return model.Transaction
 message GetTransactionRequest {
     // Fetch Transaction by its ID
     int64 ID = 1;
 }
 
+// GetTransactions return GetTransactionsResponse
 message GetTransactionsRequest {
     // Transactions set limit to be fetched
     uint32 Limit = 1;
     // Transactions set offset to be fetched
     uint64 Offset = 2;
+    string AccountAddress = 3;
 }
-
-message PostTransactionRequest {
-    // Signed transaction bytes
-    bytes TransactionBytes = 1;
-}
-
-message PostTransactionResponse {
-    Transaction Transaction = 1;
-}
-
 message GetTransactionsResponse {
     // Number of transactions in total
     uint64 Total = 1;
@@ -110,14 +108,17 @@ message GetTransactionsResponse {
     repeated Transaction Transactions = 3;
 }
 
-// SendTransaction request in p2pCommunication service
+// PostTransactionRequest return PostTransactionResponse
+message PostTransactionRequest {
+    // Signed transaction bytes
+    bytes TransactionBytes = 1;
+}
+message PostTransactionResponse {
+    Transaction Transaction = 1;
+}
+
+// SendTransactionRequest request in p2pCommunication service
 message SendTransactionRequest {
     bytes TransactionBytes = 1;
 }
 
-// TODO: Currently not yet used. Should we delete it?
-message PostUnconfirmedTransactionRequest {
-	Transaction      Transaction = 1;
-	uint32 ArrivalTimestamp = 2;
-	int64 FeePerByte = 3;
-}
