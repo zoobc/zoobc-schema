@@ -879,6 +879,14 @@
           "type": "string",
           "format": "int64"
         },
+        "RecipientAccountID": {
+          "type": "string",
+          "format": "byte"
+        },
+        "SenderAccountID": {
+          "type": "string",
+          "format": "byte"
+        },
         "TransactionBytes": {
           "type": "string",
           "format": "byte"
