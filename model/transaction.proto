@@ -26,8 +26,9 @@ message Transaction {
         SendMoneyTransactionBody sendMoneyTransactionBody = 16;
         NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 17;
         UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 18;
+        SetupDatasetTransactionBody setupDatasetTransactionBody = 19;
     }
-    bytes Signature = 19;
+    bytes Signature = 20;
 }
 
 message EmptyTransactionBody {}
@@ -53,6 +54,16 @@ message UpdateNodeRegistrationTransactionBody {
     string  NodeAddress = 3;
     int64   LockedBalance = 4;
     ProofOfOwnership Poown = 5;
+}
+
+message SetupDatasetTransactionBody {
+    string AccountSetter = 1;
+    string AccountReceiver = 2;
+    string Property = 3;
+    string Value = 4;
+    uint64 TimestampStarts = 5;
+    uint64 TimestampExpires = 6;
+    uint32 Height = 7;
 }
 
 //TODO: shall we move this to a different file? 
