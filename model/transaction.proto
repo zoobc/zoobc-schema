@@ -78,7 +78,6 @@ message GetTransactionsRequest {
     // Transactions set offset to be fetched
     uint64 Offset = 2;
     string AccountAddress = 3;
-    string AccountType = 4;
 }
 message GetTransactionsResponse {
     // Number of transactions in total
