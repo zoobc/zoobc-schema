@@ -6,9 +6,9 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 // Mempool represent the mempool data structure stored in the database
 message MempoolTransaction {
-    int64 ID = 1;
+    int64 ID = 1 [jstype = JS_STRING];
     int32 FeePerByte = 2;
-    int64 ArrivalTimestamp = 3;
+    int64 ArrivalTimestamp = 3 [jstype = JS_STRING];
     bytes TransactionBytes = 4;
 }
 
@@ -19,9 +19,9 @@ message GetMempoolTransactionRequest {
 
 message GetMempoolTransactionsRequest {
     // Fetch Mempool transactions from arrival timestamp 
-    int64 From = 1;
+    int64 From = 1 [jstype = JS_STRING];
     // Fetch Mempool transactions to arrival timestamp 
-    int64 To = 2;
+    int64 To = 2 [jstype = JS_STRING];
 
 }
 

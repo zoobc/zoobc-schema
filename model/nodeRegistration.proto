@@ -8,9 +8,9 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 message NodeRegistration {
     bytes   NodePublicKey = 1;
     bytes  AccountId = 2;
-	int64  RegistrationHeight = 3;
+	int64  RegistrationHeight = 3 [jstype = JS_STRING];
     string  NodeAddress = 4;
-    int64   LockedBalance = 5;
+    int64   LockedBalance = 5 [jstype = JS_STRING];
     bool  Queued = 6;
     bool Latest = 7;
     uint32 Height = 8;
@@ -21,7 +21,7 @@ message GetNodeRegistrationsRequest {
     bytes   NodePublicKey = 1;
     uint32 AccountType = 2;
     string AccountAddress = 3;
-	int64  RegistrationHeight = 4;
+	int64  RegistrationHeight = 4 [jstype = JS_STRING];
 }
 
 // GetNodeRegistrationRequest create request for single node register
@@ -29,7 +29,7 @@ message GetNodeRegistrationRequest {
     bytes   NodePublicKey = 1;
     uint32 AccountType = 2;
     string AccountAddress = 3;
-	int64  RegistrationHeight = 4;
+	int64  RegistrationHeight = 4 [jstype = JS_STRING];
     string  NodeAddress = 5;
 }
 
@@ -37,7 +37,7 @@ message GetNodeRegistrationsResponse {
     bytes   NodePublicKey = 1;
     uint32 AccountType = 2;
     string AccountAddress = 3;
-	int64  RegistrationHeight = 4;
+	int64  RegistrationHeight = 4 [jstype = JS_STRING];
     string  NodeAddress = 5;
-    int64   LockedBalance = 6;
+    int64   LockedBalance = 6 [jstype = JS_STRING];
 }

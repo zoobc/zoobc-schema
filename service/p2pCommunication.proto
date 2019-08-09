@@ -7,9 +7,15 @@ option go_package = "github.com/zoobc/zoobc-core/common/service";
 import "model/peer.proto";
 import "model/node.proto";
 import "model/empty.proto";
+import "model/block.proto";
+import "model/blockchain.proto";
 
 service P2PCommunication {
     rpc GetPeerInfo(model.GetPeerInfoRequest) returns (model.Node) {}
     rpc GetMorePeers(model.Empty) returns (model.GetMorePeersResponse) {}
     rpc SendPeers(model.SendPeersRequest) returns (model.Empty) {}
+    rpc GetCumulativeDifficulty(model.GetCumulativeDifficultyRequest) returns (model.GetCumulativeDifficultyResponse){}
+    rpc GetCommonMilestoneBlockIDs(model.GetCommonMilestoneBlockIdsRequest) returns (model.GetCommonMilestoneBlockIdsResponse) {}
+    rpc GetNextBlockIDs(model.GetNextBlockIdsRequest) returns (model.BlockIdsResponse) {}
+    rpc GetNextBlocks(model.GetNextBlocksRequest) returns (model.BlocksData) {}
 }
