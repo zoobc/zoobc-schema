@@ -6,7 +6,7 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 // AccountBalance represent the transaction data structure stored in the database
 message AccountBalance {
-    bytes AccountID = 1;
+    string AccountAddress = 1;
     uint32 BlockHeight = 2;
     int64 SpendableBalance = 3;
     int64 Balance = 4;
@@ -16,8 +16,7 @@ message AccountBalance {
 
 message GetAccountBalanceRequest {
     // Fetch AccountBalance by type/address
-    uint32 AccountType = 1;
-    string AccountAddress = 2;
+    string AccountAddress = 1;
 }
 
 message GetAccountBalanceResponse {
