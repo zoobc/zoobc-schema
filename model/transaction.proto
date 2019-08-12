@@ -10,9 +10,9 @@ message Transaction {
     int64 ID = 2;
     int64 BlockID = 3;
     uint32 Height = 4;
-    uint32 SenderAccountType = 5;
+    uint32 SenderAccountAddressLength = 5;
     string SenderAccountAddress = 6;
-    uint32 RecipientAccountType = 7;
+    uint32 RecipientAccountAddressLength = 7;
     string RecipientAccountAddress = 8;
     uint32 TransactionType = 9;
     int64 Fee = 10;
@@ -39,7 +39,7 @@ message SendMoneyTransactionBody {
 
 message NodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
-    uint32 AccountType = 2;
+    uint32 AccountAddressLength = 2;
     string AccountAddress = 3;
     uint32  RegistrationHeight = 4;
     uint32 NodeAddressLength = 5;
