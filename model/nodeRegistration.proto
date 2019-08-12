@@ -21,14 +21,14 @@ message NodeRegistration {
 message GetNodeRegistrationsRequest {
     bytes   NodePublicKey = 1;
     string AccountAddress = 2;
-	uint32  RegistrationHeight = 3;
+    uint32  RegistrationHeight = 3;
 }
 
 // GetNodeRegistrationRequest create request for single node register
 message GetNodeRegistrationRequest {
     bytes   NodePublicKey = 1;
     string AccountAddress = 2;
-	uint32  RegistrationHeight = 3;
+    uint32  RegistrationHeight = 3;
     string  NodeAddress = 4;
 }
 
@@ -45,7 +45,7 @@ message GetNodeRegistrationsResponse {
     bytes   ID = 1;
     bytes   NodePublicKey = 2;
     string AccountAddress = 3;
-	uint32  RegistrationHeight = 4;
+    uint32  RegistrationHeight = 4;
     string  NodeAddress = 5;
     int64   LockedBalance = 6;
     bool  Queued = 7;
