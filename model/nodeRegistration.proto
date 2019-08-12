@@ -9,7 +9,7 @@ message NodeRegistration {
     int64   NodeID = 1;
     bytes   NodePublicKey = 2;
     string  AccountAddress = 3;
-	uint32  RegistrationHeight = 4;
+    uint32  RegistrationHeight = 4;
     string  NodeAddress = 5;
     int64   LockedBalance = 6;
     bool  Queued = 7;
