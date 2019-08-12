@@ -18,8 +18,10 @@ message GetAccountBalanceRequest {
     // Fetch AccountBalance by type/address
     uint32 AccountType = 1;
     string AccountAddress = 2;
-    // Fetch AccountBalance by its Block height
-    uint32 BlockHeight = 3;
+}
+
+message GetAccountBalanceResponse {
+    AccountBalance AccountBalance = 1;
 }
 
 message GetAccountBalancesRequest {

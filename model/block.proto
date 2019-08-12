@@ -75,5 +75,5 @@ message GetNextBlocksRequest {
 }
 
 message BlocksData {
-	repeated Block Blocks = 1;
+	repeated Block NextBlocks = 1;
 }

@@ -25,8 +25,9 @@ message Transaction {
         EmptyTransactionBody emptyTransactionBody = 15;
         SendMoneyTransactionBody sendMoneyTransactionBody = 16;
         NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 17;
+        UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 18;
     }
-    bytes Signature = 18;
+    bytes Signature = 19;
 }
 
 message EmptyTransactionBody {}
@@ -39,19 +40,33 @@ message NodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
     uint32 AccountType = 2;
     string AccountAddress = 3;
-  	int64  RegistrationHeight = 4 [jstype = JS_STRING];
-    string  NodeAddress = 5;
-    int64   LockedBalance = 6 [jstype = JS_STRING];
-    ProofOfOwnership    Poown = 7;
+    uint32  RegistrationHeight = 4;
+    uint32 NodeAddressLength = 5;
+    string  NodeAddress = 6;
+    int64   LockedBalance = 7 [jstype = JS_STRING];
+    ProofOfOwnership Poown = 8;
+}
+
+message UpdateNodeRegistrationTransactionBody {
+    bytes   NodePublicKey = 1;
+    uint32 NodeAddressLength = 2;
+    string  NodeAddress = 3;
+    int64   LockedBalance = 4 [jstype = JS_STRING];
+    ProofOfOwnership Poown = 5;
 }
 
 //TODO: shall we move this to a different file? 
 message ProofOfOwnership {
+    bytes MessageBytes = 1;
+    bytes Signature = 2;
+}
+
+//TODO: shall we move this to a different file? 
+message ProofOfOwnershipMessage {
     uint32 AccountType = 1;
     string AccountAddress = 2;
-    bytes blockHash = 3;
-    uint32 blockHeight = 4;
-    bytes signature = 5;
+    bytes BlockHash = 3;
+    uint32 BlockHeight = 4;
 }
 
 message GetTransactionRequest {
@@ -84,6 +99,12 @@ message GetTransactionsResponse {
     repeated Transaction Transactions = 3;
 }
 
+// SendTransaction request in p2pCommunication service
+message SendTransactionRequest {
+    bytes TransactionBytes = 1;
+}
+
+// TODO: Currently not yet used. Should we delete it?
 message PostUnconfirmedTransactionRequest {
 	Transaction      Transaction = 1;
 	uint32 ArrivalTimestamp = 2;

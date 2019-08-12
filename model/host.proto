@@ -8,7 +8,7 @@ import "model/node.proto";
 import "model/peer.proto";
 import "model/blockchain.proto";
 
-// Host represent
+// Host represent data sructure node and listed peers in node it's self 
 message Host {
 	Node Info = 1;
 	map<string, Peer> ResolvedPeers = 2;
