@@ -57,12 +57,16 @@ message UpdateNodeRegistrationTransactionBody {
 }
 
 message SetupDatasetTransactionBody {
+    // Account Address that set Dataset 
     string AccountSetter = 1;
+    // Account Address that got property of Dataset
     string AccountRecipient = 2;
+    // Property name
     string Property = 3;
+    // Value of property 
     string Value = 4;
-    uint64 TimestampStarts = 5;
-    uint64 TimestampExpires = 6;
+    // How long Dataset will active
+    uint64 MuchTime = 5;
 }
 
 //TODO: shall we move this to a different file? 
