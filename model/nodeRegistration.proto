@@ -8,8 +8,8 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 message NodeRegistration {
     int64   NodeID = 1 [jstype = JS_STRING];
     bytes   NodePublicKey = 2;
-    bytes  AccountId = 3;
-	uint32  RegistrationHeight = 4;
+    string  AccountAddress = 3;
+    uint32  RegistrationHeight = 4;
     string  NodeAddress = 5;
     int64   LockedBalance = 6 [jstype = JS_STRING];
     bool  Queued = 7;
@@ -20,39 +20,35 @@ message NodeRegistration {
 // GetNodeRegisterRequest create request to get a list node
 message GetNodeRegistrationsRequest {
     bytes   NodePublicKey = 1;
-    uint32 AccountType = 2;
-    string AccountAddress = 3;
-	uint32  RegistrationHeight = 4;
+    string AccountAddress = 2;
+    uint32  RegistrationHeight = 3;
 }
 
 // GetNodeRegistrationRequest create request for single node register
 message GetNodeRegistrationRequest {
     bytes   NodePublicKey = 1;
-    uint32 AccountType = 2;
-    string AccountAddress = 3;
-	uint32  RegistrationHeight = 4;
-    string  NodeAddress = 5;
+    string AccountAddress = 2;
+    uint32  RegistrationHeight = 3;
+    string  NodeAddress = 4;
 }
 
 // UpdateNodeRegistrationRequest create request for single node update
 message UpdateNodeRegistrationRequest {
     bytes   ID = 1;
     bytes   NodePublicKey = 2;
-    uint32 AccountType = 3;
-    string AccountAddress = 4;
-    string  NodeAddress = 5;
-    int64   LockedBalance = 6 [jstype = JS_STRING];
+    string AccountAddress = 3;
+    string  NodeAddress = 4;
+    int64   LockedBalance = 5 [jstype = JS_STRING];
 }
 
 message GetNodeRegistrationsResponse {
     bytes   ID = 1;
     bytes   NodePublicKey = 2;
-    uint32 AccountType = 3;
-    string AccountAddress = 4;
-	uint32  RegistrationHeight = 5;
-    string  NodeAddress = 6;
-    int64   LockedBalance = 7 [jstype = JS_STRING];
-    bool  Queued = 8;
-    bool Latest = 9;
-    uint32 Height = 10;
+    string AccountAddress = 3;
+    uint32  RegistrationHeight = 4;
+    string  NodeAddress = 5;
+    int64   LockedBalance = 6 [jstype = JS_STRING];
+    bool  Queued = 7;
+    bool Latest = 8;
+    uint32 Height = 9;
 }

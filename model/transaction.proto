@@ -10,9 +10,9 @@ message Transaction {
     int64 ID = 2 [jstype = JS_STRING];
     int64 BlockID = 3 [jstype = JS_STRING];
     uint32 Height = 4;
-    uint32 SenderAccountType = 5;
+    uint32 SenderAccountAddressLength = 5;
     string SenderAccountAddress = 6;
-    uint32 RecipientAccountType = 7;
+    uint32 RecipientAccountAddressLength = 7;
     string RecipientAccountAddress = 8;
     uint32 TransactionType = 9;
     int64 Fee = 10 [jstype = JS_STRING];
@@ -38,7 +38,7 @@ message SendMoneyTransactionBody {
 
 message NodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
-    uint32 AccountType = 2;
+    uint32 AccountAddressLength = 2;
     string AccountAddress = 3;
     uint32  RegistrationHeight = 4;
     uint32 NodeAddressLength = 5;
@@ -69,27 +69,25 @@ message ProofOfOwnershipMessage {
     uint32 BlockHeight = 4;
 }
 
+
+//------------
+// P2P Content
+//------------
+
+// GetTransactionRequest return model.Transaction
 message GetTransactionRequest {
     // Fetch Transaction by its ID
     int64 ID = 1 [jstype = JS_STRING];
 }
 
+// GetTransactions return GetTransactionsResponse
 message GetTransactionsRequest {
     // Transactions set limit to be fetched
     uint32 Limit = 1;
     // Transactions set offset to be fetched
     uint64 Offset = 2 [jstype = JS_STRING];
+    string AccountAddress = 3;
 }
-
-message PostTransactionRequest {
-    // Signed transaction bytes
-    bytes TransactionBytes = 1;
-}
-
-message PostTransactionResponse {
-    Transaction Transaction = 1;
-}
-
 message GetTransactionsResponse {
     // Number of transactions in total
     uint64 Total = 1 [jstype = JS_STRING];
@@ -99,14 +97,17 @@ message GetTransactionsResponse {
     repeated Transaction Transactions = 3;
 }
 
-// SendTransaction request in p2pCommunication service
+// PostTransactionRequest return PostTransactionResponse
+message PostTransactionRequest {
+    // Signed transaction bytes
+    bytes TransactionBytes = 1;
+}
+message PostTransactionResponse {
+    Transaction Transaction = 1;
+}
+
+// SendTransactionRequest request in p2pCommunication service
 message SendTransactionRequest {
     bytes TransactionBytes = 1;
 }
 
-// TODO: Currently not yet used. Should we delete it?
-message PostUnconfirmedTransactionRequest {
-	Transaction      Transaction = 1;
-	uint32 ArrivalTimestamp = 2;
-	int64 FeePerByte = 3 [jstype = JS_STRING];
-}
