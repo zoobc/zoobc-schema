@@ -6,8 +6,6 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 
 message GetProofOfOwnershipRequest {
-    // Account Type
-    uint32 AccountType = 1;
     // Account Address
     string AccountAddress = 2;
 }

@@ -378,6 +378,30 @@
         }
       }
     },
+    "/v1/nodeadmin/getProofOfOwnership": {
+      "get": {
+        "tags": [
+          "GeneratePoownService"
+        ],
+        "operationId": "GetProofOfOwnership",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Account Address.",
+            "name": "AccountAddress",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetProofOfOwnership"
+            }
+          }
+        }
+      }
+    },
     "/v1/transaction/GetTransaction": {
       "get": {
         "tags": [
@@ -660,6 +684,16 @@
         }
       }
     },
+    "modelGetProofOfOwnership": {
+      "type": "object",
+      "properties": {
+        "PoownMessages": {
+          "type": "string",
+          "format": "byte",
+          "title": "Poown messages response"
+        }
+      }
+    },
     "modelGetTransactionsResponse": {
       "type": "object",
       "properties": {
@@ -696,7 +730,7 @@
         },
         "ID": {
           "type": "string",
-          "format": "byte"
+          "format": "int64"
         },
         "TransactionBytes": {
           "type": "string",
