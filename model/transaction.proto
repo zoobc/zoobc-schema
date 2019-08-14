@@ -48,11 +48,12 @@ message NodeRegistrationTransactionBody {
 }
 
 message UpdateNodeRegistrationTransactionBody {
-    bytes   NodePublicKey = 1;
-    uint32 NodeAddressLength = 2;
-    string  NodeAddress = 3;
-    int64   LockedBalance = 4;
-    ProofOfOwnership Poown = 5;
+    int64 NodeID = 1;
+    bytes   NodePublicKey = 2;
+    uint32 NodeAddressLength = 3;
+    string  NodeAddress = 4;
+    int64   LockedBalance = 5;
+    ProofOfOwnership Poown = 6;
 }
 
 //TODO: shall we move this to a different file? 
