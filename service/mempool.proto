@@ -15,7 +15,7 @@ service MempoolService {
         };
     }
 
-    rpc GetMempoolTransaction(model.GetMempoolTransactionRequest) returns (model.MempoolTransaction) {
+    rpc GetMempoolTransaction(model.GetMempoolTransactionRequest) returns (model.GetMempoolTransactionResponse) {
         option (google.api.http) = {
             get: "/v1/mempool/GetMempoolTransaction"
         };
