@@ -37,14 +37,15 @@ message SendMoneyTransactionBody {
 }
 
 message NodeRegistrationTransactionBody {
-    bytes   NodePublicKey = 1;
-    uint32 AccountAddressLength = 2;
-    string AccountAddress = 3;
-    uint32  RegistrationHeight = 4;
-    uint32 NodeAddressLength = 5;
-    string  NodeAddress = 6;
-    int64   LockedBalance = 7;
-    ProofOfOwnership Poown = 8;
+    int64 NodeID = 1;
+    bytes   NodePublicKey = 2;
+    uint32 AccountAddressLength = 3;
+    string AccountAddress = 4;
+    uint32  RegistrationHeight = 5;
+    uint32 NodeAddressLength = 6;
+    string  NodeAddress = 7;
+    int64   LockedBalance = 8;
+    ProofOfOwnership Poown = 9;
 }
 
 message UpdateNodeRegistrationTransactionBody {
