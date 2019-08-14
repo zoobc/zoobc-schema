@@ -82,19 +82,15 @@ message GetTransactionRequest {
 
 // GetTransactions return GetTransactionsResponse
 message GetTransactionsRequest {
-    // Transactions set limit to be fetched
     uint32 Limit = 1;
-    // Transactions set offset to be fetched
-    uint64 Offset = 2;
+    uint32 Page = 2;
     string AccountAddress = 3;
 }
 message GetTransactionsResponse {
     // Number of transactions in total
     uint64 Total = 1;
-    // Number of transactions returned
-    uint32 Count = 2;
     // Transaction transactions returned
-    repeated Transaction Transactions = 3;
+    repeated Transaction Transactions = 2;
 }
 
 // PostTransactionRequest return PostTransactionResponse
