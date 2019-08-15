@@ -396,58 +396,6 @@
         }
       }
     },
-    "/v1/nodeRegistration/UpdateNodeRegistration": {
-      "get": {
-        "tags": [
-          "NodeRegistrationService"
-        ],
-        "operationId": "UpdateNodeRegistration",
-        "parameters": [
-          {
-            "type": "string",
-            "format": "byte",
-            "name": "ID",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "byte",
-            "name": "NodePublicKey",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "name": "AccountType",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "name": "AccountAddress",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "name": "NodeAddress",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "name": "LockedBalance",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/modelNodeRegistration"
-            }
-          }
-        }
-      }
-    },
     "/v1/transaction/GetTransaction": {
       "get": {
         "tags": [
@@ -569,10 +517,6 @@
         },
         "BlocksmithAddress": {
           "type": "string"
-        },
-        "BlocksmithAddressLength": {
-          "type": "integer",
-          "format": "int64"
         },
         "CumulativeDifficulty": {
           "type": "string"
@@ -904,10 +848,6 @@
         "AccountAddress": {
           "type": "string"
         },
-        "AccountAddressLength": {
-          "type": "integer",
-          "format": "int64"
-        },
         "LockedBalance": {
           "type": "string",
           "format": "int64"
@@ -915,20 +855,12 @@
         "NodeAddress": {
           "type": "string"
         },
-        "NodeAddressLength": {
-          "type": "integer",
-          "format": "int64"
-        },
         "NodePublicKey": {
           "type": "string",
           "format": "byte"
         },
         "Poown": {
           "$ref": "#/definitions/modelProofOfOwnership"
-        },
-        "RegistrationHeight": {
-          "type": "integer",
-          "format": "int64"
         }
       }
     },
@@ -1013,16 +945,8 @@
         "RecipientAccountAddress": {
           "type": "string"
         },
-        "RecipientAccountAddressLength": {
-          "type": "integer",
-          "format": "int64"
-        },
         "SenderAccountAddress": {
           "type": "string"
-        },
-        "SenderAccountAddressLength": {
-          "type": "integer",
-          "format": "int64"
         },
         "Signature": {
           "type": "string",
@@ -1075,10 +999,6 @@
         },
         "NodeAddress": {
           "type": "string"
-        },
-        "NodeAddressLength": {
-          "type": "integer",
-          "format": "int64"
         },
         "NodePublicKey": {
           "type": "string",
