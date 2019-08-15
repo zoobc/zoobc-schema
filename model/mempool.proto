@@ -18,18 +18,22 @@ message GetMempoolTransactionRequest {
     // Fetch Mempool Transaction by its TransactionBytes
     bytes TransactionBytes = 1;
 }
+message GetMempoolTransactionResponse {
+    MempoolTransaction transaction = 1;
+}
 
 message GetMempoolTransactionsRequest {
-    // Fetch Mempool transactions from arrival timestamp 
-    int64 From = 1;
-    // Fetch Mempool transactions to arrival timestamp 
-    int64 To = 2;
-
+    // Fetch Mempool transactions from arrival timestamp start from n
+    int64 timestampStart = 1;
+    // Fetch Mempool transactions to arrival timestamp end until n
+    int64 timestampEnd = 2;
+    // SenderAddress and RecipientAddress
+    string address = 3;
+    uint32 Limit = 4;
+    uint32 Page = 5;
 }
 
 message GetMempoolTransactionsResponse {
-    // Number of transactions returned
-    uint32 MempoolSize = 1;
-    // Mempool transactions returned
+    uint64 Total = 1;
     repeated MempoolTransaction MempoolTransactions = 2;
 }
