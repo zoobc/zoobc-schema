@@ -12,24 +12,22 @@ message Transaction {
     int64 ID = 2;
     int64 BlockID = 3;
     uint32 Height = 4;
-    uint32 SenderAccountAddressLength = 5;
-    string SenderAccountAddress = 6;
-    uint32 RecipientAccountAddressLength = 7;
-    string RecipientAccountAddress = 8;
-    uint32 TransactionType = 9;
-    int64 Fee = 10;
-    int64 Timestamp = 11;
-    bytes TransactionHash = 12;
-    uint32 TransactionBodyLength = 13;
-    bytes TransactionBodyBytes = 14;
+    string SenderAccountAddress = 5;
+    string RecipientAccountAddress = 6;
+    uint32 TransactionType = 7;
+    int64 Fee = 8;
+    int64 Timestamp = 9;
+    bytes TransactionHash = 10;
+    uint32 TransactionBodyLength = 11;
+    bytes TransactionBodyBytes = 12;
     // TransactionBody
     oneof TransactionBody {
-        EmptyTransactionBody emptyTransactionBody = 15;
-        SendMoneyTransactionBody sendMoneyTransactionBody = 16;
-        NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 17;
-        UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 18;
+        EmptyTransactionBody emptyTransactionBody = 13;
+        SendMoneyTransactionBody sendMoneyTransactionBody = 14;
+        NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 15;
+        UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 16;
     }
-    bytes Signature = 19;
+    bytes Signature = 17;
 }
 
 message EmptyTransactionBody {}
@@ -40,20 +38,17 @@ message SendMoneyTransactionBody {
 
 message NodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
-    uint32 AccountAddressLength = 2;
-    string AccountAddress = 3;
-    uint32 NodeAddressLength = 4;
-    string  NodeAddress = 5;
-    int64   LockedBalance = 6;
-    ProofOfOwnership Poown = 7;
+    string AccountAddress = 2;
+    string  NodeAddress = 3;
+    int64   LockedBalance = 4;
+    ProofOfOwnership Poown = 5;
 }
 
 message UpdateNodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
-    uint32 NodeAddressLength = 2;
-    string  NodeAddress = 3;
-    int64   LockedBalance = 4;
-    ProofOfOwnership Poown = 5;
+    string  NodeAddress = 2;
+    int64   LockedBalance = 3;
+    ProofOfOwnership Poown = 4;
 }
 
 
@@ -93,4 +88,3 @@ message PostTransactionResponse {
 message SendTransactionRequest {
     bytes TransactionBytes = 1;
 }
-

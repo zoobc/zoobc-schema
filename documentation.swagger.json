@@ -622,10 +622,6 @@
         "BlocksmithAddress": {
           "type": "string"
         },
-        "BlocksmithAddressLength": {
-          "type": "integer",
-          "format": "int64"
-        },
         "CumulativeDifficulty": {
           "type": "string"
         },
@@ -973,20 +969,12 @@
         "AccountAddress": {
           "type": "string"
         },
-        "AccountAddressLength": {
-          "type": "integer",
-          "format": "int64"
-        },
         "LockedBalance": {
           "type": "string",
           "format": "int64"
         },
         "NodeAddress": {
           "type": "string"
-        },
-        "NodeAddressLength": {
-          "type": "integer",
-          "format": "int64"
         },
         "NodePublicKey": {
           "type": "string",
@@ -1077,16 +1065,8 @@
         "RecipientAccountAddress": {
           "type": "string"
         },
-        "RecipientAccountAddressLength": {
-          "type": "integer",
-          "format": "int64"
-        },
         "SenderAccountAddress": {
           "type": "string"
-        },
-        "SenderAccountAddressLength": {
-          "type": "integer",
-          "format": "int64"
         },
         "Signature": {
           "type": "string",
@@ -1139,10 +1119,6 @@
         },
         "NodeAddress": {
           "type": "string"
-        },
-        "NodeAddressLength": {
-          "type": "integer",
-          "format": "int64"
         },
         "NodePublicKey": {
           "type": "string",

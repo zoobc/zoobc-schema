@@ -16,15 +16,14 @@ message Block {
     bytes BlockSignature = 6;
     string CumulativeDifficulty = 7;
     int64 SmithScale = 8;
-    uint32 BlocksmithAddressLength = 9;
-    string BlocksmithAddress = 10;
-    int64 TotalAmount = 11;
-    int64 TotalFee = 12;
-    int64 TotalCoinBase = 13;
-    uint32 Version = 14;
-    uint32 PayloadLength = 15;
-    bytes PayloadHash = 16;
-    repeated Transaction Transactions = 17;
+    string BlocksmithAddress = 9;
+    int64 TotalAmount = 10;
+    int64 TotalFee = 11;
+    int64 TotalCoinBase = 12;
+    uint32 Version = 13;
+    uint32 PayloadLength = 14;
+    bytes PayloadHash = 15;
+    repeated Transaction Transactions = 16;
 }
 
 // GetBlockRequest create request for single block
