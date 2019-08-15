@@ -25,7 +25,7 @@ message Transaction {
         NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 15;
         UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 16;
     }
-    bytes Signature = 19;
+    bytes Signature = 17;
 }
 
 message EmptyTransactionBody {}
