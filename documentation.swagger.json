@@ -55,17 +55,9 @@
         "operationId": "GetAccountBalance",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch AccountBalance by its ID.",
-            "name": "AccountID",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch AccountBalance by its Block height.",
-            "name": "BlockHeight",
+            "type": "string",
+            "description": "Fetch AccountBalance by type/address.",
+            "name": "AccountAddress",
             "in": "query"
           }
         ],
@@ -73,7 +65,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelAccountBalance"
+              "$ref": "#/definitions/modelGetAccountBalanceResponse"
             }
           }
         }
@@ -284,7 +276,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelMempoolTransaction"
+              "$ref": "#/definitions/modelGetMempoolTransactionResponse"
             }
           }
         }
@@ -300,15 +292,33 @@
           {
             "type": "string",
             "format": "int64",
-            "description": "Fetch Mempool transactions from arrival timestamp.",
-            "name": "From",
+            "description": "Fetch Mempool transactions from arrival timestamp start from n.",
+            "name": "timestampStart",
             "in": "query"
           },
           {
             "type": "string",
             "format": "int64",
-            "description": "Fetch Mempool transactions to arrival timestamp.",
-            "name": "To",
+            "description": "Fetch Mempool transactions to arrival timestamp end until n.",
+            "name": "timestampEnd",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "SenderAddress and RecipientAddress.",
+            "name": "address",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Limit",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Page",
             "in": "query"
           }
         ],
@@ -337,14 +347,18 @@
           },
           {
             "type": "string",
-            "format": "byte",
-            "name": "AccountId",
+            "name": "AccountAddress",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "RegistrationHeight",
             "in": "query"
           },
           {
             "type": "string",
-            "format": "int64",
-            "name": "RegistrationHeight",
+            "name": "NodeAddress",
             "in": "query"
           }
         ],
@@ -373,12 +387,11 @@
           },
           {
             "type": "string",
-            "format": "byte",
-            "name": "AccountId",
+            "name": "AccountAddress",
             "in": "query"
           },
           {
-            "type": "string",
+            "type": "integer",
             "format": "int64",
             "name": "RegistrationHeight",
             "in": "query"
@@ -394,10 +407,56 @@
         }
       }
     },
+    "/v1/nodeRegistration/UpdateNodeRegistration": {
+      "get": {
+        "tags": [
+          "NodeRegistrationService"
+        ],
+        "operationId": "UpdateNodeRegistration",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "byte",
+            "name": "ID",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "byte",
+            "name": "NodePublicKey",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "AccountAddress",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "NodeAddress",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "name": "LockedBalance",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelNodeRegistration"
+            }
+          }
+        }
+      }
+    },
     "/v1/nodeadmin/getProofOfOwnership": {
       "get": {
         "tags": [
-          "GeneratePoownService"
+          "NodeAdminService"
         ],
         "operationId": "GetProofOfOwnership",
         "parameters": [
@@ -406,13 +465,19 @@
             "description": "Account Address.",
             "name": "AccountAddress",
             "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "byte",
+            "name": "Signature",
+            "in": "query"
           }
         ],
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelGetProofOfOwnership"
+              "$ref": "#/definitions/modelProofOfOwnership"
             }
           }
         }
@@ -453,15 +518,18 @@
           {
             "type": "integer",
             "format": "int64",
-            "description": "Transactions set limit to be fetched.",
             "name": "Limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "name": "Page",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "format": "uint64",
-            "description": "Transactions set offset to be fetched.",
-            "name": "Offset",
+            "name": "AccountAddress",
             "in": "query"
           }
         ],
@@ -470,6 +538,22 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetTransactionsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/transaction/PostTransaction": {
+      "post": {
+        "tags": [
+          "TransactionService"
+        ],
+        "operationId": "PostTransaction",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelPostTransactionResponse"
             }
           }
         }
@@ -498,9 +582,8 @@
       "type": "object",
       "title": "AccountBalance represent the transaction data structure stored in the database",
       "properties": {
-        "AccountID": {
-          "type": "string",
-          "format": "byte"
+        "AccountAddress": {
+          "type": "string"
         },
         "Balance": {
           "type": "string",
@@ -536,9 +619,12 @@
           "type": "string",
           "format": "byte"
         },
-        "BlocksmithID": {
-          "type": "string",
-          "format": "byte"
+        "BlocksmithAddress": {
+          "type": "string"
+        },
+        "BlocksmithAddressLength": {
+          "type": "integer",
+          "format": "int64"
         },
         "CumulativeDifficulty": {
           "type": "string"
@@ -602,6 +688,14 @@
     "modelEmptyTransactionBody": {
       "type": "object"
     },
+    "modelGetAccountBalanceResponse": {
+      "type": "object",
+      "properties": {
+        "AccountBalance": {
+          "$ref": "#/definitions/modelAccountBalance"
+        }
+      }
+    },
     "modelGetAccountBalancesResponse": {
       "type": "object",
       "properties": {
@@ -663,20 +757,26 @@
         }
       }
     },
+    "modelGetMempoolTransactionResponse": {
+      "type": "object",
+      "properties": {
+        "transaction": {
+          "$ref": "#/definitions/modelMempoolTransaction"
+        }
+      }
+    },
     "modelGetMempoolTransactionsResponse": {
       "type": "object",
       "properties": {
-        "MempoolSize": {
-          "type": "integer",
-          "format": "int64",
-          "title": "Number of transactions returned"
-        },
         "MempoolTransactions": {
           "type": "array",
-          "title": "Mempool transactions returned",
           "items": {
             "$ref": "#/definitions/modelMempoolTransaction"
           }
+        },
+        "Total": {
+          "type": "string",
+          "format": "uint64"
         }
       }
     },
@@ -694,9 +794,20 @@
     "modelGetNodeRegistrationsResponse": {
       "type": "object",
       "properties": {
-        "AccountId": {
+        "AccountAddress": {
+          "type": "string"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ID": {
           "type": "string",
           "format": "byte"
+        },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
         },
         "LockedBalance": {
           "type": "string",
@@ -709,30 +820,19 @@
           "type": "string",
           "format": "byte"
         },
+        "Queued": {
+          "type": "boolean",
+          "format": "boolean"
+        },
         "RegistrationHeight": {
-          "type": "string",
+          "type": "integer",
           "format": "int64"
-        }
-      }
-    },
-    "modelGetProofOfOwnership": {
-      "type": "object",
-      "properties": {
-        "PoownMessages": {
-          "type": "string",
-          "format": "byte",
-          "title": "Poown messages response"
         }
       }
     },
     "modelGetTransactionsResponse": {
       "type": "object",
       "properties": {
-        "Count": {
-          "type": "integer",
-          "format": "int64",
-          "title": "Number of transactions returned"
-        },
         "Total": {
           "type": "string",
           "format": "uint64",
@@ -800,6 +900,12 @@
           "type": "string",
           "format": "int64"
         },
+        "RecipientAccountAddress": {
+          "type": "string"
+        },
+        "SenderAccountAddress": {
+          "type": "string"
+        },
         "TransactionBytes": {
           "type": "string",
           "format": "byte"
@@ -825,9 +931,8 @@
     "modelNodeRegistration": {
       "type": "object",
       "properties": {
-        "AccountId": {
-          "type": "string",
-          "format": "byte"
+        "AccountAddress": {
+          "type": "string"
         },
         "Height": {
           "type": "integer",
@@ -844,12 +949,20 @@
         "NodeAddress": {
           "type": "string"
         },
+        "NodeID": {
+          "type": "string",
+          "format": "int64"
+        },
         "NodePublicKey": {
           "type": "string",
           "format": "byte"
         },
+        "Queued": {
+          "type": "boolean",
+          "format": "boolean"
+        },
         "RegistrationHeight": {
-          "type": "string",
+          "type": "integer",
           "format": "int64"
         }
       }
@@ -860,7 +973,7 @@
         "AccountAddress": {
           "type": "string"
         },
-        "AccountType": {
+        "AccountAddressLength": {
           "type": "integer",
           "format": "int64"
         },
@@ -881,10 +994,6 @@
         },
         "Poown": {
           "$ref": "#/definitions/modelProofOfOwnership"
-        },
-        "RegistrationHeight": {
-          "type": "integer",
-          "format": "int64"
         }
       }
     },
@@ -915,9 +1024,16 @@
         }
       }
     },
+    "modelPostTransactionResponse": {
+      "type": "object",
+      "properties": {
+        "Transaction": {
+          "$ref": "#/definitions/modelTransaction"
+        }
+      }
+    },
     "modelProofOfOwnership": {
       "type": "object",
-      "title": "TODO: shall we move this to a different file?",
       "properties": {
         "MessageBytes": {
           "type": "string",
@@ -961,14 +1077,14 @@
         "RecipientAccountAddress": {
           "type": "string"
         },
-        "RecipientAccountType": {
+        "RecipientAccountAddressLength": {
           "type": "integer",
           "format": "int64"
         },
         "SenderAccountAddress": {
           "type": "string"
         },
-        "SenderAccountType": {
+        "SenderAccountAddressLength": {
           "type": "integer",
           "format": "int64"
         },
@@ -1003,8 +1119,14 @@
         "emptyTransactionBody": {
           "$ref": "#/definitions/modelEmptyTransactionBody"
         },
+        "nodeRegistrationTransactionBody": {
+          "$ref": "#/definitions/modelNodeRegistrationTransactionBody"
+        },
         "sendMoneyTransactionBody": {
           "$ref": "#/definitions/modelSendMoneyTransactionBody"
+        },
+        "updateNodeRegistrationTransactionBody": {
+          "$ref": "#/definitions/modelUpdateNodeRegistrationTransactionBody"
         }
       }
     },

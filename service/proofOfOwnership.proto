@@ -8,8 +8,8 @@ import "model/proofOfOwnership.proto";
 import "google/api/annotations.proto";
 
 // Generate ProofOfOwnership
-service GeneratePoownService {
-    rpc GetProofOfOwnership(model.GetProofOfOwnershipRequest) returns (model.GetProofOfOwnership) {
+service NodeAdminService {
+    rpc GetProofOfOwnership(model.GetProofOfOwnershipRequest) returns (model.ProofOfOwnership) {
         option (google.api.http) = {
             get: "/v1/nodeadmin/getProofOfOwnership"
         };

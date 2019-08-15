@@ -4,13 +4,20 @@ package model;
 
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
+message ProofOfOwnership {
+    bytes MessageBytes = 1;
+    bytes Signature = 2;
+}
+
+message ProofOfOwnershipMessage {
+    uint32 AccountType = 1;
+    string AccountAddress = 2;
+    bytes BlockHash = 3;
+    uint32 BlockHeight = 4;
+}
 
 message GetProofOfOwnershipRequest {
     // Account Address
-    string AccountAddress = 2;
-}
-
-message GetProofOfOwnership {
-    // Poown messages response
-    bytes PoownMessages = 1;
+    string AccountAddress = 1;
+    bytes Signature = 2;
 }
