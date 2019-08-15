@@ -11,7 +11,7 @@
   ],
   "swagger": "2.0",
   "info": {
-    "title": "service/account.proto",
+    "title": "service/accountBalance.proto",
     "version": "version not set"
   },
   "paths": {
@@ -244,6 +244,22 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetBlocksResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/host/GetHostInfo": {
+      "get": {
+        "tags": [
+          "HostService"
+        ],
+        "operationId": "GetHostInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelHost"
             }
           }
         }
@@ -579,6 +595,10 @@
         }
       }
     },
+    "modelEmpty": {
+      "type": "object",
+      "title": "Empty structure to represent empty parameter in proto"
+    },
     "modelEmptyTransactionBody": {
       "type": "object"
     },
@@ -660,6 +680,17 @@
         }
       }
     },
+    "modelGetMorePeersResponse": {
+      "type": "object",
+      "properties": {
+        "Peers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelNode"
+          }
+        }
+      }
+    },
     "modelGetNodeRegistrationsResponse": {
       "type": "object",
       "properties": {
@@ -716,6 +747,43 @@
         }
       }
     },
+    "modelHost": {
+      "type": "object",
+      "title": "Host represent data sructure node and listed peers in node it's self",
+      "properties": {
+        "BlacklistedPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        },
+        "Info": {
+          "$ref": "#/definitions/modelNode"
+        },
+        "KnownPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        },
+        "ResolvedPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        },
+        "Stopped": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "UnresolvedPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        }
+      }
+    },
     "modelMempoolTransaction": {
       "type": "object",
       "title": "Mempool represent the mempool data structure stored in the database",
@@ -735,6 +803,22 @@
         "TransactionBytes": {
           "type": "string",
           "format": "byte"
+        }
+      }
+    },
+    "modelNode": {
+      "type": "object",
+      "title": "NodeInfo represent the node information data structure",
+      "properties": {
+        "Address": {
+          "type": "string"
+        },
+        "Port": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "SharedAddress": {
+          "type": "string"
         }
       }
     },
@@ -767,6 +851,81 @@
         "RegistrationHeight": {
           "type": "string",
           "format": "int64"
+        }
+      }
+    },
+    "modelNodeRegistrationTransactionBody": {
+      "type": "object",
+      "properties": {
+        "AccountAddress": {
+          "type": "string"
+        },
+        "AccountType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "LockedBalance": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NodeAddress": {
+          "type": "string"
+        },
+        "NodeAddressLength": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Poown": {
+          "$ref": "#/definitions/modelProofOfOwnership"
+        },
+        "RegistrationHeight": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "modelPeer": {
+      "type": "object",
+      "properties": {
+        "BlacklistingCause": {
+          "type": "string"
+        },
+        "BlacklistingTime": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "Info": {
+          "$ref": "#/definitions/modelNode"
+        },
+        "LastInboundRequest": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "LastUpdated": {
+          "type": "string",
+          "format": "int64"
+        },
+        "connectionAttempted": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "modelProofOfOwnership": {
+      "type": "object",
+      "title": "TODO: shall we move this to a different file?",
+      "properties": {
+        "MessageBytes": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Signature": {
+          "type": "string",
+          "format": "byte"
         }
       }
     },
@@ -846,6 +1005,29 @@
         },
         "sendMoneyTransactionBody": {
           "$ref": "#/definitions/modelSendMoneyTransactionBody"
+        }
+      }
+    },
+    "modelUpdateNodeRegistrationTransactionBody": {
+      "type": "object",
+      "properties": {
+        "LockedBalance": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NodeAddress": {
+          "type": "string"
+        },
+        "NodeAddressLength": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Poown": {
+          "$ref": "#/definitions/modelProofOfOwnership"
         }
       }
     }

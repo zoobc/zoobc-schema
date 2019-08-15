@@ -10,6 +10,8 @@ message MempoolTransaction {
     int32 FeePerByte = 2;
     int64 ArrivalTimestamp = 3;
     bytes TransactionBytes = 4;
+    string SenderAccountAddress = 5;
+    string RecipientAccountAddress = 6;
 }
 
 message GetMempoolTransactionRequest {

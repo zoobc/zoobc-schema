@@ -10,9 +10,9 @@ message Transaction {
     int64 ID = 2;
     int64 BlockID = 3;
     uint32 Height = 4;
-    uint32 SenderAccountType = 5;
+    uint32 SenderAccountAddressLength = 5;
     string SenderAccountAddress = 6;
-    uint32 RecipientAccountType = 7;
+    uint32 RecipientAccountAddressLength = 7;
     string RecipientAccountAddress = 8;
     uint32 TransactionType = 9;
     int64 Fee = 10;
@@ -24,8 +24,10 @@ message Transaction {
     oneof TransactionBody {
         EmptyTransactionBody emptyTransactionBody = 15;
         SendMoneyTransactionBody sendMoneyTransactionBody = 16;
+        NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 17;
+        UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 18;
     }
-    bytes Signature = 17;
+    bytes Signature = 19;
 }
 
 message EmptyTransactionBody {}
@@ -34,18 +36,57 @@ message SendMoneyTransactionBody {
     int64 Amount = 1;
 }
 
+message NodeRegistrationTransactionBody {
+    bytes   NodePublicKey = 1;
+    uint32 AccountAddressLength = 2;
+    string AccountAddress = 3;
+    uint32 NodeAddressLength = 4;
+    string  NodeAddress = 5;
+    int64   LockedBalance = 6;
+    ProofOfOwnership Poown = 7;
+}
+
+message UpdateNodeRegistrationTransactionBody {
+    bytes   NodePublicKey = 1;
+    uint32 NodeAddressLength = 2;
+    string  NodeAddress = 3;
+    int64   LockedBalance = 4;
+    ProofOfOwnership Poown = 5;
+}
+
+//TODO: shall we move this to a different file? 
+message ProofOfOwnership {
+    bytes MessageBytes = 1;
+    bytes Signature = 2;
+}
+
+//TODO: shall we move this to a different file? 
+message ProofOfOwnershipMessage {
+    uint32 AccountType = 1;
+    string AccountAddress = 2;
+    bytes BlockHash = 3;
+    uint32 BlockHeight = 4;
+}
+
+
+//------------
+// P2P Content
+//------------
+
+// GetTransactionRequest return model.Transaction
 message GetTransactionRequest {
     // Fetch Transaction by its ID
     int64 ID = 1;
 }
 
+// GetTransactions return GetTransactionsResponse
 message GetTransactionsRequest {
     // Transactions set limit to be fetched
     uint32 Limit = 1;
     // Transactions set offset to be fetched
     uint64 Offset = 2;
+    string AccountAddress = 3;
 }
-
 message GetTransactionsResponse {
     // Number of transactions in total
     uint64 Total = 1;
@@ -54,3 +95,18 @@ message GetTransactionsResponse {
     // Transaction transactions returned
     repeated Transaction Transactions = 3;
 }
+
+// PostTransactionRequest return PostTransactionResponse
+message PostTransactionRequest {
+    // Signed transaction bytes
+    bytes TransactionBytes = 1;
+}
+message PostTransactionResponse {
+    Transaction Transaction = 1;
+}
+
+// SendTransactionRequest request in p2pCommunication service
+message SendTransactionRequest {
+    bytes TransactionBytes = 1;
+}
+
