@@ -26,11 +26,11 @@ message GetCumulativeDifficultyRequest {
 message GetCommonMilestoneBlockIdsRequest {
     // Integer indicating chaintype
     int32 ChainType = 1;
-	int64 lastBlockId = 2 [jstype = JS_STRING];
-	int64 lastMilestoneBlockId = 3 [jstype = JS_STRING];
+	int64 LastBlockID = 2 [jstype = JS_STRING];
+	int64 LastMilestoneBlockID = 3 [jstype = JS_STRING];
 }
 
 message GetCommonMilestoneBlockIdsResponse {
-	repeated int64 blockIds = 1 [jstype = JS_STRING];
-	bool last = 2;
+	repeated int64 BlockIds = 1 [jstype = JS_STRING];
+	bool Last = 2;
 }
