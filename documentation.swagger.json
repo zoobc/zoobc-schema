@@ -15,38 +15,6 @@
     "version": "version not set"
   },
   "paths": {
-    "/v1/account/GetAccount": {
-      "get": {
-        "tags": [
-          "AccountService"
-        ],
-        "operationId": "GetAccount",
-        "parameters": [
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch Account by its ID.",
-            "name": "ID",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch Account by its account address (note: this in case of zoobc account type is the public key).",
-            "name": "Address",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/modelAccount"
-            }
-          }
-        }
-      }
-    },
     "/v1/account/GetAccountBalance": {
       "get": {
         "tags": [
@@ -133,31 +101,6 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetAccountBalancesResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v1/account/GetAccounts": {
-      "get": {
-        "tags": [
-          "AccountService"
-        ],
-        "operationId": "GetAccounts",
-        "parameters": [
-          {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch Accounts by its account type.",
-            "name": "AccountType",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/modelGetAccountsResponse"
             }
           }
         }
@@ -561,23 +504,6 @@
     }
   },
   "definitions": {
-    "modelAccount": {
-      "type": "object",
-      "title": "Account represent the transaction data structure stored in the database",
-      "properties": {
-        "AccountType": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "Address": {
-          "type": "string"
-        },
-        "ID": {
-          "type": "string",
-          "format": "byte"
-        }
-      }
-    },
     "modelAccountBalance": {
       "type": "object",
       "title": "AccountBalance represent the transaction data structure stored in the database",
@@ -703,23 +629,6 @@
           }
         },
         "AccountBalanceSize": {
-          "type": "integer",
-          "format": "int64",
-          "title": "Number of accounts returned"
-        }
-      }
-    },
-    "modelGetAccountsResponse": {
-      "type": "object",
-      "properties": {
-        "Account": {
-          "type": "array",
-          "title": "Accounts returned",
-          "items": {
-            "$ref": "#/definitions/modelAccount"
-          }
-        },
-        "AccountSize": {
           "type": "integer",
           "format": "int64",
           "title": "Number of accounts returned"
