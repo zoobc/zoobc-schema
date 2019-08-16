@@ -20,5 +20,5 @@ message Host {
 
 message HostInfo{
 	Host Host = 1;
-	repeated ChainStatus ChainStatus = 2;
+	repeated ChainStatus ChainStatuses = 2;
 }
