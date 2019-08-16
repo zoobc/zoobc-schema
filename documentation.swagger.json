@@ -396,6 +396,36 @@
         }
       }
     },
+    "/v1/nodeadmin/getProofOfOwnership": {
+      "get": {
+        "tags": [
+          "NodeAdminService"
+        ],
+        "operationId": "GetProofOfOwnership",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Account Address.",
+            "name": "AccountAddress",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "byte",
+            "name": "Signature",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelProofOfOwnership"
+            }
+          }
+        }
+      }
+    },
     "/v1/transaction/GetTransaction": {
       "get": {
         "tags": [
@@ -901,7 +931,6 @@
     },
     "modelProofOfOwnership": {
       "type": "object",
-      "title": "TODO: shall we move this to a different file?",
       "properties": {
         "MessageBytes": {
           "type": "string",

@@ -3,6 +3,8 @@ syntax="proto3";
 package model;
 
 option go_package = "github.com/zoobc/zoobc-core/common/model";
+import "model/proofOfOwnership.proto";
+
 
 // Transaction represent the transaction data structure stored in the database
 message Transaction {
@@ -47,20 +49,6 @@ message UpdateNodeRegistrationTransactionBody {
     string  NodeAddress = 2;
     int64   LockedBalance = 3;
     ProofOfOwnership Poown = 4;
-}
-
-//TODO: shall we move this to a different file? 
-message ProofOfOwnership {
-    bytes MessageBytes = 1;
-    bytes Signature = 2;
-}
-
-//TODO: shall we move this to a different file? 
-message ProofOfOwnershipMessage {
-    uint32 AccountType = 1;
-    string AccountAddress = 2;
-    bytes BlockHash = 3;
-    uint32 BlockHeight = 4;
 }
 
 
