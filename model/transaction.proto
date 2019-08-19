@@ -54,9 +54,9 @@ message UpdateNodeRegistrationTransactionBody {
 
 message SetupDatasetTransactionBody {
     // Account Address that set Dataset 
-    string AccountSetter = 1;
+    string SetterAccountAddress = 1;
     // Account Address that got property of Dataset
-    string AccountRecipient = 2;
+    string RecipientAccountAddress = 2;
     // Property name
     string Property = 3;
     // Value of property 

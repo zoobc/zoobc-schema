@@ -7,8 +7,8 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 // Dataset represent the dataset data structure stored in the database
 message Dataset {
-    string AccountSetter = 1;
-    string AccountRecipient = 2;
+    string SetterAccountAddress = 1;
+    string RecipientAccountAddress = 2;
     string Property = 3;
     string Value = 4;
     uint64 TimestampStarts = 5;
