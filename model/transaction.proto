@@ -9,14 +9,14 @@ import "model/proofOfOwnership.proto";
 // Transaction represent the transaction data structure stored in the database
 message Transaction {
     uint32 Version = 1;
-    int64 ID = 2;
-    int64 BlockID = 3;
+    int64 ID = 2 [jstype = JS_STRING];
+    int64 BlockID = 3 [jstype = JS_STRING];
     uint32 Height = 4;
     string SenderAccountAddress = 5;
     string RecipientAccountAddress = 6;
     uint32 TransactionType = 7;
-    int64 Fee = 8;
-    int64 Timestamp = 9;
+    int64 Fee = 8 [jstype = JS_STRING];
+    int64 Timestamp = 9 [jstype = JS_STRING];
     bytes TransactionHash = 10;
     uint32 TransactionBodyLength = 11;
     bytes TransactionBodyBytes = 12;
@@ -33,21 +33,21 @@ message Transaction {
 message EmptyTransactionBody {}
 
 message SendMoneyTransactionBody {
-    int64 Amount = 1;
+    int64 Amount = 1 [jstype = JS_STRING];
 }
 
 message NodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
     string AccountAddress = 2;
     string  NodeAddress = 3;
-    int64   LockedBalance = 4;
+    int64   LockedBalance = 4 [jstype = JS_STRING];
     ProofOfOwnership Poown = 5;
 }
 
 message UpdateNodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
     string  NodeAddress = 2;
-    int64   LockedBalance = 3;
+    int64   LockedBalance = 3 [jstype = JS_STRING];
     ProofOfOwnership Poown = 4;
 }
 
@@ -59,7 +59,7 @@ message UpdateNodeRegistrationTransactionBody {
 // GetTransactionRequest return model.Transaction
 message GetTransactionRequest {
     // Fetch Transaction by its ID
-    int64 ID = 1;
+    int64 ID = 1 [jstype = JS_STRING];
 }
 
 // GetTransactions return GetTransactionsResponse
@@ -70,7 +70,7 @@ message GetTransactionsRequest {
 }
 message GetTransactionsResponse {
     // Number of transactions in total
-    uint64 Total = 1;
+    uint64 Total = 1 [jstype = JS_STRING];
     // Transaction transactions returned
     repeated Transaction Transactions = 2;
 }

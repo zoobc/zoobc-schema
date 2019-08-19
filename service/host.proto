@@ -10,7 +10,7 @@ import "google/api/annotations.proto";
 
 // HostService represent request on Blockchain's Block
 service HostService {
-    rpc GetHostInfo(model.Empty) returns (model.Host) {
+    rpc GetHostInfo(model.Empty) returns (model.HostInfo) {
         option (google.api.http) = {
             get: "/v1/host/GetHostInfo"
         };
