@@ -1033,7 +1033,7 @@
         }
       }
     },
-    "modelSetupDatasetTransactionBody": {
+    "modelSetupAccountDatasetTransactionBody": {
       "type": "object",
       "properties": {
         "MuchTime": {
@@ -1122,8 +1122,8 @@
         "sendMoneyTransactionBody": {
           "$ref": "#/definitions/modelSendMoneyTransactionBody"
         },
-        "setupDatasetTransactionBody": {
-          "$ref": "#/definitions/modelSetupDatasetTransactionBody"
+        "setupAccountDatasetTransactionBody": {
+          "$ref": "#/definitions/modelSetupAccountDatasetTransactionBody"
         },
         "updateNodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelUpdateNodeRegistrationTransactionBody"

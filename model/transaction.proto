@@ -26,7 +26,7 @@ message Transaction {
         SendMoneyTransactionBody sendMoneyTransactionBody = 14;
         NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 15;
         UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 16;
-        SetupDatasetTransactionBody setupDatasetTransactionBody = 17;
+        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 17;
     }
     bytes Signature = 18;
 }
@@ -52,7 +52,7 @@ message UpdateNodeRegistrationTransactionBody {
     ProofOfOwnership Poown = 4;
 }
 
-message SetupDatasetTransactionBody {
+message SetupAccountDatasetTransactionBody {
     // Account Address that set Dataset 
     string SetterAccountAddress = 1;
     // Account Address that got property of Dataset
