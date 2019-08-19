@@ -5,8 +5,8 @@ package model;
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 
-// Dataset represent the dataset data structure stored in the database
-message Dataset {
+// AccountDataset represent the account dataset structure stored in the database
+message AccountDataset {
     string SetterAccountAddress = 1;
     string RecipientAccountAddress = 2;
     string Property = 3;
