@@ -9,9 +9,5 @@ import "google/api/annotations.proto";
 
 // MempoolService represent request on db Mempool
 service NodeHardwareService {
-    rpc GetNodeHardware(stream model.GetNodeHardwareRequest) returns (stream model.GetNodeHardwareResponse) {
-        option (google.api.http) = {
-            get: "/v1/node/GetNodeHardware"
-        };
-    }
+    rpc GetNodeHardware(stream model.GetNodeHardwareRequest) returns (stream model.GetNodeHardwareResponse) {}
 }

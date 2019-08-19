@@ -275,45 +275,6 @@
         }
       }
     },
-    "/v1/node/GetNodeHardware": {
-      "get": {
-        "tags": [
-          "NodeHardwareService"
-        ],
-        "operationId": "GetNodeHardware",
-        "parameters": [
-          {
-            "enum": [
-              "GetNodeHardware"
-            ],
-            "type": "string",
-            "default": "GetNodeHardware",
-            "name": "Auth.RequestType",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "uint64",
-            "name": "Auth.Timestamp",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "byte",
-            "name": "Auth.Signature",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.(streaming responses)",
-            "schema": {
-              "$ref": "#/x-stream-definitions/modelGetNodeHardwareResponse"
-            }
-          }
-        }
-      }
-    },
     "/v1/nodeRegistration/GetNodeRegistration": {
       "get": {
         "tags": [
