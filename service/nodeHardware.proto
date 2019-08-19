@@ -1,0 +1,17 @@
+syntax="proto3";
+
+package service;
+
+option go_package = "github.com/zoobc/zoobc-core/common/service";
+
+import "model/nodeHardware.proto";
+import "google/api/annotations.proto";
+
+// MempoolService represent request on db Mempool
+service NodeHardwareService {
+    rpc GetNodeHardware(stream model.GetNodeHardwareRequest) returns (stream model.GetNodeHardwareResponse) {
+        option (google.api.http) = {
+            get: "/v1/node/GetNodeHardware"
+        };
+    }
+}

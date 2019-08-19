@@ -1,0 +1,15 @@
+syntax="proto3";
+
+package model;
+
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+message Auth {
+    RequestType RequestType = 1;
+    uint64 Timestamp = 2;
+    bytes Signature = 3;
+}
+
+enum RequestType {
+    GetNodeHardware = 0;
+}
