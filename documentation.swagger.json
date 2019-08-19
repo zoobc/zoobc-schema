@@ -194,7 +194,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelHost"
+              "$ref": "#/definitions/modelHostInfo"
             }
           }
         }
@@ -603,6 +603,46 @@
         }
       }
     },
+    "modelBlockIdsResponse": {
+      "type": "object",
+      "properties": {
+        "BlockIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "modelBlocksData": {
+      "type": "object",
+      "properties": {
+        "NextBlocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelBlock"
+          }
+        }
+      }
+    },
+    "modelChainStatus": {
+      "type": "object",
+      "properties": {
+        "ChainType": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Integer indicating chaintype"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "LastBlock": {
+          "$ref": "#/definitions/modelBlock"
+        }
+      }
+    },
     "modelEmpty": {
       "type": "object",
       "title": "Empty structure to represent empty parameter in proto"
@@ -638,6 +678,13 @@
     "modelGetBlocksResponse": {
       "type": "object",
       "properties": {
+        "Blocks": {
+          "type": "array",
+          "title": "Blocks returned",
+          "items": {
+            "$ref": "#/definitions/modelBlock"
+          }
+        },
         "ChainType": {
           "type": "integer",
           "format": "int32",
@@ -652,13 +699,34 @@
           "type": "integer",
           "format": "int64",
           "title": "Blocks height returned from"
-        },
-        "blocks": {
+        }
+      }
+    },
+    "modelGetCommonMilestoneBlockIdsResponse": {
+      "type": "object",
+      "properties": {
+        "BlockIds": {
           "type": "array",
-          "title": "Blocks returned",
           "items": {
-            "$ref": "#/definitions/modelBlock"
+            "type": "string",
+            "format": "int64"
           }
+        },
+        "Last": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "modelGetCumulativeDifficultyResponse": {
+      "type": "object",
+      "properties": {
+        "CumulativeDifficulty": {
+          "type": "string"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
@@ -786,6 +854,20 @@
           "additionalProperties": {
             "$ref": "#/definitions/modelPeer"
           }
+        }
+      }
+    },
+    "modelHostInfo": {
+      "type": "object",
+      "properties": {
+        "ChainStatuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelChainStatus"
+          }
+        },
+        "Host": {
+          "$ref": "#/definitions/modelHost"
         }
       }
     },
