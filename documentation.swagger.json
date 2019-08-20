@@ -209,9 +209,9 @@
         "parameters": [
           {
             "type": "string",
-            "format": "byte",
+            "format": "int64",
             "description": "Fetch Mempool Transaction by its TransactionBytes.",
-            "name": "TransactionBytes",
+            "name": "ID",
             "in": "query"
           }
         ],
