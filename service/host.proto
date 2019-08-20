@@ -15,4 +15,10 @@ service HostService {
             get: "/v1/host/GetHostInfo"
         };
     }
+
+    rpc GetHostPeers(model.Empty) returns (model.GetHostPeersResponse){
+        option (google.api.http) = {
+            get: "/v1/host/GetHostPeers"
+        };
+    }
 }
