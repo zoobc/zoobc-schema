@@ -27,8 +27,9 @@ message Transaction {
         NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 15;
         UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 16;
         RemoveNodeRegistrationTransactionBody removeNodeRegistrationTransactionBody = 17;
+        ClaimNodeRegistrationTransactionBody claimNodeRegistrationTransactionBody = 18;
     }
-    bytes Signature = 18;
+    bytes Signature = 19;
 }
 
 message EmptyTransactionBody {}
@@ -56,6 +57,11 @@ message RemoveNodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
 }
 
+message ClaimNodeRegistrationTransactionBody {
+    bytes   NodePublicKey = 1;
+    string AccountAddress = 2;
+    ProofOfOwnership Poown = 3;
+}
 
 //------------
 // P2P Content
