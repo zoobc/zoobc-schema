@@ -32,15 +32,6 @@ message GetNodeRegistrationRequest {
     string  NodeAddress = 4;
 }
 
-// UpdateNodeRegistrationRequest create request for single node update
-message UpdateNodeRegistrationRequest {
-    bytes   ID = 1;
-    bytes   NodePublicKey = 2;
-    string AccountAddress = 3;
-    string  NodeAddress = 4;
-    int64   LockedBalance = 5 [jstype = JS_STRING];
-}
-
 message GetNodeRegistrationsResponse {
     bytes   ID = 1;
     bytes   NodePublicKey = 2;
