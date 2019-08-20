@@ -26,8 +26,9 @@ message Transaction {
         SendMoneyTransactionBody sendMoneyTransactionBody = 14;
         NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 15;
         UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 16;
+        RemoveNodeRegistrationTransactionBody removeNodeRegistrationTransactionBody = 17;
     }
-    bytes Signature = 17;
+    bytes Signature = 18;
 }
 
 message EmptyTransactionBody {}
@@ -49,6 +50,10 @@ message UpdateNodeRegistrationTransactionBody {
     string  NodeAddress = 2;
     int64   LockedBalance = 3 [jstype = JS_STRING];
     ProofOfOwnership Poown = 4;
+}
+
+message RemoveNodeRegistrationTransactionBody {
+    bytes   NodePublicKey = 1;
 }
 
 

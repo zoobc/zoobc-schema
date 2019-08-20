@@ -1030,6 +1030,15 @@
         }
       }
     },
+    "modelRemoveNodeRegistrationTransactionBody": {
+      "type": "object",
+      "properties": {
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
     "modelSendMoneyTransactionBody": {
       "type": "object",
       "properties": {
@@ -1098,6 +1107,9 @@
         },
         "nodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelNodeRegistrationTransactionBody"
+        },
+        "removeNodeRegistrationTransactionBody": {
+          "$ref": "#/definitions/modelRemoveNodeRegistrationTransactionBody"
         },
         "sendMoneyTransactionBody": {
           "$ref": "#/definitions/modelSendMoneyTransactionBody"
