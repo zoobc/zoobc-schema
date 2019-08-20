@@ -411,6 +411,12 @@
           },
           {
             "type": "string",
+            "format": "int64",
+            "name": "Timestamp",
+            "in": "query"
+          },
+          {
+            "type": "string",
             "format": "byte",
             "name": "Signature",
             "in": "query"
@@ -626,6 +632,46 @@
         }
       }
     },
+    "modelCPUInformation": {
+      "type": "object",
+      "properties": {
+        "CPUIndex": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "CacheSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "CoreID": {
+          "type": "string"
+        },
+        "Cores": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Family": {
+          "type": "string"
+        },
+        "Mhz": {
+          "type": "number",
+          "format": "double"
+        },
+        "Model": {
+          "type": "string"
+        },
+        "ModelName": {
+          "type": "string"
+        },
+        "UsedPercent": {
+          "type": "number",
+          "format": "double"
+        },
+        "VendorId": {
+          "type": "string"
+        }
+      }
+    },
     "modelChainStatus": {
       "type": "object",
       "properties": {
@@ -764,6 +810,14 @@
         }
       }
     },
+    "modelGetNodeHardwareResponse": {
+      "type": "object",
+      "properties": {
+        "NodeHardware": {
+          "$ref": "#/definitions/modelNodeHardware"
+        }
+      }
+    },
     "modelGetNodeRegistrationsResponse": {
       "type": "object",
       "properties": {
@@ -871,6 +925,64 @@
         }
       }
     },
+    "modelHostInformation": {
+      "type": "object",
+      "properties": {
+        "HostID": {
+          "type": "string"
+        },
+        "HostName": {
+          "type": "string"
+        },
+        "NumberOfRunningProcess": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "OS": {
+          "type": "string"
+        },
+        "Platform": {
+          "type": "string"
+        },
+        "PlatformFamily": {
+          "type": "string"
+        },
+        "PlatformVersion": {
+          "type": "string"
+        },
+        "Uptime": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "modelMemoryInformation": {
+      "type": "object",
+      "properties": {
+        "Available": {
+          "type": "string",
+          "format": "uint64",
+          "title": "RAM available for programs to allocate"
+        },
+        "Free": {
+          "description": "This is the kernel's notion of free memory; RAM chips whose bits nobody\ncares about the value of right now. For a human consumable number,\nAvailable is what you really want.",
+          "type": "string",
+          "format": "uint64"
+        },
+        "Total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "Used": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "UsedPercent": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
     "modelMempoolTransaction": {
       "type": "object",
       "title": "Mempool represent the mempool data structure stored in the database",
@@ -912,6 +1024,26 @@
         },
         "SharedAddress": {
           "type": "string"
+        }
+      }
+    },
+    "modelNodeHardware": {
+      "type": "object",
+      "properties": {
+        "CPUInformation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelCPUInformation"
+          }
+        },
+        "HostInformation": {
+          "$ref": "#/definitions/modelHostInformation"
+        },
+        "MemoryInformation": {
+          "$ref": "#/definitions/modelMemoryInformation"
+        },
+        "StorageInformation": {
+          "$ref": "#/definitions/modelStorageInformation"
         }
       }
     },
@@ -1024,12 +1156,71 @@
         }
       }
     },
+    "modelRemoveNodeRegistrationTransactionBody": {
+      "type": "object",
+      "properties": {
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
     "modelSendMoneyTransactionBody": {
       "type": "object",
       "properties": {
         "Amount": {
           "type": "string",
           "format": "int64"
+        }
+      }
+    },
+    "modelSetupAccountDatasetTransactionBody": {
+      "type": "object",
+      "properties": {
+        "MuchTime": {
+          "type": "string",
+          "format": "uint64",
+          "title": "How long Dataset will active in second"
+        },
+        "Property": {
+          "type": "string",
+          "title": "Property name"
+        },
+        "RecipientAccountAddress": {
+          "type": "string",
+          "title": "Account Address that got property of Dataset"
+        },
+        "SetterAccountAddress": {
+          "type": "string",
+          "title": "Account Address that set Dataset"
+        },
+        "Value": {
+          "type": "string",
+          "title": "Value of property"
+        }
+      }
+    },
+    "modelStorageInformation": {
+      "type": "object",
+      "properties": {
+        "Free": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "FsType": {
+          "type": "string"
+        },
+        "Total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "Used": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "UsedPercent": {
+          "type": "number",
+          "format": "double"
         }
       }
     },
@@ -1093,8 +1284,14 @@
         "nodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelNodeRegistrationTransactionBody"
         },
+        "removeNodeRegistrationTransactionBody": {
+          "$ref": "#/definitions/modelRemoveNodeRegistrationTransactionBody"
+        },
         "sendMoneyTransactionBody": {
           "$ref": "#/definitions/modelSendMoneyTransactionBody"
+        },
+        "setupAccountDatasetTransactionBody": {
+          "$ref": "#/definitions/modelSetupAccountDatasetTransactionBody"
         },
         "updateNodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelUpdateNodeRegistrationTransactionBody"
@@ -1117,6 +1314,43 @@
         },
         "Poown": {
           "$ref": "#/definitions/modelProofOfOwnership"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeStreamError": {
+      "type": "object",
+      "properties": {
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "grpc_code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "http_code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "http_status": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
         }
       }
     }
