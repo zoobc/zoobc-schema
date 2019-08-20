@@ -16,7 +16,7 @@ message MempoolTransaction {
 
 message GetMempoolTransactionRequest {
     // Fetch Mempool Transaction by its TransactionBytes
-    bytes TransactionBytes = 1;
+    int64 ID = 1 [jstype = JS_STRING];
 }
 message GetMempoolTransactionResponse {
     MempoolTransaction transaction = 1;

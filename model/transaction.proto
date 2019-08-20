@@ -28,6 +28,8 @@ message Transaction {
         UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 16;
         RemoveNodeRegistrationTransactionBody removeNodeRegistrationTransactionBody = 17;
         ClaimNodeRegistrationTransactionBody claimNodeRegistrationTransactionBody = 18;
+        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 18;
+        
     }
     bytes Signature = 19;
 }
@@ -42,15 +44,32 @@ message NodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
     string AccountAddress = 2;
     string  NodeAddress = 3;
+    // Funds to be locked to register the node
     int64   LockedBalance = 4 [jstype = JS_STRING];
+    // Proof of ownership (message + signature)
     ProofOfOwnership Poown = 5;
 }
 
 message UpdateNodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
     string  NodeAddress = 2;
+    // Funds to be locked to register the node
     int64   LockedBalance = 3 [jstype = JS_STRING];
+    // Proof of ownership (message + signature)
     ProofOfOwnership Poown = 4;
+}
+
+message SetupAccountDatasetTransactionBody {
+    // Account Address that set Dataset 
+    string SetterAccountAddress = 1;
+    // Account Address that got property of Dataset
+    string RecipientAccountAddress = 2;
+    // Property name
+    string Property = 3;
+    // Value of property 
+    string Value = 4;
+    // How long Dataset will active in second
+    uint64 MuchTime = 5 [jstype = JS_STRING];
 }
 
 message RemoveNodeRegistrationTransactionBody {
@@ -60,6 +79,7 @@ message RemoveNodeRegistrationTransactionBody {
 message ClaimNodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
     string AccountAddress = 2;
+    // Proof of ownership (message + signature)
     ProofOfOwnership Poown = 3;
 }
 
