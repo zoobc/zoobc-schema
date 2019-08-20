@@ -26,9 +26,11 @@ message Transaction {
         SendMoneyTransactionBody sendMoneyTransactionBody = 14;
         NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 15;
         UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 16;
-        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 17;
+        RemoveNodeRegistrationTransactionBody removeNodeRegistrationTransactionBody = 17;
+        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 18;
+        
     }
-    bytes Signature = 18;
+    bytes Signature = 19;
 }
 
 message EmptyTransactionBody {}
@@ -63,6 +65,10 @@ message SetupAccountDatasetTransactionBody {
     string Value = 4;
     // How long Dataset will active in second
     uint64 MuchTime = 5 [jstype = JS_STRING];
+}
+
+message RemoveNodeRegistrationTransactionBody {
+    bytes   NodePublicKey = 1;
 }
 
 

@@ -411,6 +411,12 @@
           },
           {
             "type": "string",
+            "format": "int64",
+            "name": "Timestamp",
+            "in": "query"
+          },
+          {
+            "type": "string",
             "format": "byte",
             "name": "Signature",
             "in": "query"
@@ -1024,6 +1030,15 @@
         }
       }
     },
+    "modelRemoveNodeRegistrationTransactionBody": {
+      "type": "object",
+      "properties": {
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
     "modelSendMoneyTransactionBody": {
       "type": "object",
       "properties": {
@@ -1118,6 +1133,9 @@
         },
         "nodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelNodeRegistrationTransactionBody"
+        },
+        "removeNodeRegistrationTransactionBody": {
+          "$ref": "#/definitions/modelRemoveNodeRegistrationTransactionBody"
         },
         "sendMoneyTransactionBody": {
           "$ref": "#/definitions/modelSendMoneyTransactionBody"
