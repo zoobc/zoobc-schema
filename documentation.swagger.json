@@ -1048,6 +1048,32 @@
         }
       }
     },
+    "modelSetupAccountDatasetTransactionBody": {
+      "type": "object",
+      "properties": {
+        "MuchTime": {
+          "type": "string",
+          "format": "uint64",
+          "title": "How long Dataset will active in second"
+        },
+        "Property": {
+          "type": "string",
+          "title": "Property name"
+        },
+        "RecipientAccountAddress": {
+          "type": "string",
+          "title": "Account Address that got property of Dataset"
+        },
+        "SetterAccountAddress": {
+          "type": "string",
+          "title": "Account Address that set Dataset"
+        },
+        "Value": {
+          "type": "string",
+          "title": "Value of property"
+        }
+      }
+    },
     "modelTransaction": {
       "type": "object",
       "title": "Transaction represent the transaction data structure stored in the database",
@@ -1113,6 +1139,9 @@
         },
         "sendMoneyTransactionBody": {
           "$ref": "#/definitions/modelSendMoneyTransactionBody"
+        },
+        "setupAccountDatasetTransactionBody": {
+          "$ref": "#/definitions/modelSetupAccountDatasetTransactionBody"
         },
         "updateNodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelUpdateNodeRegistrationTransactionBody"
