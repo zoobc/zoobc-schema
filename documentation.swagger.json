@@ -411,6 +411,12 @@
           },
           {
             "type": "string",
+            "format": "int64",
+            "name": "Timestamp",
+            "in": "query"
+          },
+          {
+            "type": "string",
             "format": "byte",
             "name": "Signature",
             "in": "query"
@@ -1150,12 +1156,47 @@
         }
       }
     },
+    "modelRemoveNodeRegistrationTransactionBody": {
+      "type": "object",
+      "properties": {
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
     "modelSendMoneyTransactionBody": {
       "type": "object",
       "properties": {
         "Amount": {
           "type": "string",
           "format": "int64"
+        }
+      }
+    },
+    "modelSetupAccountDatasetTransactionBody": {
+      "type": "object",
+      "properties": {
+        "MuchTime": {
+          "type": "string",
+          "format": "uint64",
+          "title": "How long Dataset will active in second"
+        },
+        "Property": {
+          "type": "string",
+          "title": "Property name"
+        },
+        "RecipientAccountAddress": {
+          "type": "string",
+          "title": "Account Address that got property of Dataset"
+        },
+        "SetterAccountAddress": {
+          "type": "string",
+          "title": "Account Address that set Dataset"
+        },
+        "Value": {
+          "type": "string",
+          "title": "Value of property"
         }
       }
     },
@@ -1243,8 +1284,14 @@
         "nodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelNodeRegistrationTransactionBody"
         },
+        "removeNodeRegistrationTransactionBody": {
+          "$ref": "#/definitions/modelRemoveNodeRegistrationTransactionBody"
+        },
         "sendMoneyTransactionBody": {
           "$ref": "#/definitions/modelSendMoneyTransactionBody"
+        },
+        "setupAccountDatasetTransactionBody": {
+          "$ref": "#/definitions/modelSetupAccountDatasetTransactionBody"
         },
         "updateNodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelUpdateNodeRegistrationTransactionBody"
