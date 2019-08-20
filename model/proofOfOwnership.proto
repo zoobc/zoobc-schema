@@ -18,5 +18,6 @@ message ProofOfOwnershipMessage {
 message GetProofOfOwnershipRequest {
     // Account Address
     string AccountAddress = 1;
-    bytes Signature = 2;
+    int64 Timestamp = 2;
+    bytes Signature = 3;
 }

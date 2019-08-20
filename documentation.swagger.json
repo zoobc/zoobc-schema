@@ -411,6 +411,12 @@
           },
           {
             "type": "string",
+            "format": "int64",
+            "name": "Timestamp",
+            "in": "query"
+          },
+          {
+            "type": "string",
             "format": "byte",
             "name": "Signature",
             "in": "query"
