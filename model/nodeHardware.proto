@@ -4,14 +4,11 @@ package model;
 
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
-import "model/auth.proto";
-
 message GetNodeHardwareResponse {
     NodeHardware NodeHardware = 1;
 }
 
 message GetNodeHardwareRequest {
-    Auth Auth = 1;
 }
 
 message NodeHardware {

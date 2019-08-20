@@ -533,22 +533,6 @@
         }
       }
     },
-    "modelAuth": {
-      "type": "object",
-      "properties": {
-        "RequestType": {
-          "$ref": "#/definitions/modelRequestType"
-        },
-        "Signature": {
-          "type": "string",
-          "format": "byte"
-        },
-        "Timestamp": {
-          "type": "string",
-          "format": "uint64"
-        }
-      }
-    },
     "modelBlock": {
       "type": "object",
       "title": "Block represent the block data structure stored in the database",
@@ -1165,13 +1149,6 @@
           "format": "byte"
         }
       }
-    },
-    "modelRequestType": {
-      "type": "string",
-      "default": "GetNodeHardware",
-      "enum": [
-        "GetNodeHardware"
-      ]
     },
     "modelSendMoneyTransactionBody": {
       "type": "object",

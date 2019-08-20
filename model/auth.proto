@@ -4,12 +4,7 @@ package model;
 
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
-message Auth {
-    RequestType RequestType = 1;
-    uint64 Timestamp = 2;
-    bytes Signature = 3;
-}
-
+// RequestType used to sign a node administration request
 enum RequestType {
     GetNodeHardware = 0;
 }
