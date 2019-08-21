@@ -795,13 +795,13 @@
     "modelGetHostPeersResponse": {
       "type": "object",
       "properties": {
-        "ConnectedPeers": {
+        "ResolvedPeers": {
           "type": "object",
           "additionalProperties": {
             "$ref": "#/definitions/modelPeer"
           }
         },
-        "DisconnectedPeers": {
+        "UnresolvedPeers": {
           "type": "object",
           "additionalProperties": {
             "$ref": "#/definitions/modelPeer"
