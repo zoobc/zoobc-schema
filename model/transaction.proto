@@ -28,10 +28,10 @@ message Transaction {
         UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 16;
         RemoveNodeRegistrationTransactionBody removeNodeRegistrationTransactionBody = 17;
         ClaimNodeRegistrationTransactionBody claimNodeRegistrationTransactionBody = 18;
-        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 18;
+        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 19;
         
     }
-    bytes Signature = 19;
+    bytes Signature = 20;
 }
 
 message EmptyTransactionBody {}
