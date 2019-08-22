@@ -28,9 +28,10 @@ message Transaction {
         UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 16;
         RemoveNodeRegistrationTransactionBody removeNodeRegistrationTransactionBody = 17;
         SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 18;
+        RemoveAccountDatasetTransactionBody removeAccountDatasetTransactionBody = 19;
         
     }
-    bytes Signature = 19;
+    bytes Signature = 20;
 }
 
 message EmptyTransactionBody {}
@@ -54,6 +55,10 @@ message UpdateNodeRegistrationTransactionBody {
     ProofOfOwnership Poown = 4;
 }
 
+message RemoveNodeRegistrationTransactionBody {
+    bytes   NodePublicKey = 1;
+}
+
 message SetupAccountDatasetTransactionBody {
     // Account Address that set Dataset 
     string SetterAccountAddress = 1;
@@ -67,8 +72,15 @@ message SetupAccountDatasetTransactionBody {
     uint64 MuchTime = 5 [jstype = JS_STRING];
 }
 
-message RemoveNodeRegistrationTransactionBody {
-    bytes   NodePublicKey = 1;
+message RemoveAccountDatasetTransactionBody {
+    // Account Address that set Dataset 
+    string SetterAccountAddress = 1;
+    // Account Address that got property of Dataset
+    string RecipientAccountAddress = 2;
+    // Property name
+    string Property = 3;
+    // Value of property 
+    string Value = 4;
 }
 
 

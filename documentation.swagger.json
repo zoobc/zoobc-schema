@@ -1189,6 +1189,27 @@
         }
       }
     },
+    "modelRemoveAccountDatasetTransactionBody": {
+      "type": "object",
+      "properties": {
+        "Property": {
+          "type": "string",
+          "title": "Property name"
+        },
+        "RecipientAccountAddress": {
+          "type": "string",
+          "title": "Account Address that got property of Dataset"
+        },
+        "SetterAccountAddress": {
+          "type": "string",
+          "title": "Account Address that set Dataset"
+        },
+        "Value": {
+          "type": "string",
+          "title": "Value of property"
+        }
+      }
+    },
     "modelRemoveNodeRegistrationTransactionBody": {
       "type": "object",
       "properties": {
@@ -1316,6 +1337,9 @@
         },
         "nodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelNodeRegistrationTransactionBody"
+        },
+        "removeAccountDatasetTransactionBody": {
+          "$ref": "#/definitions/modelRemoveAccountDatasetTransactionBody"
         },
         "removeNodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelRemoveNodeRegistrationTransactionBody"
