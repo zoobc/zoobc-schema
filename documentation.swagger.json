@@ -200,6 +200,22 @@
         }
       }
     },
+    "/v1/host/GetHostPeers": {
+      "get": {
+        "tags": [
+          "HostService"
+        ],
+        "operationId": "GetHostPeers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetHostPeersResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/mempool/GetMempoolTransaction": {
       "get": {
         "tags": [
@@ -743,6 +759,23 @@
         "Height": {
           "type": "integer",
           "format": "int64"
+        }
+      }
+    },
+    "modelGetHostPeersResponse": {
+      "type": "object",
+      "properties": {
+        "ResolvedPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        },
+        "UnresolvedPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
         }
       }
     },
