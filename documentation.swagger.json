@@ -1303,6 +1303,10 @@
           "type": "string",
           "format": "byte"
         },
+        "TransactionIndex": {
+          "type": "integer",
+          "format": "int64"
+        },
         "TransactionType": {
           "type": "integer",
           "format": "int64"
