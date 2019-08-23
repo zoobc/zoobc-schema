@@ -20,17 +20,18 @@ message Transaction {
     bytes TransactionHash = 10;
     uint32 TransactionBodyLength = 11;
     bytes TransactionBodyBytes = 12;
+    uint32 TransactionIndex = 13;
     // TransactionBody
     oneof TransactionBody {
-        EmptyTransactionBody emptyTransactionBody = 13;
-        SendMoneyTransactionBody sendMoneyTransactionBody = 14;
-        NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 15;
-        UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 16;
-        RemoveNodeRegistrationTransactionBody removeNodeRegistrationTransactionBody = 17;
-        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 18;
+        EmptyTransactionBody emptyTransactionBody = 14;
+        SendMoneyTransactionBody sendMoneyTransactionBody = 15;
+        NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 16;
+        UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 17;
+        RemoveNodeRegistrationTransactionBody removeNodeRegistrationTransactionBody = 18;
+        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 19;
         
     }
-    bytes Signature = 19;
+    bytes Signature = 20;
 }
 
 message EmptyTransactionBody {}
