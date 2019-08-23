@@ -366,52 +366,6 @@
         }
       }
     },
-    "/v1/nodeRegistration/UpdateNodeRegistration": {
-      "get": {
-        "tags": [
-          "NodeRegistrationService"
-        ],
-        "operationId": "UpdateNodeRegistration",
-        "parameters": [
-          {
-            "type": "string",
-            "format": "byte",
-            "name": "ID",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "byte",
-            "name": "NodePublicKey",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "name": "AccountAddress",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "name": "NodeAddress",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "name": "LockedBalance",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/modelNodeRegistration"
-            }
-          }
-        }
-      }
-    },
     "/v1/nodeadmin/getProofOfOwnership": {
       "get": {
         "tags": [
@@ -702,6 +656,22 @@
         },
         "LastBlock": {
           "$ref": "#/definitions/modelBlock"
+        }
+      }
+    },
+    "modelClaimNodeRegistrationTransactionBody": {
+      "type": "object",
+      "properties": {
+        "AccountAddress": {
+          "type": "string"
+        },
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Poown": {
+          "title": "Proof of ownership (message + signature)",
+          "$ref": "#/definitions/modelProofOfOwnership"
         }
       }
     },
@@ -1127,7 +1097,8 @@
         },
         "LockedBalance": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "Funds to be locked to register the node"
         },
         "NodeAddress": {
           "type": "string"
@@ -1137,6 +1108,7 @@
           "format": "byte"
         },
         "Poown": {
+          "title": "Proof of ownership (message + signature)",
           "$ref": "#/definitions/modelProofOfOwnership"
         }
       }
@@ -1315,6 +1287,9 @@
           "type": "integer",
           "format": "int64"
         },
+        "claimNodeRegistrationTransactionBody": {
+          "$ref": "#/definitions/modelClaimNodeRegistrationTransactionBody"
+        },
         "emptyTransactionBody": {
           "$ref": "#/definitions/modelEmptyTransactionBody"
         },
@@ -1340,7 +1315,8 @@
       "properties": {
         "LockedBalance": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "Funds to be locked to register the node"
         },
         "NodeAddress": {
           "type": "string"
@@ -1350,6 +1326,7 @@
           "format": "byte"
         },
         "Poown": {
+          "title": "Proof of ownership (message + signature)",
           "$ref": "#/definitions/modelProofOfOwnership"
         }
       }
@@ -1390,6 +1367,20 @@
           "type": "string"
         }
       }
+    }
+  },
+  "x-stream-definitions": {
+    "modelGetNodeHardwareResponse": {
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/runtimeStreamError"
+        },
+        "result": {
+          "$ref": "#/definitions/modelGetNodeHardwareResponse"
+        }
+      },
+      "title": "Stream result of modelGetNodeHardwareResponse",
+      "type": "object"
     }
   }
 }

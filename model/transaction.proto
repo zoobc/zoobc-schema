@@ -28,10 +28,11 @@ message Transaction {
         NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 16;
         UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 17;
         RemoveNodeRegistrationTransactionBody removeNodeRegistrationTransactionBody = 18;
-        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 19;
+        ClaimNodeRegistrationTransactionBody claimNodeRegistrationTransactionBody = 19;
+        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 20;
         
     }
-    bytes Signature = 20;
+    bytes Signature = 21;
 }
 
 message EmptyTransactionBody {}
@@ -44,14 +45,18 @@ message NodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
     string AccountAddress = 2;
     string  NodeAddress = 3;
+    // Funds to be locked to register the node
     int64   LockedBalance = 4 [jstype = JS_STRING];
+    // Proof of ownership (message + signature)
     ProofOfOwnership Poown = 5;
 }
 
 message UpdateNodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
     string  NodeAddress = 2;
+    // Funds to be locked to register the node
     int64   LockedBalance = 3 [jstype = JS_STRING];
+    // Proof of ownership (message + signature)
     ProofOfOwnership Poown = 4;
 }
 
@@ -72,6 +77,12 @@ message RemoveNodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
 }
 
+message ClaimNodeRegistrationTransactionBody {
+    bytes   NodePublicKey = 1;
+    string AccountAddress = 2;
+    // Proof of ownership (message + signature)
+    ProofOfOwnership Poown = 3;
+}
 
 //------------
 // P2P Content
