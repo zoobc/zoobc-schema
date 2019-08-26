@@ -21,9 +21,4 @@ service NodeRegistrationService {
         };
     }    
 
-    rpc UpdateNodeRegistration(model.UpdateNodeRegistrationRequest) returns (model.NodeRegistration) {
-        option (google.api.http) = {
-            get: "/v1/nodeRegistration/UpdateNodeRegistration"
-        };
-    }    
 }

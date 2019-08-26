@@ -20,18 +20,19 @@ message Transaction {
     bytes TransactionHash = 10;
     uint32 TransactionBodyLength = 11;
     bytes TransactionBodyBytes = 12;
+    uint32 TransactionIndex = 13;
     // TransactionBody
     oneof TransactionBody {
-        EmptyTransactionBody emptyTransactionBody = 13;
-        SendMoneyTransactionBody sendMoneyTransactionBody = 14;
-        NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 15;
-        UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 16;
-        RemoveNodeRegistrationTransactionBody removeNodeRegistrationTransactionBody = 17;
-        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 18;
-        RemoveAccountDatasetTransactionBody removeAccountDatasetTransactionBody = 19;
-        
+        EmptyTransactionBody emptyTransactionBody = 14;
+        SendMoneyTransactionBody sendMoneyTransactionBody = 15;
+        NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 16;
+        UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 17;
+        RemoveNodeRegistrationTransactionBody removeNodeRegistrationTransactionBody = 18;
+        ClaimNodeRegistrationTransactionBody claimNodeRegistrationTransactionBody = 19;
+        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 20;
+        RemoveAccountDatasetTransactionBody removeAccountDatasetTransactionBody = 21;
     }
-    bytes Signature = 20;
+    bytes Signature = 22;
 }
 
 message EmptyTransactionBody {}
@@ -44,14 +45,18 @@ message NodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
     string AccountAddress = 2;
     string  NodeAddress = 3;
+    // Funds to be locked to register the node
     int64   LockedBalance = 4 [jstype = JS_STRING];
+    // Proof of ownership (message + signature)
     ProofOfOwnership Poown = 5;
 }
 
 message UpdateNodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
     string  NodeAddress = 2;
+    // Funds to be locked to register the node
     int64   LockedBalance = 3 [jstype = JS_STRING];
+    // Proof of ownership (message + signature)
     ProofOfOwnership Poown = 4;
 }
 
@@ -83,6 +88,12 @@ message RemoveAccountDatasetTransactionBody {
     string Value = 4;
 }
 
+message ClaimNodeRegistrationTransactionBody {
+    bytes   NodePublicKey = 1;
+    string AccountAddress = 2;
+    // Proof of ownership (message + signature)
+    ProofOfOwnership Poown = 3;
+}
 
 //------------
 // P2P Content
