@@ -13,7 +13,7 @@ message Node {
 
 message NodeKey {
 	int64 ID             = 1;
-	string PublicKey     = 2;
+	bytes PublicKey     = 2;
 	string Seed          = 3;
 }
 
