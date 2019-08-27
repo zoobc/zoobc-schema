@@ -10,3 +10,9 @@ message Node {
 	string Address       = 2;
 	uint32 Port          = 3;
 }
+
+message NodeKey {
+	int64 ID             = 1;
+	string PublicKey     = 2;
+	string Seed          = 3;
+}
