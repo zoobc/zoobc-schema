@@ -16,3 +16,14 @@ message NodeKey {
 	string PublicKey     = 2;
 	string Seed          = 3;
 }
+
+message GenerateNodeKeyRequest {
+    // Account Address
+    string AccountAddress = 1;
+    int64 Timestamp = 2;
+    bytes Signature = 3;
+}
+
+message GenerateNodeKeyResponse {
+    bytes NodePublicKey = 1;
+}
