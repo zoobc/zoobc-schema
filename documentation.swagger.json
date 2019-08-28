@@ -372,26 +372,6 @@
           "NodeAdminService"
         ],
         "operationId": "GenerateNodeKey",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Account Address.",
-            "name": "AccountAddress",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "name": "Timestamp",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "byte",
-            "name": "Signature",
-            "in": "query"
-          }
-        ],
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -408,26 +388,6 @@
           "NodeAdminService"
         ],
         "operationId": "GetProofOfOwnership",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Account Address.",
-            "name": "AccountAddress",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "name": "Timestamp",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "byte",
-            "name": "Signature",
-            "in": "query"
-          }
-        ],
         "responses": {
           "200": {
             "description": "A successful response.",
