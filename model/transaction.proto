@@ -1,9 +1,10 @@
 syntax="proto3";
 
 package model;
-
 option go_package = "github.com/zoobc/zoobc-core/common/model";
+
 import "model/proofOfOwnership.proto";
+import "model/pagination.proto";
 
 
 // Transaction represent the transaction data structure stored in the database
@@ -67,6 +68,9 @@ message GetTransactionsRequest {
     uint32 Limit = 1;
     uint32 Page = 2;
     string AccountAddress = 3;
+    int64 TimestampStart = 4 [jstype = JS_STRING];
+    int64 TimestampEnd = 5 [jstype = JS_STRING];
+    Pagination Pagination = 6;
 }
 message GetTransactionsResponse {
     // Number of transactions in total
