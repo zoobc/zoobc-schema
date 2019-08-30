@@ -1,8 +1,9 @@
 syntax="proto3";
 
 package model;
-
 option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+import "model/pagination.proto";
 
 // Mempool represent the mempool data structure stored in the database
 message MempoolTransaction {
@@ -29,8 +30,7 @@ message GetMempoolTransactionsRequest {
     int64 timestampEnd = 2 [jstype = JS_STRING];
     // SenderAddress and RecipientAddress
     string address = 3;
-    uint32 Limit = 4;
-    uint32 Page = 5;
+    Pagination Pagination = 4;
 }
 
 message GetMempoolTransactionsResponse {

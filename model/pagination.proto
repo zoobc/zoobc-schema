@@ -4,8 +4,8 @@ package model;
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 enum OrderBy {
-    ASC = 0;
-    DSC = 1;
+    DESC = 0;
+    ASC = 1;
 }
 
 message Pagination {

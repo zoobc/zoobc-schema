@@ -269,15 +269,30 @@
             "in": "query"
           },
           {
-            "type": "integer",
-            "format": "int64",
-            "name": "Limit",
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "name": "Page",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
             "in": "query"
           }
         ],
@@ -454,11 +469,11 @@
           },
           {
             "enum": [
-              "ASC",
-              "DSC"
+              "DESC",
+              "ASC"
             ],
             "type": "string",
-            "default": "ASC",
+            "default": "DESC",
             "name": "Pagination.OrderBy",
             "in": "query"
           },
@@ -1147,10 +1162,10 @@
     },
     "modelOrderBy": {
       "type": "string",
-      "default": "ASC",
+      "default": "DESC",
       "enum": [
-        "ASC",
-        "DSC"
+        "DESC",
+        "ASC"
       ]
     },
     "modelPagination": {
@@ -1450,20 +1465,6 @@
           "type": "string"
         }
       }
-    }
-  },
-  "x-stream-definitions": {
-    "modelGetNodeHardwareResponse": {
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/runtimeStreamError"
-        },
-        "result": {
-          "$ref": "#/definitions/modelGetNodeHardwareResponse"
-        }
-      },
-      "title": "Stream result of modelGetNodeHardwareResponse",
-      "type": "object"
     }
   }
 }
