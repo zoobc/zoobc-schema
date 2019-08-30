@@ -108,8 +108,6 @@ message GetTransactionRequest {
 
 // GetTransactions return GetTransactionsResponse
 message GetTransactionsRequest {
-    uint32 Limit = 1;
-    uint32 Page = 2;
     string AccountAddress = 3;
     int64 TimestampStart = 4 [jstype = JS_STRING];
     int64 TimestampEnd = 5 [jstype = JS_STRING];
