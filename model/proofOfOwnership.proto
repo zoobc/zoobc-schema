@@ -15,9 +15,4 @@ message ProofOfOwnershipMessage {
     uint32 BlockHeight = 3;
 }
 
-message GetProofOfOwnershipRequest {
-    // Account Address
-    string AccountAddress = 1;
-    int64 Timestamp = 2;
-    bytes Signature = 3;
-}
+message GetProofOfOwnershipRequest {}

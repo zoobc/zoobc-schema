@@ -366,32 +366,28 @@
         }
       }
     },
+    "/v1/nodeadmin/generateNodeKey": {
+      "get": {
+        "tags": [
+          "NodeAdminService"
+        ],
+        "operationId": "GenerateNodeKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGenerateNodeKeyResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/nodeadmin/getProofOfOwnership": {
       "get": {
         "tags": [
           "NodeAdminService"
         ],
         "operationId": "GetProofOfOwnership",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Account Address.",
-            "name": "AccountAddress",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "name": "Timestamp",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "byte",
-            "name": "Signature",
-            "in": "query"
-          }
-        ],
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -681,6 +677,15 @@
     },
     "modelEmptyTransactionBody": {
       "type": "object"
+    },
+    "modelGenerateNodeKeyResponse": {
+      "type": "object",
+      "properties": {
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
     },
     "modelGetAccountBalanceResponse": {
       "type": "object",
@@ -1391,6 +1396,20 @@
           "type": "string"
         }
       }
+    }
+  },
+  "x-stream-definitions": {
+    "modelGetNodeHardwareResponse": {
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/runtimeStreamError"
+        },
+        "result": {
+          "$ref": "#/definitions/modelGetNodeHardwareResponse"
+        }
+      },
+      "title": "Stream result of modelGetNodeHardwareResponse",
+      "type": "object"
     }
   }
 }
