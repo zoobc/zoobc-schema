@@ -1189,6 +1189,43 @@
         }
       }
     },
+    "modelReceipt": {
+      "type": "object",
+      "properties": {
+        "DatumHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "DatumType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ReceiptMerkleRoot": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RecipientPublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RecipientSignature": {
+          "type": "string",
+          "format": "byte"
+        },
+        "ReferenceBlockHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "ReferenceBlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "SenderPublicKey": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
     "modelRemoveNodeRegistrationTransactionBody": {
       "type": "object",
       "properties": {

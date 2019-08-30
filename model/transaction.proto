@@ -89,6 +89,7 @@ message GetTransactionsRequest {
     uint32 Page = 2;
     string AccountAddress = 3;
 }
+
 message GetTransactionsResponse {
     // Number of transactions in total
     uint64 Total = 1 [jstype = JS_STRING];
@@ -108,4 +109,6 @@ message PostTransactionResponse {
 // SendTransactionRequest request in p2pCommunication service
 message SendTransactionRequest {
     bytes TransactionBytes = 1;
+    int32 ChainType = 2;
+    bytes SenderPublicKey = 3;
 }
