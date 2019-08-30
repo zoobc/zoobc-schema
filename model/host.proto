@@ -22,3 +22,8 @@ message HostInfo{
 	Host Host = 1;
 	repeated ChainStatus ChainStatuses = 2;
 }
+
+message GetHostPeersResponse {
+	map<string, Peer> ResolvedPeers = 1;
+	map<string, Peer> UnresolvedPeers = 2;
+}
