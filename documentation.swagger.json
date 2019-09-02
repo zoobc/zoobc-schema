@@ -269,15 +269,30 @@
             "in": "query"
           },
           {
-            "type": "integer",
-            "format": "int64",
-            "name": "Limit",
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "name": "Page",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
             "in": "query"
           }
         ],
@@ -431,20 +446,47 @@
         "operationId": "GetTransactions",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
-            "name": "Limit",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "name": "Page",
+            "type": "string",
+            "name": "AccountAddress",
             "in": "query"
           },
           {
             "type": "string",
-            "name": "AccountAddress",
+            "format": "int64",
+            "name": "TimestampStart",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "name": "TimestampEnd",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
             "in": "query"
           }
         ],
@@ -1118,6 +1160,33 @@
         }
       }
     },
+    "modelOrderBy": {
+      "type": "string",
+      "default": "DESC",
+      "enum": [
+        "DESC",
+        "ASC"
+      ]
+    },
+    "modelPagination": {
+      "type": "object",
+      "properties": {
+        "Limit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "OrderBy": {
+          "$ref": "#/definitions/modelOrderBy"
+        },
+        "OrderField": {
+          "type": "string"
+        },
+        "Page": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
     "modelPeer": {
       "type": "object",
       "properties": {
@@ -1396,20 +1465,6 @@
           "type": "string"
         }
       }
-    }
-  },
-  "x-stream-definitions": {
-    "modelGetNodeHardwareResponse": {
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/runtimeStreamError"
-        },
-        "result": {
-          "$ref": "#/definitions/modelGetNodeHardwareResponse"
-        }
-      },
-      "title": "Stream result of modelGetNodeHardwareResponse",
-      "type": "object"
     }
   }
 }
