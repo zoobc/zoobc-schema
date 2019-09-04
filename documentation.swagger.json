@@ -463,6 +463,12 @@
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "name": "TransactionType",
+            "in": "query"
+          },
+          {
             "type": "string",
             "name": "Pagination.OrderField",
             "in": "query"
