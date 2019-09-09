@@ -1,9 +1,10 @@
 syntax="proto3";
 
 package model;
-
 option go_package = "github.com/zoobc/zoobc-core/common/model";
+
 import "model/proofOfOwnership.proto";
+import "model/pagination.proto";
 
 
 // Transaction represent the transaction data structure stored in the database
@@ -28,10 +29,11 @@ message Transaction {
         NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 16;
         UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 17;
         RemoveNodeRegistrationTransactionBody removeNodeRegistrationTransactionBody = 18;
-        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 19;
-        
+        ClaimNodeRegistrationTransactionBody claimNodeRegistrationTransactionBody = 19;
+        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 20;
+        RemoveAccountDatasetTransactionBody removeAccountDatasetTransactionBody = 21;
     }
-    bytes Signature = 20;
+    bytes Signature = 22;
 }
 
 message EmptyTransactionBody {}
@@ -44,15 +46,23 @@ message NodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
     string AccountAddress = 2;
     string  NodeAddress = 3;
+    // Funds to be locked to register the node
     int64   LockedBalance = 4 [jstype = JS_STRING];
+    // Proof of ownership (message + signature)
     ProofOfOwnership Poown = 5;
 }
 
 message UpdateNodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
     string  NodeAddress = 2;
+    // Funds to be locked to register the node
     int64   LockedBalance = 3 [jstype = JS_STRING];
+    // Proof of ownership (message + signature)
     ProofOfOwnership Poown = 4;
+}
+
+message RemoveNodeRegistrationTransactionBody {
+    bytes   NodePublicKey = 1;
 }
 
 message SetupAccountDatasetTransactionBody {
@@ -68,10 +78,23 @@ message SetupAccountDatasetTransactionBody {
     uint64 MuchTime = 5 [jstype = JS_STRING];
 }
 
-message RemoveNodeRegistrationTransactionBody {
-    bytes   NodePublicKey = 1;
+message RemoveAccountDatasetTransactionBody {
+    // Account Address that set Dataset 
+    string SetterAccountAddress = 1;
+    // Account Address that got property of Dataset
+    string RecipientAccountAddress = 2;
+    // Property name
+    string Property = 3;
+    // Value of property 
+    string Value = 4;
 }
 
+message ClaimNodeRegistrationTransactionBody {
+    bytes   NodePublicKey = 1;
+    string AccountAddress = 2;
+    // Proof of ownership (message + signature)
+    ProofOfOwnership Poown = 3;
+}
 
 //------------
 // P2P Content
@@ -85,9 +108,11 @@ message GetTransactionRequest {
 
 // GetTransactions return GetTransactionsResponse
 message GetTransactionsRequest {
-    uint32 Limit = 1;
-    uint32 Page = 2;
     string AccountAddress = 3;
+    int64 TimestampStart = 4 [jstype = JS_STRING];
+    int64 TimestampEnd = 5 [jstype = JS_STRING];
+    uint32 TransactionType = 6;
+    Pagination Pagination = 7;
 }
 
 message GetTransactionsResponse {

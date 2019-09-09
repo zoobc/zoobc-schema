@@ -11,10 +11,42 @@
   ],
   "swagger": "2.0",
   "info": {
-    "title": "service/accountBalance.proto",
+    "title": "service/account.proto",
     "version": "version not set"
   },
   "paths": {
+    "/v1/account/GetAccount": {
+      "get": {
+        "tags": [
+          "AccountService"
+        ],
+        "operationId": "GetAccount",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Account by its ID.",
+            "name": "ID",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Account by its account address (note: this in case of zoobc account type is the public key).",
+            "name": "Address",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelAccount"
+            }
+          }
+        }
+      }
+    },
     "/v1/account/GetAccountBalance": {
       "get": {
         "tags": [
@@ -101,6 +133,31 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetAccountBalancesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/account/GetAccounts": {
+      "get": {
+        "tags": [
+          "AccountService"
+        ],
+        "operationId": "GetAccounts",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Accounts by its account type.",
+            "name": "AccountType",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetAccountsResponse"
             }
           }
         }
@@ -269,15 +326,30 @@
             "in": "query"
           },
           {
-            "type": "integer",
-            "format": "int64",
-            "name": "Limit",
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "name": "Page",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
             "in": "query"
           }
         ],
@@ -366,47 +438,17 @@
         }
       }
     },
-    "/v1/nodeRegistration/UpdateNodeRegistration": {
+    "/v1/nodeadmin/generateNodeKey": {
       "get": {
         "tags": [
-          "NodeRegistrationService"
+          "NodeAdminService"
         ],
-        "operationId": "UpdateNodeRegistration",
-        "parameters": [
-          {
-            "type": "string",
-            "format": "byte",
-            "name": "ID",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "byte",
-            "name": "NodePublicKey",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "name": "AccountAddress",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "name": "NodeAddress",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "name": "LockedBalance",
-            "in": "query"
-          }
-        ],
+        "operationId": "GenerateNodeKey",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelNodeRegistration"
+              "$ref": "#/definitions/modelGenerateNodeKeyResponse"
             }
           }
         }
@@ -418,26 +460,6 @@
           "NodeAdminService"
         ],
         "operationId": "GetProofOfOwnership",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Account Address.",
-            "name": "AccountAddress",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "int64",
-            "name": "Timestamp",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "byte",
-            "name": "Signature",
-            "in": "query"
-          }
-        ],
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -481,20 +503,53 @@
         "operationId": "GetTransactions",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
-            "name": "Limit",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "name": "Page",
+            "type": "string",
+            "name": "AccountAddress",
             "in": "query"
           },
           {
             "type": "string",
-            "name": "AccountAddress",
+            "format": "int64",
+            "name": "TimestampStart",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "name": "TimestampEnd",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "TransactionType",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
             "in": "query"
           }
         ],
@@ -526,6 +581,23 @@
     }
   },
   "definitions": {
+    "modelAccount": {
+      "type": "object",
+      "title": "Account represent the transaction data structure stored in the database",
+      "properties": {
+        "AccountType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Address": {
+          "type": "string"
+        },
+        "ID": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
     "modelAccountBalance": {
       "type": "object",
       "title": "AccountBalance represent the transaction data structure stored in the database",
@@ -705,12 +777,37 @@
         }
       }
     },
+    "modelClaimNodeRegistrationTransactionBody": {
+      "type": "object",
+      "properties": {
+        "AccountAddress": {
+          "type": "string"
+        },
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Poown": {
+          "title": "Proof of ownership (message + signature)",
+          "$ref": "#/definitions/modelProofOfOwnership"
+        }
+      }
+    },
     "modelEmpty": {
       "type": "object",
       "title": "Empty structure to represent empty parameter in proto"
     },
     "modelEmptyTransactionBody": {
       "type": "object"
+    },
+    "modelGenerateNodeKeyResponse": {
+      "type": "object",
+      "properties": {
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
     },
     "modelGetAccountBalanceResponse": {
       "type": "object",
@@ -731,6 +828,23 @@
           }
         },
         "AccountBalanceSize": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of accounts returned"
+        }
+      }
+    },
+    "modelGetAccountsResponse": {
+      "type": "object",
+      "properties": {
+        "Account": {
+          "type": "array",
+          "title": "Accounts returned",
+          "items": {
+            "$ref": "#/definitions/modelAccount"
+          }
+        },
+        "AccountSize": {
           "type": "integer",
           "format": "int64",
           "title": "Number of accounts returned"
@@ -1127,7 +1241,8 @@
         },
         "LockedBalance": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "Funds to be locked to register the node"
         },
         "NodeAddress": {
           "type": "string"
@@ -1137,7 +1252,35 @@
           "format": "byte"
         },
         "Poown": {
+          "title": "Proof of ownership (message + signature)",
           "$ref": "#/definitions/modelProofOfOwnership"
+        }
+      }
+    },
+    "modelOrderBy": {
+      "type": "string",
+      "default": "DESC",
+      "enum": [
+        "DESC",
+        "ASC"
+      ]
+    },
+    "modelPagination": {
+      "type": "object",
+      "properties": {
+        "Limit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "OrderBy": {
+          "$ref": "#/definitions/modelOrderBy"
+        },
+        "OrderField": {
+          "type": "string"
+        },
+        "Page": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
@@ -1223,6 +1366,27 @@
         "SenderPublicKey": {
           "type": "string",
           "format": "byte"
+        }
+      }
+    },
+    "modelRemoveAccountDatasetTransactionBody": {
+      "type": "object",
+      "properties": {
+        "Property": {
+          "type": "string",
+          "title": "Property name"
+        },
+        "RecipientAccountAddress": {
+          "type": "string",
+          "title": "Account Address that got property of Dataset"
+        },
+        "SetterAccountAddress": {
+          "type": "string",
+          "title": "Account Address that set Dataset"
+        },
+        "Value": {
+          "type": "string",
+          "title": "Value of property"
         }
       }
     },
@@ -1352,11 +1516,17 @@
           "type": "integer",
           "format": "int64"
         },
+        "claimNodeRegistrationTransactionBody": {
+          "$ref": "#/definitions/modelClaimNodeRegistrationTransactionBody"
+        },
         "emptyTransactionBody": {
           "$ref": "#/definitions/modelEmptyTransactionBody"
         },
         "nodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelNodeRegistrationTransactionBody"
+        },
+        "removeAccountDatasetTransactionBody": {
+          "$ref": "#/definitions/modelRemoveAccountDatasetTransactionBody"
         },
         "removeNodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelRemoveNodeRegistrationTransactionBody"
@@ -1377,7 +1547,8 @@
       "properties": {
         "LockedBalance": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "Funds to be locked to register the node"
         },
         "NodeAddress": {
           "type": "string"
@@ -1387,6 +1558,7 @@
           "format": "byte"
         },
         "Poown": {
+          "title": "Proof of ownership (message + signature)",
           "$ref": "#/definitions/modelProofOfOwnership"
         }
       }
