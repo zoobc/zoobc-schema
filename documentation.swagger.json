@@ -1241,6 +1241,43 @@
         }
       }
     },
+    "modelReceipt": {
+      "type": "object",
+      "properties": {
+        "DatumHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "DatumType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ReceiptMerkleRoot": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RecipientPublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RecipientSignature": {
+          "type": "string",
+          "format": "byte"
+        },
+        "ReferenceBlockHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "ReferenceBlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "SenderPublicKey": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
     "modelRemoveAccountDatasetTransactionBody": {
       "type": "object",
       "properties": {
@@ -1471,20 +1508,6 @@
           "type": "string"
         }
       }
-    }
-  },
-  "x-stream-definitions": {
-    "modelGetNodeHardwareResponse": {
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/runtimeStreamError"
-        },
-        "result": {
-          "$ref": "#/definitions/modelGetNodeHardwareResponse"
-        }
-      },
-      "title": "Stream result of modelGetNodeHardwareResponse",
-      "type": "object"
     }
   }
 }
