@@ -108,11 +108,12 @@ message GetTransactionRequest {
 
 // GetTransactions return GetTransactionsResponse
 message GetTransactionsRequest {
-    string AccountAddress = 3;
-    int64 TimestampStart = 4 [jstype = JS_STRING];
-    int64 TimestampEnd = 5 [jstype = JS_STRING];
-    uint32 TransactionType = 6;
-    Pagination Pagination = 7;
+    string AccountAddress = 1;
+    uint32 Height = 2;
+    int64 TimestampStart = 3 [jstype = JS_STRING];
+    int64 TimestampEnd = 4 [jstype = JS_STRING];
+    uint32 TransactionType = 5;
+    Pagination Pagination = 6;
 }
 
 message GetTransactionsResponse {
