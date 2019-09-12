@@ -565,8 +565,9 @@
           "type": "string",
           "format": "byte"
         },
-        "BlocksmithAddress": {
-          "type": "string"
+        "BlocksmithPublicKey": {
+          "type": "string",
+          "format": "byte"
         },
         "CumulativeDifficulty": {
           "type": "string"
