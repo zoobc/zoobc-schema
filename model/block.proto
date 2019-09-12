@@ -77,3 +77,9 @@ message GetNextBlocksRequest {
 message BlocksData {
 	repeated Block NextBlocks = 1;
 }
+
+message SendBlockRequest {
+    Block Block = 1;
+    int32 ChainType = 2;
+    bytes SenderPublicKey = 3;
+}
