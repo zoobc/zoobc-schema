@@ -25,7 +25,7 @@ message Block {
     int64 TotalReward = 13 [jstype = JS_STRING];
     int64 TotalReceipts = 14 [jstype = JS_STRING];
     int64 ReceiptValue = 15 [jstype = JS_STRING];
-    string BlocksmithID = 16;
+    string BlocksmithAccountAddress = 16;
     int64 PopChange = 17 [jstype = JS_STRING];
     //END
     uint32 Version = 18;

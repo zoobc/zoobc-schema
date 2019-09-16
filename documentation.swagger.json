@@ -571,12 +571,12 @@
           "type": "string",
           "format": "byte"
         },
+        "BlocksmithAccountAddress": {
+          "type": "string"
+        },
         "BlocksmithPublicKey": {
           "type": "string",
           "format": "byte"
-        },
-        "BlocksmithID": {
-          "type": "string"
         },
         "CumulativeDifficulty": {
           "type": "string"
