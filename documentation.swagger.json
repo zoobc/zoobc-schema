@@ -574,6 +574,9 @@
         "BlocksmithAddress": {
           "type": "string"
         },
+        "BlocksmithID": {
+          "type": "string"
+        },
         "CumulativeDifficulty": {
           "type": "string"
         },
@@ -593,9 +596,17 @@
           "type": "integer",
           "format": "int64"
         },
+        "PopChange": {
+          "type": "string",
+          "format": "int64"
+        },
         "PreviousBlockHash": {
           "type": "string",
           "format": "byte"
+        },
+        "ReceiptValue": {
+          "type": "string",
+          "format": "int64"
         },
         "SmithScale": {
           "type": "string",
@@ -617,6 +628,15 @@
           "type": "string",
           "format": "int64"
         },
+        "TotalReceipts": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TotalReward": {
+          "type": "string",
+          "format": "int64",
+          "title": "new fields not in block table (computed when getting the block from db)\nSTART"
+        },
         "Transactions": {
           "type": "array",
           "items": {
@@ -625,7 +645,8 @@
         },
         "Version": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "title": "END"
         }
       }
     },
@@ -1514,6 +1535,20 @@
           "type": "string"
         }
       }
+    }
+  },
+  "x-stream-definitions": {
+    "modelGetNodeHardwareResponse": {
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/runtimeStreamError"
+        },
+        "result": {
+          "$ref": "#/definitions/modelGetNodeHardwareResponse"
+        }
+      },
+      "title": "Stream result of modelGetNodeHardwareResponse",
+      "type": "object"
     }
   }
 }

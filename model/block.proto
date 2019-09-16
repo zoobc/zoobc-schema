@@ -20,10 +20,18 @@ message Block {
     int64 TotalAmount = 10 [jstype = JS_STRING];
     int64 TotalFee = 11 [jstype = JS_STRING];
     int64 TotalCoinBase = 12 [jstype = JS_STRING];
-    uint32 Version = 13;
-    uint32 PayloadLength = 14;
-    bytes PayloadHash = 15;
-    repeated Transaction Transactions = 16;
+    //new fields not in block table (computed when getting the block from db)
+    //START
+    int64 TotalReward = 13 [jstype = JS_STRING];
+    int64 TotalReceipts = 14 [jstype = JS_STRING];
+    int64 ReceiptValue = 15 [jstype = JS_STRING];
+    string BlocksmithID = 16;
+    int64 PopChange = 17 [jstype = JS_STRING];
+    //END
+    uint32 Version = 18;
+    uint32 PayloadLength = 19;
+    bytes PayloadHash = 20;
+    repeated Transaction Transactions = 21;
 }
 
 // GetBlockRequest create request for single block
