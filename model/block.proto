@@ -16,7 +16,7 @@ message Block {
     bytes BlockSignature = 6;
     string CumulativeDifficulty = 7;
     int64 SmithScale = 8 [jstype = JS_STRING];
-    string BlocksmithAddress = 9;
+    bytes BlocksmithPublicKey = 9;
     int64 TotalAmount = 10 [jstype = JS_STRING];
     int64 TotalFee = 11 [jstype = JS_STRING];
     int64 TotalCoinBase = 12 [jstype = JS_STRING];
