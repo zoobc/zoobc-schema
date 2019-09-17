@@ -678,7 +678,7 @@
         },
         "PreviousBlockID": {
           "type": "string",
-          "format": "byte"
+          "format": "int64"
         },
         "ReceiptValue": {
           "type": "string",

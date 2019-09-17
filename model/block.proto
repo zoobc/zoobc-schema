@@ -50,7 +50,7 @@ message BlockExtendedInfo {
   int64 ReceiptValue = 18 [ jstype = JS_STRING ];
   string BlocksmithAccountAddress = 19;
   int64 PopChange = 20 [ jstype = JS_STRING ];
-  bytes PreviousBlockID = 21;
+  int64 PreviousBlockID = 21;
 }
 
 // GetBlockRequest create request for single block
