@@ -81,7 +81,7 @@ message GetBlocksResponse {
   // Blocks height returned from
   uint32 Height = 3;
   // Blocks returned
-  repeated Block Blocks = 4;
+  repeated BlockExtendedInfo Blocks = 4;
 }
 
 message GetNextBlockIdsRequest {

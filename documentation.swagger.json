@@ -139,7 +139,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelBlock"
+              "$ref": "#/definitions/modelBlockExtendedInfo"
             }
           }
         }
@@ -630,6 +630,95 @@
         }
       }
     },
+    "modelBlockExtendedInfo": {
+      "type": "object",
+      "title": "BlockExtendedInfo represent the block data structure stored in the database\nplus some extra info useful for external applications",
+      "properties": {
+        "BlockSeed": {
+          "type": "string",
+          "format": "byte"
+        },
+        "BlockSignature": {
+          "type": "string",
+          "format": "byte"
+        },
+        "BlocksmithAccountAddress": {
+          "type": "string"
+        },
+        "BlocksmithPublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "CumulativeDifficulty": {
+          "type": "string"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ID": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PayloadHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "PayloadLength": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "PopChange": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PreviousBlockHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "PreviousBlockID": {
+          "type": "string",
+          "format": "byte"
+        },
+        "ReceiptValue": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SmithScale": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Timestamp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TotalAmount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TotalCoinBase": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TotalFee": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TotalReceipts": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TotalReward": {
+          "type": "string",
+          "format": "int64",
+          "title": "computed fields (not persisted in block table)"
+        },
+        "Version": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
     "modelBlockIdsResponse": {
       "type": "object",
       "properties": {
@@ -774,7 +863,7 @@
           "type": "array",
           "title": "Blocks returned",
           "items": {
-            "$ref": "#/definitions/modelBlock"
+            "$ref": "#/definitions/modelBlockExtendedInfo"
           }
         },
         "ChainType": {
