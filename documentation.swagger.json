@@ -340,7 +340,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelNodeRegistration"
+              "$ref": "#/definitions/modelGetNodeRegistrationResponse"
             }
           }
         }
@@ -354,20 +354,51 @@
         "operationId": "GetNodeRegistrations",
         "parameters": [
           {
-            "type": "string",
-            "format": "byte",
-            "name": "NodePublicKey",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "name": "AccountAddress",
+            "type": "boolean",
+            "format": "boolean",
+            "description": "Fetch Node Registries based on queue status \ntrue : will retrieve node registries that still pending\nfalse: will retrieve node registries that already registered.",
+            "name": "Queued",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "name": "RegistrationHeight",
+            "description": "Fetch Node Registries when registration height is greater than or equal to.",
+            "name": "MinRegistrationHeight",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Node Registries when registration height is less than or equal to.",
+            "name": "MaxRegistrationHeight",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
             "in": "query"
           }
         ],
@@ -881,42 +912,28 @@
         }
       }
     },
+    "modelGetNodeRegistrationResponse": {
+      "type": "object",
+      "properties": {
+        "NodeRegistration": {
+          "$ref": "#/definitions/modelNodeRegistration"
+        }
+      }
+    },
     "modelGetNodeRegistrationsResponse": {
       "type": "object",
       "properties": {
-        "AccountAddress": {
-          "type": "string"
+        "NodeRegistrations": {
+          "type": "array",
+          "title": "NodeRegistrations list of NodeRegistration",
+          "items": {
+            "$ref": "#/definitions/modelNodeRegistration"
+          }
         },
-        "Height": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "ID": {
+        "Total": {
           "type": "string",
-          "format": "byte"
-        },
-        "Latest": {
-          "type": "boolean",
-          "format": "boolean"
-        },
-        "LockedBalance": {
-          "type": "string",
-          "format": "int64"
-        },
-        "NodeAddress": {
-          "type": "string"
-        },
-        "NodePublicKey": {
-          "type": "string",
-          "format": "byte"
-        },
-        "Queued": {
-          "type": "boolean",
-          "format": "boolean"
-        },
-        "RegistrationHeight": {
-          "type": "integer",
-          "format": "int64"
+          "format": "uint64",
+          "title": "Number of node registry in total"
         }
       }
     },
@@ -1515,20 +1532,6 @@
           "type": "string"
         }
       }
-    }
-  },
-  "x-stream-definitions": {
-    "modelGetNodeHardwareResponse": {
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/runtimeStreamError"
-        },
-        "result": {
-          "$ref": "#/definitions/modelGetNodeHardwareResponse"
-        }
-      },
-      "title": "Stream result of modelGetNodeHardwareResponse",
-      "type": "object"
     }
   }
 }

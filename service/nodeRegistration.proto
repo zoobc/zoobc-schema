@@ -15,7 +15,7 @@ service NodeRegistrationService {
         };
     }
 
-    rpc GetNodeRegistration(model.GetNodeRegistrationRequest) returns (model.NodeRegistration) {
+    rpc GetNodeRegistration(model.GetNodeRegistrationRequest) returns (model.GetNodeRegistrationResponse) {
         option (google.api.http) = {
             get: "/v1/nodeRegistration/GetNodeRegistration"
         };
