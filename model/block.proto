@@ -26,31 +26,15 @@ message Block {
   repeated Transaction Transactions = 16;
 }
 
-// BlockExtendedInfo represent the block data structure stored in the database
-// plus some extra info useful for external applications
+// BlockExtendedInfo represent the Block data plus part of block data not to be persisted to database
 message BlockExtendedInfo {
-  int64 ID = 1 [ jstype = JS_STRING ];
-  bytes PreviousBlockHash = 2;
-  uint32 Height = 3;
-  int64 Timestamp = 4 [ jstype = JS_STRING ];
-  bytes BlockSeed = 5;
-  bytes BlockSignature = 6;
-  string CumulativeDifficulty = 7;
-  int64 SmithScale = 8 [ jstype = JS_STRING ];
-  bytes BlocksmithPublicKey = 9;
-  int64 TotalAmount = 10 [ jstype = JS_STRING ];
-  int64 TotalFee = 11 [ jstype = JS_STRING ];
-  int64 TotalCoinBase = 12 [ jstype = JS_STRING ];
-  uint32 Version = 13;
-  uint32 PayloadLength = 14;
-  bytes PayloadHash = 15;
-  // computed fields (not persisted in block table)
-  int64 TotalReward = 16 [ jstype = JS_STRING ];
-  int64 TotalReceipts = 17 [ jstype = JS_STRING ];
-  int64 ReceiptValue = 18 [ jstype = JS_STRING ];
-  string BlocksmithAccountAddress = 19;
-  int64 PopChange = 20 [ jstype = JS_STRING ];
-  int64 PreviousBlockID = 21;
+  Block Block = 1;
+  int64 TotalReward = 2 [ jstype = JS_STRING ];
+  int64 TotalReceipts = 3 [ jstype = JS_STRING ];
+  int64 ReceiptValue = 4 [ jstype = JS_STRING ];
+  string BlocksmithAccountAddress = 5;
+  int64 PopChange = 6 [ jstype = JS_STRING ];
+  int64 PreviousBlockID = 7;
 }
 
 // GetBlockRequest create request for single block

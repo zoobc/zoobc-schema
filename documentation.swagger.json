@@ -663,49 +663,17 @@
     },
     "modelBlockExtendedInfo": {
       "type": "object",
-      "title": "BlockExtendedInfo represent the block data structure stored in the database\nplus some extra info useful for external applications",
+      "title": "BlockExtendedInfo represent the Block data plus part of block data not to be persisted to database",
       "properties": {
-        "BlockSeed": {
-          "type": "string",
-          "format": "byte"
-        },
-        "BlockSignature": {
-          "type": "string",
-          "format": "byte"
+        "Block": {
+          "$ref": "#/definitions/modelBlock"
         },
         "BlocksmithAccountAddress": {
           "type": "string"
         },
-        "BlocksmithPublicKey": {
-          "type": "string",
-          "format": "byte"
-        },
-        "CumulativeDifficulty": {
-          "type": "string"
-        },
-        "Height": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "ID": {
-          "type": "string",
-          "format": "int64"
-        },
-        "PayloadHash": {
-          "type": "string",
-          "format": "byte"
-        },
-        "PayloadLength": {
-          "type": "integer",
-          "format": "int64"
-        },
         "PopChange": {
           "type": "string",
           "format": "int64"
-        },
-        "PreviousBlockHash": {
-          "type": "string",
-          "format": "byte"
         },
         "PreviousBlockID": {
           "type": "string",
@@ -715,37 +683,12 @@
           "type": "string",
           "format": "int64"
         },
-        "SmithScale": {
-          "type": "string",
-          "format": "int64"
-        },
-        "Timestamp": {
-          "type": "string",
-          "format": "int64"
-        },
-        "TotalAmount": {
-          "type": "string",
-          "format": "int64"
-        },
-        "TotalCoinBase": {
-          "type": "string",
-          "format": "int64"
-        },
-        "TotalFee": {
-          "type": "string",
-          "format": "int64"
-        },
         "TotalReceipts": {
           "type": "string",
           "format": "int64"
         },
         "TotalReward": {
           "type": "string",
-          "format": "int64",
-          "title": "computed fields (not persisted in block table)"
-        },
-        "Version": {
-          "type": "integer",
           "format": "int64"
         }
       }
