@@ -10,14 +10,14 @@ import "model/empty.proto";
 import "model/block.proto";
 import "model/blockchain.proto";
 import "model/transaction.proto";
-import "model/receipt.proto";
+import "model/batchReceipt.proto";
 
 service P2PCommunication {
     rpc GetPeerInfo(model.GetPeerInfoRequest) returns (model.Node) {}
     rpc GetMorePeers(model.Empty) returns (model.GetMorePeersResponse) {}
     rpc SendPeers(model.SendPeersRequest) returns (model.Empty) {}
-    rpc SendBlock (model.SendBlockRequest) returns (model.Receipt) {}
-    rpc SendTransaction (model.SendTransactionRequest) returns (model.Receipt) {}
+    rpc SendBlock (model.SendBlockRequest) returns (model.BatchReceipt) {}
+    rpc SendTransaction (model.SendTransactionRequest) returns (model.BatchReceipt) {}
 
     rpc GetCumulativeDifficulty(model.GetCumulativeDifficultyRequest) returns (model.GetCumulativeDifficultyResponse){}
     rpc GetCommonMilestoneBlockIDs(model.GetCommonMilestoneBlockIdsRequest) returns (model.GetCommonMilestoneBlockIdsResponse) {}

@@ -5,7 +5,7 @@ package model;
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 import "model/transaction.proto";
-
+import "model/batchReceipt.proto";
 // Block represent the block data structure stored in the database
 message Block {
     int64 ID = 1 [jstype = JS_STRING];
@@ -82,4 +82,7 @@ message SendBlockRequest {
     Block Block = 1;
     int32 ChainType = 2;
     bytes SenderPublicKey = 3;
+}
+message SendBlockResponse {
+    BatchReceipt batchReceipt = 1;
 }

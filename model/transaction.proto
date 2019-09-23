@@ -5,6 +5,7 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 import "model/proofOfOwnership.proto";
 import "model/pagination.proto";
+import "model/batchReceipt.proto";
 
 
 // Transaction represent the transaction data structure stored in the database
@@ -137,4 +138,7 @@ message SendTransactionRequest {
     bytes TransactionBytes = 1;
     int32 ChainType = 2;
     bytes SenderPublicKey = 3;
+}
+message SendTransactionResponse {
+    BatchReceipt batchReceipt = 1;
 }
