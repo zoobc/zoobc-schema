@@ -675,19 +675,11 @@
           "type": "string",
           "format": "int64"
         },
-        "PreviousBlockID": {
-          "type": "string",
-          "format": "int64"
-        },
         "ReceiptValue": {
           "type": "string",
           "format": "int64"
         },
         "TotalReceipts": {
-          "type": "string",
-          "format": "int64"
-        },
-        "TotalReward": {
           "type": "string",
           "format": "int64"
         }

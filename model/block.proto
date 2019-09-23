@@ -29,12 +29,10 @@ message Block {
 // BlockExtendedInfo represent the Block data plus part of block data not to be persisted to database
 message BlockExtendedInfo {
   Block Block = 1;
-  int64 TotalReward = 2 [ jstype = JS_STRING ];
   int64 TotalReceipts = 3 [ jstype = JS_STRING ];
   int64 ReceiptValue = 4 [ jstype = JS_STRING ];
   string BlocksmithAccountAddress = 5;
   int64 PopChange = 6 [ jstype = JS_STRING ];
-  int64 PreviousBlockID = 7;
 }
 
 // GetBlockRequest create request for single block
