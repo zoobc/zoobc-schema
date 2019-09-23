@@ -139,7 +139,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelBlock"
+              "$ref": "#/definitions/modelBlockExtendedInfo"
             }
           }
         }
@@ -698,6 +698,30 @@
         }
       }
     },
+    "modelBlockExtendedInfo": {
+      "type": "object",
+      "title": "BlockExtendedInfo represent the Block data plus part of block data not to be persisted to database",
+      "properties": {
+        "Block": {
+          "$ref": "#/definitions/modelBlock"
+        },
+        "BlocksmithAccountAddress": {
+          "type": "string"
+        },
+        "PopChange": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReceiptValue": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TotalReceipts": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
     "modelBlockIdsResponse": {
       "type": "object",
       "properties": {
@@ -842,7 +866,7 @@
           "type": "array",
           "title": "Blocks returned",
           "items": {
-            "$ref": "#/definitions/modelBlock"
+            "$ref": "#/definitions/modelBlockExtendedInfo"
           }
         },
         "ChainType": {
@@ -1532,6 +1556,20 @@
           "type": "string"
         }
       }
+    }
+  },
+  "x-stream-definitions": {
+    "modelGetNodeHardwareResponse": {
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/runtimeStreamError"
+        },
+        "result": {
+          "$ref": "#/definitions/modelGetNodeHardwareResponse"
+        }
+      },
+      "title": "Stream result of modelGetNodeHardwareResponse",
+      "type": "object"
     }
   }
 }
