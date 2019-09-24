@@ -37,6 +37,25 @@ message Transaction {
     bytes Signature = 22;
 }
 
+enum TransactionType {
+    // in bytes: []byte{0,0,0,0}
+    EmptyTransaction = 0;
+    // in bytes: []byte{1,0,0,0}
+    SendMoneyTransaction = 1;
+    // in bytes: []byte{2,0,0,0}
+    NodeRegistrationTransaction = 2;
+    // in bytes: []byte{2,1,0,0}
+    UpdateNodeRegistrationTransaction = 258;
+    // in bytes: []byte{2,2,0,0}    
+    RemoveNodeRegistrationTransaction = 514;
+    // in bytes: []byte{2,3,0,0}
+    ClaimNodeRegistrationTransaction = 770;
+    // in bytes: []byte{3,0,0,0}
+    SetupAccountDatasetTransaction = 3;
+    // in bytes: []byte{3,1,0,0}
+    RemoveAccountDatasetTransaction = 259;
+}
+
 message EmptyTransactionBody {}
 
 message SendMoneyTransactionBody {
