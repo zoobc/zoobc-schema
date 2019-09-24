@@ -631,6 +631,12 @@
       "type": "object",
       "title": "Block represent the block data structure stored in the database",
       "properties": {
+        "BlockReceipts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelBlockReceipt"
+          }
+        },
         "BlockSeed": {
           "type": "string",
           "format": "byte"
@@ -731,6 +737,21 @@
             "type": "string",
             "format": "int64"
           }
+        }
+      }
+    },
+    "modelBlockReceipt": {
+      "type": "object",
+      "properties": {
+        "IntermediateHashes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "byte"
+          }
+        },
+        "Receipt": {
+          "$ref": "#/definitions/modelReceipt"
         }
       }
     },

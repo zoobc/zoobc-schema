@@ -1,11 +1,12 @@
 syntax = "proto3";
 
 package model;
-
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 import "model/transaction.proto";
 import "model/batchReceipt.proto";
+import "model/receipt.proto";
+
 // Block represent the block data structure stored in the database
 message Block {
   int64 ID = 1 [ jstype = JS_STRING ];
@@ -24,6 +25,12 @@ message Block {
   uint32 PayloadLength = 14;
   bytes PayloadHash = 15;
   repeated Transaction Transactions = 16;
+  repeated BlockReceipt BlockReceipts = 17;
+}
+
+message BlockReceipt {
+    Receipt Receipt = 1;
+    repeated bytes IntermediateHashes = 2;
 }
 
 // BlockExtendedInfo represent the Block data plus part of block data not to be persisted to database
