@@ -8,5 +8,4 @@ message Receipt {
     BatchReceipt batchReceipt = 1;
     bytes RMR = 2;
     uint32 RMRIndex = 3;
-    bytes RMRLinked = 4;
 }
