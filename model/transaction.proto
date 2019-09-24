@@ -159,5 +159,5 @@ message SendTransactionRequest {
     bytes SenderPublicKey = 3;
 }
 message SendTransactionResponse {
-    BatchReceipt batchReceipt = 1;
+    BatchReceipt BatchReceipt = 1;
 }
