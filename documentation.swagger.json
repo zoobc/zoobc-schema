@@ -1347,6 +1347,22 @@
         }
       }
     },
+    "modelReceipt": {
+      "type": "object",
+      "properties": {
+        "BatchReceipt": {
+          "$ref": "#/definitions/modelBatchReceipt"
+        },
+        "RMR": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RMRIndex": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
     "modelRemoveAccountDatasetTransactionBody": {
       "type": "object",
       "properties": {
@@ -1380,7 +1396,7 @@
     "modelSendBlockResponse": {
       "type": "object",
       "properties": {
-        "batchReceipt": {
+        "BatchReceipt": {
           "$ref": "#/definitions/modelBatchReceipt"
         }
       }
@@ -1397,7 +1413,7 @@
     "modelSendTransactionResponse": {
       "type": "object",
       "properties": {
-        "batchReceipt": {
+        "BatchReceipt": {
           "$ref": "#/definitions/modelBatchReceipt"
         }
       }
