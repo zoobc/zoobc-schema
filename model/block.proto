@@ -1,10 +1,10 @@
 syntax = "proto3";
 
 package model;
-
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 import "model/transaction.proto";
+import "model/batchReceipt.proto";
 import "model/receipt.proto";
 
 // Block represent the block data structure stored in the database
@@ -91,7 +91,10 @@ message GetNextBlocksRequest {
 message BlocksData { repeated Block NextBlocks = 1; }
 
 message SendBlockRequest {
-  Block Block = 1;
-  int32 ChainType = 2;
-  bytes SenderPublicKey = 3;
+    Block Block = 1;
+    int32 ChainType = 2;
+    bytes SenderPublicKey = 3;
+}
+message SendBlockResponse {
+    BatchReceipt BatchReceipt = 1;
 }
