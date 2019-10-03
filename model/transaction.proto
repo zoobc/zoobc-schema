@@ -66,7 +66,6 @@ message SendMoneyTransactionBody {
 message NodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
     string AccountAddress = 2;
-//    string  NodeAddress = 3;
     // Funds to be locked to register the node
     NodeAddress NodeAddress = 3;
     int64   LockedBalance = 4 [jstype = JS_STRING];
@@ -76,7 +75,6 @@ message NodeRegistrationTransactionBody {
 
 message UpdateNodeRegistrationTransactionBody {
     bytes   NodePublicKey = 1;
-//    string  NodeAddress = 2;
     // Funds to be locked to register the node
     NodeAddress NodeAddress = 2;
     int64   LockedBalance = 3 [jstype = JS_STRING];
