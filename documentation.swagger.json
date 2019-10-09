@@ -332,7 +332,13 @@
           },
           {
             "type": "string",
-            "name": "NodeAddress",
+            "name": "NodeAddress.Address",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "NodeAddress.Port",
             "in": "query"
           }
         ],
@@ -1189,6 +1195,18 @@
         }
       }
     },
+    "modelNodeAddress": {
+      "type": "object",
+      "properties": {
+        "Address": {
+          "type": "string"
+        },
+        "Port": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
     "modelNodeHardware": {
       "type": "object",
       "properties": {
@@ -1228,7 +1246,7 @@
           "format": "int64"
         },
         "NodeAddress": {
-          "type": "string"
+          "$ref": "#/definitions/modelNodeAddress"
         },
         "NodeID": {
           "type": "string",
@@ -1256,11 +1274,11 @@
         },
         "LockedBalance": {
           "type": "string",
-          "format": "int64",
-          "title": "Funds to be locked to register the node"
+          "format": "int64"
         },
         "NodeAddress": {
-          "type": "string"
+          "title": "string  NodeAddress = 3;\nFunds to be locked to register the node",
+          "$ref": "#/definitions/modelNodeAddress"
         },
         "NodePublicKey": {
           "type": "string",
@@ -1557,11 +1575,11 @@
       "properties": {
         "LockedBalance": {
           "type": "string",
-          "format": "int64",
-          "title": "Funds to be locked to register the node"
+          "format": "int64"
         },
         "NodeAddress": {
-          "type": "string"
+          "title": "string  NodeAddress = 2;\nFunds to be locked to register the node",
+          "$ref": "#/definitions/modelNodeAddress"
         },
         "NodePublicKey": {
           "type": "string",
