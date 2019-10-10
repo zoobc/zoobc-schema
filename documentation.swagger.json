@@ -1342,13 +1342,13 @@
           "type": "integer",
           "format": "int64"
         },
-        "Index": {
-          "type": "integer",
-          "format": "int64"
-        },
         "IntermediateHashes": {
           "type": "string",
           "format": "byte"
+        },
+        "PublishedIndex": {
+          "type": "integer",
+          "format": "int64"
         },
         "ReceiptIndex": {
           "type": "integer",
