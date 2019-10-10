@@ -631,12 +631,6 @@
       "type": "object",
       "title": "Block represent the block data structure stored in the database",
       "properties": {
-        "BlockReceipts": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/modelBlockReceipt"
-          }
-        },
         "BlockSeed": {
           "type": "string",
           "format": "byte"
@@ -671,6 +665,12 @@
         "PreviousBlockHash": {
           "type": "string",
           "format": "byte"
+        },
+        "PublishedReceipts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelPublishedReceipt"
+          }
         },
         "SmithScale": {
           "type": "string",
@@ -737,21 +737,6 @@
             "type": "string",
             "format": "int64"
           }
-        }
-      }
-    },
-    "modelBlockReceipt": {
-      "type": "object",
-      "properties": {
-        "IntermediateHashes": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "byte"
-          }
-        },
-        "Receipt": {
-          "$ref": "#/definitions/modelReceipt"
         }
       }
     },
@@ -1347,17 +1332,25 @@
         }
       }
     },
-    "modelReceipt": {
+    "modelPublishedReceipt": {
       "type": "object",
       "properties": {
         "BatchReceipt": {
           "$ref": "#/definitions/modelBatchReceipt"
         },
-        "RMR": {
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Index": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "IntermediateHashes": {
           "type": "string",
           "format": "byte"
         },
-        "RMRIndex": {
+        "ReceiptIndex": {
           "type": "integer",
           "format": "int64"
         }
