@@ -1145,8 +1145,8 @@
           "format": "int64"
         },
         "FeePerByte": {
-          "type": "integer",
-          "format": "int32"
+          "type": "string",
+          "format": "int64"
         },
         "ID": {
           "type": "string",
@@ -1262,7 +1262,7 @@
           "format": "int64"
         },
         "NodeAddress": {
-          "title": "string  NodeAddress = 3;\nFunds to be locked to register the node",
+          "title": "Funds to be locked to register the node",
           "$ref": "#/definitions/modelNodeAddress"
         },
         "NodePublicKey": {
@@ -1571,7 +1571,7 @@
           "format": "int64"
         },
         "NodeAddress": {
-          "title": "string  NodeAddress = 2;\nFunds to be locked to register the node",
+          "title": "Funds to be locked to register the node",
           "$ref": "#/definitions/modelNodeAddress"
         },
         "NodePublicKey": {
