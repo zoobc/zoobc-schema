@@ -817,9 +817,6 @@
     "modelClaimNodeRegistrationTransactionBody": {
       "type": "object",
       "properties": {
-        "AccountAddress": {
-          "type": "string"
-        },
         "NodePublicKey": {
           "type": "string",
           "format": "byte"
@@ -1568,10 +1565,10 @@
       "properties": {
         "LockedBalance": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "Funds to be locked to register the node"
         },
         "NodeAddress": {
-          "title": "Funds to be locked to register the node",
           "$ref": "#/definitions/modelNodeAddress"
         },
         "NodePublicKey": {
