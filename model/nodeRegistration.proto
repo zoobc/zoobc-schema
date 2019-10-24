@@ -24,8 +24,9 @@ message NodeRegistration {
 // GetNodeRegisterRequest create request to get a list of node registry
 message GetNodeRegistrationsRequest {
     /* Fetch Node Registries based on queue status 
-        true : will retrieve node registries that still pending
-        false: will retrieve node registries that already registered*/
+        2 : will retrieve node registries that have been deleted
+        1 : will retrieve node registries that still pending
+        0: will retrieve node registries that already registered*/
     uint32 RegistrationStatus = 1;
     // Fetch Node Registries when registration height is greater than or equal to
     uint32 MinRegistrationHeight = 2;
