@@ -1,7 +1,14 @@
 {
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
-  "schemes": ["http", "https"],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
   "swagger": "2.0",
   "info": {
     "title": "service/accountBalance.proto",
@@ -10,7 +17,9 @@
   "paths": {
     "/v1/account/GetAccountBalance": {
       "get": {
-        "tags": ["AccountBalanceService"],
+        "tags": [
+          "AccountBalanceService"
+        ],
         "operationId": "GetAccountBalance",
         "parameters": [
           {
@@ -32,7 +41,9 @@
     },
     "/v1/account/GetAccountBalances": {
       "get": {
-        "tags": ["AccountBalanceService"],
+        "tags": [
+          "AccountBalanceService"
+        ],
         "operationId": "GetAccountBalances",
         "parameters": [
           {
@@ -97,7 +108,9 @@
     },
     "/v1/block/GetBlock": {
       "get": {
-        "tags": ["BlockService"],
+        "tags": [
+          "BlockService"
+        ],
         "operationId": "GetBlock",
         "parameters": [
           {
@@ -134,7 +147,9 @@
     },
     "/v1/block/GetBlocks": {
       "get": {
-        "tags": ["BlockService"],
+        "tags": [
+          "BlockService"
+        ],
         "operationId": "GetBlocks",
         "parameters": [
           {
@@ -171,7 +186,9 @@
     },
     "/v1/host/GetHostInfo": {
       "get": {
-        "tags": ["HostService"],
+        "tags": [
+          "HostService"
+        ],
         "operationId": "GetHostInfo",
         "responses": {
           "200": {
@@ -185,7 +202,9 @@
     },
     "/v1/host/GetHostPeers": {
       "get": {
-        "tags": ["HostService"],
+        "tags": [
+          "HostService"
+        ],
         "operationId": "GetHostPeers",
         "responses": {
           "200": {
@@ -199,7 +218,9 @@
     },
     "/v1/mempool/GetMempoolTransaction": {
       "get": {
-        "tags": ["MempoolService"],
+        "tags": [
+          "MempoolService"
+        ],
         "operationId": "GetMempoolTransaction",
         "parameters": [
           {
@@ -222,7 +243,9 @@
     },
     "/v1/mempool/GetMempoolTransactions": {
       "get": {
-        "tags": ["MempoolService"],
+        "tags": [
+          "MempoolService"
+        ],
         "operationId": "GetMempoolTransactions",
         "parameters": [
           {
@@ -251,7 +274,10 @@
             "in": "query"
           },
           {
-            "enum": ["DESC", "ASC"],
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
             "type": "string",
             "default": "DESC",
             "name": "Pagination.OrderBy",
@@ -282,7 +308,9 @@
     },
     "/v1/nodeRegistration/GetNodeRegistration": {
       "get": {
-        "tags": ["NodeRegistrationService"],
+        "tags": [
+          "NodeRegistrationService"
+        ],
         "operationId": "GetNodeRegistration",
         "parameters": [
           {
@@ -326,13 +354,15 @@
     },
     "/v1/nodeRegistration/GetNodeRegistrations": {
       "get": {
-        "tags": ["NodeRegistrationService"],
+        "tags": [
+          "NodeRegistrationService"
+        ],
         "operationId": "GetNodeRegistrations",
         "parameters": [
           {
             "type": "integer",
             "format": "int64",
-            "description": "Fetch Node Registries based on queue status \ntrue : will retrieve node registries that still pending\nfalse: will retrieve node registries that already registered.",
+            "description": "Fetch Node Registries based on queue status \n2 : will retrieve node registries that have been deleted\n1 : will retrieve node registries that still pending\n0: will retrieve node registries that already registered.",
             "name": "RegistrationStatus",
             "in": "query"
           },
@@ -356,7 +386,10 @@
             "in": "query"
           },
           {
-            "enum": ["DESC", "ASC"],
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
             "type": "string",
             "default": "DESC",
             "name": "Pagination.OrderBy",
@@ -387,7 +420,9 @@
     },
     "/v1/nodeadmin/generateNodeKey": {
       "get": {
-        "tags": ["NodeAdminService"],
+        "tags": [
+          "NodeAdminService"
+        ],
         "operationId": "GenerateNodeKey",
         "responses": {
           "200": {
@@ -401,7 +436,9 @@
     },
     "/v1/nodeadmin/getProofOfOwnership": {
       "get": {
-        "tags": ["NodeAdminService"],
+        "tags": [
+          "NodeAdminService"
+        ],
         "operationId": "GetProofOfOwnership",
         "responses": {
           "200": {
@@ -415,7 +452,9 @@
     },
     "/v1/transaction/GetTransaction": {
       "get": {
-        "tags": ["TransactionService"],
+        "tags": [
+          "TransactionService"
+        ],
         "operationId": "GetTransaction",
         "parameters": [
           {
@@ -438,7 +477,9 @@
     },
     "/v1/transaction/GetTransactions": {
       "get": {
-        "tags": ["TransactionService"],
+        "tags": [
+          "TransactionService"
+        ],
         "operationId": "GetTransactions",
         "parameters": [
           {
@@ -476,7 +517,10 @@
             "in": "query"
           },
           {
-            "enum": ["DESC", "ASC"],
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
             "type": "string",
             "default": "DESC",
             "name": "Pagination.OrderBy",
@@ -507,7 +551,9 @@
     },
     "/v1/transaction/PostTransaction": {
       "post": {
-        "tags": ["TransactionService"],
+        "tags": [
+          "TransactionService"
+        ],
         "operationId": "PostTransaction",
         "responses": {
           "200": {
@@ -1229,7 +1275,10 @@
     "modelOrderBy": {
       "type": "string",
       "default": "DESC",
-      "enum": ["DESC", "ASC"]
+      "enum": [
+        "DESC",
+        "ASC"
+      ]
     },
     "modelPagination": {
       "type": "object",

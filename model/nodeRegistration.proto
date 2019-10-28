@@ -54,3 +54,12 @@ message GetNodeRegistrationRequest {
 message GetNodeRegistrationResponse {
     NodeRegistration NodeRegistration = 1;
 }
+
+enum NodeRegistrationState {
+    // NodeRegistered 'registred' node status (= 0): a node in node registry with this status is registered
+    NodeRegistered = 0;
+    // NodeQueued 'queued' node status (= 1): a node in node registry with this status is queued, or 'pending registered'
+    NodeQueued = 1;
+    // NodeDeleted 'deleted' node status (= 2): a node in node registry with this status is marked as deleted
+    NodeDeleted = 2;
+}
