@@ -360,10 +360,10 @@
         "operationId": "GetNodeRegistrations",
         "parameters": [
           {
-            "type": "boolean",
-            "format": "boolean",
-            "description": "Fetch Node Registries based on queue status \ntrue : will retrieve node registries that still pending\nfalse: will retrieve node registries that already registered.",
-            "name": "Queued",
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Node Registries based on queue status \n2 : will retrieve node registries that have been deleted\n1 : will retrieve node registries that still pending\n0: will retrieve node registries that already registered.",
+            "name": "RegistrationStatus",
             "in": "query"
           },
           {
@@ -817,9 +817,6 @@
     "modelClaimNodeRegistrationTransactionBody": {
       "type": "object",
       "properties": {
-        "AccountAddress": {
-          "type": "string"
-        },
         "NodePublicKey": {
           "type": "string",
           "format": "byte"
@@ -1241,11 +1238,11 @@
           "type": "string",
           "format": "byte"
         },
-        "Queued": {
-          "type": "boolean",
-          "format": "boolean"
-        },
         "RegistrationHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "RegistrationStatus": {
           "type": "integer",
           "format": "int64"
         }
@@ -1568,10 +1565,10 @@
       "properties": {
         "LockedBalance": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "Funds to be locked to register the node"
         },
         "NodeAddress": {
-          "title": "Funds to be locked to register the node",
           "$ref": "#/definitions/modelNodeAddress"
         },
         "NodePublicKey": {
@@ -1620,6 +1617,20 @@
           "type": "string"
         }
       }
+    }
+  },
+  "x-stream-definitions": {
+    "modelGetNodeHardwareResponse": {
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/runtimeStreamError"
+        },
+        "result": {
+          "$ref": "#/definitions/modelGetNodeHardwareResponse"
+        }
+      },
+      "title": "Stream result of modelGetNodeHardwareResponse",
+      "type": "object"
     }
   }
 }
