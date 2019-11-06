@@ -732,6 +732,12 @@
           "type": "string",
           "format": "int64"
         },
+        "SkippedBlocksmiths": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelSkippedBlocksmith"
+          }
+        },
         "TotalReceipts": {
           "type": "string",
           "format": "int64"
@@ -1453,6 +1459,27 @@
         "Value": {
           "type": "string",
           "title": "Value of property"
+        }
+      }
+    },
+    "modelSkippedBlocksmith": {
+      "type": "object",
+      "properties": {
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "BlocksmithIndex": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "BlocksmithPublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "POPChange": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },
