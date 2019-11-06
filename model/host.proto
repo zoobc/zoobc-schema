@@ -23,6 +23,7 @@ message HostInfo{
 	Host Host = 1;
 	repeated ChainStatus ChainStatuses = 2;
 	repeated Peer ScrambledNodes = 3;
+	uint32 ScrambledNodesHeight = 4;
 }
 
 message GetHostPeersResponse {
