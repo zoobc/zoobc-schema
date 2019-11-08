@@ -16,11 +16,14 @@ message Host {
 	map<string, Peer> KnownPeers = 4;
 	map<string, Peer> BlacklistedPeers = 5;
 	bool Stopped = 6;
+	repeated Peer PriorityPeers = 7;
 }
 
 message HostInfo{
 	Host Host = 1;
 	repeated ChainStatus ChainStatuses = 2;
+	repeated Peer ScrambledNodes = 3;
+	uint32 ScrambledNodesHeight = 4;
 }
 
 message GetHostPeersResponse {
