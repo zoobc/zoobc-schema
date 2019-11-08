@@ -1151,6 +1151,10 @@
           "type": "string",
           "format": "int64"
         },
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
         "FeePerByte": {
           "type": "string",
           "format": "int64"
