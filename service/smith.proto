@@ -1,0 +1,18 @@
+syntax="proto3";
+
+package service;
+
+option go_package = "github.com/zoobc/zoobc-core/common/service";
+
+import "model/empty.proto";
+import "model/smith.proto";
+import "google/api/annotations.proto";
+
+// SmithingService represent request on handle / get smithing process / statuses
+service SmithingService {
+    rpc GetSmithingStatus(model.Empty) returns (model.GetSmithingStatusResponse) {
+        option (google.api.http) = {
+            get: "/v1/smith/status"
+        };
+    }
+}

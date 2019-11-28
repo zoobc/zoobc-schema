@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package model;
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+// SmithingStatuses used to show statuses of node in smithing process
+enum SmithingStatuses {
+    Smithing = 0;
+    NotSmithing = 1;
+    StopSmithing = 2;
+}
+
+message GetSmithingStatusResponse {
+    SmithingStatuses SmithingStatus = 1;
+}
