@@ -9,7 +9,3 @@ enum SmithingStatuses {
     NotSmithing = 1;
     StopSmithing = 2;
 }
-
-message GetSmithingStatusResponse {
-    SmithingStatuses SmithingStatus = 1;
-}

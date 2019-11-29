@@ -7,6 +7,7 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 import "model/node.proto";
 import "model/peer.proto";
 import "model/blockchain.proto";
+import "model/smith.proto";
 
 // Host represent data sructure node and listed peers in node it's self 
 message Host {
@@ -24,6 +25,8 @@ message HostInfo{
 	repeated ChainStatus ChainStatuses = 2;
 	repeated Peer ScrambledNodes = 3;
 	uint32 ScrambledNodesHeight = 4;
+	SmithingStatuses SmithingStatus = 5;
+
 }
 
 message GetHostPeersResponse {

@@ -450,22 +450,6 @@
         }
       }
     },
-    "/v1/smith/status": {
-      "get": {
-        "tags": [
-          "SmithingService"
-        ],
-        "operationId": "GetSmithingStatus",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/modelGetSmithingStatusResponse"
-            }
-          }
-        }
-      }
-    },
     "/v1/transaction/GetTransaction": {
       "get": {
         "tags": [
@@ -1033,14 +1017,6 @@
         }
       }
     },
-    "modelGetSmithingStatusResponse": {
-      "type": "object",
-      "properties": {
-        "SmithingStatus": {
-          "$ref": "#/definitions/modelSmithingStatuses"
-        }
-      }
-    },
     "modelGetTransactionsResponse": {
       "type": "object",
       "properties": {
@@ -1122,6 +1098,9 @@
         "ScrambledNodesHeight": {
           "type": "integer",
           "format": "int64"
+        },
+        "SmithingStatus": {
+          "$ref": "#/definitions/modelSmithingStatuses"
         }
       }
     },
