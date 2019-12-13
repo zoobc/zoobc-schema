@@ -1,14 +1,1673 @@
-
-error: invalid command: mixin
-Usage: swagger [options] [command]
-
-Options:
-  -V, --version                                         output the version number
-  -h, --help                                            output usage information
-
-Commands:
-  project <action>                                      project actions
-  docs                                                  open Swagger documentation
-  validate [options] [swaggerFile]                      validate a Swagger document (supports unix piping)
-  convert [options] <swaggerFile> [apiDeclarations...]  Converts Swagger 1.2 documents to a Swagger 2.0 document
-  help [cmd]                                            display help for [cmd]
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "service/accountBalance.proto",
+    "version": "version not set"
+  },
+  "paths": {
+    "/v1/account/GetAccountBalance": {
+      "get": {
+        "tags": [
+          "AccountBalanceService"
+        ],
+        "operationId": "GetAccountBalance",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Fetch AccountBalance by type/address.",
+            "name": "AccountAddress",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetAccountBalanceResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/account/GetAccountBalances": {
+      "get": {
+        "tags": [
+          "AccountBalanceService"
+        ],
+        "operationId": "GetAccountBalances",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its balance (account balance \u003c  BalanceLowerThan).",
+            "name": "BalanceLowerThan",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its balance (account balance \u003e  BalanceHigherThan).",
+            "name": "BalanceHigherThan",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its spendablebalance (account spendablebalance \u003c  BalanceLowerThan).",
+            "name": "SpendableBalanceLowerThan",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its spendablebalance (account spendablebalance \u003e  BalanceHigherThan).",
+            "name": "SpendableBalanceHigherThan",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its spendablebalance (account spendablebalance \u003c  BalanceLowerThan).",
+            "name": "PopRevenueBalanceLowerThan",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its popRevenuebalance (account popRevenuebalance \u003e  BalanceHigherThan).",
+            "name": "PopRevenueBalanceHigherThan",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch AccountBalance by its Block height.",
+            "name": "BlockHeight",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetAccountBalancesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/block/GetBlock": {
+      "get": {
+        "tags": [
+          "BlockService"
+        ],
+        "operationId": "GetBlock",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number indicating chaintype.",
+            "name": "ChainType",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "description": "Block ID.",
+            "name": "ID",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "number of block to fetch.",
+            "name": "Height",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelBlockExtendedInfo"
+            }
+          }
+        }
+      }
+    },
+    "/v1/block/GetBlocks": {
+      "get": {
+        "tags": [
+          "BlockService"
+        ],
+        "operationId": "GetBlocks",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number indicating chaintype.",
+            "name": "ChainType",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of block to fetch.",
+            "name": "Limit",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch block from `n` height.",
+            "name": "Height",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetBlocksResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/host/GetHostInfo": {
+      "get": {
+        "tags": [
+          "HostService"
+        ],
+        "operationId": "GetHostInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelHostInfo"
+            }
+          }
+        }
+      }
+    },
+    "/v1/host/GetHostPeers": {
+      "get": {
+        "tags": [
+          "HostService"
+        ],
+        "operationId": "GetHostPeers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetHostPeersResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/mempool/GetMempoolTransaction": {
+      "get": {
+        "tags": [
+          "MempoolService"
+        ],
+        "operationId": "GetMempoolTransaction",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "int64",
+            "description": "Fetch Mempool Transaction by its TransactionBytes.",
+            "name": "ID",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetMempoolTransactionResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/mempool/GetMempoolTransactions": {
+      "get": {
+        "tags": [
+          "MempoolService"
+        ],
+        "operationId": "GetMempoolTransactions",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "int64",
+            "description": "Fetch Mempool transactions from arrival timestamp start from n.",
+            "name": "timestampStart",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "description": "Fetch Mempool transactions to arrival timestamp end until n.",
+            "name": "timestampEnd",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "SenderAddress and RecipientAddress.",
+            "name": "address",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetMempoolTransactionsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nodeRegistration/GetNodeRegistration": {
+      "get": {
+        "tags": [
+          "NodeRegistrationService"
+        ],
+        "operationId": "GetNodeRegistration",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "byte",
+            "name": "NodePublicKey",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "AccountAddress",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "RegistrationHeight",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "NodeAddress.Address",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "NodeAddress.Port",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetNodeRegistrationResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nodeRegistration/GetNodeRegistrations": {
+      "get": {
+        "tags": [
+          "NodeRegistrationService"
+        ],
+        "operationId": "GetNodeRegistrations",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Node Registries based on queue status \n2 : will retrieve node registries that have been deleted\n1 : will retrieve node registries that still pending\n0: will retrieve node registries that already registered.",
+            "name": "RegistrationStatus",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Node Registries when registration height is greater than or equal to.",
+            "name": "MinRegistrationHeight",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Fetch Node Registries when registration height is less than or equal to.",
+            "name": "MaxRegistrationHeight",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetNodeRegistrationsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nodeadmin/generateNodeKey": {
+      "get": {
+        "tags": [
+          "NodeAdminService"
+        ],
+        "operationId": "GenerateNodeKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGenerateNodeKeyResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nodeadmin/getProofOfOwnership": {
+      "get": {
+        "tags": [
+          "NodeAdminService"
+        ],
+        "operationId": "GetProofOfOwnership",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelProofOfOwnership"
+            }
+          }
+        }
+      }
+    },
+    "/v1/transaction/GetTransaction": {
+      "get": {
+        "tags": [
+          "TransactionService"
+        ],
+        "operationId": "GetTransaction",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "int64",
+            "description": "Fetch Transaction by its ID.",
+            "name": "ID",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelTransaction"
+            }
+          }
+        }
+      }
+    },
+    "/v1/transaction/GetTransactions": {
+      "get": {
+        "tags": [
+          "TransactionService"
+        ],
+        "operationId": "GetTransactions",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "AccountAddress",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Height",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "name": "TimestampStart",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "name": "TimestampEnd",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "TransactionType",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetTransactionsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/transaction/PostTransaction": {
+      "post": {
+        "tags": [
+          "TransactionService"
+        ],
+        "operationId": "PostTransaction",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelPostTransactionResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "modelAccountBalance": {
+      "type": "object",
+      "title": "AccountBalance represent the transaction data structure stored in the database",
+      "properties": {
+        "AccountAddress": {
+          "type": "string"
+        },
+        "Balance": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "PopRevenue": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SpendableBalance": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "modelBatchReceipt": {
+      "type": "object",
+      "properties": {
+        "DatumHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "DatumType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "RMRLinked": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RecipientPublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RecipientSignature": {
+          "type": "string",
+          "format": "byte"
+        },
+        "ReferenceBlockHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "ReferenceBlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "SenderPublicKey": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "modelBlock": {
+      "type": "object",
+      "title": "Block represent the block data structure stored in the database",
+      "properties": {
+        "BlockHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "BlockSeed": {
+          "type": "string",
+          "format": "byte"
+        },
+        "BlockSignature": {
+          "type": "string",
+          "format": "byte"
+        },
+        "BlocksmithPublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "CumulativeDifficulty": {
+          "type": "string"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ID": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PayloadHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "PayloadLength": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "PreviousBlockHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "PublishedReceipts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelPublishedReceipt"
+          }
+        },
+        "Timestamp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TotalAmount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TotalCoinBase": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TotalFee": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Transactions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelTransaction"
+          }
+        },
+        "Version": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "modelBlockExtendedInfo": {
+      "type": "object",
+      "title": "BlockExtendedInfo represent the Block data plus part of block data not to be persisted to database",
+      "properties": {
+        "Block": {
+          "$ref": "#/definitions/modelBlock"
+        },
+        "BlocksmithAccountAddress": {
+          "type": "string"
+        },
+        "PopChange": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReceiptValue": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SkippedBlocksmiths": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelSkippedBlocksmith"
+          }
+        },
+        "TotalReceipts": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "modelBlockIdsResponse": {
+      "type": "object",
+      "properties": {
+        "BlockIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "modelBlocksData": {
+      "type": "object",
+      "properties": {
+        "NextBlocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelBlock"
+          }
+        }
+      }
+    },
+    "modelCPUInformation": {
+      "type": "object",
+      "properties": {
+        "CPUIndex": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "CacheSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "CoreID": {
+          "type": "string"
+        },
+        "Cores": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Family": {
+          "type": "string"
+        },
+        "Mhz": {
+          "type": "number",
+          "format": "double"
+        },
+        "Model": {
+          "type": "string"
+        },
+        "ModelName": {
+          "type": "string"
+        },
+        "UsedPercent": {
+          "type": "number",
+          "format": "double"
+        },
+        "VendorId": {
+          "type": "string"
+        }
+      }
+    },
+    "modelChainStatus": {
+      "type": "object",
+      "properties": {
+        "ChainType": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Integer indicating chaintype"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "LastBlock": {
+          "$ref": "#/definitions/modelBlock"
+        }
+      }
+    },
+    "modelClaimNodeRegistrationTransactionBody": {
+      "type": "object",
+      "properties": {
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Poown": {
+          "title": "Proof of ownership (message + signature)",
+          "$ref": "#/definitions/modelProofOfOwnership"
+        }
+      }
+    },
+    "modelEmpty": {
+      "type": "object",
+      "title": "Empty structure to represent empty parameter in proto"
+    },
+    "modelEmptyTransactionBody": {
+      "type": "object"
+    },
+    "modelGenerateNodeKeyResponse": {
+      "type": "object",
+      "properties": {
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "modelGetAccountBalanceResponse": {
+      "type": "object",
+      "properties": {
+        "AccountBalance": {
+          "$ref": "#/definitions/modelAccountBalance"
+        }
+      }
+    },
+    "modelGetAccountBalancesResponse": {
+      "type": "object",
+      "properties": {
+        "AccountBalance": {
+          "type": "array",
+          "title": "AccountBalances returned",
+          "items": {
+            "$ref": "#/definitions/modelAccountBalance"
+          }
+        },
+        "AccountBalanceSize": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of accounts returned"
+        }
+      }
+    },
+    "modelGetBlocksResponse": {
+      "type": "object",
+      "properties": {
+        "Blocks": {
+          "type": "array",
+          "title": "Blocks returned",
+          "items": {
+            "$ref": "#/definitions/modelBlockExtendedInfo"
+          }
+        },
+        "ChainType": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Number indicating chaintype"
+        },
+        "Count": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of block returned"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Blocks height returned from"
+        }
+      }
+    },
+    "modelGetCommonMilestoneBlockIdsResponse": {
+      "type": "object",
+      "properties": {
+        "BlockIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "Last": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "modelGetCumulativeDifficultyResponse": {
+      "type": "object",
+      "properties": {
+        "CumulativeDifficulty": {
+          "type": "string"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "modelGetHostPeersResponse": {
+      "type": "object",
+      "properties": {
+        "ResolvedPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        },
+        "UnresolvedPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        }
+      }
+    },
+    "modelGetMempoolTransactionResponse": {
+      "type": "object",
+      "properties": {
+        "transaction": {
+          "$ref": "#/definitions/modelMempoolTransaction"
+        }
+      }
+    },
+    "modelGetMempoolTransactionsResponse": {
+      "type": "object",
+      "properties": {
+        "MempoolTransactions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelMempoolTransaction"
+          }
+        },
+        "Total": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "modelGetMorePeersResponse": {
+      "type": "object",
+      "properties": {
+        "Peers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelNode"
+          }
+        }
+      }
+    },
+    "modelGetNodeHardwareResponse": {
+      "type": "object",
+      "properties": {
+        "NodeHardware": {
+          "$ref": "#/definitions/modelNodeHardware"
+        }
+      }
+    },
+    "modelGetNodeRegistrationResponse": {
+      "type": "object",
+      "properties": {
+        "NodeRegistration": {
+          "$ref": "#/definitions/modelNodeRegistration"
+        }
+      }
+    },
+    "modelGetNodeRegistrationsResponse": {
+      "type": "object",
+      "properties": {
+        "NodeRegistrations": {
+          "type": "array",
+          "title": "NodeRegistrations list of NodeRegistration",
+          "items": {
+            "$ref": "#/definitions/modelNodeRegistration"
+          }
+        },
+        "Total": {
+          "type": "string",
+          "format": "uint64",
+          "title": "Number of node registry in total"
+        }
+      }
+    },
+    "modelGetTransactionsResponse": {
+      "type": "object",
+      "properties": {
+        "Total": {
+          "type": "string",
+          "format": "uint64",
+          "title": "Number of transactions in total"
+        },
+        "Transactions": {
+          "type": "array",
+          "title": "Transaction transactions returned",
+          "items": {
+            "$ref": "#/definitions/modelTransaction"
+          }
+        }
+      }
+    },
+    "modelHost": {
+      "type": "object",
+      "title": "Host represent data sructure node and listed peers in node it's self",
+      "properties": {
+        "BlacklistedPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        },
+        "Info": {
+          "$ref": "#/definitions/modelNode"
+        },
+        "KnownPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        },
+        "ResolvedPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        },
+        "Stopped": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "UnresolvedPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        }
+      }
+    },
+    "modelHostInfo": {
+      "type": "object",
+      "properties": {
+        "ChainStatuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelChainStatus"
+          }
+        },
+        "Host": {
+          "$ref": "#/definitions/modelHost"
+        },
+        "PriorityPeers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        },
+        "ScrambledNodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelPeer"
+          }
+        },
+        "ScrambledNodesHeight": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "modelHostInformation": {
+      "type": "object",
+      "properties": {
+        "HostID": {
+          "type": "string"
+        },
+        "HostName": {
+          "type": "string"
+        },
+        "NumberOfRunningProcess": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "OS": {
+          "type": "string"
+        },
+        "Platform": {
+          "type": "string"
+        },
+        "PlatformFamily": {
+          "type": "string"
+        },
+        "PlatformVersion": {
+          "type": "string"
+        },
+        "Uptime": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "modelMemoryInformation": {
+      "type": "object",
+      "properties": {
+        "Available": {
+          "type": "string",
+          "format": "uint64",
+          "title": "RAM available for programs to allocate"
+        },
+        "Free": {
+          "description": "This is the kernel's notion of free memory; RAM chips whose bits nobody\ncares about the value of right now. For a human consumable number,\nAvailable is what you really want.",
+          "type": "string",
+          "format": "uint64"
+        },
+        "Total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "Used": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "UsedPercent": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "modelMempoolTransaction": {
+      "type": "object",
+      "title": "Mempool represent the mempool data structure stored in the database",
+      "properties": {
+        "ArrivalTimestamp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "FeePerByte": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ID": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RecipientAccountAddress": {
+          "type": "string"
+        },
+        "SenderAccountAddress": {
+          "type": "string"
+        },
+        "TransactionBytes": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "modelNode": {
+      "type": "object",
+      "title": "NodeInfo represent the node information data structure",
+      "properties": {
+        "Address": {
+          "type": "string"
+        },
+        "ID": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Port": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "SharedAddress": {
+          "type": "string"
+        }
+      }
+    },
+    "modelNodeAddress": {
+      "type": "object",
+      "properties": {
+        "Address": {
+          "type": "string"
+        },
+        "Port": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "modelNodeHardware": {
+      "type": "object",
+      "properties": {
+        "CPUInformation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelCPUInformation"
+          }
+        },
+        "HostInformation": {
+          "$ref": "#/definitions/modelHostInformation"
+        },
+        "MemoryInformation": {
+          "$ref": "#/definitions/modelMemoryInformation"
+        },
+        "StorageInformation": {
+          "$ref": "#/definitions/modelStorageInformation"
+        }
+      }
+    },
+    "modelNodeRegistration": {
+      "type": "object",
+      "properties": {
+        "AccountAddress": {
+          "type": "string"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "LockedBalance": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NodeAddress": {
+          "$ref": "#/definitions/modelNodeAddress"
+        },
+        "NodeID": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RegistrationHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "RegistrationStatus": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "modelNodeRegistrationTransactionBody": {
+      "type": "object",
+      "properties": {
+        "AccountAddress": {
+          "type": "string"
+        },
+        "LockedBalance": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NodeAddress": {
+          "title": "Funds to be locked to register the node",
+          "$ref": "#/definitions/modelNodeAddress"
+        },
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Poown": {
+          "title": "Proof of ownership (message + signature)",
+          "$ref": "#/definitions/modelProofOfOwnership"
+        }
+      }
+    },
+    "modelOrderBy": {
+      "type": "string",
+      "default": "DESC",
+      "enum": [
+        "DESC",
+        "ASC"
+      ]
+    },
+    "modelPagination": {
+      "type": "object",
+      "properties": {
+        "Limit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "OrderBy": {
+          "$ref": "#/definitions/modelOrderBy"
+        },
+        "OrderField": {
+          "type": "string"
+        },
+        "Page": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "modelPeer": {
+      "type": "object",
+      "properties": {
+        "BlacklistingCause": {
+          "type": "string"
+        },
+        "BlacklistingTime": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "Info": {
+          "$ref": "#/definitions/modelNode"
+        },
+        "LastInboundRequest": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "LastUpdated": {
+          "type": "string",
+          "format": "int64"
+        },
+        "connectionAttempted": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "modelPostTransactionResponse": {
+      "type": "object",
+      "properties": {
+        "Transaction": {
+          "$ref": "#/definitions/modelTransaction"
+        }
+      }
+    },
+    "modelProofOfOwnership": {
+      "type": "object",
+      "properties": {
+        "MessageBytes": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Signature": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "modelPublishedReceipt": {
+      "type": "object",
+      "properties": {
+        "BatchReceipt": {
+          "$ref": "#/definitions/modelBatchReceipt"
+        },
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "IntermediateHashes": {
+          "type": "string",
+          "format": "byte"
+        },
+        "PublishedIndex": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ReceiptIndex": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "modelRemoveAccountDatasetTransactionBody": {
+      "type": "object",
+      "properties": {
+        "Property": {
+          "type": "string",
+          "title": "Property name"
+        },
+        "RecipientAccountAddress": {
+          "type": "string",
+          "title": "Account Address that got property of Dataset"
+        },
+        "SetterAccountAddress": {
+          "type": "string",
+          "title": "Account Address that set Dataset"
+        },
+        "Value": {
+          "type": "string",
+          "title": "Value of property"
+        }
+      }
+    },
+    "modelRemoveNodeRegistrationTransactionBody": {
+      "type": "object",
+      "properties": {
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "modelSendBlockResponse": {
+      "type": "object",
+      "properties": {
+        "BatchReceipt": {
+          "$ref": "#/definitions/modelBatchReceipt"
+        }
+      }
+    },
+    "modelSendMoneyTransactionBody": {
+      "type": "object",
+      "properties": {
+        "Amount": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "modelSendTransactionResponse": {
+      "type": "object",
+      "properties": {
+        "BatchReceipt": {
+          "$ref": "#/definitions/modelBatchReceipt"
+        }
+      }
+    },
+    "modelSetupAccountDatasetTransactionBody": {
+      "type": "object",
+      "properties": {
+        "MuchTime": {
+          "type": "string",
+          "format": "uint64",
+          "title": "How long Dataset will active in second"
+        },
+        "Property": {
+          "type": "string",
+          "title": "Property name"
+        },
+        "RecipientAccountAddress": {
+          "type": "string",
+          "title": "Account Address that got property of Dataset"
+        },
+        "SetterAccountAddress": {
+          "type": "string",
+          "title": "Account Address that set Dataset"
+        },
+        "Value": {
+          "type": "string",
+          "title": "Value of property"
+        }
+      }
+    },
+    "modelSkippedBlocksmith": {
+      "type": "object",
+      "properties": {
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "BlocksmithIndex": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "BlocksmithPublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "POPChange": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "modelStorageInformation": {
+      "type": "object",
+      "properties": {
+        "Free": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "FsType": {
+          "type": "string"
+        },
+        "Total": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "Used": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "UsedPercent": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "modelTransaction": {
+      "type": "object",
+      "title": "Transaction represent the transaction data structure stored in the database",
+      "properties": {
+        "BlockID": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Fee": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ID": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RecipientAccountAddress": {
+          "type": "string"
+        },
+        "SenderAccountAddress": {
+          "type": "string"
+        },
+        "Signature": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Timestamp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TransactionBodyBytes": {
+          "type": "string",
+          "format": "byte"
+        },
+        "TransactionBodyLength": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "TransactionHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "TransactionIndex": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "TransactionType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Version": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "claimNodeRegistrationTransactionBody": {
+          "$ref": "#/definitions/modelClaimNodeRegistrationTransactionBody"
+        },
+        "emptyTransactionBody": {
+          "$ref": "#/definitions/modelEmptyTransactionBody"
+        },
+        "nodeRegistrationTransactionBody": {
+          "$ref": "#/definitions/modelNodeRegistrationTransactionBody"
+        },
+        "removeAccountDatasetTransactionBody": {
+          "$ref": "#/definitions/modelRemoveAccountDatasetTransactionBody"
+        },
+        "removeNodeRegistrationTransactionBody": {
+          "$ref": "#/definitions/modelRemoveNodeRegistrationTransactionBody"
+        },
+        "sendMoneyTransactionBody": {
+          "$ref": "#/definitions/modelSendMoneyTransactionBody"
+        },
+        "setupAccountDatasetTransactionBody": {
+          "$ref": "#/definitions/modelSetupAccountDatasetTransactionBody"
+        },
+        "updateNodeRegistrationTransactionBody": {
+          "$ref": "#/definitions/modelUpdateNodeRegistrationTransactionBody"
+        }
+      }
+    },
+    "modelUpdateNodeRegistrationTransactionBody": {
+      "type": "object",
+      "properties": {
+        "LockedBalance": {
+          "type": "string",
+          "format": "int64",
+          "title": "Funds to be locked to register the node"
+        },
+        "NodeAddress": {
+          "$ref": "#/definitions/modelNodeAddress"
+        },
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Poown": {
+          "title": "Proof of ownership (message + signature)",
+          "$ref": "#/definitions/modelProofOfOwnership"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeStreamError": {
+      "type": "object",
+      "properties": {
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "grpc_code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "http_code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "http_status": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
