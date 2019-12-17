@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package model;
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+import "model/event.proto";
+
+message AccountLedger {
+    string SenderAddress = 1;
+    string ReceiverAddress = 2;
+    string AccountBalance = 3;
+    uint32 BlockHeight = 4;
+    EventType EventType = 5;
+}

@@ -3,7 +3,7 @@ syntax = "proto3";
 package model;
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
-enum Event {
+enum EventType {
     All = 0;
     EventSendMoneyTransaction = 1;
     EventNodeRegistrationTransaction = 2;
