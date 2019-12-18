@@ -682,10 +682,6 @@
             "$ref": "#/definitions/modelPublishedReceipt"
           }
         },
-        "SmithScale": {
-          "type": "string",
-          "format": "int64"
-        },
         "Timestamp": {
           "type": "string",
           "format": "int64"
