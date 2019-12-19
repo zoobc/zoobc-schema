@@ -4,13 +4,12 @@ package model;
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 enum EventType {
-    All = 0;
-    EventSendMoneyTransaction = 1;
-    EventNodeRegistrationTransaction = 2;
-    EventUpdateNodeRegistrationTransaction = 3;
-    EventRemoveNodeRegistrationTransaction = 4;
-    EventClaimNodeRegistrationTransaction = 5;
-    EventSetupAccountDatasetTransaction = 6;
-    EventRemoveAccountDatasetTransaction = 7;
-    EventCoinbase = 8;
+    EventSendMoneyTransaction = 0;
+    EventNodeRegistrationTransaction = 1;
+    EventUpdateNodeRegistrationTransaction = 2;
+    EventRemoveNodeRegistrationTransaction = 3;
+    EventClaimNodeRegistrationTransaction = 4;
+    EventSetupAccountDatasetTransaction = 5;
+    EventRemoveAccountDatasetTransaction = 6;
+    EventReward = 7;
 }
