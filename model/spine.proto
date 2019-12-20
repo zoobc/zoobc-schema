@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package model;
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+// Block represent the block data structure stored in the database
+message SpinePublicKey {
+  bytes   NodePublicKey = 1;
+  uint32  RegistrationStatus = 2;
+  bool Latest = 8;
+  uint32 Height = 9;
+}
