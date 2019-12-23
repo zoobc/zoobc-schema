@@ -5,8 +5,14 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 // Block represent the block data structure stored in the database
 message SpinePublicKey {
-  bytes   NodePublicKey = 1;
-  uint32  RegistrationStatus = 2;
+  bytes NodePublicKey = 1;
+  SpinePublicKeyAction PublicKeyAction = 2;
   bool Latest = 8;
   uint32 Height = 9;
+}
+
+// RequestType used to sign a node administration request
+enum SpinePublicKeyAction {
+  AddKey = 0;
+  RemoveKey = 1;
 }
