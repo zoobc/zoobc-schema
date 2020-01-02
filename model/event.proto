@@ -4,7 +4,7 @@ package model;
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 enum EventType {
-    Any = 0; // For Request filter purposes
+    EventAny = 0; // For Request filter purposes
     EventSendMoneyTransaction = 1;
     EventNodeRegistrationTransaction = 2;
     EventUpdateNodeRegistrationTransaction = 3;
