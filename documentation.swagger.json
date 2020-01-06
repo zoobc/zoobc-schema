@@ -1520,6 +1520,10 @@
       "type": "object",
       "title": "Block represent the block data structure stored in the database",
       "properties": {
+        "BlockID": {
+          "type": "string",
+          "format": "int64"
+        },
         "Height": {
           "type": "integer",
           "format": "int64"
