@@ -1343,7 +1343,8 @@
         },
         "BlacklistingTime": {
           "type": "string",
-          "format": "uint64"
+          "format": "uint64",
+          "title": "BlacklistingTime is timestamp when a peer start in list of blacklist peers"
         },
         "Info": {
           "$ref": "#/definitions/modelNode"
@@ -1352,9 +1353,15 @@
           "type": "integer",
           "format": "int64"
         },
-        "LastUpdated": {
+        "ResolvingTime": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "ResolvingTime is timestamp when a peer start in list of resolved peers"
+        },
+        "UnresolvingTime": {
+          "type": "string",
+          "format": "int64",
+          "title": "UnresolvingTime is timestamp when a peer start in list of unresolved peers"
         },
         "connectionAttempted": {
           "type": "integer",
