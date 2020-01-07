@@ -778,6 +778,12 @@
             "$ref": "#/definitions/modelPublishedReceipt"
           }
         },
+        "SpinePublicKeys": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelSpinePublicKey"
+          }
+        },
         "Timestamp": {
           "type": "string",
           "format": "int64"
@@ -1638,6 +1644,40 @@
         }
       }
     },
+    "modelSpinePublicKey": {
+      "type": "object",
+      "title": "Block represent the block data structure stored in the database",
+      "properties": {
+        "BlockID": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "PublicKeyAction": {
+          "$ref": "#/definitions/modelSpinePublicKeyAction"
+        }
+      }
+    },
+    "modelSpinePublicKeyAction": {
+      "type": "string",
+      "title": "RequestType used to sign a node administration request",
+      "default": "AddKey",
+      "enum": [
+        "AddKey",
+        "RemoveKey"
+      ]
+    },
     "modelStorageInformation": {
       "type": "object",
       "properties": {
@@ -1803,6 +1843,20 @@
           "type": "string"
         }
       }
+    }
+  },
+  "x-stream-definitions": {
+    "modelGetNodeHardwareResponse": {
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/runtimeStreamError"
+        },
+        "result": {
+          "$ref": "#/definitions/modelGetNodeHardwareResponse"
+        }
+      },
+      "title": "Stream result of modelGetNodeHardwareResponse",
+      "type": "object"
     }
   }
 }
