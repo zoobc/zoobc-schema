@@ -15,6 +15,79 @@
     "version": "version not set"
   },
   "paths": {
+    "/v1/account-ledger/GetAccountLedgers": {
+      "get": {
+        "tags": [
+          "AccountLedgerService"
+        ],
+        "operationId": "GetAccountLedgers",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "AccountAddress",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "EventAny",
+              "EventSendMoneyTransaction",
+              "EventNodeRegistrationTransaction",
+              "EventUpdateNodeRegistrationTransaction",
+              "EventRemoveNodeRegistrationTransaction",
+              "EventClaimNodeRegistrationTransaction",
+              "EventSetupAccountDatasetTransaction",
+              "EventRemoveAccountDatasetTransaction",
+              "EventReward"
+            ],
+            "type": "string",
+            "default": "EventAny",
+            "name": "EventType",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "int64",
+            "name": "TransactionID",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetAccountLedgersResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/account/GetAccountBalance": {
       "get": {
         "tags": [
@@ -596,6 +669,29 @@
         }
       }
     },
+    "modelAccountLedger": {
+      "type": "object",
+      "properties": {
+        "AccountAddress": {
+          "type": "string"
+        },
+        "BalanceChange": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "EventType": {
+          "$ref": "#/definitions/modelEventType"
+        },
+        "TransactionID": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
     "modelBatchReceipt": {
       "type": "object",
       "properties": {
@@ -840,6 +936,21 @@
     "modelEmptyTransactionBody": {
       "type": "object"
     },
+    "modelEventType": {
+      "type": "string",
+      "default": "EventAny",
+      "enum": [
+        "EventAny",
+        "EventSendMoneyTransaction",
+        "EventNodeRegistrationTransaction",
+        "EventUpdateNodeRegistrationTransaction",
+        "EventRemoveNodeRegistrationTransaction",
+        "EventClaimNodeRegistrationTransaction",
+        "EventSetupAccountDatasetTransaction",
+        "EventRemoveAccountDatasetTransaction",
+        "EventReward"
+      ]
+    },
     "modelGenerateNodeKeyResponse": {
       "type": "object",
       "properties": {
@@ -871,6 +982,23 @@
           "type": "integer",
           "format": "int64",
           "title": "Number of accounts returned"
+        }
+      }
+    },
+    "modelGetAccountLedgersResponse": {
+      "type": "object",
+      "properties": {
+        "AccountLedgers": {
+          "type": "array",
+          "title": "Transaction transactions returned",
+          "items": {
+            "$ref": "#/definitions/modelAccountLedger"
+          }
+        },
+        "Total": {
+          "type": "string",
+          "format": "uint64",
+          "title": "Number of transactions in total"
         }
       }
     },
