@@ -9,5 +9,4 @@ enum RequestType {
     GetNodeHardware = 0;
     GetProofOfOwnership = 1;
     GeneratetNodeKey = 2;
-    GetAccountLedgers = 3;
 }
