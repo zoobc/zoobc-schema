@@ -1648,10 +1648,6 @@
       "type": "object",
       "title": "Block represent the block data structure stored in the database",
       "properties": {
-        "BlockID": {
-          "type": "string",
-          "format": "int64"
-        },
         "Height": {
           "type": "integer",
           "format": "int64"
@@ -1659,6 +1655,10 @@
         "Latest": {
           "type": "boolean",
           "format": "boolean"
+        },
+        "MainBlockHeight": {
+          "type": "integer",
+          "format": "int64"
         },
         "NodePublicKey": {
           "type": "string",
@@ -1843,6 +1843,20 @@
           "type": "string"
         }
       }
+    }
+  },
+  "x-stream-definitions": {
+    "modelGetNodeHardwareResponse": {
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/runtimeStreamError"
+        },
+        "result": {
+          "$ref": "#/definitions/modelGetNodeHardwareResponse"
+        }
+      },
+      "title": "Stream result of modelGetNodeHardwareResponse",
+      "type": "object"
     }
   }
 }
