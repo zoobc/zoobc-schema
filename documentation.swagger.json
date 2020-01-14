@@ -52,6 +52,18 @@
           },
           {
             "type": "string",
+            "format": "uint64",
+            "name": "TimestampStart",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "TimestampEnd",
+            "in": "query"
+          },
+          {
+            "type": "string",
             "name": "Pagination.OrderField",
             "in": "query"
           },
@@ -685,6 +697,10 @@
         },
         "EventType": {
           "$ref": "#/definitions/modelEventType"
+        },
+        "Timestamp": {
+          "type": "string",
+          "format": "uint64"
         },
         "TransactionID": {
           "type": "string",
