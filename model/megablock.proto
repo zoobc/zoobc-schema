@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package model;
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+// Megablock represent the megablock data structure stored in the database
+message Megablock {
+  bytes FullSnapshotHash = 1;
+  uint32 SpineBlockHeight = 2;
+  uint32 MainBlockHeight = 3;
+}
