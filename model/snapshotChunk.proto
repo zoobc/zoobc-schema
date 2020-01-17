@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package model;
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+// SnapthotChunk represent the data structure stored in the database for a snapshot chunk
+message SnapshotChunk {
+  // ChunkHash hash of the chunk (if only one chunk, this is = FullSnapshotHash)
+  bytes ChunkHash = 1;
+  // ChunkIndex index of snapshot chunk
+  uint32 ChunkIndex = 2;
+  // PreviousChunkHash hash of the previous chunk (for validation and to ease
+  // the download process) Note: this will make it possible to download and
+  // rebuild the whole snapshot from its last chunk only
+  bytes PreviousChunkHash = 3;
+  // SpineBlockHeight spine block height which the chunk refers to
+  uint32 SpineBlockHeight = 4;
+}

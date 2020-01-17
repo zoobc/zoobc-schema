@@ -3,9 +3,20 @@ syntax = "proto3";
 package model;
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
+import "model/snapshotChunk.proto";
+
 // Megablock represent the megablock data structure stored in the database
 message Megablock {
+  // FullSnapshotHash hash of the full (completed) shapshot
   bytes FullSnapshotHash = 1;
-  uint32 SpineBlockHeight = 2;
-  uint32 MainBlockHeight = 3;
+  // ChunksCount number of chunks in this megablock
+  uint32 ChunksCount = 2;
+  // SpineBlockHeight spine block height that wil reference this megablock (in its payload)
+  uint32 SpineBlockHeight = 3;
+  // MainBlockHeight main block height at which the snapshot has been taken (started to compute)
+  // Note: this is not the last main height contained in the snapshot file, which shoul be
+  // MainBlockHeight - const.MinRollvackBlocks
+  uint32 MainBlockHeight = 4;
+  // SnapshotChunk (when loaded), all snapshot chunks in this megablock
+  repeated SnapshotChunk SnapshotChunks = 5;
 }
