@@ -776,6 +776,9 @@
           "type": "string",
           "format": "int64"
         },
+        "Megablock": {
+          "$ref": "#/definitions/modelMegablock"
+        },
         "PayloadHash": {
           "type": "string",
           "format": "byte"
@@ -1278,6 +1281,39 @@
         }
       }
     },
+    "modelMegablock": {
+      "type": "object",
+      "title": "Megablock represent the megablock data structure stored in the database",
+      "properties": {
+        "ChunksCount": {
+          "type": "integer",
+          "format": "int64",
+          "title": "ChunksCount number of chunks in this megablock"
+        },
+        "FullSnapshotHash": {
+          "type": "string",
+          "format": "byte",
+          "title": "FullSnapshotHash hash of the full (completed) shapshot"
+        },
+        "MainBlockHeight": {
+          "type": "integer",
+          "format": "int64",
+          "title": "MainBlockHeight main block height at which the snapshot has been taken (started to compute)\nNote: this is not the last main height contained in the snapshot file, which shoul be\nMainBlockHeight - const.MinRollvackBlocks"
+        },
+        "SnapshotChunks": {
+          "type": "array",
+          "title": "SnapshotChunk (when loaded), all snapshot chunks in this megablock",
+          "items": {
+            "$ref": "#/definitions/modelSnapshotChunk"
+          }
+        },
+        "SpineBlockHeight": {
+          "type": "integer",
+          "format": "int64",
+          "title": "SpineBlockHeight spine block height that wil reference this megablock (in its payload)"
+        }
+      }
+    },
     "modelMemoryInformation": {
       "type": "object",
       "properties": {
@@ -1657,6 +1693,32 @@
         "POPChange": {
           "type": "string",
           "format": "int64"
+        }
+      }
+    },
+    "modelSnapshotChunk": {
+      "type": "object",
+      "title": "SnapthotChunk represent the data structure stored in the database for a snapshot chunk",
+      "properties": {
+        "ChunkHash": {
+          "type": "string",
+          "format": "byte",
+          "title": "ChunkHash hash of the chunk (if only one chunk, this is = FullSnapshotHash)"
+        },
+        "ChunkIndex": {
+          "type": "integer",
+          "format": "int64",
+          "title": "ChunkIndex index of snapshot chunk"
+        },
+        "PreviousChunkHash": {
+          "type": "string",
+          "format": "byte",
+          "title": "PreviousChunkHash hash of the previous chunk (for validation and to ease\nthe download process) Note: this will make it possible to download and\nrebuild the whole snapshot from its last chunk only"
+        },
+        "SpineBlockHeight": {
+          "type": "integer",
+          "format": "int64",
+          "title": "SpineBlockHeight spine block height which the chunk refers to"
         }
       }
     },

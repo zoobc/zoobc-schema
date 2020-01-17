@@ -8,6 +8,7 @@ import "model/batchReceipt.proto";
 import "model/publishedReceipt.proto";
 import "model/skippedBlocksmith.proto";
 import "model/spine.proto";
+import "model/megablock.proto";
 
 // Block represent the block data structure stored in the database
 message Block {
@@ -29,6 +30,7 @@ message Block {
   repeated Transaction Transactions = 16;
   repeated PublishedReceipt PublishedReceipts = 17;
   repeated SpinePublicKey SpinePublicKeys = 18;
+  Megablock Megablock = 19;
 }
 
 // BlockExtendedInfo represent the Block data plus part of block data not to be persisted to database
