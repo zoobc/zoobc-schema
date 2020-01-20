@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package model;
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+// FileChunk represent the data structure stored in the database for a snapshot chunk
+message FileChunk {
+  // ChunkHash hash of the chunk (if only one chunk, this is = FullFileHash)
+  bytes ChunkHash = 1;
+  // MegablockID ref to relative Megablock
+  int64 MegablockID = 2 [ jstype = JS_STRING ];
+  // ChunkIndex index of snapshot chunk
+  uint32 ChunkIndex = 3;
+  // PreviousChunkHash hash of the previous chunk (for validation and to ease
+  // the download process) Note: this will make it possible to download and
+  // rebuild the whole snapshot from its last chunk only
+  bytes PreviousChunkHash = 4;
+  // SpineBlockHeight spine block height which the chunk refers to
+  uint32 SpineBlockHeight = 5;
+  // Number indicating chaintype (at the moment it can only be mainchain, but in future could be others)
+  int32 ChainType = 6;
+}

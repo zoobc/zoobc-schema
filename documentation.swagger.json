@@ -776,8 +776,11 @@
           "type": "string",
           "format": "int64"
         },
-        "Megablock": {
-          "$ref": "#/definitions/modelMegablock"
+        "Megablocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelMegablock"
+          }
         },
         "PayloadHash": {
           "type": "string",
@@ -975,6 +978,42 @@
         "EventRemoveAccountDatasetTransaction",
         "EventReward"
       ]
+    },
+    "modelFileChunk": {
+      "type": "object",
+      "title": "FileChunk represent the data structure stored in the database for a snapshot chunk",
+      "properties": {
+        "ChainType": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Number indicating chaintype (at the moment it can only be mainchain, but in future could be others)"
+        },
+        "ChunkHash": {
+          "type": "string",
+          "format": "byte",
+          "title": "ChunkHash hash of the chunk (if only one chunk, this is = FullFileHash)"
+        },
+        "ChunkIndex": {
+          "type": "integer",
+          "format": "int64",
+          "title": "ChunkIndex index of snapshot chunk"
+        },
+        "MegablockID": {
+          "type": "string",
+          "format": "int64",
+          "title": "MegablockID ref to relative Megablock"
+        },
+        "PreviousChunkHash": {
+          "type": "string",
+          "format": "byte",
+          "title": "PreviousChunkHash hash of the previous chunk (for validation and to ease\nthe download process) Note: this will make it possible to download and\nrebuild the whole snapshot from its last chunk only"
+        },
+        "SpineBlockHeight": {
+          "type": "integer",
+          "format": "int64",
+          "title": "SpineBlockHeight spine block height which the chunk refers to"
+        }
+      }
     },
     "modelGenerateNodeKeyResponse": {
       "type": "object",
@@ -1285,27 +1324,45 @@
       "type": "object",
       "title": "Megablock represent the megablock data structure stored in the database",
       "properties": {
-        "ChunksCount": {
+        "ChainType": {
           "type": "integer",
-          "format": "int64",
-          "title": "ChunksCount number of chunks in this megablock"
+          "format": "int32",
+          "title": "Number indicating chaintype (at the moment it can only be mainchain, but in future could be others)"
         },
-        "FullSnapshotHash": {
+        "FileChunks": {
+          "type": "array",
+          "title": "FileChunk (when loaded), all snapshot chunks in this megablock",
+          "items": {
+            "$ref": "#/definitions/modelFileChunk"
+          }
+        },
+        "FullFileHash": {
           "type": "string",
           "format": "byte",
-          "title": "FullSnapshotHash hash of the full (completed) shapshot"
+          "title": "FullFileHash hash of the full - completed (snapshot) file"
         },
-        "MainBlockHeight": {
+        "ID": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MegablockHeight": {
           "type": "integer",
           "format": "int64",
-          "title": "MainBlockHeight main block height at which the snapshot has been taken (started to compute)\nNote: this is not the last main height contained in the snapshot file, which shoul be\nMainBlockHeight - const.MinRollvackBlocks"
+          "title": "MegablockHeight height (on the mainchain) at which the (snapshot) file started been computed\nNote: this is not the last mainchain height contained in the snapshot file (that one should be = MegablockHeight - MinRollbackBlocks)"
         },
-        "SnapshotChunks": {
-          "type": "array",
-          "title": "SnapshotChunk (when loaded), all snapshot chunks in this megablock",
-          "items": {
-            "$ref": "#/definitions/modelSnapshotChunk"
-          }
+        "MegablockPayloadHash": {
+          "type": "string",
+          "format": "byte",
+          "title": "MegablockPayloadHash hash of megablock payload: sha512(snapshot chunk bytes)"
+        },
+        "MegablockPayloadLength": {
+          "type": "integer",
+          "format": "int64",
+          "title": "MegablockPayloadLength payload length of the megablock: len(snapshot chunk bytes)"
+        },
+        "MegablockType": {
+          "title": "MegablockType type of megablock",
+          "$ref": "#/definitions/modelMegablockType"
         },
         "SpineBlockHeight": {
           "type": "integer",
@@ -1313,6 +1370,14 @@
           "title": "SpineBlockHeight spine block height that wil reference this megablock (in its payload)"
         }
       }
+    },
+    "modelMegablockType": {
+      "type": "string",
+      "title": "MegablockType type of megablock (as of now only snapshot)",
+      "default": "Snapshot",
+      "enum": [
+        "Snapshot"
+      ]
     },
     "modelMemoryInformation": {
       "type": "object",
@@ -1693,32 +1758,6 @@
         "POPChange": {
           "type": "string",
           "format": "int64"
-        }
-      }
-    },
-    "modelSnapshotChunk": {
-      "type": "object",
-      "title": "SnapthotChunk represent the data structure stored in the database for a snapshot chunk",
-      "properties": {
-        "ChunkHash": {
-          "type": "string",
-          "format": "byte",
-          "title": "ChunkHash hash of the chunk (if only one chunk, this is = FullSnapshotHash)"
-        },
-        "ChunkIndex": {
-          "type": "integer",
-          "format": "int64",
-          "title": "ChunkIndex index of snapshot chunk"
-        },
-        "PreviousChunkHash": {
-          "type": "string",
-          "format": "byte",
-          "title": "PreviousChunkHash hash of the previous chunk (for validation and to ease\nthe download process) Note: this will make it possible to download and\nrebuild the whole snapshot from its last chunk only"
-        },
-        "SpineBlockHeight": {
-          "type": "integer",
-          "format": "int64",
-          "title": "SpineBlockHeight spine block height which the chunk refers to"
         }
       }
     },

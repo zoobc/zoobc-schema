@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package model;
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+import "model/megablock.proto";
+
+// SnapshotFileInfo model to pass data between snapshot and megablock interfaces
+message SnapshotFileInfo {
+    bytes SnapshotFileHash = 1;
+    bytes PrevFileChunkHash = 2;
+    uint32 MainHeight = 3;
+    uint32 SpineHeight = 4;
+    int32 ChainType = 5;
+    MegablockType MegablockType = 6;
+    repeated bytes FileChunksHashes = 7;
+}
