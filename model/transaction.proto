@@ -157,8 +157,8 @@ message SendTransactionRequest {
 message SendTransactionResponse { BatchReceipt BatchReceipt = 1; }
 
 
-// SendTransactionsRequest a model request of requesting transaction based on ID transactions 
-message RequestingTransactonsRequest {
+// RequestBlockTransactonsRequest a model request of requesting transaction based on ID transactions 
+message RequestBlockTransactonsRequest {
     repeated int64 TransactionIDs = 1;
     int32 ChainType = 2;
 }
