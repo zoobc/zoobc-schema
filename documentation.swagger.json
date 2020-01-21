@@ -822,6 +822,13 @@
           "type": "string",
           "format": "int64"
         },
+        "TransactionIDs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
         "Transactions": {
           "type": "array",
           "items": {
@@ -1708,6 +1715,7 @@
     },
     "modelSendTransactionResponse": {
       "type": "object",
+      "title": "SendTransactionResponse a model response of send a transaction in p2pCommunication service",
       "properties": {
         "BatchReceipt": {
           "$ref": "#/definitions/modelBatchReceipt"

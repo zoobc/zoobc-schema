@@ -31,6 +31,7 @@ message Block {
   repeated PublishedReceipt PublishedReceipts = 17;
   repeated SpinePublicKey SpinePublicKeys = 18;
   repeated Megablock Megablocks = 19;
+  repeated int64 TransactionIDs = 20;
 }
 
 // BlockExtendedInfo represent the Block data plus part of block data not to be persisted to database
