@@ -269,6 +269,22 @@
         }
       }
     },
+    "/v1/escrow/PostEscrowApprovalRequest": {
+      "post": {
+        "tags": [
+          "EscrowTransactionService"
+        ],
+        "operationId": "PostApprovalEscrowTransaction",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelTransaction"
+            }
+          }
+        }
+      }
+    },
     "/v1/host/GetHostInfo": {
       "get": {
         "tags": [
@@ -958,6 +974,37 @@
     "modelEmptyTransactionBody": {
       "type": "object"
     },
+    "modelEscrow": {
+      "type": "object",
+      "properties": {
+        "Amount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ApproverAddress": {
+          "type": "string"
+        },
+        "Commission": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ID": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RecipientAddress": {
+          "type": "string"
+        },
+        "SenderAddress": {
+          "type": "string"
+        },
+        "Timeout": {
+          "type": "string",
+          "format": "uint64",
+          "title": "Timeout is BlockHeight gap"
+        }
+      }
+    },
     "modelEventType": {
       "type": "string",
       "default": "EventAny",
@@ -1316,6 +1363,9 @@
         "BlockHeight": {
           "type": "integer",
           "format": "int64"
+        },
+        "Escrow": {
+          "$ref": "#/definitions/modelEscrow"
         },
         "FeePerByte": {
           "type": "string",
@@ -1726,6 +1776,10 @@
           "type": "string",
           "format": "int64"
         },
+        "Escrow": {
+          "title": "nullable",
+          "$ref": "#/definitions/modelEscrow"
+        },
         "Fee": {
           "type": "string",
           "format": "int64"
@@ -1859,20 +1913,6 @@
           "type": "string"
         }
       }
-    }
-  },
-  "x-stream-definitions": {
-    "modelGetNodeHardwareResponse": {
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/runtimeStreamError"
-        },
-        "result": {
-          "$ref": "#/definitions/modelGetNodeHardwareResponse"
-        }
-      },
-      "title": "Stream result of modelGetNodeHardwareResponse",
-      "type": "object"
     }
   }
 }
