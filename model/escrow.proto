@@ -13,7 +13,8 @@ message Escrow {
     // Timeout is BlockHeight gap 
     uint64 Timeout = 7 [ jstype = JS_STRING ];
     EscrowStatus Status = 8;
-    bool Latest = 9;
+    uint32 BlockHeight = 9;
+    bool Latest = 10;
 }
 enum EscrowStatus {
     Approved = 0;

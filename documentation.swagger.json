@@ -991,6 +991,10 @@
         "ApproverAddress": {
           "type": "string"
         },
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
         "Commission": {
           "type": "string",
           "format": "int64"
