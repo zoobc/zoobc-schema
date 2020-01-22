@@ -269,6 +269,22 @@
         }
       }
     },
+    "/v1/escrow/PostEscrowApprovalRequest": {
+      "post": {
+        "tags": [
+          "EscrowTransactionService"
+        ],
+        "operationId": "PostApprovalEscrowTransaction",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelTransaction"
+            }
+          }
+        }
+      }
+    },
     "/v1/host/GetHostInfo": {
       "get": {
         "tags": [
@@ -965,6 +981,57 @@
     "modelEmptyTransactionBody": {
       "type": "object"
     },
+    "modelEscrow": {
+      "type": "object",
+      "properties": {
+        "Amount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ApproverAddress": {
+          "type": "string"
+        },
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Commission": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ID": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "RecipientAddress": {
+          "type": "string"
+        },
+        "SenderAddress": {
+          "type": "string"
+        },
+        "Status": {
+          "$ref": "#/definitions/modelEscrowStatus"
+        },
+        "Timeout": {
+          "type": "string",
+          "format": "uint64",
+          "title": "Timeout is BlockHeight gap"
+        }
+      }
+    },
+    "modelEscrowStatus": {
+      "type": "string",
+      "default": "Approved",
+      "enum": [
+        "Approved",
+        "Rejected",
+        "Expired"
+      ]
+    },
     "modelEventType": {
       "type": "string",
       "default": "EventAny",
@@ -1323,6 +1390,9 @@
         "BlockHeight": {
           "type": "integer",
           "format": "int64"
+        },
+        "Escrow": {
+          "$ref": "#/definitions/modelEscrow"
         },
         "FeePerByte": {
           "type": "string",
@@ -1733,6 +1803,10 @@
         "BlockID": {
           "type": "string",
           "format": "int64"
+        },
+        "Escrow": {
+          "title": "nullable",
+          "$ref": "#/definitions/modelEscrow"
         },
         "Fee": {
           "type": "string",

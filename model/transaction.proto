@@ -7,6 +7,7 @@ import "model/proofOfOwnership.proto";
 import "model/pagination.proto";
 import "model/batchReceipt.proto";
 import "model/nodeRegistration.proto";
+import "model/escrow.proto";
 
 // Transaction represent the transaction data structure stored in the database
 message Transaction {
@@ -35,6 +36,8 @@ message Transaction {
         RemoveAccountDatasetTransactionBody removeAccountDatasetTransactionBody = 21;
     }
     bytes Signature = 22;
+    // nullable
+    Escrow Escrow = 23;
 }
 
 enum TransactionType {
