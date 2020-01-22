@@ -986,42 +986,6 @@
         "EventReward"
       ]
     },
-    "modelFileChunk": {
-      "type": "object",
-      "title": "FileChunk represent the data structure stored in the database for a snapshot chunk",
-      "properties": {
-        "ChainType": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Number indicating chaintype (at the moment it can only be mainchain, but in future could be others)"
-        },
-        "ChunkHash": {
-          "type": "string",
-          "format": "byte",
-          "title": "ChunkHash hash of the chunk (if only one chunk, this is = FullFileHash)"
-        },
-        "ChunkIndex": {
-          "type": "integer",
-          "format": "int64",
-          "title": "ChunkIndex index of snapshot chunk"
-        },
-        "MegablockID": {
-          "type": "string",
-          "format": "int64",
-          "title": "MegablockID ref to relative Megablock"
-        },
-        "PreviousChunkHash": {
-          "type": "string",
-          "format": "byte",
-          "title": "PreviousChunkHash hash of the previous chunk (for validation and to ease\nthe download process) Note: this will make it possible to download and\nrebuild the whole snapshot from its last chunk only"
-        },
-        "SpineBlockHeight": {
-          "type": "integer",
-          "format": "int64",
-          "title": "SpineBlockHeight spine block height which the chunk refers to"
-        }
-      }
-    },
     "modelGenerateNodeKeyResponse": {
       "type": "object",
       "properties": {
@@ -1336,12 +1300,15 @@
           "format": "int32",
           "title": "Number indicating chaintype (at the moment it can only be mainchain, but in future could be others)"
         },
-        "FileChunks": {
-          "type": "array",
-          "title": "FileChunk (when loaded), all snapshot chunks in this megablock",
-          "items": {
-            "$ref": "#/definitions/modelFileChunk"
-          }
+        "ExpirationTimestamp": {
+          "type": "string",
+          "format": "int64",
+          "title": "ExpirationTimestamp timestamp that marks the end of megablock processing"
+        },
+        "FileChunkHashes": {
+          "type": "string",
+          "format": "byte",
+          "title": "FileChunkHashes sequence of hashes (sha256 = 32 byte) of file chunks (sorted) referenced by the megablock"
         },
         "FullFileHash": {
           "type": "string",
@@ -1350,31 +1317,17 @@
         },
         "ID": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "ID computed as the little endian of the megablock hash (hash of all megablock fields but the ID)"
         },
         "MegablockHeight": {
           "type": "integer",
           "format": "int64",
           "title": "MegablockHeight height (on the mainchain) at which the (snapshot) file started been computed\nNote: this is not the last mainchain height contained in the snapshot file (that one should be = MegablockHeight - MinRollbackBlocks)"
         },
-        "MegablockPayloadHash": {
-          "type": "string",
-          "format": "byte",
-          "title": "MegablockPayloadHash hash of megablock payload: sha512(snapshot chunk bytes)"
-        },
-        "MegablockPayloadLength": {
-          "type": "integer",
-          "format": "int64",
-          "title": "MegablockPayloadLength payload length of the megablock: len(snapshot chunk bytes)"
-        },
         "MegablockType": {
           "title": "MegablockType type of megablock",
           "$ref": "#/definitions/modelMegablockType"
-        },
-        "SpineBlockHeight": {
-          "type": "integer",
-          "format": "int64",
-          "title": "SpineBlockHeight spine block height that wil reference this megablock (in its payload)"
         }
       }
     },
