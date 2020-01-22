@@ -12,13 +12,21 @@ message Escrow {
     int64 Commission = 6 [ jstype = JS_STRING ];
     // Timeout is BlockHeight gap 
     uint64 Timeout = 7 [ jstype = JS_STRING ];
+    EscrowStatus Status = 8;
+    bool Latest = 9;
 }
+enum EscrowStatus {
+    Approved = 0;
+    Rejected = 1;
+    Expired = 2;
+}
+
 enum EscrowApproval {
     Approve = 0;
     Reject = 1;
 }
+// PostEscrowApprovalRequest message for approval transaction escrow
 message PostEscrowApprovalRequest {
-//    EscrowApproval Approval
-//    int64 TransactionID
+    // ApprovalBytes format: [EscrowApproval][int64 TransactionID]
     bytes ApprovalBytes = 1;
 }

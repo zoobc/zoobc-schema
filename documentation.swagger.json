@@ -999,11 +999,18 @@
           "type": "string",
           "format": "int64"
         },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
+        },
         "RecipientAddress": {
           "type": "string"
         },
         "SenderAddress": {
           "type": "string"
+        },
+        "Status": {
+          "$ref": "#/definitions/modelEscrowStatus"
         },
         "Timeout": {
           "type": "string",
@@ -1011,6 +1018,15 @@
           "title": "Timeout is BlockHeight gap"
         }
       }
+    },
+    "modelEscrowStatus": {
+      "type": "string",
+      "default": "Approved",
+      "enum": [
+        "Approved",
+        "Rejected",
+        "Expired"
+      ]
     },
     "modelEventType": {
       "type": "string",
