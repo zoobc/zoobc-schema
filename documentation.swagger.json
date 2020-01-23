@@ -776,12 +776,6 @@
           "type": "string",
           "format": "int64"
         },
-        "Megablocks": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/modelMegablock"
-          }
-        },
         "PayloadHash": {
           "type": "string",
           "format": "byte"
@@ -798,6 +792,12 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/modelPublishedReceipt"
+          }
+        },
+        "SpineBlockManifests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelSpineBlockManifest"
           }
         },
         "SpinePublicKeys": {
@@ -1291,54 +1291,6 @@
         }
       }
     },
-    "modelMegablock": {
-      "type": "object",
-      "title": "Megablock represent the megablock data structure stored in the database",
-      "properties": {
-        "ChainType": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Number indicating chaintype (at the moment it can only be mainchain, but in future could be others)"
-        },
-        "ExpirationTimestamp": {
-          "type": "string",
-          "format": "int64",
-          "title": "ExpirationTimestamp timestamp that marks the end of megablock processing"
-        },
-        "FileChunkHashes": {
-          "type": "string",
-          "format": "byte",
-          "title": "FileChunkHashes sequence of hashes (sha256 = 32 byte) of file chunks (sorted) referenced by the megablock"
-        },
-        "FullFileHash": {
-          "type": "string",
-          "format": "byte",
-          "title": "FullFileHash hash of the full - completed (snapshot) file"
-        },
-        "ID": {
-          "type": "string",
-          "format": "int64",
-          "title": "ID computed as the little endian of the megablock hash (hash of all megablock fields but the ID)"
-        },
-        "MegablockHeight": {
-          "type": "integer",
-          "format": "int64",
-          "title": "MegablockHeight height (on the mainchain) at which the (snapshot) file started been computed\nNote: this is not the last mainchain height contained in the snapshot file (that one should be = MegablockHeight - MinRollbackBlocks)"
-        },
-        "MegablockType": {
-          "title": "MegablockType type of megablock",
-          "$ref": "#/definitions/modelMegablockType"
-        }
-      }
-    },
-    "modelMegablockType": {
-      "type": "string",
-      "title": "MegablockType type of megablock (as of now only snapshot)",
-      "default": "Snapshot",
-      "enum": [
-        "Snapshot"
-      ]
-    },
     "modelMemoryInformation": {
       "type": "object",
       "properties": {
@@ -1721,6 +1673,54 @@
           "format": "int64"
         }
       }
+    },
+    "modelSpineBlockManifest": {
+      "type": "object",
+      "title": "SpineBlockManifest represent the spineBlockManifest data structure stored in the database",
+      "properties": {
+        "ChainType": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Number indicating chaintype (at the moment it can only be mainchain, but in future could be others)"
+        },
+        "ExpirationTimestamp": {
+          "type": "string",
+          "format": "int64",
+          "title": "ExpirationTimestamp timestamp that marks the end of spineBlockManifest processing"
+        },
+        "FileChunkHashes": {
+          "type": "string",
+          "format": "byte",
+          "title": "FileChunkHashes sequence of hashes (sha256 = 32 byte) of file chunks (sorted) referenced by the spineBlockManifest"
+        },
+        "FullFileHash": {
+          "type": "string",
+          "format": "byte",
+          "title": "FullFileHash hash of the full - completed (snapshot) file"
+        },
+        "ID": {
+          "type": "string",
+          "format": "int64",
+          "title": "ID computed as the little endian of the spineBlockManifest hash (hash of all spineBlockManifest fields but the ID)"
+        },
+        "SpineBlockManifestHeight": {
+          "type": "integer",
+          "format": "int64",
+          "title": "SpineBlockManifestHeight height (on the mainchain) at which the (snapshot) file started been computed\nNote: this is not the last mainchain height contained in the snapshot file (that one should be = SpineBlockManifestHeight - MinRollbackBlocks)"
+        },
+        "SpineBlockManifestType": {
+          "title": "SpineBlockManifestType type of spineBlockManifest",
+          "$ref": "#/definitions/modelSpineBlockManifestType"
+        }
+      }
+    },
+    "modelSpineBlockManifestType": {
+      "type": "string",
+      "title": "SpineBlockManifestType type of spineBlockManifest (as of now only snapshot)",
+      "default": "Snapshot",
+      "enum": [
+        "Snapshot"
+      ]
     },
     "modelSpinePublicKey": {
       "type": "object",
