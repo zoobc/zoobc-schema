@@ -17,9 +17,10 @@ message Escrow {
     bool Latest = 10;
 }
 enum EscrowStatus {
-    Approved = 0;
-    Rejected = 1;
-    Expired = 2;
+    Pending = 0;
+    Approved = 1;
+    Rejected = 2;
+    Expired = 3;
 }
 
 enum EscrowApproval {
@@ -28,6 +29,6 @@ enum EscrowApproval {
 }
 // PostEscrowApprovalRequest message for approval transaction escrow
 message PostEscrowApprovalRequest {
-    // ApprovalBytes format: [EscrowApproval][int64 TransactionID]
+    // ApprovalBytes format: [uint32 EscrowApproval][int64 TransactionID]
     bytes ApprovalBytes = 1;
 }

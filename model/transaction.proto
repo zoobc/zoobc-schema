@@ -34,10 +34,11 @@ message Transaction {
         ClaimNodeRegistrationTransactionBody claimNodeRegistrationTransactionBody = 19;
         SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 20;
         RemoveAccountDatasetTransactionBody removeAccountDatasetTransactionBody = 21;
+        ApprovalEscrowTransactionBody approvalEscrowTransactionBody = 22;
     }
-    bytes Signature = 22;
+    bytes Signature = 23;
     // nullable
-    Escrow Escrow = 23;
+    Escrow Escrow = 24;
 }
 
 enum TransactionType {
@@ -57,7 +58,10 @@ enum TransactionType {
     SetupAccountDatasetTransaction = 3;
     // in bytes: []byte{3,1,0,0}
     RemoveAccountDatasetTransaction = 259;
+    // in bytes: []byte{4,0,0,0}
+    ApprovalEscrowTransaction = 4;  
 }
+
 
 message EmptyTransactionBody {}
 
@@ -116,6 +120,11 @@ message RemoveAccountDatasetTransactionBody {
     string Value = 4;
 }
 
+message ApprovalEscrowTransactionBody {
+    EscrowApproval Approval = 1;
+    int64 TransactionID = 2;
+}
+
 //------------
 // P2P Content
 //------------
@@ -160,7 +169,7 @@ message SendTransactionRequest {
 message SendTransactionResponse { BatchReceipt BatchReceipt = 1; }
 
 
-// RequestBlockTransactonsRequest a model request of requesting transaction based on ID transactions 
+// RequestBlockTransactionsRequest a model request of requesting transaction based on ID transactions 
 message RequestBlockTransactonsRequest {
     repeated int64 TransactionIDs = 1;
     int32 ChainType = 2;
