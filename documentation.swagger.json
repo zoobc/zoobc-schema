@@ -1696,6 +1696,18 @@
         }
       }
     },
+    "modelSendBlockTransactionsResponse": {
+      "type": "object",
+      "title": "SendBlockTransactionsResponse a model response of a process sending block's transactions",
+      "properties": {
+        "BatchReceipts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelBatchReceipt"
+          }
+        }
+      }
+    },
     "modelSendMoneyTransactionBody": {
       "type": "object",
       "properties": {

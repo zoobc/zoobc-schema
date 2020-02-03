@@ -169,8 +169,21 @@ message SendTransactionRequest {
 message SendTransactionResponse { BatchReceipt BatchReceipt = 1; }
 
 
+
 // RequestBlockTransactionsRequest a model request of requesting transaction based on ID transactions 
-message RequestBlockTransactonsRequest {
+message RequestBlockTransactionsRequest {
     repeated int64 TransactionIDs = 1;
     int32 ChainType = 2;
+}
+
+// SendBlockTransactionsRequest a model request for sending block's transactions
+message SendBlockTransactionsRequest {
+    int32 ChainType = 1;
+    repeated bytes TransactionsBytes = 2;
+    bytes SenderPublicKey = 3;
+}
+
+// SendBlockTransactionsResponse a model response of a process sending block's transactions
+message SendBlockTransactionsResponse {
+    repeated BatchReceipt BatchReceipts = 1;
 }
