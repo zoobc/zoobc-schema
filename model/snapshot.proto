@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package model;
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+import "model/spineBlockManifest.proto";
+
+// SnapshotFileInfo model to pass data between snapshot and spineBlockManifest interfaces
+message SnapshotFileInfo {
+    bytes SnapshotFileHash = 1;
+    uint32 Height = 2;
+    int64 ProcessExpirationTimestamp = 3;
+    int32 ChainType = 4;
+    SpineBlockManifestType SpineBlockManifestType = 5;
+    repeated bytes FileChunksHashes = 6;
+}
