@@ -1039,6 +1039,9 @@
           "type": "string",
           "format": "uint64",
           "title": "Timeout is BlockHeight gap"
+        },
+        "instruction": {
+          "type": "string"
         }
       }
     },

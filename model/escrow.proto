@@ -15,6 +15,7 @@ message Escrow {
     EscrowStatus Status = 8;
     uint32 BlockHeight = 9;
     bool Latest = 10;
+    string instruction = 11;
 }
 enum EscrowStatus {
     Pending = 0;
