@@ -37,7 +37,8 @@
               "EventClaimNodeRegistrationTransaction",
               "EventSetupAccountDatasetTransaction",
               "EventRemoveAccountDatasetTransaction",
-              "EventReward"
+              "EventReward",
+              "EventApprovalEscrowTransaction"
             ],
             "type": "string",
             "default": "EventAny",
@@ -724,6 +725,18 @@
         }
       }
     },
+    "modelApprovalEscrowTransactionBody": {
+      "type": "object",
+      "properties": {
+        "Approval": {
+          "$ref": "#/definitions/modelEscrowApproval"
+        },
+        "TransactionID": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
     "modelBatchReceipt": {
       "type": "object",
       "properties": {
@@ -1009,6 +1022,9 @@
           "type": "string",
           "format": "int64"
         },
+        "Instruction": {
+          "type": "string"
+        },
         "Latest": {
           "type": "boolean",
           "format": "boolean"
@@ -1029,10 +1045,19 @@
         }
       }
     },
+    "modelEscrowApproval": {
+      "type": "string",
+      "default": "Approve",
+      "enum": [
+        "Approve",
+        "Reject"
+      ]
+    },
     "modelEscrowStatus": {
       "type": "string",
-      "default": "Approved",
+      "default": "Pending",
       "enum": [
+        "Pending",
         "Approved",
         "Rejected",
         "Expired"
@@ -1050,7 +1075,8 @@
         "EventClaimNodeRegistrationTransaction",
         "EventSetupAccountDatasetTransaction",
         "EventRemoveAccountDatasetTransaction",
-        "EventReward"
+        "EventReward",
+        "EventApprovalEscrowTransaction"
       ]
     },
     "modelGenerateNodeKeyResponse": {
@@ -1924,6 +1950,9 @@
           "type": "integer",
           "format": "int64"
         },
+        "approvalEscrowTransactionBody": {
+          "$ref": "#/definitions/modelApprovalEscrowTransactionBody"
+        },
         "claimNodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelClaimNodeRegistrationTransactionBody"
         },
@@ -2007,20 +2036,6 @@
           "type": "string"
         }
       }
-    }
-  },
-  "x-stream-definitions": {
-    "modelGetNodeHardwareResponse": {
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/runtimeStreamError"
-        },
-        "result": {
-          "$ref": "#/definitions/modelGetNodeHardwareResponse"
-        }
-      },
-      "title": "Stream result of modelGetNodeHardwareResponse",
-      "type": "object"
     }
   }
 }
