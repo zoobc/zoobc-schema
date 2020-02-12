@@ -270,17 +270,17 @@
         }
       }
     },
-    "/v1/escrow/PostEscrowApprovalRequest": {
+    "/v1/escrow/GetEscrowTransactionsRequest": {
       "post": {
         "tags": [
           "EscrowTransactionService"
         ],
-        "operationId": "PostApprovalEscrowTransaction",
+        "operationId": "GetEscrowTransactions",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelTransaction"
+              "$ref": "#/definitions/modelGetEscrowTransactionsResponse"
             }
           }
         }
@@ -1182,6 +1182,24 @@
         "Height": {
           "type": "integer",
           "format": "int64"
+        }
+      }
+    },
+    "modelGetEscrowTransactionsResponse": {
+      "type": "object",
+      "title": "GetEscrowTransactionsResponse returns fields of GetEscrowTransactionsRequest",
+      "properties": {
+        "Escrows": {
+          "type": "array",
+          "title": "Transaction transactions returned",
+          "items": {
+            "$ref": "#/definitions/modelEscrow"
+          }
+        },
+        "Total": {
+          "type": "string",
+          "format": "uint64",
+          "title": "Number of transactions in total"
         }
       }
     },

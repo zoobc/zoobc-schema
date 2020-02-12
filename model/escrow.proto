@@ -3,6 +3,8 @@ syntax = "proto3";
 package model;
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
+import "model/pagination.proto";
+
 message Escrow {
     int64 ID = 1 [ jstype = JS_STRING ];
     string SenderAddress = 2;
@@ -28,8 +30,19 @@ enum EscrowApproval {
     Approve = 0;
     Reject = 1;
 }
-// PostEscrowApprovalRequest message for approval transaction escrow
-message PostEscrowApprovalRequest {
-    // ApprovalBytes format: [uint32 EscrowApproval][int64 TransactionID]
-    bytes ApprovalBytes = 1;
+
+// GetEscrowTransactionsRequest message for get escrow transactions
+message GetEscrowTransactionsRequest {
+    string ApproverAddress = 1;
+    repeated EscrowStatus  Statuses = 2;
+    uint32 BlockHeightStart = 3;
+    uint32 BlockHeightEnd = 4; 
+    Pagination Pagination = 5;
+}
+// GetEscrowTransactionsResponse returns fields of GetEscrowTransactionsRequest
+message GetEscrowTransactionsResponse {
+    // Number of transactions in total
+    uint64 Total = 1 [ jstype = JS_STRING ];
+    // Transaction transactions returned
+    repeated Escrow Escrows = 2;
 }
