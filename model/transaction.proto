@@ -122,7 +122,7 @@ message RemoveAccountDatasetTransactionBody {
 
 message ApprovalEscrowTransactionBody {
     EscrowApproval Approval = 1;
-    int64 TransactionID = 2;
+    int64 TransactionID = 2 [ jstype = JS_STRING ];
 }
 
 //------------
