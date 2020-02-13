@@ -34,10 +34,11 @@ enum EscrowApproval {
 // GetEscrowTransactionsRequest message for get escrow transactions
 message GetEscrowTransactionsRequest {
     string ApproverAddress = 1;
-    repeated EscrowStatus  Statuses = 2;
-    uint32 BlockHeightStart = 3;
-    uint32 BlockHeightEnd = 4; 
-    Pagination Pagination = 5;
+    int64 ID = 2 [jstype = JS_STRING];
+    repeated EscrowStatus  Statuses = 3;
+    uint32 BlockHeightStart = 4;
+    uint32 BlockHeightEnd = 5; 
+    Pagination Pagination = 6;
 }
 // GetEscrowTransactionsResponse returns fields of GetEscrowTransactionsRequest
 message GetEscrowTransactionsResponse {
