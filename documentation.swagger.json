@@ -270,6 +270,22 @@
         }
       }
     },
+    "/v1/block/GetNextBlocksmiths": {
+      "get": {
+        "tags": [
+          "BlocksmithService"
+        ],
+        "operationId": "GetNextBlocksmiths",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetNextBlocksmithsResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/escrow/GetEscrowTransactionsRequest": {
       "post": {
         "tags": [
@@ -572,6 +588,22 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelTransaction"
+            }
+          }
+        }
+      }
+    },
+    "/v1/transaction/GetTransactionMinimumFee": {
+      "post": {
+        "tags": [
+          "TransactionService"
+        ],
+        "operationId": "GetTransactionMinimumFee",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetTransactionMinimumFeeResponse"
             }
           }
         }
@@ -1254,6 +1286,21 @@
         }
       }
     },
+    "modelGetNextBlocksmithsResponse": {
+      "type": "object",
+      "properties": {
+        "Node": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelNode"
+          }
+        },
+        "SmithingTime": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
     "modelGetNodeHardwareResponse": {
       "type": "object",
       "properties": {
@@ -1284,6 +1331,15 @@
           "type": "string",
           "format": "uint64",
           "title": "Number of node registry in total"
+        }
+      }
+    },
+    "modelGetTransactionMinimumFeeResponse": {
+      "type": "object",
+      "properties": {
+        "Fee": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },

@@ -188,3 +188,11 @@ message SendBlockTransactionsRequest {
 message SendBlockTransactionsResponse {
     repeated BatchReceipt BatchReceipts = 1;
 }
+
+message GetTransactionMinimumFeeRequest {
+    repeated bytes TransactionBytes = 1;
+}
+
+message GetTransactionMinimumFeeResponse {
+    int64 Fee = 1;
+}
