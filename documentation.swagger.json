@@ -1336,6 +1336,7 @@
     },
     "modelGetTransactionMinimumFeeResponse": {
       "type": "object",
+      "title": "GetTransactionMinimumFeeResponse a model response for GetTransactionMinimumFeeRequest, indicates the minimum fee for provided tx",
       "properties": {
         "Fee": {
           "type": "string",
