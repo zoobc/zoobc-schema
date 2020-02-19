@@ -188,3 +188,13 @@ message SendBlockTransactionsRequest {
 message SendBlockTransactionsResponse {
     repeated BatchReceipt BatchReceipts = 1;
 }
+
+// GetTransactionMinimumFeeRequest a model request for getting minimum fee required to post the transaction 
+message GetTransactionMinimumFeeRequest {
+    bytes TransactionBytes = 1;
+}
+
+// GetTransactionMinimumFeeResponse a model response for GetTransactionMinimumFeeRequest, indicates the minimum fee for provided tx 
+message GetTransactionMinimumFeeResponse {
+    int64 Fee = 1 [ jstype = JS_STRING ];
+}
