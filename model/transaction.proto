@@ -8,6 +8,7 @@ import "model/pagination.proto";
 import "model/batchReceipt.proto";
 import "model/nodeRegistration.proto";
 import "model/escrow.proto";
+import "model/multiSignature.proto";
 
 // Transaction represent the transaction data structure stored in the database
 message Transaction {
@@ -35,10 +36,11 @@ message Transaction {
         SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 20;
         RemoveAccountDatasetTransactionBody removeAccountDatasetTransactionBody = 21;
         ApprovalEscrowTransactionBody approvalEscrowTransactionBody = 22;
+        MultiSignatureTransactionBody multiSignatureTransactionBody = 23;
     }
-    bytes Signature = 23;
+    bytes Signature = 24;
     // nullable
-    Escrow Escrow = 24;
+    Escrow Escrow = 25;
 }
 
 enum TransactionType {
@@ -60,6 +62,8 @@ enum TransactionType {
     RemoveAccountDatasetTransaction = 259;
     // in bytes: []byte{4,0,0,0}
     ApprovalEscrowTransaction = 4;  
+    // in bytes: []byte{5,0,0,0}
+    MultiSignatureTransaction = 5;
 }
 
 
@@ -123,6 +127,15 @@ message RemoveAccountDatasetTransactionBody {
 message ApprovalEscrowTransactionBody {
     EscrowApproval Approval = 1;
     int64 TransactionID = 2 [ jstype = JS_STRING ];
+}
+
+message MultiSignatureTransactionBody {
+    // MultiSignatureInfo represent the information of the multisig-address
+    MultiSignatureInfo MultiSignatureInfo = 1;
+    // Unsigned transaction bytes that will be executed once the transaction is valid
+    bytes UnsignedTransactionBytes = 2;
+    // List of participant's signature
+    repeated bytes Signatures = 3;
 }
 
 //------------

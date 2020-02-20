@@ -1521,6 +1521,47 @@
         }
       }
     },
+    "modelMultiSignatureInfo": {
+      "type": "object",
+      "properties": {
+        "Addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "MinimumSignatures": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Nonce": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "modelMultiSignatureTransactionBody": {
+      "type": "object",
+      "properties": {
+        "MultiSignatureInfo": {
+          "title": "MultiSignatureInfo represent the information of the multisig-address",
+          "$ref": "#/definitions/modelMultiSignatureInfo"
+        },
+        "Signatures": {
+          "type": "array",
+          "title": "List of participant's signature",
+          "items": {
+            "type": "string",
+            "format": "byte"
+          }
+        },
+        "UnsignedTransactionBytes": {
+          "type": "string",
+          "format": "byte",
+          "title": "Unsigned transaction bytes that will be executed once the transaction is valid"
+        }
+      }
+    },
     "modelNode": {
       "type": "object",
       "title": "NodeInfo represent the node information data structure",
@@ -2033,6 +2074,9 @@
         },
         "emptyTransactionBody": {
           "$ref": "#/definitions/modelEmptyTransactionBody"
+        },
+        "multiSignatureTransactionBody": {
+          "$ref": "#/definitions/modelMultiSignatureTransactionBody"
         },
         "nodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelNodeRegistrationTransactionBody"
