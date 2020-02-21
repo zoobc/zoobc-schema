@@ -11,5 +11,5 @@ message MultiSignatureInfo {
 
 message SignatureInfo {
     bytes TransactionHash = 1;
-    repeated bytes Signatures = 2;
+    map<string, bytes> Signatures = 2; 
 }
