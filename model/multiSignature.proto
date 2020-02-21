@@ -8,3 +8,8 @@ message MultiSignatureInfo {
     int64 Nonce = 2 [ jstype = JS_STRING ];
     repeated string Addresses = 3;
 }
+
+message SignatureInfo {
+    bytes TransactionHash = 1;
+    repeated bytes Signatures = 2;
+}
