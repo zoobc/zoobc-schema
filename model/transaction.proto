@@ -134,8 +134,8 @@ message MultiSignatureTransactionBody {
     MultiSignatureInfo MultiSignatureInfo = 1;
     // Unsigned transaction bytes that will be executed once the transaction is valid
     bytes UnsignedTransactionBytes = 2;
-    // List of participant's signature
-    repeated bytes Signatures = 3;
+    // List of participantAddress-participantSignature with its tx hash
+    SignatureInfo SignatureInfo = 3;
 }
 
 //------------

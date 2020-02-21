@@ -1547,13 +1547,9 @@
           "title": "MultiSignatureInfo represent the information of the multisig-address",
           "$ref": "#/definitions/modelMultiSignatureInfo"
         },
-        "Signatures": {
-          "type": "array",
-          "title": "List of participant's signature",
-          "items": {
-            "type": "string",
-            "format": "byte"
-          }
+        "SignatureInfo": {
+          "title": "List of participantAddress-participantSignature with its tx hash",
+          "$ref": "#/definitions/modelSignatureInfo"
         },
         "UnsignedTransactionBytes": {
           "type": "string",
@@ -1874,6 +1870,22 @@
         "Value": {
           "type": "string",
           "title": "Value of property"
+        }
+      }
+    },
+    "modelSignatureInfo": {
+      "type": "object",
+      "properties": {
+        "Signatures": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "format": "byte"
+          }
+        },
+        "TransactionHash": {
+          "type": "string",
+          "format": "byte"
         }
       }
     },
