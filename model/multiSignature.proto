@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package model;
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+message MultiSignatureInfo {
+    uint32 MinimumSignatures = 1;
+    int64 Nonce = 2 [ jstype = JS_STRING ];
+    repeated string Addresses = 3;
+}
+
+message SignatureInfo {
+    bytes TransactionHash = 1;
+    map<string, bytes> Signatures = 2; 
+}
