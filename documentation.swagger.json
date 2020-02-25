@@ -1490,6 +1490,43 @@
         }
       }
     },
+    "modelMultiSignatureInfo": {
+      "type": "object",
+      "properties": {
+        "Addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "MinimumSignatures": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Nonce": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "modelMultiSignatureTransactionBody": {
+      "type": "object",
+      "properties": {
+        "MultiSignatureInfo": {
+          "title": "MultiSignatureInfo represent the information of the multisig-address",
+          "$ref": "#/definitions/modelMultiSignatureInfo"
+        },
+        "SignatureInfo": {
+          "title": "List of participantAddress-participantSignature with its tx hash",
+          "$ref": "#/definitions/modelSignatureInfo"
+        },
+        "UnsignedTransactionBytes": {
+          "type": "string",
+          "format": "byte",
+          "title": "Unsigned transaction bytes that will be executed once the transaction is valid"
+        }
+      }
+    },
     "modelNode": {
       "type": "object",
       "title": "NodeInfo represent the node information data structure",
@@ -1805,6 +1842,22 @@
         }
       }
     },
+    "modelSignatureInfo": {
+      "type": "object",
+      "properties": {
+        "Signatures": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "format": "byte"
+          }
+        },
+        "TransactionHash": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
     "modelSkippedBlocksmith": {
       "type": "object",
       "properties": {
@@ -2002,6 +2055,9 @@
         },
         "emptyTransactionBody": {
           "$ref": "#/definitions/modelEmptyTransactionBody"
+        },
+        "multiSignatureTransactionBody": {
+          "$ref": "#/definitions/modelMultiSignatureTransactionBody"
         },
         "nodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelNodeRegistrationTransactionBody"
