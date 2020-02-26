@@ -1499,9 +1499,16 @@
             "type": "string"
           }
         },
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
         "MinimumSignatures": {
           "type": "integer",
           "format": "int64"
+        },
+        "MultisigAddress": {
+          "type": "string"
         },
         "Nonce": {
           "type": "string",
@@ -1844,6 +1851,7 @@
     },
     "modelSignatureInfo": {
       "type": "object",
+      "title": "represent the signature posted by account",
       "properties": {
         "Signatures": {
           "type": "object",
