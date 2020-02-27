@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package model;
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+message FileDownloadResponse {
+    repeated bytes FileChunks = 1;
+}
+
+// RequestFilesRequest a model request of requesting files to download from a peer 
+message FileDownloadRequest {
+    repeated string FileChunkNames = 1;
+}
+
