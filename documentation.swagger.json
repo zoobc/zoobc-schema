@@ -286,6 +286,33 @@
         }
       }
     },
+    "/v1/file/FileDownload": {
+      "get": {
+        "tags": [
+          "FileDownloadService"
+        ],
+        "operationId": "FileDownload",
+        "parameters": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi",
+            "name": "FileChunkNames",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelFileDownloadResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/host/GetHostInfo": {
       "get": {
         "tags": [
@@ -1094,6 +1121,18 @@
         "EventReward",
         "EventApprovalEscrowTransaction"
       ]
+    },
+    "modelFileDownloadResponse": {
+      "type": "object",
+      "properties": {
+        "FileChunks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "byte"
+          }
+        }
+      }
     },
     "modelGenerateNodeKeyResponse": {
       "type": "object",
