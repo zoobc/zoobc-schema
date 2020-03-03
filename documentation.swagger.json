@@ -1125,6 +1125,12 @@
     "modelFileDownloadResponse": {
       "type": "object",
       "properties": {
+        "Failed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "FileChunks": {
           "type": "array",
           "items": {
