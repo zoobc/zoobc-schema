@@ -270,6 +270,30 @@
         }
       }
     },
+    "/v1/escrow/GetEscrowTransactionRequest": {
+      "get": {
+        "tags": [
+          "EscrowTransactionService"
+        ],
+        "operationId": "GetEscrowTransaction",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "int64",
+            "name": "ID",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelEscrow"
+            }
+          }
+        }
+      }
+    },
     "/v1/escrow/GetEscrowTransactionsRequest": {
       "post": {
         "tags": [
@@ -2144,20 +2168,6 @@
           "type": "string"
         }
       }
-    }
-  },
-  "x-stream-definitions": {
-    "modelGetNodeHardwareResponse": {
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/runtimeStreamError"
-        },
-        "result": {
-          "$ref": "#/definitions/modelGetNodeHardwareResponse"
-        }
-      },
-      "title": "Stream result of modelGetNodeHardwareResponse",
-      "type": "object"
     }
   }
 }
