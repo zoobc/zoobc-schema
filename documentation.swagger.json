@@ -270,6 +270,30 @@
         }
       }
     },
+    "/v1/escrow/GetEscrowTransactionRequest": {
+      "get": {
+        "tags": [
+          "EscrowTransactionService"
+        ],
+        "operationId": "GetEscrowTransaction",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "int64",
+            "name": "ID",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelEscrow"
+            }
+          }
+        }
+      }
+    },
     "/v1/escrow/GetEscrowTransactionsRequest": {
       "post": {
         "tags": [
@@ -281,6 +305,33 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetEscrowTransactionsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/file/FileDownload": {
+      "get": {
+        "tags": [
+          "FileDownloadService"
+        ],
+        "operationId": "FileDownload",
+        "parameters": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi",
+            "name": "FileChunkNames",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelFileDownloadResponse"
             }
           }
         }
@@ -1094,6 +1145,24 @@
         "EventReward",
         "EventApprovalEscrowTransaction"
       ]
+    },
+    "modelFileDownloadResponse": {
+      "type": "object",
+      "properties": {
+        "Failed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "FileChunks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "byte"
+          }
+        }
+      }
     },
     "modelGenerateNodeKeyResponse": {
       "type": "object",
@@ -2144,20 +2213,6 @@
           "type": "string"
         }
       }
-    }
-  },
-  "x-stream-definitions": {
-    "modelGetNodeHardwareResponse": {
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/runtimeStreamError"
-        },
-        "result": {
-          "$ref": "#/definitions/modelGetNodeHardwareResponse"
-        }
-      },
-      "title": "Stream result of modelGetNodeHardwareResponse",
-      "type": "object"
     }
   }
 }
