@@ -47,3 +47,8 @@ message GetEscrowTransactionsResponse {
     // Transaction transactions returned
     repeated Escrow Escrows = 2;
 }
+
+// GetEscrowTransactionRequest represents GetEscrowTransaction parameter
+message GetEscrowTransactionRequest {
+    int64 ID = 1 [jstype = JS_STRING];
+}

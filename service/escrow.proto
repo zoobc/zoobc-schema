@@ -12,4 +12,9 @@ service EscrowTransactionService {
             post: "/v1/escrow/GetEscrowTransactionsRequest"
         };
     }
+    rpc GetEscrowTransaction(model.GetEscrowTransactionRequest) returns (model.Escrow) {
+        option(google.api.http) = {
+            get: "/v1/escrow/GetEscrowTransactionRequest"
+        };
+    }
 }
