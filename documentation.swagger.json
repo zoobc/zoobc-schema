@@ -270,6 +270,22 @@
         }
       }
     },
+    "/v1/block/GetNextBlocksmiths": {
+      "get": {
+        "tags": [
+          "BlocksmithService"
+        ],
+        "operationId": "GetNextBlocksmiths",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetNextBlocksmithsResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/escrow/GetEscrowTransactionsRequest": {
       "post": {
         "tags": [
@@ -1270,6 +1286,21 @@
         }
       }
     },
+    "modelGetNextBlocksmithsResponse": {
+      "type": "object",
+      "properties": {
+        "Node": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelNode"
+          }
+        },
+        "SmithingTime": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
     "modelGetNodeHardwareResponse": {
       "type": "object",
       "properties": {
@@ -1502,6 +1533,10 @@
         "BlockHeight": {
           "type": "integer",
           "format": "int64"
+        },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
         },
         "MinimumSignatures": {
           "type": "integer",
@@ -2017,6 +2052,10 @@
           "type": "string",
           "format": "int64"
         },
+        "MultisigChild": {
+          "type": "boolean",
+          "format": "boolean"
+        },
         "RecipientAccountAddress": {
           "type": "string"
         },
@@ -2144,20 +2183,6 @@
           "type": "string"
         }
       }
-    }
-  },
-  "x-stream-definitions": {
-    "modelGetNodeHardwareResponse": {
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/runtimeStreamError"
-        },
-        "result": {
-          "$ref": "#/definitions/modelGetNodeHardwareResponse"
-        }
-      },
-      "title": "Stream result of modelGetNodeHardwareResponse",
-      "type": "object"
     }
   }
 }
