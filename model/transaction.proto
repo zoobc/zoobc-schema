@@ -25,22 +25,23 @@ message Transaction {
     uint32 TransactionBodyLength = 11;
     bytes TransactionBodyBytes = 12;
     uint32 TransactionIndex = 13;
-    // TransactionBody
+    bool MultisigChild = 14;
+    // transactionbody
     oneof TransactionBody {
-        EmptyTransactionBody emptyTransactionBody = 14;
-        SendMoneyTransactionBody sendMoneyTransactionBody = 15;
-        NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 16;
-        UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 17;
-        RemoveNodeRegistrationTransactionBody removeNodeRegistrationTransactionBody = 18;
-        ClaimNodeRegistrationTransactionBody claimNodeRegistrationTransactionBody = 19;
-        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 20;
-        RemoveAccountDatasetTransactionBody removeAccountDatasetTransactionBody = 21;
-        ApprovalEscrowTransactionBody approvalEscrowTransactionBody = 22;
-        MultiSignatureTransactionBody multiSignatureTransactionBody = 23;
+        EmptyTransactionBody emptyTransactionBody = 15;
+        SendMoneyTransactionBody sendMoneyTransactionBody = 16;
+        NodeRegistrationTransactionBody nodeRegistrationTransactionBody = 17;
+        UpdateNodeRegistrationTransactionBody updateNodeRegistrationTransactionBody = 18;
+        RemoveNodeRegistrationTransactionBody removeNodeRegistrationTransactionBody = 19;
+        ClaimNodeRegistrationTransactionBody claimNodeRegistrationTransactionBody = 20;
+        SetupAccountDatasetTransactionBody setupAccountDatasetTransactionBody = 21;
+        RemoveAccountDatasetTransactionBody removeAccountDatasetTransactionBody = 22;
+        ApprovalEscrowTransactionBody approvalEscrowTransactionBody = 23;
+        MultiSignatureTransactionBody multiSignatureTransactionBody = 24;
     }
-    bytes Signature = 24;
+    bytes Signature = 25;
     // nullable
-    Escrow Escrow = 25;
+    Escrow Escrow = 26;
 }
 
 enum TransactionType {

@@ -9,6 +9,7 @@ message MultiSignatureInfo {
     repeated string Addresses = 3;
     string MultisigAddress = 4;
     uint32 BlockHeight = 5;
+    bool Latest = 6;
 }
 
 // represent the signature posted by account
@@ -23,14 +24,17 @@ message PendingSignature {
     string AccountAddress = 2;
     bytes Signature = 3;
     uint32 BlockHeight = 4;
+    bool Latest = 5;
 }
 
 // represent transaction inside multisig body
 message PendingTransaction {
-    bytes TransactionHash = 1;
-    bytes TransactionBytes = 2;
-    PendingTransactionStatus Status = 3;
-    uint32 BlockHeight = 4;
+    string SenderAddress = 1;
+    bytes TransactionHash = 2;
+    bytes TransactionBytes = 3;
+    PendingTransactionStatus Status = 4;
+    uint32 BlockHeight = 5;
+    bool Latest = 6;
 }
 
 enum PendingTransactionStatus {

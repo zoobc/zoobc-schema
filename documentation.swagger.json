@@ -270,6 +270,22 @@
         }
       }
     },
+    "/v1/block/GetNextBlocksmiths": {
+      "get": {
+        "tags": [
+          "BlocksmithService"
+        ],
+        "operationId": "GetNextBlocksmiths",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetNextBlocksmithsResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/escrow/GetEscrowTransactionRequest": {
       "get": {
         "tags": [
@@ -1339,6 +1355,21 @@
         }
       }
     },
+    "modelGetNextBlocksmithsResponse": {
+      "type": "object",
+      "properties": {
+        "Node": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelNode"
+          }
+        },
+        "SmithingTime": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
     "modelGetNodeHardwareResponse": {
       "type": "object",
       "properties": {
@@ -1571,6 +1602,10 @@
         "BlockHeight": {
           "type": "integer",
           "format": "int64"
+        },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
         },
         "MinimumSignatures": {
           "type": "integer",
@@ -2085,6 +2120,10 @@
         "ID": {
           "type": "string",
           "format": "int64"
+        },
+        "MultisigChild": {
+          "type": "boolean",
+          "format": "boolean"
         },
         "RecipientAccountAddress": {
           "type": "string"
