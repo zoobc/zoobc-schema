@@ -9,4 +9,6 @@ enum SignatureType {
     // in bytes: []byte{1,0,0,0}, bitcoin uses a specific Koblitz curve secp256k1
     // Koblitz curves are a type of Elliptic Curve Digital Signature Algorithm
     BitcoinSignature = 1;
+    // in bytes: []byte{2,0,0,0} for multisig validation purpose only
+    MultisigSignature = 2;
 }
