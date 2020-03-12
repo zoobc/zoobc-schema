@@ -353,6 +353,22 @@
         }
       }
     },
+    "/v1/health/check": {
+      "get": {
+        "tags": [
+          "HealthCheckService"
+        ],
+        "operationId": "HealthCheck",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelHealthCheckResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/host/GetHostInfo": {
       "get": {
         "tags": [
@@ -470,6 +486,92 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetMempoolTransactionsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/multisig/GetPendingTransactionByAddress": {
+      "get": {
+        "tags": [
+          "MultisigService"
+        ],
+        "operationId": "GetPendingTransactionByAddress",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "SenderAddress",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "PendingTransactionPending",
+              "PendingTransactionExecuted",
+              "PendingTransactionNoOp",
+              "PendingTransactionExpired"
+            ],
+            "type": "string",
+            "default": "PendingTransactionPending",
+            "name": "Status",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetPendingTransactionByAddressResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/multisig/GetPendingTransactionDetailByTransactionHash": {
+      "get": {
+        "tags": [
+          "MultisigService"
+        ],
+        "operationId": "GetPendingTransactionDetailByTransactionHash",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "hex of transaction hash.",
+            "name": "TransactionHashHex",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetPendingTransactionDetailByTransactionHashResponse"
             }
           }
         }
@@ -1403,6 +1505,45 @@
         }
       }
     },
+    "modelGetPendingTransactionByAddressResponse": {
+      "type": "object",
+      "properties": {
+        "Count": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of item in current page"
+        },
+        "Page": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Starting page"
+        },
+        "PendingTransactions": {
+          "type": "array",
+          "title": "content of the request",
+          "items": {
+            "$ref": "#/definitions/modelPendingTransaction"
+          }
+        }
+      }
+    },
+    "modelGetPendingTransactionDetailByTransactionHashResponse": {
+      "type": "object",
+      "properties": {
+        "MultiSignatureInfo": {
+          "$ref": "#/definitions/modelMultiSignatureInfo"
+        },
+        "PendingSignatures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelPendingSignature"
+          }
+        },
+        "PendingTransaction": {
+          "$ref": "#/definitions/modelPendingTransaction"
+        }
+      }
+    },
     "modelGetTransactionMinimumFeeResponse": {
       "type": "object",
       "title": "GetTransactionMinimumFeeResponse a model response for GetTransactionMinimumFeeRequest, indicates the minimum fee for provided tx",
@@ -1427,6 +1568,15 @@
           "items": {
             "$ref": "#/definitions/modelTransaction"
           }
+        }
+      }
+    },
+    "modelHealthCheckResponse": {
+      "type": "object",
+      "title": "HealthCheckResponse represent the response body of health check request",
+      "properties": {
+        "Reply": {
+          "type": "string"
         }
       }
     },
@@ -1813,6 +1963,69 @@
           "format": "int32"
         }
       }
+    },
+    "modelPendingSignature": {
+      "type": "object",
+      "title": "represent the pending signature counter stored by node for multi-signature transaction",
+      "properties": {
+        "AccountAddress": {
+          "type": "string"
+        },
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "Signature": {
+          "type": "string",
+          "format": "byte"
+        },
+        "TransactionHash": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "modelPendingTransaction": {
+      "type": "object",
+      "title": "represent transaction inside multisig body",
+      "properties": {
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "SenderAddress": {
+          "type": "string"
+        },
+        "Status": {
+          "$ref": "#/definitions/modelPendingTransactionStatus"
+        },
+        "TransactionBytes": {
+          "type": "string",
+          "format": "byte"
+        },
+        "TransactionHash": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "modelPendingTransactionStatus": {
+      "type": "string",
+      "default": "PendingTransactionPending",
+      "enum": [
+        "PendingTransactionPending",
+        "PendingTransactionExecuted",
+        "PendingTransactionNoOp",
+        "PendingTransactionExpired"
+      ]
     },
     "modelPostTransactionResponse": {
       "type": "object",
