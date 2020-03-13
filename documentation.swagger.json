@@ -38,7 +38,8 @@
               "EventSetupAccountDatasetTransaction",
               "EventRemoveAccountDatasetTransaction",
               "EventReward",
-              "EventApprovalEscrowTransaction"
+              "EventApprovalEscrowTransaction",
+              "EventMultiSignatureTransaction"
             ],
             "type": "string",
             "default": "EventAny",
@@ -1261,7 +1262,8 @@
         "EventSetupAccountDatasetTransaction",
         "EventRemoveAccountDatasetTransaction",
         "EventReward",
-        "EventApprovalEscrowTransaction"
+        "EventApprovalEscrowTransaction",
+        "EventMultiSignatureTransaction"
       ]
     },
     "modelFileDownloadResponse": {
