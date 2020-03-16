@@ -9,9 +9,9 @@ import "google/api/annotations.proto";
 
 // MultisigService represent request on Blockchain's multisig component such as pending_transaction, pending_signatures, and multisig_info 
 service MultisigService {
-    rpc GetPendingTransactionByAddress(model.GetPendingTransactionByAddressRequest) returns (model.GetPendingTransactionByAddressResponse) {
+    rpc GetPendingTransactions(model.GetPendingTransactionsRequest) returns (model.GetPendingTransactionsResponse) {
         option (google.api.http) = {
-            get: "/v1/multisig/GetPendingTransactionByAddress"
+            get: "/v1/multisig/GetPendingTransactions"
         };
     }
 
@@ -20,5 +20,11 @@ service MultisigService {
             get: "/v1/multisig/GetPendingTransactionDetailByTransactionHash"
         };
     }
+    rpc GetMultisignatureInfo(model.GetMultisignatureInfoRequest) returns (model.GetMultisignatureInfoResponse) {
+        option (google.api.http) = {
+            get: "/v1/multisig/GetMultisignatureInfo"
+        };
+    } 
+    
 
 }

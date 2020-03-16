@@ -48,13 +48,13 @@ enum PendingTransactionStatus {
 
 // API model
 
-message GetPendingTransactionByAddressRequest {
+message GetPendingTransactionsRequest {
     string SenderAddress = 1;
     PendingTransactionStatus Status = 2;
     Pagination Pagination = 3;
 }
 
-message GetPendingTransactionByAddressResponse {
+message GetPendingTransactionsResponse {
     // Number of item in current page
     uint32 Count = 1;
     // Starting page
@@ -72,4 +72,18 @@ message GetPendingTransactionDetailByTransactionHashResponse {
     PendingTransaction PendingTransaction = 1;
     repeated PendingSignature PendingSignatures = 2;
     MultiSignatureInfo MultiSignatureInfo = 3;
+}
+
+message GetMultisignatureInfoRequest {
+    string MultisigAddress = 1;
+    Pagination Pagination = 2; 
+}
+
+message GetMultisignatureInfoResponse {
+    // Number of item in current page
+    uint32 Count = 1;
+    // Starting page
+    uint32 Page = 2;
+    // content of the request
+    repeated MultiSignatureInfo MultisignatureInfo = 3;
 }
