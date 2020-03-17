@@ -10,6 +10,7 @@ import "model/accountDatasets.proto";
 import "model/participationScore.proto";
 import "model/publishedReceipt.proto";
 import "model/escrow.proto";
+import "model/multiSignature.proto";
 
 // SnapshotFileInfo model to pass data between snapshot and spineBlockManifest interfaces
 message SnapshotFileInfo {
@@ -29,5 +30,8 @@ message SnapshotPayload {
     repeated ParticipationScore ParticipationScores = 4;
     repeated PublishedReceipt PublishedReceipts = 5;
     repeated Escrow EscrowTransactions = 6;
+    repeated PendingTransaction PendingTransactions = 7;
+    repeated PendingSignature PendingSignatures = 8;
+    repeated MultiSignatureInfo MultiSignatureInfos = 9;
 }
 
