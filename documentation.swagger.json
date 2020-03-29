@@ -1548,6 +1548,14 @@
         }
       }
     },
+    "modelGetPeerInfoResponse": {
+      "type": "object",
+      "properties": {
+        "NodeInfo": {
+          "$ref": "#/definitions/modelNode"
+        }
+      }
+    },
     "modelGetPendingTransactionDetailByTransactionHashResponse": {
       "type": "object",
       "properties": {
