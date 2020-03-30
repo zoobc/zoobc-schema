@@ -6,7 +6,7 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 import "model/spineBlockManifest.proto";
 import "model/accountBalance.proto";
 import "model/nodeRegistration.proto";
-import "model/accountDatasets.proto";
+import "model/accountDataset.proto";
 import "model/participationScore.proto";
 import "model/publishedReceipt.proto";
 import "model/escrow.proto";

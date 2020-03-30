@@ -193,6 +193,105 @@
         }
       }
     },
+    "/v1/accountDataset/GetAccountDataset": {
+      "get": {
+        "tags": [
+          "AccountDatasetService"
+        ],
+        "operationId": "GetAccountDataset",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Property",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "RecipientAccountAddress",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelAccountDataset"
+            }
+          }
+        }
+      }
+    },
+    "/v1/accountDataset/GetAccountDatasets": {
+      "get": {
+        "tags": [
+          "AccountDatasetService"
+        ],
+        "operationId": "GetAccountDatasets",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Property",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Value",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "RecipientAccountAddress",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "SetterAccountAddress",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Height",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetAccountDatasetsResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/block/GetBlock": {
       "get": {
         "tags": [
@@ -918,6 +1017,40 @@
         }
       }
     },
+    "modelAccountDataset": {
+      "type": "object",
+      "title": "AccountDataset represent the account dataset structure stored in the database",
+      "properties": {
+        "Height": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "Property": {
+          "type": "string"
+        },
+        "RecipientAccountAddress": {
+          "type": "string"
+        },
+        "SetterAccountAddress": {
+          "type": "string"
+        },
+        "TimestampExpires": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "TimestampStarts": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "Value": {
+          "type": "string"
+        }
+      }
+    },
     "modelAccountLedger": {
       "type": "object",
       "properties": {
@@ -1349,6 +1482,21 @@
           "type": "integer",
           "format": "int64",
           "title": "Number of accounts returned"
+        }
+      }
+    },
+    "modelGetAccountDatasetsResponse": {
+      "type": "object",
+      "properties": {
+        "AccountDatasets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelAccountDataset"
+          }
+        },
+        "Total": {
+          "type": "string",
+          "format": "uint64"
         }
       }
     },
@@ -2516,20 +2664,6 @@
           "type": "string"
         }
       }
-    }
-  },
-  "x-stream-definitions": {
-    "modelGetNodeHardwareResponse": {
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/runtimeStreamError"
-        },
-        "result": {
-          "$ref": "#/definitions/modelGetNodeHardwareResponse"
-        }
-      },
-      "title": "Stream result of modelGetNodeHardwareResponse",
-      "type": "object"
     }
   }
 }
