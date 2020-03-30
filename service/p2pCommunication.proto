@@ -13,7 +13,7 @@ import "model/transaction.proto";
 import "model/fileDownload.proto";
 
 service P2PCommunication {
-  rpc GetPeerInfo(model.GetPeerInfoRequest) returns (model.Node) {}
+  rpc GetPeerInfo(model.GetPeerInfoRequest) returns (model.GetPeerInfoResponse) {}
   rpc GetMorePeers(model.Empty) returns (model.GetMorePeersResponse) {}
   rpc SendPeers(model.SendPeersRequest) returns (model.Empty) {}
   rpc SendBlock(model.SendBlockRequest) returns (model.SendBlockResponse) {}
