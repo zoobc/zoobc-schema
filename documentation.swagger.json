@@ -1551,7 +1551,7 @@
     "modelGetPeerInfoResponse": {
       "type": "object",
       "properties": {
-        "NodeInfo": {
+        "HostInfo": {
           "$ref": "#/definitions/modelNode"
         }
       }
