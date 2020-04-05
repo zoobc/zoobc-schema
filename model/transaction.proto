@@ -111,7 +111,6 @@ message SetupAccountDatasetTransactionBody {
     // Value of property
     string Value = 4;
     // How long Dataset will active in second
-//    uint64 MuchTime = 5 [ jstype = JS_STRING ];
 }
 
 message RemoveAccountDatasetTransactionBody {
