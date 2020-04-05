@@ -12,10 +12,9 @@ message AccountDataset {
     string RecipientAccountAddress = 2;
     string Property = 3;
     string Value = 4;
-    uint64 TimestampStarts = 5;
-    uint64 TimestampExpires = 6;
+    bool IsActive = 5;
+    bool Latest = 6;
     uint32 Height = 7;
-    bool Latest = 8;
 }
 
 // AccountDatasetProperty represent enum values for AccountDataset Property
