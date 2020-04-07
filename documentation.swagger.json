@@ -1025,6 +1025,10 @@
           "type": "integer",
           "format": "int64"
         },
+        "IsActive": {
+          "type": "boolean",
+          "format": "boolean"
+        },
         "Latest": {
           "type": "boolean",
           "format": "boolean"
@@ -1037,14 +1041,6 @@
         },
         "SetterAccountAddress": {
           "type": "string"
-        },
-        "TimestampExpires": {
-          "type": "string",
-          "format": "uint64"
-        },
-        "TimestampStarts": {
-          "type": "string",
-          "format": "uint64"
         },
         "Value": {
           "type": "string"
@@ -2342,11 +2338,6 @@
     "modelSetupAccountDatasetTransactionBody": {
       "type": "object",
       "properties": {
-        "MuchTime": {
-          "type": "string",
-          "format": "uint64",
-          "title": "How long Dataset will active in second"
-        },
         "Property": {
           "type": "string",
           "title": "Property name"
@@ -2664,20 +2655,6 @@
           "type": "string"
         }
       }
-    }
-  },
-  "x-stream-definitions": {
-    "modelGetNodeHardwareResponse": {
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/runtimeStreamError"
-        },
-        "result": {
-          "$ref": "#/definitions/modelGetNodeHardwareResponse"
-        }
-      },
-      "title": "Stream result of modelGetNodeHardwareResponse",
-      "type": "object"
     }
   }
 }
