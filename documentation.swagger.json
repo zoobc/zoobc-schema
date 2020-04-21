@@ -193,6 +193,105 @@
         }
       }
     },
+    "/v1/accountDataset/GetAccountDataset": {
+      "get": {
+        "tags": [
+          "AccountDatasetService"
+        ],
+        "operationId": "GetAccountDataset",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Property",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "RecipientAccountAddress",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelAccountDataset"
+            }
+          }
+        }
+      }
+    },
+    "/v1/accountDataset/GetAccountDatasets": {
+      "get": {
+        "tags": [
+          "AccountDatasetService"
+        ],
+        "operationId": "GetAccountDatasets",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Property",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Value",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "RecipientAccountAddress",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "SetterAccountAddress",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Height",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetAccountDatasetsResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/block/GetBlock": {
       "get": {
         "tags": [
@@ -266,22 +365,6 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetBlocksResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v1/block/GetNextBlocksmiths": {
-      "get": {
-        "tags": [
-          "BlocksmithService"
-        ],
-        "operationId": "GetNextBlocksmiths",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/modelGetNextBlocksmithsResponse"
             }
           }
         }
@@ -934,6 +1017,36 @@
         }
       }
     },
+    "modelAccountDataset": {
+      "type": "object",
+      "title": "AccountDataset represent the account dataset structure stored in the database",
+      "properties": {
+        "Height": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "IsActive": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "Property": {
+          "type": "string"
+        },
+        "RecipientAccountAddress": {
+          "type": "string"
+        },
+        "SetterAccountAddress": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      }
+    },
     "modelAccountLedger": {
       "type": "object",
       "properties": {
@@ -1368,6 +1481,21 @@
         }
       }
     },
+    "modelGetAccountDatasetsResponse": {
+      "type": "object",
+      "properties": {
+        "AccountDatasets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelAccountDataset"
+          }
+        },
+        "Total": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
     "modelGetAccountLedgersResponse": {
       "type": "object",
       "properties": {
@@ -1531,21 +1659,6 @@
         }
       }
     },
-    "modelGetNextBlocksmithsResponse": {
-      "type": "object",
-      "properties": {
-        "Node": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/modelNode"
-          }
-        },
-        "SmithingTime": {
-          "type": "string",
-          "format": "int64"
-        }
-      }
-    },
     "modelGetNodeHardwareResponse": {
       "type": "object",
       "properties": {
@@ -1576,6 +1689,14 @@
           "type": "string",
           "format": "uint64",
           "title": "Number of node registry in total"
+        }
+      }
+    },
+    "modelGetPeerInfoResponse": {
+      "type": "object",
+      "properties": {
+        "HostInfo": {
+          "$ref": "#/definitions/modelNode"
         }
       }
     },
@@ -2217,11 +2338,6 @@
     "modelSetupAccountDatasetTransactionBody": {
       "type": "object",
       "properties": {
-        "MuchTime": {
-          "type": "string",
-          "format": "uint64",
-          "title": "How long Dataset will active in second"
-        },
         "Property": {
           "type": "string",
           "title": "Property name"
