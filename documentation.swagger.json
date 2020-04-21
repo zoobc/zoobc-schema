@@ -2307,10 +2307,15 @@
           "format": "int64",
           "title": "ID computed as the little endian of the spineBlockManifest hash (hash of all spineBlockManifest fields but the ID)"
         },
-        "SpineBlockManifestHeight": {
+        "ManifestReferenceHeight": {
           "type": "integer",
           "format": "int64",
-          "title": "SpineBlockManifestHeight height (on the mainchain) at which the (snapshot) file started been computed\nNote: this is not the last mainchain height contained in the snapshot file (that one should be = SpineBlockManifestHeight - MinRollbackBlocks)"
+          "title": "ManifestReferenceHeight height (on the mainchain) at which the (snapshot) file started been computed\nNote: this is not the last mainchain height contained in the snapshot file (that one should be = SpineBlockManifestHeight - MinRollbackBlocks)"
+        },
+        "ManifestSpineBlockHeight": {
+          "description": "ManifestSpineBlockHeight (on spinechain) at which the (manifest) got included in the block, this data\nis tightly coupled to the spine block.",
+          "type": "integer",
+          "format": "int64"
         },
         "SpineBlockManifestType": {
           "title": "SpineBlockManifestType type of spineBlockManifest",
