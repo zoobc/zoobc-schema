@@ -1580,17 +1580,17 @@
     "modelGetAccountBalancesResponse": {
       "type": "object",
       "properties": {
-        "AccountBalance": {
+        "AccountBalanceSize": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of accounts returned"
+        },
+        "AccountBalances": {
           "type": "array",
           "title": "AccountBalances returned",
           "items": {
             "$ref": "#/definitions/modelAccountBalance"
           }
-        },
-        "AccountBalanceSize": {
-          "type": "integer",
-          "format": "int64",
-          "title": "Number of accounts returned"
         }
       }
     },

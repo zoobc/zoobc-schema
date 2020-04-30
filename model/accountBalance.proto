@@ -32,5 +32,5 @@ message GetAccountBalancesResponse {
     // Number of accounts returned
     uint32 AccountBalanceSize = 1;
     // AccountBalances returned
-    repeated AccountBalance AccountBalance = 2;
+    repeated AccountBalance AccountBalances = 2;
 }
