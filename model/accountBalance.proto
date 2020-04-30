@@ -25,7 +25,7 @@ message GetAccountBalanceResponse {
 
 message GetAccountBalancesRequest {
     // Fetch AccountBalances by type/addresses
-    repeated string AccountAddress = 1;
+    repeated string AccountAddresses = 1;
 }
 
 message GetAccountBalancesResponse {
