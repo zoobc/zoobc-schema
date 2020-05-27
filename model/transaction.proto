@@ -38,10 +38,12 @@ message Transaction {
         RemoveAccountDatasetTransactionBody removeAccountDatasetTransactionBody = 22;
         ApprovalEscrowTransactionBody approvalEscrowTransactionBody = 23;
         MultiSignatureTransactionBody multiSignatureTransactionBody = 24;
+        LiquidPaymentTransactionBody liquidPaymentTransactionBody = 25;
+        LiquidPaymentStopTransactionBody liquidPaymentStopTransactionBody = 26;
     }
-    bytes Signature = 25;
+    bytes Signature = 27;
     // nullable
-    Escrow Escrow = 26;
+    Escrow Escrow = 28;
 }
 
 enum TransactionType {
@@ -136,6 +138,15 @@ message MultiSignatureTransactionBody {
     bytes UnsignedTransactionBytes = 2;
     // List of participantAddress-participantSignature with its tx hash
     SignatureInfo SignatureInfo = 3;
+}
+
+message LiquidPaymentTransactionBody {
+    int64 Amount = 1 [ jstype = JS_STRING ];
+    uint64 CompleteMinutes = 2;
+}
+
+message LiquidPaymentStopTransactionBody {
+    int64 TransactionID = 1 [ jstype = JS_STRING ];
 }
 
 //------------
