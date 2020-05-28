@@ -142,7 +142,8 @@ message MultiSignatureTransactionBody {
 
 message LiquidPaymentTransactionBody {
     int64 Amount = 1 [ jstype = JS_STRING ];
-    uint64 CompleteMinutes = 2;
+    // CompleteMinutes indicates how many minutes is required before the liquid payment is completed
+    uint64 CompleteMinutes = 2 [ jstype = JS_STRING ];
 }
 
 message LiquidPaymentStopTransactionBody {
