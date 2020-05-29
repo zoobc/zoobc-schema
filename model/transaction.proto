@@ -38,10 +38,11 @@ message Transaction {
         RemoveAccountDatasetTransactionBody removeAccountDatasetTransactionBody = 22;
         ApprovalEscrowTransactionBody approvalEscrowTransactionBody = 23;
         MultiSignatureTransactionBody multiSignatureTransactionBody = 24;
+        FeeVoteCommitTransactionBody feeVoteCommitTransactionBody = 25;
     }
-    bytes Signature = 25;
+    bytes Signature = 26;
     // nullable
-    Escrow Escrow = 26;
+    Escrow Escrow = 27;
 }
 
 enum TransactionType {
@@ -136,6 +137,11 @@ message MultiSignatureTransactionBody {
     bytes UnsignedTransactionBytes = 2;
     // List of participantAddress-participantSignature with its tx hash
     SignatureInfo SignatureInfo = 3;
+}
+
+message FeeVoteCommitTransactionBody{
+    // VoteHash the hash of fee vote object
+    bytes VoteHash =1;
 }
 
 //------------
