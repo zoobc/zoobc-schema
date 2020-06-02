@@ -16,7 +16,7 @@
         "tags": [
           "AccountLedgerService"
         ],
-        "operationId": "AccountLedgerService_GetAccountLedgers",
+        "operationId": "GetAccountLedgers",
         "parameters": [
           {
             "type": "string",
@@ -35,7 +35,8 @@
               "EventRemoveAccountDatasetTransaction",
               "EventReward",
               "EventApprovalEscrowTransaction",
-              "EventMultiSignatureTransaction"
+              "EventMultiSignatureTransaction",
+              "EventFeeVoteCommitTransaction"
             ],
             "type": "string",
             "default": "EventAny",
@@ -109,7 +110,7 @@
         "tags": [
           "AccountBalanceService"
         ],
-        "operationId": "AccountBalanceService_GetAccountBalance",
+        "operationId": "GetAccountBalance",
         "parameters": [
           {
             "type": "string",
@@ -139,7 +140,7 @@
         "tags": [
           "AccountBalanceService"
         ],
-        "operationId": "AccountBalanceService_GetAccountBalances",
+        "operationId": "GetAccountBalances",
         "parameters": [
           {
             "type": "array",
@@ -173,7 +174,7 @@
         "tags": [
           "AccountDatasetService"
         ],
-        "operationId": "AccountDatasetService_GetAccountDataset",
+        "operationId": "GetAccountDataset",
         "parameters": [
           {
             "type": "string",
@@ -207,7 +208,7 @@
         "tags": [
           "AccountDatasetService"
         ],
-        "operationId": "AccountDatasetService_GetAccountDatasets",
+        "operationId": "GetAccountDatasets",
         "parameters": [
           {
             "type": "string",
@@ -284,7 +285,7 @@
         "tags": [
           "BlockService"
         ],
-        "operationId": "BlockService_GetBlock",
+        "operationId": "GetBlock",
         "parameters": [
           {
             "type": "integer",
@@ -329,7 +330,7 @@
         "tags": [
           "BlockService"
         ],
-        "operationId": "BlockService_GetBlocks",
+        "operationId": "GetBlocks",
         "parameters": [
           {
             "type": "integer",
@@ -374,7 +375,7 @@
         "tags": [
           "EscrowTransactionService"
         ],
-        "operationId": "EscrowTransactionService_GetEscrowTransaction",
+        "operationId": "GetEscrowTransaction",
         "parameters": [
           {
             "type": "string",
@@ -404,7 +405,7 @@
         "tags": [
           "EscrowTransactionService"
         ],
-        "operationId": "EscrowTransactionService_GetEscrowTransactions",
+        "operationId": "GetEscrowTransactions",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -426,7 +427,7 @@
         "tags": [
           "FileDownloadService"
         ],
-        "operationId": "FileDownloadService_FileDownload",
+        "operationId": "FileDownload",
         "parameters": [
           {
             "type": "array",
@@ -459,7 +460,7 @@
         "tags": [
           "HealthCheckService"
         ],
-        "operationId": "HealthCheckService_HealthCheck",
+        "operationId": "HealthCheck",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -481,7 +482,7 @@
         "tags": [
           "HostService"
         ],
-        "operationId": "HostService_GetHostInfo",
+        "operationId": "GetHostInfo",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -503,7 +504,7 @@
         "tags": [
           "HostService"
         ],
-        "operationId": "HostService_GetHostPeers",
+        "operationId": "GetHostPeers",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -525,7 +526,7 @@
         "tags": [
           "MempoolService"
         ],
-        "operationId": "MempoolService_GetMempoolTransaction",
+        "operationId": "GetMempoolTransaction",
         "parameters": [
           {
             "type": "string",
@@ -556,7 +557,7 @@
         "tags": [
           "MempoolService"
         ],
-        "operationId": "MempoolService_GetMempoolTransactions",
+        "operationId": "GetMempoolTransactions",
         "parameters": [
           {
             "type": "string",
@@ -627,7 +628,7 @@
         "tags": [
           "MultisigService"
         ],
-        "operationId": "MultisigService_GetMultisignatureInfo",
+        "operationId": "GetMultisignatureInfo",
         "parameters": [
           {
             "type": "string",
@@ -683,7 +684,7 @@
         "tags": [
           "MultisigService"
         ],
-        "operationId": "MultisigService_GetPendingTransactionDetailByTransactionHash",
+        "operationId": "GetPendingTransactionDetailByTransactionHash",
         "parameters": [
           {
             "type": "string",
@@ -713,7 +714,7 @@
         "tags": [
           "MultisigService"
         ],
-        "operationId": "MultisigService_GetPendingTransactions",
+        "operationId": "GetPendingTransactions",
         "parameters": [
           {
             "type": "string",
@@ -781,7 +782,7 @@
         "tags": [
           "NodeRegistrationService"
         ],
-        "operationId": "NodeRegistrationService_GetNodeRegistration",
+        "operationId": "GetNodeRegistration",
         "parameters": [
           {
             "type": "string",
@@ -833,7 +834,7 @@
         "tags": [
           "NodeRegistrationService"
         ],
-        "operationId": "NodeRegistrationService_GetNodeRegistrations",
+        "operationId": "GetNodeRegistrations",
         "parameters": [
           {
             "type": "integer",
@@ -905,7 +906,7 @@
         "tags": [
           "NodeAdminService"
         ],
-        "operationId": "NodeAdminService_GenerateNodeKey",
+        "operationId": "GenerateNodeKey",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -927,7 +928,7 @@
         "tags": [
           "NodeAdminService"
         ],
-        "operationId": "NodeAdminService_GetProofOfOwnership",
+        "operationId": "GetProofOfOwnership",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -949,7 +950,7 @@
         "tags": [
           "TransactionService"
         ],
-        "operationId": "TransactionService_GetTransaction",
+        "operationId": "GetTransaction",
         "parameters": [
           {
             "type": "string",
@@ -980,7 +981,7 @@
         "tags": [
           "TransactionService"
         ],
-        "operationId": "TransactionService_GetTransactionMinimumFee",
+        "operationId": "GetTransactionMinimumFee",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1002,7 +1003,7 @@
         "tags": [
           "TransactionService"
         ],
-        "operationId": "TransactionService_GetTransactions",
+        "operationId": "GetTransactions",
         "parameters": [
           {
             "type": "string",
@@ -1082,7 +1083,7 @@
         "tags": [
           "TransactionService"
         ],
-        "operationId": "TransactionService_PostTransaction",
+        "operationId": "PostTransaction",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1539,8 +1540,19 @@
         "EventRemoveAccountDatasetTransaction",
         "EventReward",
         "EventApprovalEscrowTransaction",
-        "EventMultiSignatureTransaction"
+        "EventMultiSignatureTransaction",
+        "EventFeeVoteCommitTransaction"
       ]
+    },
+    "modelFeeVoteCommitTransactionBody": {
+      "type": "object",
+      "properties": {
+        "VoteHash": {
+          "type": "string",
+          "format": "byte",
+          "title": "VoteHash the hash of fee vote object"
+        }
+      }
     },
     "modelFileDownloadResponse": {
       "type": "object",
@@ -2692,6 +2704,9 @@
         },
         "emptyTransactionBody": {
           "$ref": "#/definitions/modelEmptyTransactionBody"
+        },
+        "feeVoteCommitTransactionBody": {
+          "$ref": "#/definitions/modelFeeVoteCommitTransactionBody"
         },
         "multiSignatureTransactionBody": {
           "$ref": "#/definitions/modelMultiSignatureTransactionBody"
