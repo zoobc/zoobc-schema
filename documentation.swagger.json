@@ -39,7 +39,10 @@
               "EventRemoveAccountDatasetTransaction",
               "EventReward",
               "EventApprovalEscrowTransaction",
-              "EventMultiSignatureTransaction"
+              "EventMultiSignatureTransaction",
+              "EventLiquidPaymentTransaction",
+              "EventLiquidPaymentPaidTransaction",
+              "EventLiquidPaymentStopTransaction"
             ],
             "type": "string",
             "default": "EventAny",
@@ -1387,7 +1390,10 @@
         "EventRemoveAccountDatasetTransaction",
         "EventReward",
         "EventApprovalEscrowTransaction",
-        "EventMultiSignatureTransaction"
+        "EventMultiSignatureTransaction",
+        "EventLiquidPaymentTransaction",
+        "EventLiquidPaymentPaidTransaction",
+        "EventLiquidPaymentStopTransaction"
       ]
     },
     "modelFileDownloadResponse": {
@@ -1845,6 +1851,29 @@
         }
       }
     },
+    "modelLiquidPaymentStopTransactionBody": {
+      "type": "object",
+      "properties": {
+        "TransactionID": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "modelLiquidPaymentTransactionBody": {
+      "type": "object",
+      "properties": {
+        "Amount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CompleteMinutes": {
+          "type": "string",
+          "format": "uint64",
+          "title": "CompleteMinutes indicates how many minutes is required before the liquid payment is completed"
+        }
+      }
+    },
     "modelMemoryInformation": {
       "type": "object",
       "properties": {
@@ -1992,27 +2021,37 @@
       "title": "NodeAddressInfo represent the node address unmanaged table holding the list of priority peers addresses",
       "properties": {
         "Address": {
-          "type": "string"
+          "type": "string",
+          "title": "Address public ip or domain name"
         },
         "BlockHash": {
           "type": "string",
-          "format": "byte"
+          "format": "byte",
+          "title": "BlockHash main block hash referring to above blockHeigh"
         },
         "BlockHeight": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "title": "BlockHeight last main block height at which nodeAddressInfo message was generated"
         },
         "NodeID": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "NodeID from node_registry"
         },
         "Port": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "title": "Port p2p communication port"
         },
         "Signature": {
           "type": "string",
-          "format": "byte"
+          "format": "byte",
+          "title": "Signature signature of above fields (signed by the node and verifiable with node's public key at above block height)"
+        },
+        "updatedTimestamp": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },
@@ -2580,6 +2619,12 @@
         },
         "emptyTransactionBody": {
           "$ref": "#/definitions/modelEmptyTransactionBody"
+        },
+        "liquidPaymentStopTransactionBody": {
+          "$ref": "#/definitions/modelLiquidPaymentStopTransactionBody"
+        },
+        "liquidPaymentTransactionBody": {
+          "$ref": "#/definitions/modelLiquidPaymentTransactionBody"
         },
         "multiSignatureTransactionBody": {
           "$ref": "#/definitions/modelMultiSignatureTransactionBody"
