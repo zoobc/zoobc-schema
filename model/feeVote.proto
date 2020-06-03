@@ -10,3 +10,17 @@ message FeeVoteCommitmentVote {
    string  VoterAddress = 2;
    uint32 BlockHeight = 3 ;
 }
+
+// FeeVoteInfo represents the fields might be contains what previous commitmentVote submitted
+message FeeVoteInfo {
+   bytes RecentBlockHash = 1;
+   uint32 RecentBlockHeight = 2;
+   int64 FeeVote = 3;
+}
+// FeeVoteRevealVote represents the fields might be contains what previous commitmentVote submitted
+message FeeVoteRevealVote {
+   FeeVoteInfo VoteInfo = 1;
+   bytes VoterSignature = 2;
+   string VoterAddress = 3;
+   uint32 BlockHeight = 4;
+}

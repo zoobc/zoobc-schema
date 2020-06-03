@@ -9,6 +9,7 @@ import "model/batchReceipt.proto";
 import "model/nodeRegistration.proto";
 import "model/escrow.proto";
 import "model/multiSignature.proto";
+import "model/feeVote.proto";
 
 // Transaction represent the transaction data structure stored in the database
 message Transaction {
@@ -39,10 +40,11 @@ message Transaction {
         ApprovalEscrowTransactionBody approvalEscrowTransactionBody = 23;
         MultiSignatureTransactionBody multiSignatureTransactionBody = 24;
         FeeVoteCommitTransactionBody feeVoteCommitTransactionBody = 25;
+        FeeVoteRevealTransactionBody feeVoteRevealTransactionBody = 26;
     }
-    bytes Signature = 26;
+    bytes Signature = 27;
     // nullable
-    Escrow Escrow = 27;
+    Escrow Escrow = 28;
 }
 
 enum TransactionType {
@@ -66,6 +68,10 @@ enum TransactionType {
     ApprovalEscrowTransaction = 4;
     // in bytes: []byte{5,0,0,0}
     MultiSignatureTransaction = 5;
+    // in bytes: []byte{7,0,0,0}
+    FeeVoteCommitmentVoteTransaction  = 7;
+    // in bytes: []byte{7,1,0,0}
+    FeeVoteRevealVoteTransaction = 263;
 }
 
 
@@ -142,6 +148,10 @@ message MultiSignatureTransactionBody {
 message FeeVoteCommitTransactionBody{
     // VoteHash the hash of fee vote object
     bytes VoteHash =1;
+}
+message FeeVoteRevealTransactionBody {
+    FeeVoteInfo FeeVoteInfo = 1;
+    bytes VoterSignature = 2;
 }
 
 //------------
