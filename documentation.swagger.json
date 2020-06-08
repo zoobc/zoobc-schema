@@ -41,7 +41,10 @@
               "EventApprovalEscrowTransaction",
               "EventMultiSignatureTransaction",
               "EventFeeVoteCommitTransaction",
-              "EventFeeVoteRevealTransaction"
+              "EventFeeVoteRevealTransaction",
+              "EventLiquidPaymentTransaction",
+              "EventLiquidPaymentPaidTransaction",
+              "EventLiquidPaymentStopTransaction"
             ],
             "type": "string",
             "default": "EventAny",
@@ -1391,7 +1394,10 @@
         "EventApprovalEscrowTransaction",
         "EventMultiSignatureTransaction",
         "EventFeeVoteCommitTransaction",
-        "EventFeeVoteRevealTransaction"
+        "EventFeeVoteRevealTransaction",
+        "EventLiquidPaymentTransaction",
+        "EventLiquidPaymentPaidTransaction",
+        "EventLiquidPaymentStopTransaction"
       ]
     },
     "modelFeeVoteCommitTransactionBody": {
@@ -1875,6 +1881,29 @@
         "Uptime": {
           "type": "string",
           "format": "uint64"
+        }
+      }
+    },
+    "modelLiquidPaymentStopTransactionBody": {
+      "type": "object",
+      "properties": {
+        "TransactionID": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "modelLiquidPaymentTransactionBody": {
+      "type": "object",
+      "properties": {
+        "Amount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CompleteMinutes": {
+          "type": "string",
+          "format": "uint64",
+          "title": "CompleteMinutes indicates how many minutes is required before the liquid payment is completed"
         }
       }
     },
@@ -2590,6 +2619,12 @@
         },
         "feeVoteRevealTransactionBody": {
           "$ref": "#/definitions/modelFeeVoteRevealTransactionBody"
+        },
+        "liquidPaymentStopTransactionBody": {
+          "$ref": "#/definitions/modelLiquidPaymentStopTransactionBody"
+        },
+        "liquidPaymentTransactionBody": {
+          "$ref": "#/definitions/modelLiquidPaymentTransactionBody"
         },
         "multiSignatureTransactionBody": {
           "$ref": "#/definitions/modelMultiSignatureTransactionBody"

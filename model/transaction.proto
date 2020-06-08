@@ -41,10 +41,12 @@ message Transaction {
         MultiSignatureTransactionBody multiSignatureTransactionBody = 24;
         FeeVoteCommitTransactionBody feeVoteCommitTransactionBody = 25;
         FeeVoteRevealTransactionBody feeVoteRevealTransactionBody = 26;
+        LiquidPaymentTransactionBody liquidPaymentTransactionBody = 27;
+        LiquidPaymentStopTransactionBody liquidPaymentStopTransactionBody = 28;
     }
-    bytes Signature = 27;
+    bytes Signature = 29;
     // nullable
-    Escrow Escrow = 28;
+    Escrow Escrow = 30;
 }
 
 enum TransactionType {
@@ -152,6 +154,15 @@ message FeeVoteCommitTransactionBody{
 message FeeVoteRevealTransactionBody {
     FeeVoteInfo FeeVoteInfo = 1;
     bytes VoterSignature = 2;
+}
+
+message LiquidPaymentTransactionBody {
+    int64 Amount = 1 [ jstype = JS_STRING ];
+    // CompleteMinutes indicates how many minutes is required before the liquid payment is completed
+    uint64 CompleteMinutes = 2 [ jstype = JS_STRING ];
+}
+message LiquidPaymentStopTransactionBody {
+    int64 TransactionID = 1 [ jstype = JS_STRING ];
 }
 
 //------------
