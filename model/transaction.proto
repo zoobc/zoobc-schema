@@ -9,6 +9,7 @@ import "model/batchReceipt.proto";
 import "model/nodeRegistration.proto";
 import "model/escrow.proto";
 import "model/multiSignature.proto";
+import "model/feeVote.proto";
 
 // Transaction represent the transaction data structure stored in the database
 message Transaction {
@@ -39,10 +40,13 @@ message Transaction {
         ApprovalEscrowTransactionBody approvalEscrowTransactionBody = 23;
         MultiSignatureTransactionBody multiSignatureTransactionBody = 24;
         FeeVoteCommitTransactionBody feeVoteCommitTransactionBody = 25;
+        FeeVoteRevealTransactionBody feeVoteRevealTransactionBody = 26;
+        LiquidPaymentTransactionBody liquidPaymentTransactionBody = 27;
+        LiquidPaymentStopTransactionBody liquidPaymentStopTransactionBody = 28;
     }
-    bytes Signature = 26;
+    bytes Signature = 29;
     // nullable
-    Escrow Escrow = 27;
+    Escrow Escrow = 30;
 }
 
 enum TransactionType {
@@ -66,6 +70,10 @@ enum TransactionType {
     ApprovalEscrowTransaction = 4;
     // in bytes: []byte{5,0,0,0}
     MultiSignatureTransaction = 5;
+    // in bytes: []byte{7,0,0,0}
+    FeeVoteCommitmentVoteTransaction  = 7;
+    // in bytes: []byte{7,1,0,0}
+    FeeVoteRevealVoteTransaction = 263;
 }
 
 
@@ -142,6 +150,19 @@ message MultiSignatureTransactionBody {
 message FeeVoteCommitTransactionBody{
     // VoteHash the hash of fee vote object
     bytes VoteHash =1;
+}
+message FeeVoteRevealTransactionBody {
+    FeeVoteInfo FeeVoteInfo = 1;
+    bytes VoterSignature = 2;
+}
+
+message LiquidPaymentTransactionBody {
+    int64 Amount = 1 [ jstype = JS_STRING ];
+    // CompleteMinutes indicates how many minutes is required before the liquid payment is completed
+    uint64 CompleteMinutes = 2 [ jstype = JS_STRING ];
+}
+message LiquidPaymentStopTransactionBody {
+    int64 TransactionID = 1 [ jstype = JS_STRING ];
 }
 
 //------------

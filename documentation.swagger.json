@@ -40,7 +40,11 @@
               "EventReward",
               "EventApprovalEscrowTransaction",
               "EventMultiSignatureTransaction",
-              "EventFeeVoteCommitTransaction"
+              "EventFeeVoteCommitTransaction",
+              "EventFeeVoteRevealTransaction",
+              "EventLiquidPaymentTransaction",
+              "EventLiquidPaymentPaidTransaction",
+              "EventLiquidPaymentStopTransaction"
             ],
             "type": "string",
             "default": "EventAny",
@@ -327,22 +331,6 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetBlocksResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v1/block/GetNextBlocksmiths": {
-      "get": {
-        "tags": [
-          "BlocksmithService"
-        ],
-        "operationId": "GetNextBlocksmiths",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/modelGetNextBlocksmithsResponse"
             }
           }
         }
@@ -1405,7 +1393,11 @@
         "EventReward",
         "EventApprovalEscrowTransaction",
         "EventMultiSignatureTransaction",
-        "EventFeeVoteCommitTransaction"
+        "EventFeeVoteCommitTransaction",
+        "EventFeeVoteRevealTransaction",
+        "EventLiquidPaymentTransaction",
+        "EventLiquidPaymentPaidTransaction",
+        "EventLiquidPaymentStopTransaction"
       ]
     },
     "modelFeeVoteCommitTransactionBody": {
@@ -1415,6 +1407,36 @@
           "type": "string",
           "format": "byte",
           "title": "VoteHash the hash of fee vote object"
+        }
+      }
+    },
+    "modelFeeVoteInfo": {
+      "type": "object",
+      "title": "FeeVoteInfo represents the fields might be contains what previous commitmentVote submitted",
+      "properties": {
+        "FeeVote": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RecentBlockHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RecentBlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "modelFeeVoteRevealTransactionBody": {
+      "type": "object",
+      "properties": {
+        "FeeVoteInfo": {
+          "$ref": "#/definitions/modelFeeVoteInfo"
+        },
+        "VoterSignature": {
+          "type": "string",
+          "format": "byte"
         }
       }
     },
@@ -1648,21 +1670,6 @@
         }
       }
     },
-    "modelGetNextBlocksmithsResponse": {
-      "type": "object",
-      "properties": {
-        "Node": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/modelNode"
-          }
-        },
-        "SmithingTime": {
-          "type": "string",
-          "format": "int64"
-        }
-      }
-    },
     "modelGetNodeHardwareResponse": {
       "type": "object",
       "properties": {
@@ -1874,6 +1881,29 @@
         "Uptime": {
           "type": "string",
           "format": "uint64"
+        }
+      }
+    },
+    "modelLiquidPaymentStopTransactionBody": {
+      "type": "object",
+      "properties": {
+        "TransactionID": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "modelLiquidPaymentTransactionBody": {
+      "type": "object",
+      "properties": {
+        "Amount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CompleteMinutes": {
+          "type": "string",
+          "format": "uint64",
+          "title": "CompleteMinutes indicates how many minutes is required before the liquid payment is completed"
         }
       }
     },
@@ -2587,6 +2617,15 @@
         "feeVoteCommitTransactionBody": {
           "$ref": "#/definitions/modelFeeVoteCommitTransactionBody"
         },
+        "feeVoteRevealTransactionBody": {
+          "$ref": "#/definitions/modelFeeVoteRevealTransactionBody"
+        },
+        "liquidPaymentStopTransactionBody": {
+          "$ref": "#/definitions/modelLiquidPaymentStopTransactionBody"
+        },
+        "liquidPaymentTransactionBody": {
+          "$ref": "#/definitions/modelLiquidPaymentTransactionBody"
+        },
         "multiSignatureTransactionBody": {
           "$ref": "#/definitions/modelMultiSignatureTransactionBody"
         },
@@ -2667,6 +2706,20 @@
           "type": "string"
         }
       }
+    }
+  },
+  "x-stream-definitions": {
+    "modelGetNodeHardwareResponse": {
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/runtimeStreamError"
+        },
+        "result": {
+          "$ref": "#/definitions/modelGetNodeHardwareResponse"
+        }
+      },
+      "title": "Stream result of modelGetNodeHardwareResponse",
+      "type": "object"
     }
   }
 }
