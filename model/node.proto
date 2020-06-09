@@ -26,7 +26,6 @@ message NodeAddressInfo {
 	bytes BlockHash = 5;
 	// Signature signature of above fields (signed by the node and verifiable with node's public key at above block height)
 	bytes Signature = 6;
-	int64 updatedTimestamp = 7;
 }
 
 message NodeKey {

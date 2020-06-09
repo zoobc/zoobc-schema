@@ -2048,10 +2048,6 @@
           "type": "string",
           "format": "byte",
           "title": "Signature signature of above fields (signed by the node and verifiable with node's public key at above block height)"
-        },
-        "updatedTimestamp": {
-          "type": "string",
-          "format": "int64"
         }
       }
     },
