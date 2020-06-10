@@ -40,6 +40,8 @@
               "EventReward",
               "EventApprovalEscrowTransaction",
               "EventMultiSignatureTransaction",
+              "EventFeeVoteCommitTransaction",
+              "EventFeeVoteRevealTransaction",
               "EventLiquidPaymentTransaction",
               "EventLiquidPaymentPaidTransaction",
               "EventLiquidPaymentStopTransaction"
@@ -1391,10 +1393,52 @@
         "EventReward",
         "EventApprovalEscrowTransaction",
         "EventMultiSignatureTransaction",
+        "EventFeeVoteCommitTransaction",
+        "EventFeeVoteRevealTransaction",
         "EventLiquidPaymentTransaction",
         "EventLiquidPaymentPaidTransaction",
         "EventLiquidPaymentStopTransaction"
       ]
+    },
+    "modelFeeVoteCommitTransactionBody": {
+      "type": "object",
+      "properties": {
+        "VoteHash": {
+          "type": "string",
+          "format": "byte",
+          "title": "VoteHash the hash of fee vote object"
+        }
+      }
+    },
+    "modelFeeVoteInfo": {
+      "type": "object",
+      "title": "FeeVoteInfo represents the fields might be contains what previous commitmentVote submitted",
+      "properties": {
+        "FeeVote": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RecentBlockHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RecentBlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "modelFeeVoteRevealTransactionBody": {
+      "type": "object",
+      "properties": {
+        "FeeVoteInfo": {
+          "$ref": "#/definitions/modelFeeVoteInfo"
+        },
+        "VoterSignature": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
     },
     "modelFileDownloadResponse": {
       "type": "object",
@@ -2615,6 +2659,12 @@
         },
         "emptyTransactionBody": {
           "$ref": "#/definitions/modelEmptyTransactionBody"
+        },
+        "feeVoteCommitTransactionBody": {
+          "$ref": "#/definitions/modelFeeVoteCommitTransactionBody"
+        },
+        "feeVoteRevealTransactionBody": {
+          "$ref": "#/definitions/modelFeeVoteRevealTransactionBody"
         },
         "liquidPaymentStopTransactionBody": {
           "$ref": "#/definitions/modelLiquidPaymentStopTransactionBody"

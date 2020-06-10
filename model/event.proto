@@ -15,7 +15,9 @@ enum EventType {
     EventReward = 8;
     EventApprovalEscrowTransaction = 9;
     EventMultiSignatureTransaction = 10;
-    EventLiquidPaymentTransaction = 11;
-    EventLiquidPaymentPaidTransaction = 12;
-    EventLiquidPaymentStopTransaction = 13;
+    EventFeeVoteCommitTransaction = 11;
+    EventFeeVoteRevealTransaction = 12;
+    EventLiquidPaymentTransaction = 13;
+    EventLiquidPaymentPaidTransaction = 14;
+    EventLiquidPaymentStopTransaction = 15;
 }
