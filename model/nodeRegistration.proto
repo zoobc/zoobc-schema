@@ -63,3 +63,10 @@ enum NodeRegistrationState {
     // NodeDeleted 'deleted' node status (= 2): a node in node registry with this status is marked as deleted
     NodeDeleted = 2;
 }
+
+// NodeAdmissionTimestamp represent the timestamp for next node admission
+message NodeAdmissionTimestamp {
+    int64 Timestamp = 1 [ jstype = JS_STRING ];
+    uint32 BlockHeight = 2;
+    bool Latest = 3;
+}
