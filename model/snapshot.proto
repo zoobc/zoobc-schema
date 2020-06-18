@@ -45,5 +45,6 @@ message SnapshotPayload {
     repeated FeeVoteRevealVote FeeVoteRevealVote = 14;
     repeated LiquidPayment LiquidPayment = 15;
     repeated NodeAdmissionTimestamp NodeAdmissionTimestamp = 16;
+    repeated MultiSignatureParticipant MultiSignatureParticipants = 17;
 }
 
