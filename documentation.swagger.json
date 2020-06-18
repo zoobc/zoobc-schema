@@ -1,14 +1,7 @@
 {
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
-  "schemes": [
-    "http",
-    "https"
-  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "schemes": ["http", "https"],
   "swagger": "2.0",
   "info": {
     "title": "service/accountBalance.proto",
@@ -17,9 +10,7 @@
   "paths": {
     "/v1/account-ledger/GetAccountLedgers": {
       "get": {
-        "tags": [
-          "AccountLedgerService"
-        ],
+        "tags": ["AccountLedgerService"],
         "operationId": "GetAccountLedgers",
         "parameters": [
           {
@@ -75,10 +66,7 @@
             "in": "query"
           },
           {
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
+            "enum": ["DESC", "ASC"],
             "type": "string",
             "default": "DESC",
             "name": "Pagination.OrderBy",
@@ -109,9 +97,7 @@
     },
     "/v1/account/GetAccountBalance": {
       "get": {
-        "tags": [
-          "AccountBalanceService"
-        ],
+        "tags": ["AccountBalanceService"],
         "operationId": "GetAccountBalance",
         "parameters": [
           {
@@ -133,9 +119,7 @@
     },
     "/v1/account/GetAccountBalances": {
       "get": {
-        "tags": [
-          "AccountBalanceService"
-        ],
+        "tags": ["AccountBalanceService"],
         "operationId": "GetAccountBalances",
         "parameters": [
           {
@@ -161,9 +145,7 @@
     },
     "/v1/accountDataset/GetAccountDataset": {
       "get": {
-        "tags": [
-          "AccountDatasetService"
-        ],
+        "tags": ["AccountDatasetService"],
         "operationId": "GetAccountDataset",
         "parameters": [
           {
@@ -189,9 +171,7 @@
     },
     "/v1/accountDataset/GetAccountDatasets": {
       "get": {
-        "tags": [
-          "AccountDatasetService"
-        ],
+        "tags": ["AccountDatasetService"],
         "operationId": "GetAccountDatasets",
         "parameters": [
           {
@@ -226,10 +206,7 @@
             "in": "query"
           },
           {
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
+            "enum": ["DESC", "ASC"],
             "type": "string",
             "default": "DESC",
             "name": "Pagination.OrderBy",
@@ -260,9 +237,7 @@
     },
     "/v1/block/GetBlock": {
       "get": {
-        "tags": [
-          "BlockService"
-        ],
+        "tags": ["BlockService"],
         "operationId": "GetBlock",
         "parameters": [
           {
@@ -299,9 +274,7 @@
     },
     "/v1/block/GetBlocks": {
       "get": {
-        "tags": [
-          "BlockService"
-        ],
+        "tags": ["BlockService"],
         "operationId": "GetBlocks",
         "parameters": [
           {
@@ -338,9 +311,7 @@
     },
     "/v1/block/GetNextBlocksmiths": {
       "get": {
-        "tags": [
-          "BlocksmithService"
-        ],
+        "tags": ["BlocksmithService"],
         "operationId": "GetNextBlocksmiths",
         "responses": {
           "200": {
@@ -354,9 +325,7 @@
     },
     "/v1/escrow/GetEscrowTransactionRequest": {
       "get": {
-        "tags": [
-          "EscrowTransactionService"
-        ],
+        "tags": ["EscrowTransactionService"],
         "operationId": "GetEscrowTransaction",
         "parameters": [
           {
@@ -378,9 +347,7 @@
     },
     "/v1/escrow/GetEscrowTransactionsRequest": {
       "post": {
-        "tags": [
-          "EscrowTransactionService"
-        ],
+        "tags": ["EscrowTransactionService"],
         "operationId": "GetEscrowTransactions",
         "responses": {
           "200": {
@@ -394,9 +361,7 @@
     },
     "/v1/file/FileDownload": {
       "get": {
-        "tags": [
-          "FileDownloadService"
-        ],
+        "tags": ["FileDownloadService"],
         "operationId": "FileDownload",
         "parameters": [
           {
@@ -421,9 +386,7 @@
     },
     "/v1/health/check": {
       "get": {
-        "tags": [
-          "HealthCheckService"
-        ],
+        "tags": ["HealthCheckService"],
         "operationId": "HealthCheck",
         "responses": {
           "200": {
@@ -437,9 +400,7 @@
     },
     "/v1/host/GetHostInfo": {
       "get": {
-        "tags": [
-          "HostService"
-        ],
+        "tags": ["HostService"],
         "operationId": "GetHostInfo",
         "responses": {
           "200": {
@@ -453,9 +414,7 @@
     },
     "/v1/host/GetHostPeers": {
       "get": {
-        "tags": [
-          "HostService"
-        ],
+        "tags": ["HostService"],
         "operationId": "GetHostPeers",
         "responses": {
           "200": {
@@ -469,9 +428,7 @@
     },
     "/v1/mempool/GetMempoolTransaction": {
       "get": {
-        "tags": [
-          "MempoolService"
-        ],
+        "tags": ["MempoolService"],
         "operationId": "GetMempoolTransaction",
         "parameters": [
           {
@@ -494,9 +451,7 @@
     },
     "/v1/mempool/GetMempoolTransactions": {
       "get": {
-        "tags": [
-          "MempoolService"
-        ],
+        "tags": ["MempoolService"],
         "operationId": "GetMempoolTransactions",
         "parameters": [
           {
@@ -525,10 +480,7 @@
             "in": "query"
           },
           {
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
+            "enum": ["DESC", "ASC"],
             "type": "string",
             "default": "DESC",
             "name": "Pagination.OrderBy",
@@ -559,9 +511,7 @@
     },
     "/v1/multisig/GetMultisignatureInfo": {
       "get": {
-        "tags": [
-          "MultisigService"
-        ],
+        "tags": ["MultisigService"],
         "operationId": "GetMultisignatureInfo",
         "parameters": [
           {
@@ -575,10 +525,7 @@
             "in": "query"
           },
           {
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
+            "enum": ["DESC", "ASC"],
             "type": "string",
             "default": "DESC",
             "name": "Pagination.OrderBy",
@@ -609,9 +556,7 @@
     },
     "/v1/multisig/GetPendingTransactionDetailByTransactionHash": {
       "get": {
-        "tags": [
-          "MultisigService"
-        ],
+        "tags": ["MultisigService"],
         "operationId": "GetPendingTransactionDetailByTransactionHash",
         "parameters": [
           {
@@ -633,9 +578,7 @@
     },
     "/v1/multisig/GetPendingTransactions": {
       "get": {
-        "tags": [
-          "MultisigService"
-        ],
+        "tags": ["MultisigService"],
         "operationId": "GetPendingTransactions",
         "parameters": [
           {
@@ -661,10 +604,7 @@
             "in": "query"
           },
           {
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
+            "enum": ["DESC", "ASC"],
             "type": "string",
             "default": "DESC",
             "name": "Pagination.OrderBy",
@@ -695,9 +635,7 @@
     },
     "/v1/nodeRegistration/GetNodeRegistration": {
       "get": {
-        "tags": [
-          "NodeRegistrationService"
-        ],
+        "tags": ["NodeRegistrationService"],
         "operationId": "GetNodeRegistration",
         "parameters": [
           {
@@ -741,9 +679,7 @@
     },
     "/v1/nodeRegistration/GetNodeRegistrations": {
       "get": {
-        "tags": [
-          "NodeRegistrationService"
-        ],
+        "tags": ["NodeRegistrationService"],
         "operationId": "GetNodeRegistrations",
         "parameters": [
           {
@@ -773,10 +709,7 @@
             "in": "query"
           },
           {
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
+            "enum": ["DESC", "ASC"],
             "type": "string",
             "default": "DESC",
             "name": "Pagination.OrderBy",
@@ -807,9 +740,7 @@
     },
     "/v1/nodeadmin/generateNodeKey": {
       "get": {
-        "tags": [
-          "NodeAdminService"
-        ],
+        "tags": ["NodeAdminService"],
         "operationId": "GenerateNodeKey",
         "responses": {
           "200": {
@@ -823,9 +754,7 @@
     },
     "/v1/nodeadmin/getProofOfOwnership": {
       "get": {
-        "tags": [
-          "NodeAdminService"
-        ],
+        "tags": ["NodeAdminService"],
         "operationId": "GetProofOfOwnership",
         "responses": {
           "200": {
@@ -839,9 +768,7 @@
     },
     "/v1/transaction/GetTransaction": {
       "get": {
-        "tags": [
-          "TransactionService"
-        ],
+        "tags": ["TransactionService"],
         "operationId": "GetTransaction",
         "parameters": [
           {
@@ -864,9 +791,7 @@
     },
     "/v1/transaction/GetTransactionMinimumFee": {
       "post": {
-        "tags": [
-          "TransactionService"
-        ],
+        "tags": ["TransactionService"],
         "operationId": "GetTransactionMinimumFee",
         "responses": {
           "200": {
@@ -880,9 +805,7 @@
     },
     "/v1/transaction/GetTransactions": {
       "get": {
-        "tags": [
-          "TransactionService"
-        ],
+        "tags": ["TransactionService"],
         "operationId": "GetTransactions",
         "parameters": [
           {
@@ -920,10 +843,7 @@
             "in": "query"
           },
           {
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
+            "enum": ["DESC", "ASC"],
             "type": "string",
             "default": "DESC",
             "name": "Pagination.OrderBy",
@@ -954,9 +874,7 @@
     },
     "/v1/transaction/PostTransaction": {
       "post": {
-        "tags": [
-          "TransactionService"
-        ],
+        "tags": ["TransactionService"],
         "operationId": "PostTransaction",
         "responses": {
           "200": {
@@ -1379,20 +1297,12 @@
     "modelEscrowApproval": {
       "type": "string",
       "default": "Approve",
-      "enum": [
-        "Approve",
-        "Reject"
-      ]
+      "enum": ["Approve", "Reject"]
     },
     "modelEscrowStatus": {
       "type": "string",
       "default": "Pending",
-      "enum": [
-        "Pending",
-        "Approved",
-        "Rejected",
-        "Expired"
-      ]
+      "enum": ["Pending", "Approved", "Rejected", "Expired"]
     },
     "modelEventType": {
       "type": "string",
@@ -2166,10 +2076,7 @@
     "modelOrderBy": {
       "type": "string",
       "default": "DESC",
-      "enum": [
-        "DESC",
-        "ASC"
-      ]
+      "enum": ["DESC", "ASC"]
     },
     "modelPagination": {
       "type": "object",
@@ -2508,9 +2415,7 @@
       "type": "string",
       "title": "SpineBlockManifestType type of spineBlockManifest (as of now only snapshot)",
       "default": "Snapshot",
-      "enum": [
-        "Snapshot"
-      ]
+      "enum": ["Snapshot"]
     },
     "modelSpinePublicKey": {
       "type": "object",
@@ -2541,10 +2446,7 @@
       "type": "string",
       "title": "RequestType used to sign a node administration request",
       "default": "AddKey",
-      "enum": [
-        "AddKey",
-        "RemoveKey"
-      ]
+      "enum": ["AddKey", "RemoveKey"]
     },
     "modelStorageInformation": {
       "type": "object",
@@ -2737,6 +2639,20 @@
           "type": "string"
         }
       }
+    }
+  },
+  "x-stream-definitions": {
+    "modelGetNodeHardwareResponse": {
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/runtimeStreamError"
+        },
+        "result": {
+          "$ref": "#/definitions/modelGetNodeHardwareResponse"
+        }
+      },
+      "title": "Stream result of modelGetNodeHardwareResponse",
+      "type": "object"
     }
   }
 }
