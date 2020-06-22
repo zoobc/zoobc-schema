@@ -2310,6 +2310,27 @@
         }
       }
     },
+    "modelProofOfOrigin": {
+      "type": "object",
+      "title": "ProofOfOrigin a message send by a node to prove its identity",
+      "properties": {
+        "MessageBytes": {
+          "type": "string",
+          "format": "byte",
+          "title": "MessageBytes Response to the challenge message sent to this node"
+        },
+        "Signature": {
+          "type": "string",
+          "format": "byte",
+          "title": "Signature signature of above fields (signed by the node and verifiable with node's public key at above block height)"
+        },
+        "Timestamp": {
+          "type": "string",
+          "format": "int64",
+          "title": "Timestamp expiration time for this proof of origin message"
+        }
+      }
+    },
     "modelProofOfOwnership": {
       "type": "object",
       "properties": {

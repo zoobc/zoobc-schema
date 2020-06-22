@@ -12,22 +12,6 @@ message Node {
 	uint32 Port          = 4;
 }
 
-// NodeAddressInfo represent the node address unmanaged table holding the list of priority peers addresses
-message NodeAddressInfo {
-	// NodeID from node_registry
-	int64 NodeID = 1;
-	// Address public ip or domain name
-	string Address = 2;
-	// Port p2p communication port
-	uint32 Port = 3;
-	// BlockHeight last main block height at which nodeAddressInfo message was generated
-	uint32 BlockHeight = 4;
-	// BlockHash main block hash referring to above blockHeigh
-	bytes BlockHash = 5;
-	// Signature signature of above fields (signed by the node and verifiable with node's public key at above block height)
-	bytes Signature = 6;
-}
-
 message NodeKey {
 	int64 ID             = 1;
 	bytes PublicKey     = 2;
@@ -38,16 +22,4 @@ message GenerateNodeKeyRequest {}
 
 message GenerateNodeKeyResponse {
     bytes NodePublicKey = 1;
-}
-
-message GetNodeAddressesInfoRequest {
-	repeated int64 NodeIDs =1;
-}
-
-message GetNodeAddressesInfoResponse {
-	repeated NodeAddressInfo NodeAddressesInfo = 1;
-}
-
-message SendNodeAddressInfoRequest {
-	NodeAddressInfo NodeAddressInfoMessage =1;
 }
