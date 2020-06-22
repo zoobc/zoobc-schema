@@ -43,7 +43,8 @@ message SnapshotPayload {
     repeated FeeScale FeeScale = 12;
     repeated FeeVoteCommitmentVote FeeVoteCommitmentVote = 13;
     repeated FeeVoteRevealVote FeeVoteRevealVote = 14;
-    repeated LiquidPayment LiquidPayment = 15   ;
-    repeated MultiSignatureParticipant MultiSignatureParticipants = 16;
+    repeated LiquidPayment LiquidPayment = 15;
+    repeated NodeAdmissionTimestamp NodeAdmissionTimestamp = 16;
+    repeated MultiSignatureParticipant MultiSignatureParticipants = 17;
 }
 
