@@ -22,7 +22,7 @@ message NodeAddressInfo {
 	bytes Signature = 7;
 }
 
-enum LiquidPaymentStatus {
+enum NodeAddressStatus {
 	NodeAddressPending = 0;
 	NodeAddressConfirmed = 1;
 }
