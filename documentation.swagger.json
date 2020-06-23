@@ -2460,14 +2460,6 @@
           "type": "string",
           "title": "Property name"
         },
-        "RecipientAccountAddress": {
-          "type": "string",
-          "title": "Account Address that got property of Dataset"
-        },
-        "SetterAccountAddress": {
-          "type": "string",
-          "title": "Account Address that set Dataset"
-        },
         "Value": {
           "type": "string",
           "title": "Value of property"
@@ -2527,14 +2519,6 @@
         "Property": {
           "type": "string",
           "title": "Property name"
-        },
-        "RecipientAccountAddress": {
-          "type": "string",
-          "title": "Account Address that got property of Dataset"
-        },
-        "SetterAccountAddress": {
-          "type": "string",
-          "title": "Account Address that set Dataset"
         },
         "Value": {
           "type": "string",

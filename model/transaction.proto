@@ -111,26 +111,18 @@ message ClaimNodeRegistrationTransactionBody {
 }
 
 message SetupAccountDatasetTransactionBody {
-    // Account Address that set Dataset
-    string SetterAccountAddress = 1;
-    // Account Address that got property of Dataset
-    string RecipientAccountAddress = 2;
     // Property name
-    string Property = 3;
+    string Property = 1;
     // Value of property
-    string Value = 4;
+    string Value = 2;
     // How long Dataset will active in second
 }
 
 message RemoveAccountDatasetTransactionBody {
-    // Account Address that set Dataset
-    string SetterAccountAddress = 1;
-    // Account Address that got property of Dataset
-    string RecipientAccountAddress = 2;
     // Property name
-    string Property = 3;
+    string Property = 1;
     // Value of property
-    string Value = 4;
+    string Value = 2;
 }
 
 message ApprovalEscrowTransactionBody {
