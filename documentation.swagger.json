@@ -2092,6 +2092,11 @@
           "type": "string",
           "format": "byte",
           "title": "Signature signature of above fields (signed by the node and verifiable with node's public key at above block height)"
+        },
+        "Status": {
+          "type": "string",
+          "format": "byte",
+          "title": "Status the pending/confirmed status of node address"
         }
       }
     },

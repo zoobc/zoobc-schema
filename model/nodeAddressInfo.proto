@@ -16,8 +16,15 @@ message NodeAddressInfo {
 	uint32 BlockHeight = 4;
 	// BlockHash main block hash referring to above blockHeigh
 	bytes BlockHash = 5;
+	// Status the pending/confirmed status of node address
+	bytes Status = 6;
 	// Signature signature of above fields (signed by the node and verifiable with node's public key at above block height)
-	bytes Signature = 6;
+	bytes Signature = 7;
+}
+
+enum LiquidPaymentStatus {
+	NodeAddressPending = 0;
+	NodeAddressConfirmed = 1;
 }
 
 message GetNodeAddressesInfoRequest {
