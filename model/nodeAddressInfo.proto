@@ -17,7 +17,7 @@ message NodeAddressInfo {
 	// BlockHash main block hash referring to above blockHeigh
 	bytes BlockHash = 5;
 	// Status the pending/confirmed status of node address
-	bytes Status = 6;
+	NodeAddressStatus Status = 6;
 	// Signature signature of above fields (signed by the node and verifiable with node's public key at above block height)
 	bytes Signature = 7;
 }
