@@ -2148,6 +2148,9 @@
         "NodeAddress": {
           "$ref": "#/definitions/modelNodeAddress"
         },
+        "NodeAddressInfo": {
+          "$ref": "#/definitions/modelNodeAddressInfo"
+        },
         "NodeID": {
           "type": "string",
           "format": "int64"

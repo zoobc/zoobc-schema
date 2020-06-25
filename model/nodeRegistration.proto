@@ -4,6 +4,7 @@ package model;
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 import "model/pagination.proto";
+import "model/nodeAddressInfo.proto";
 
 message NodeAddress {
     string Address = 1;
@@ -19,6 +20,7 @@ message NodeRegistration {
     uint32  RegistrationStatus = 7;
     bool Latest = 8;
     uint32 Height = 9;
+    NodeAddressInfo NodeAddressInfo = 10;
 }
 
 // GetNodeRegisterRequest create request to get a list of node registry
