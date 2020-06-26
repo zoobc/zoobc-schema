@@ -2035,6 +2035,10 @@
         "Address": {
           "type": "string"
         },
+        "AddressStatus": {
+          "title": "AddressStatus the pending/confirmed status of node address",
+          "$ref": "#/definitions/modelNodeAddressStatus"
+        },
         "ID": {
           "type": "string",
           "format": "int64"
