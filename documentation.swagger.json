@@ -2105,8 +2105,9 @@
     },
     "modelNodeAddressStatus": {
       "type": "string",
-      "default": "NodeAddressPending",
+      "default": "Unset",
       "enum": [
+        "Unset",
         "NodeAddressPending",
         "NodeAddressConfirmed"
       ]

@@ -23,8 +23,9 @@ message NodeAddressInfo {
 }
 
 enum NodeAddressStatus {
-	NodeAddressPending = 0;
-	NodeAddressConfirmed = 1;
+	Unset = 0;
+	NodeAddressPending = 1;
+	NodeAddressConfirmed = 2;
 }
 
 message GetNodeAddressesInfoRequest {
