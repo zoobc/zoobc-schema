@@ -7,7 +7,7 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 // NodeAddressInfo represent the node address unmanaged table holding the list of priority peers addresses
 message NodeAddressInfo {
 	// NodeID from node_registry
-	int64 NodeID = 1;
+	int64 NodeID = 1 [ jstype = JS_STRING ];
 	// Address public ip or domain name
 	string Address = 2;
 	// Port p2p communication port
@@ -29,7 +29,7 @@ enum NodeAddressStatus {
 }
 
 message GetNodeAddressesInfoRequest {
-	repeated int64 NodeIDs =1;
+	repeated int64 NodeIDs =1 [ jstype = JS_STRING ];
 }
 
 message GetNodeAddressesInfoResponse {

@@ -9,13 +9,13 @@ message ProofOfOrigin {
 	// MessageBytes Response to the challenge message sent to this node
 	bytes MessageBytes = 1;
 	// Timestamp expiration time for this proof of origin message
-	int64 Timestamp = 2;
+	int64 Timestamp = 2 [ jstype = JS_STRING ];
 	// Signature signature of above fields (signed by the node and verifiable with node's public key at above block height)
 	bytes Signature = 3;
 }
 
 message GetNodeProofOfOriginRequest {
 	bytes ChallengeMessage = 1;
-	int64 Timestamp =2;
+	int64 Timestamp =2 [ jstype = JS_STRING ];
 }
 
