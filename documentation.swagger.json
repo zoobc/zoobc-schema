@@ -384,6 +384,13 @@
         "operationId": "FileDownload",
         "parameters": [
           {
+            "type": "string",
+            "format": "byte",
+            "description": "SnapshotHash hash from snapshot payload.",
+            "name": "SnapshotHash",
+            "in": "query"
+          },
+          {
             "type": "array",
             "items": {
               "type": "string"
