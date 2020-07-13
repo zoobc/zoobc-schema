@@ -336,22 +336,6 @@
         }
       }
     },
-    "/v1/block/GetNextBlocksmiths": {
-      "get": {
-        "tags": [
-          "BlocksmithService"
-        ],
-        "operationId": "GetNextBlocksmiths",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/modelGetNextBlocksmithsResponse"
-            }
-          }
-        }
-      }
-    },
     "/v1/escrow/GetEscrowTransactionRequest": {
       "get": {
         "tags": [
@@ -1686,18 +1670,14 @@
         }
       }
     },
-    "modelGetNextBlocksmithsResponse": {
+    "modelGetNodeAddressesInfoResponse": {
       "type": "object",
       "properties": {
-        "Node": {
+        "NodeAddressesInfo": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/modelNode"
+            "$ref": "#/definitions/modelNodeAddressInfo"
           }
-        },
-        "SmithingTime": {
-          "type": "string",
-          "format": "int64"
         }
       }
     },
@@ -2055,6 +2035,10 @@
         "Address": {
           "type": "string"
         },
+        "AddressStatus": {
+          "title": "AddressStatus the pending/confirmed status of node address",
+          "$ref": "#/definitions/modelNodeAddressStatus"
+        },
         "ID": {
           "type": "string",
           "format": "int64"
@@ -2079,6 +2063,54 @@
           "format": "int64"
         }
       }
+    },
+    "modelNodeAddressInfo": {
+      "type": "object",
+      "title": "NodeAddressInfo represent the node address unmanaged table holding the list of priority peers addresses",
+      "properties": {
+        "Address": {
+          "type": "string",
+          "title": "Address public ip or domain name"
+        },
+        "BlockHash": {
+          "type": "string",
+          "format": "byte",
+          "title": "BlockHash main block hash referring to above blockHeigh"
+        },
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64",
+          "title": "BlockHeight last main block height at which nodeAddressInfo message was generated"
+        },
+        "NodeID": {
+          "type": "string",
+          "format": "int64",
+          "title": "NodeID from node_registry"
+        },
+        "Port": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Port p2p communication port"
+        },
+        "Signature": {
+          "type": "string",
+          "format": "byte",
+          "title": "Signature signature of above fields (signed by the node and verifiable with node's public key at above block height)"
+        },
+        "Status": {
+          "title": "Status the pending/confirmed status of node address",
+          "$ref": "#/definitions/modelNodeAddressStatus"
+        }
+      }
+    },
+    "modelNodeAddressStatus": {
+      "type": "string",
+      "default": "Unset",
+      "enum": [
+        "Unset",
+        "NodeAddressPending",
+        "NodeAddressConfirmed"
+      ]
     },
     "modelNodeHardware": {
       "type": "object",
@@ -2120,6 +2152,9 @@
         },
         "NodeAddress": {
           "$ref": "#/definitions/modelNodeAddress"
+        },
+        "NodeAddressInfo": {
+          "$ref": "#/definitions/modelNodeAddressInfo"
         },
         "NodeID": {
           "type": "string",
@@ -2295,6 +2330,27 @@
         }
       }
     },
+    "modelProofOfOrigin": {
+      "type": "object",
+      "title": "ProofOfOrigin a message send by a node to prove its identity",
+      "properties": {
+        "MessageBytes": {
+          "type": "string",
+          "format": "byte",
+          "title": "MessageBytes Response to the challenge message sent to this node"
+        },
+        "Signature": {
+          "type": "string",
+          "format": "byte",
+          "title": "Signature signature of above fields (signed by the node and verifiable with node's public key at above block height)"
+        },
+        "Timestamp": {
+          "type": "string",
+          "format": "int64",
+          "title": "Timestamp expiration time for this proof of origin message"
+        }
+      }
+    },
     "modelProofOfOwnership": {
       "type": "object",
       "properties": {
@@ -2338,14 +2394,6 @@
         "Property": {
           "type": "string",
           "title": "Property name"
-        },
-        "RecipientAccountAddress": {
-          "type": "string",
-          "title": "Account Address that got property of Dataset"
-        },
-        "SetterAccountAddress": {
-          "type": "string",
-          "title": "Account Address that set Dataset"
         },
         "Value": {
           "type": "string",
@@ -2406,14 +2454,6 @@
         "Property": {
           "type": "string",
           "title": "Property name"
-        },
-        "RecipientAccountAddress": {
-          "type": "string",
-          "title": "Account Address that got property of Dataset"
-        },
-        "SetterAccountAddress": {
-          "type": "string",
-          "title": "Account Address that set Dataset"
         },
         "Value": {
           "type": "string",
