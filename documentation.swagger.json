@@ -1365,7 +1365,8 @@
       "default": "Approve",
       "enum": [
         "Approve",
-        "Reject"
+        "Reject",
+        "Expire"
       ]
     },
     "modelEscrowStatus": {
