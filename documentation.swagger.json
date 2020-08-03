@@ -541,6 +541,60 @@
         }
       }
     },
+    "/v1/multisig/GetMultisigAddressByParticipantAddresses": {
+      "get": {
+        "tags": [
+          "MultisigService"
+        ],
+        "operationId": "GetMultisigAddressByParticipantAddresses",
+        "parameters": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi",
+            "name": "addresses",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetMultisigAddressByParticipantAddressesResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/multisig/GetMultisignatureInfo": {
       "get": {
         "tags": [
@@ -699,17 +753,6 @@
             "type": "integer",
             "format": "int64",
             "name": "RegistrationHeight",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "name": "NodeAddress.Address",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "name": "NodeAddress.Port",
             "in": "query"
           }
         ],
@@ -1649,6 +1692,28 @@
         }
       }
     },
+    "modelGetMultisigAddressByParticipantAddressesResponse": {
+      "type": "object",
+      "properties": {
+        "Count": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of item in current page"
+        },
+        "MultiSignatureAddresses": {
+          "type": "object",
+          "title": "content of the request",
+          "additionalProperties": {
+            "$ref": "#/definitions/modeladdresses"
+          }
+        },
+        "Page": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Starting page"
+        }
+      }
+    },
     "modelGetMultisignatureInfoResponse": {
       "type": "object",
       "properties": {
@@ -2053,18 +2118,6 @@
         }
       }
     },
-    "modelNodeAddress": {
-      "type": "object",
-      "properties": {
-        "Address": {
-          "type": "string"
-        },
-        "Port": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
     "modelNodeAddressInfo": {
       "type": "object",
       "title": "NodeAddressInfo represent the node address unmanaged table holding the list of priority peers addresses",
@@ -2151,9 +2204,6 @@
           "type": "string",
           "format": "int64"
         },
-        "NodeAddress": {
-          "$ref": "#/definitions/modelNodeAddress"
-        },
         "NodeAddressInfo": {
           "$ref": "#/definitions/modelNodeAddressInfo"
         },
@@ -2183,11 +2233,8 @@
         },
         "LockedBalance": {
           "type": "string",
-          "format": "int64"
-        },
-        "NodeAddress": {
-          "title": "Funds to be locked to register the node",
-          "$ref": "#/definitions/modelNodeAddress"
+          "format": "int64",
+          "title": "Funds to be locked to register the node"
         },
         "NodePublicKey": {
           "type": "string",
@@ -2729,9 +2776,6 @@
           "format": "int64",
           "title": "Funds to be locked to register the node"
         },
-        "NodeAddress": {
-          "$ref": "#/definitions/modelNodeAddress"
-        },
         "NodePublicKey": {
           "type": "string",
           "format": "byte"
@@ -2739,6 +2783,17 @@
         "Poown": {
           "title": "Proof of ownership (message + signature)",
           "$ref": "#/definitions/modelProofOfOwnership"
+        }
+      }
+    },
+    "modeladdresses": {
+      "type": "object",
+      "properties": {
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
