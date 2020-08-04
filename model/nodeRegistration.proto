@@ -6,21 +6,16 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 import "model/pagination.proto";
 import "model/nodeAddressInfo.proto";
 
-message NodeAddress {
-    string Address = 1;
-    uint32 Port = 2;
-}
 message NodeRegistration {
     int64   NodeID = 1 [jstype = JS_STRING];
     bytes   NodePublicKey = 2;
     string  AccountAddress = 3;
     uint32  RegistrationHeight = 4;
-    NodeAddress  NodeAddress = 5;
-    int64   LockedBalance = 6 [jstype = JS_STRING];
-    uint32  RegistrationStatus = 7;
-    bool Latest = 8;
-    uint32 Height = 9;
-    NodeAddressInfo NodeAddressInfo = 10;
+    int64   LockedBalance = 5 [jstype = JS_STRING];
+    uint32  RegistrationStatus = 6;
+    bool Latest = 7;
+    uint32 Height = 8;
+    NodeAddressInfo NodeAddressInfo = 9;
 }
 
 // GetNodeRegisterRequest create request to get a list of node registry
@@ -50,7 +45,6 @@ message GetNodeRegistrationRequest {
     bytes   NodePublicKey = 1;
     string AccountAddress = 2;
     uint32  RegistrationHeight = 3;
-    NodeAddress  NodeAddress = 4;
 }
 
 message GetNodeRegistrationResponse {
