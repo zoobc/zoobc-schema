@@ -25,7 +25,8 @@ message PeerBasicResponse {
 }
 
 message GetPeerInfoRequest {
-    string Version =1;
+    string Version = 1;
+    string CodeName = 2;
 }
 
 message GetPeerInfoResponse {
