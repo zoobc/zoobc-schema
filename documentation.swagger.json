@@ -1032,6 +1032,42 @@
         }
       }
     },
+    "/v1/publishedReceipt/GetPublishedReceipts": {
+      "get": {
+        "tags": [
+          "PublishedReceiptService"
+        ],
+        "operationId": "GetPublishedReceipts",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "FromHeight",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "ToHeight",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetPublishedReceiptsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        }
+      }
+    },
     "/v1/skippedBlockSmiths/GetSkippedBlockSmiths": {
       "get": {
         "tags": [
@@ -2055,6 +2091,18 @@
         }
       }
     },
+    "modelGetPublishedReceiptsResponse": {
+      "type": "object",
+      "properties": {
+        "PublishedReceipts": {
+          "type": "array",
+          "title": "PublishedReceipts list of published receipts in `FromHeight` to `ToHeight`",
+          "items": {
+            "$ref": "#/definitions/modelPublishedReceipt"
+          }
+        }
+      }
+    },
     "modelGetSkippedBlocksmithsResponse": {
       "type": "object",
       "properties": {
@@ -2350,6 +2398,9 @@
           "title": "AddressStatus the pending/confirmed status of node address",
           "$ref": "#/definitions/modelNodeAddressStatus"
         },
+        "CodeName": {
+          "type": "string"
+        },
         "ID": {
           "type": "string",
           "format": "int64"
@@ -2359,6 +2410,9 @@
           "format": "int64"
         },
         "SharedAddress": {
+          "type": "string"
+        },
+        "Version": {
           "type": "string"
         }
       }
