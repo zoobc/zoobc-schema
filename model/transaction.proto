@@ -87,19 +87,17 @@ message NodeRegistrationTransactionBody {
     bytes NodePublicKey = 1;
     string AccountAddress = 2;
     // Funds to be locked to register the node
-    NodeAddress NodeAddress = 3;
-    int64 LockedBalance = 4 [ jstype = JS_STRING ];
+    int64 LockedBalance = 3 [ jstype = JS_STRING ];
     // Proof of ownership (message + signature)
-    ProofOfOwnership Poown = 5;
+    ProofOfOwnership Poown = 4;
 }
 
 message UpdateNodeRegistrationTransactionBody {
     bytes NodePublicKey = 1;
-    NodeAddress NodeAddress = 2;
     // Funds to be locked to register the node
-    int64 LockedBalance = 3 [ jstype = JS_STRING ];
+    int64 LockedBalance = 2 [ jstype = JS_STRING ];
     // Proof of ownership (message + signature)
-    ProofOfOwnership Poown = 4;
+    ProofOfOwnership Poown = 3;
 }
 
 message RemoveNodeRegistrationTransactionBody { bytes NodePublicKey = 1; }
