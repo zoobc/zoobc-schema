@@ -434,6 +434,13 @@
         "operationId": "FileDownloadService_FileDownload",
         "parameters": [
           {
+            "type": "string",
+            "format": "byte",
+            "description": "SnapshotHash hash from snapshot payload.",
+            "name": "SnapshotHash",
+            "in": "query"
+          },
+          {
             "type": "array",
             "items": {
               "type": "string"
@@ -2991,6 +2998,10 @@
         },
         "MainBlockHeight": {
           "type": "integer",
+          "format": "int64"
+        },
+        "NodeID": {
+          "type": "string",
           "format": "int64"
         },
         "NodePublicKey": {
