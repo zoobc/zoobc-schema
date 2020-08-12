@@ -16,7 +16,7 @@
         "tags": [
           "AccountLedgerService"
         ],
-        "operationId": "GetAccountLedgers",
+        "operationId": "AccountLedgerService_GetAccountLedgers",
         "parameters": [
           {
             "type": "string",
@@ -114,7 +114,7 @@
         "tags": [
           "AccountBalanceService"
         ],
-        "operationId": "GetAccountBalance",
+        "operationId": "AccountBalanceService_GetAccountBalance",
         "parameters": [
           {
             "type": "string",
@@ -144,7 +144,7 @@
         "tags": [
           "AccountBalanceService"
         ],
-        "operationId": "GetAccountBalances",
+        "operationId": "AccountBalanceService_GetAccountBalances",
         "parameters": [
           {
             "type": "array",
@@ -178,7 +178,7 @@
         "tags": [
           "AccountDatasetService"
         ],
-        "operationId": "GetAccountDataset",
+        "operationId": "AccountDatasetService_GetAccountDataset",
         "parameters": [
           {
             "type": "string",
@@ -212,7 +212,7 @@
         "tags": [
           "AccountDatasetService"
         ],
-        "operationId": "GetAccountDatasets",
+        "operationId": "AccountDatasetService_GetAccountDatasets",
         "parameters": [
           {
             "type": "string",
@@ -289,7 +289,7 @@
         "tags": [
           "BlockService"
         ],
-        "operationId": "GetBlock",
+        "operationId": "BlockService_GetBlock",
         "parameters": [
           {
             "type": "integer",
@@ -334,7 +334,7 @@
         "tags": [
           "BlockService"
         ],
-        "operationId": "GetBlocks",
+        "operationId": "BlockService_GetBlocks",
         "parameters": [
           {
             "type": "integer",
@@ -379,7 +379,7 @@
         "tags": [
           "EscrowTransactionService"
         ],
-        "operationId": "GetEscrowTransaction",
+        "operationId": "EscrowTransactionService_GetEscrowTransaction",
         "parameters": [
           {
             "type": "string",
@@ -409,7 +409,7 @@
         "tags": [
           "EscrowTransactionService"
         ],
-        "operationId": "GetEscrowTransactions",
+        "operationId": "EscrowTransactionService_GetEscrowTransactions",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -431,7 +431,7 @@
         "tags": [
           "FileDownloadService"
         ],
-        "operationId": "FileDownload",
+        "operationId": "FileDownloadService_FileDownload",
         "parameters": [
           {
             "type": "array",
@@ -464,7 +464,7 @@
         "tags": [
           "HealthCheckService"
         ],
-        "operationId": "HealthCheck",
+        "operationId": "HealthCheckService_HealthCheck",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -486,7 +486,7 @@
         "tags": [
           "HostService"
         ],
-        "operationId": "GetHostInfo",
+        "operationId": "HostService_GetHostInfo",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -508,7 +508,7 @@
         "tags": [
           "HostService"
         ],
-        "operationId": "GetHostPeers",
+        "operationId": "HostService_GetHostPeers",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -530,7 +530,7 @@
         "tags": [
           "MempoolService"
         ],
-        "operationId": "GetMempoolTransaction",
+        "operationId": "MempoolService_GetMempoolTransaction",
         "parameters": [
           {
             "type": "string",
@@ -561,7 +561,7 @@
         "tags": [
           "MempoolService"
         ],
-        "operationId": "GetMempoolTransactions",
+        "operationId": "MempoolService_GetMempoolTransactions",
         "parameters": [
           {
             "type": "string",
@@ -632,7 +632,7 @@
         "tags": [
           "MultisigService"
         ],
-        "operationId": "GetMultisigAddressByParticipantAddresses",
+        "operationId": "MultisigService_GetMultisigAddressByParticipantAddresses",
         "parameters": [
           {
             "type": "array",
@@ -692,7 +692,7 @@
         "tags": [
           "MultisigService"
         ],
-        "operationId": "GetMultisignatureInfo",
+        "operationId": "MultisigService_GetMultisignatureInfo",
         "parameters": [
           {
             "type": "string",
@@ -748,7 +748,7 @@
         "tags": [
           "MultisigService"
         ],
-        "operationId": "GetPendingTransactionDetailByTransactionHash",
+        "operationId": "MultisigService_GetPendingTransactionDetailByTransactionHash",
         "parameters": [
           {
             "type": "string",
@@ -778,7 +778,7 @@
         "tags": [
           "MultisigService"
         ],
-        "operationId": "GetPendingTransactions",
+        "operationId": "MultisigService_GetPendingTransactions",
         "parameters": [
           {
             "type": "string",
@@ -846,7 +846,7 @@
         "tags": [
           "NodeAddressInfoService"
         ],
-        "operationId": "GetNodeAddressInfo",
+        "operationId": "NodeAddressInfoService_GetNodeAddressInfo",
         "parameters": [
           {
             "type": "array",
@@ -880,7 +880,7 @@
         "tags": [
           "NodeRegistrationService"
         ],
-        "operationId": "GetNodeRegistration",
+        "operationId": "NodeRegistrationService_GetNodeRegistration",
         "parameters": [
           {
             "type": "string",
@@ -921,7 +921,7 @@
         "tags": [
           "NodeRegistrationService"
         ],
-        "operationId": "GetNodeRegistrations",
+        "operationId": "NodeRegistrationService_GetNodeRegistrations",
         "parameters": [
           {
             "type": "integer",
@@ -988,12 +988,73 @@
         }
       }
     },
+    "/v1/nodeRegistration/GetNodeRegistrationsByNodePublicKeys": {
+      "get": {
+        "tags": [
+          "NodeRegistrationService"
+        ],
+        "operationId": "NodeRegistrationService_GetNodeRegistrationsByNodePublicKeys",
+        "parameters": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "byte"
+            },
+            "collectionFormat": "multi",
+            "name": "NodePublicKeys",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetNodeRegistrationsByNodePublicKeysResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        }
+      }
+    },
     "/v1/nodeadmin/generateNodeKey": {
       "get": {
         "tags": [
           "NodeAdminService"
         ],
-        "operationId": "GenerateNodeKey",
+        "operationId": "NodeAdminService_GenerateNodeKey",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1015,7 +1076,7 @@
         "tags": [
           "NodeAdminService"
         ],
-        "operationId": "GetProofOfOwnership",
+        "operationId": "NodeAdminService_GetProofOfOwnership",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1037,7 +1098,7 @@
         "tags": [
           "PublishedReceiptService"
         ],
-        "operationId": "GetPublishedReceipts",
+        "operationId": "PublishedReceiptService_GetPublishedReceipts",
         "parameters": [
           {
             "type": "integer",
@@ -1073,7 +1134,7 @@
         "tags": [
           "SkippedBlockSmithsService"
         ],
-        "operationId": "GetSkippedBlockSmiths",
+        "operationId": "SkippedBlockSmithsService_GetSkippedBlockSmiths",
         "parameters": [
           {
             "type": "integer",
@@ -1109,7 +1170,7 @@
         "tags": [
           "TransactionService"
         ],
-        "operationId": "GetTransaction",
+        "operationId": "TransactionService_GetTransaction",
         "parameters": [
           {
             "type": "string",
@@ -1140,7 +1201,7 @@
         "tags": [
           "TransactionService"
         ],
-        "operationId": "GetTransactionMinimumFee",
+        "operationId": "TransactionService_GetTransactionMinimumFee",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1162,7 +1223,7 @@
         "tags": [
           "TransactionService"
         ],
-        "operationId": "GetTransactions",
+        "operationId": "TransactionService_GetTransactions",
         "parameters": [
           {
             "type": "string",
@@ -1242,7 +1303,7 @@
         "tags": [
           "TransactionService"
         ],
-        "operationId": "PostTransaction",
+        "operationId": "TransactionService_PostTransaction",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -2024,6 +2085,23 @@
       "properties": {
         "NodeRegistration": {
           "$ref": "#/definitions/modelNodeRegistration"
+        }
+      }
+    },
+    "modelGetNodeRegistrationsByNodePublicKeysResponse": {
+      "type": "object",
+      "properties": {
+        "NodeRegistrations": {
+          "type": "array",
+          "title": "NodeRegistrations list of NodeRegistration",
+          "items": {
+            "$ref": "#/definitions/modelNodeRegistration"
+          }
+        },
+        "Total": {
+          "type": "string",
+          "format": "uint64",
+          "title": "Number of node registry in total"
         }
       }
     },
