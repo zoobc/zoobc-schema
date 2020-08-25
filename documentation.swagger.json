@@ -169,13 +169,13 @@
           {
             "type": "integer",
             "format": "int64",
-            "name": "fromHeight",
+            "name": "FromHeight",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "name": "toHeight",
+            "name": "ToHeight",
             "in": "query"
           }
         ],
@@ -862,10 +862,14 @@
         "operationId": "GetNodeRegistrations",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi",
             "description": "Fetch Node Registries based on queue status \n2 : will retrieve node registries that have been deleted\n1 : will retrieve node registries that still pending\n0: will retrieve node registries that already registered.",
-            "name": "RegistrationStatus",
+            "name": "RegistrationStatuses",
             "in": "query"
           },
           {
@@ -2024,6 +2028,17 @@
       "properties": {
         "HostInfo": {
           "$ref": "#/definitions/modelNode"
+        }
+      }
+    },
+    "modelGetPendingNodeRegistrationsResponse": {
+      "type": "object",
+      "properties": {
+        "NodeRegistrations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelNodeRegistration"
+          }
         }
       }
     },
