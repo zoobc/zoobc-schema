@@ -105,10 +105,8 @@ message addresses {
 }
 
 message GetMultisigAddressByParticipantAddressesResponse {
-    // Number of item in current page
-    uint32 Count = 1;
-    // Starting page
-    uint32 Page = 2;
+    // Total of participant address
+    uint32 Total = 1;
     // content of the request
-    map<string, addresses> MultiSignatureAddresses = 3; 
+    map<string, addresses> MultiSignatureAddresses = 2; 
 }
