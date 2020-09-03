@@ -95,18 +95,14 @@ message GetMultisignatureInfoResponse {
     repeated MultiSignatureInfo MultisignatureInfo = 3;
 }
 
-message GetMultisigAddressByParticipantAddressesRequest {
-    repeated string addresses = 1;
+message GetMultisigAddressByParticipantAddressRequest {
+    string ParticipantAddress = 1;
     Pagination Pagination = 2;
 }
 
-message addresses {
-    repeated string addresses = 1;
-}
-
-message GetMultisigAddressByParticipantAddressesResponse {
+message GetMultisigAddressByParticipantAddressResponse {
     // Total of participant address
     uint32 Total = 1;
     // content of the request
-    map<string, addresses> MultiSignatureAddresses = 2; 
+    repeated string MultiSignAddresses = 2; 
 }

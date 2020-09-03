@@ -670,20 +670,16 @@
         }
       }
     },
-    "/v1/multisig/GetMultisigAddressByParticipantAddresses": {
+    "/v1/multisig/GetMultisigAddressByParticipantAddress": {
       "get": {
         "tags": [
           "MultisigService"
         ],
-        "operationId": "MultisigService_GetMultisigAddressByParticipantAddresses",
+        "operationId": "MultisigService_GetMultisigAddressByParticipantAddress",
         "parameters": [
           {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "collectionFormat": "multi",
-            "name": "addresses",
+            "type": "string",
+            "name": "ParticipantAddress",
             "in": "query"
           },
           {
@@ -718,7 +714,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/modelGetMultisigAddressByParticipantAddressesResponse"
+              "$ref": "#/definitions/modelGetMultisigAddressByParticipantAddressResponse"
             }
           },
           "default": {
@@ -2048,14 +2044,14 @@
         }
       }
     },
-    "modelGetMultisigAddressByParticipantAddressesResponse": {
+    "modelGetMultisigAddressByParticipantAddressResponse": {
       "type": "object",
       "properties": {
-        "MultiSignatureAddresses": {
-          "type": "object",
+        "MultiSignAddresses": {
+          "type": "array",
           "title": "content of the request",
-          "additionalProperties": {
-            "$ref": "#/definitions/modeladdresses"
+          "items": {
+            "type": "string"
           }
         },
         "Total": {
@@ -3233,17 +3229,6 @@
         "Poown": {
           "title": "Proof of ownership (message + signature)",
           "$ref": "#/definitions/modelProofOfOwnership"
-        }
-      }
-    },
-    "modeladdresses": {
-      "type": "object",
-      "properties": {
-        "addresses": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         }
       }
     },
