@@ -178,6 +178,7 @@
         "tags": [
           "ParticipationScoreService"
         ],
+        "summary": "GetParticipationScores return list of participation score history recorded by node",
         "operationId": "ParticipationScoreService_GetParticipationScores",
         "parameters": [
           {
@@ -1125,6 +1126,37 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelProofOfOwnership"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/participationScore/latest": {
+      "get": {
+        "tags": [
+          "ParticipationScoreService"
+        ],
+        "summary": "GetLatestParticipationScoreByNodeID returns the latest participation score accumulated by node",
+        "operationId": "ParticipationScoreService_GetLatestParticipationScoreByNodeID",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "int64",
+            "name": "NodeID",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelParticipationScore"
             }
           },
           "default": {
