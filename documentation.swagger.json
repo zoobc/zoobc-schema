@@ -407,29 +407,6 @@
         }
       }
     },
-    "/v1/feeVote/GetFeeVoteTransactions": {
-      "get": {
-        "tags": [
-          "FeeVoteTransactionService"
-        ],
-        "operationId": "GetFeeVoteTransactions",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "A",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/modelGetFeeVoteTransactionsResponse"
-            }
-          }
-        }
-      }
-    },
     "/v1/file/FileDownload": {
       "get": {
         "tags": [
@@ -811,6 +788,23 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetNodeAddressesInfoResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nodeRegistration/GetMyNodePublicKey": {
+      "get": {
+        "tags": [
+          "NodeRegistrationService"
+        ],
+        "summary": "GetMyNodePublicKey return the public key of the node",
+        "operationId": "GetMyNodePublicKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetMyNodePublicKeyResponse"
             }
           }
         }
@@ -1854,14 +1848,6 @@
         }
       }
     },
-    "modelGetFeeVoteTransactionsResponse": {
-      "type": "object",
-      "properties": {
-        "B": {
-          "type": "string"
-        }
-      }
-    },
     "modelGetHostPeersResponse": {
       "type": "object",
       "properties": {
@@ -1949,6 +1935,15 @@
           "type": "integer",
           "format": "int64",
           "title": "Starting page"
+        }
+      }
+    },
+    "modelGetMyNodePublicKeyResponse": {
+      "type": "object",
+      "properties": {
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
         }
       }
     },
