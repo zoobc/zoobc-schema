@@ -798,22 +798,8 @@
         "tags": [
           "NodeRegistrationService"
         ],
-        "summary": "GetMyNodePublicKey return the public key of the node, this endpoint is restricted to only node owner, proven by proof of ownership",
+        "summary": "GetMyNodePublicKey return the public key of the node",
         "operationId": "GetMyNodePublicKey",
-        "parameters": [
-          {
-            "type": "string",
-            "format": "byte",
-            "name": "MessageBytes",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "format": "byte",
-            "name": "Signature",
-            "in": "query"
-          }
-        ],
         "responses": {
           "200": {
             "description": "A successful response.",

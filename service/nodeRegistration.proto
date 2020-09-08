@@ -5,7 +5,6 @@ package service;
 option go_package = "github.com/zoobc/zoobc-core/common/service";
 
 import "model/empty.proto";
-import "model/proofOfOwnership.proto";
 import "model/nodeRegistration.proto";
 import "google/api/annotations.proto";
 
@@ -31,8 +30,8 @@ service NodeRegistrationService {
 
     rpc GetPendingNodeRegistrations(stream model.GetPendingNodeRegistrationsRequest) returns (stream model.GetPendingNodeRegistrationsResponse) {}
 
-    // GetMyNodePublicKey return the public key of the node, this endpoint is restricted to only node owner, proven by proof of ownership
-    rpc GetMyNodePublicKey(model.ProofOfOwnership) returns (model.GetMyNodePublicKeyResponse) {
+    // GetMyNodePublicKey return the public key of the node
+    rpc GetMyNodePublicKey(model.Empty) returns (model.GetMyNodePublicKeyResponse) {
         option (google.api.http) = {
             get: "/v1/nodeRegistration/GetMyNodePublicKey"
         };
