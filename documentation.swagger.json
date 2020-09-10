@@ -765,6 +765,39 @@
         }
       }
     },
+    "/v1/multisig/GetPendingTransactionsByHeight": {
+      "get": {
+        "tags": [
+          "MultisigService"
+        ],
+        "summary": "GetPendingTransactionsByHeight fetch list of pending transactions (latest = 1 and latest = 0) within `fromHeight` and `toHeight`",
+        "operationId": "GetPendingTransactionsByHeight",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Starting Height (inclusive) of request.",
+            "name": "FromHeight",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "Ending Height (inclusive) of request.",
+            "name": "ToHeight",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetPendingTransactionsByHeightResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/nodeAddressInfo/GetNodeAddressInfo": {
       "get": {
         "tags": [
@@ -2052,6 +2085,18 @@
         },
         "PendingTransaction": {
           "$ref": "#/definitions/modelPendingTransaction"
+        }
+      }
+    },
+    "modelGetPendingTransactionsByHeightResponse": {
+      "type": "object",
+      "properties": {
+        "PendingTransactions": {
+          "type": "array",
+          "title": "List of pending transaction within requested height",
+          "items": {
+            "$ref": "#/definitions/modelPendingTransaction"
+          }
         }
       }
     },
