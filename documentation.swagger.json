@@ -5,10 +5,6 @@
   "produces": [
     "application/json"
   ],
-  "schemes": [
-    "http",
-    "https"
-  ],
   "swagger": "2.0",
   "info": {
     "title": "service/accountBalance.proto",
@@ -20,7 +16,7 @@
         "tags": [
           "AccountLedgerService"
         ],
-        "operationId": "GetAccountLedgers",
+        "operationId": "AccountLedgerService_GetAccountLedgers",
         "parameters": [
           {
             "type": "string",
@@ -103,6 +99,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetAccountLedgersResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -112,7 +114,7 @@
         "tags": [
           "AccountBalanceService"
         ],
-        "operationId": "GetAccountBalance",
+        "operationId": "AccountBalanceService_GetAccountBalance",
         "parameters": [
           {
             "type": "string",
@@ -127,6 +129,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetAccountBalanceResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -136,7 +144,7 @@
         "tags": [
           "AccountBalanceService"
         ],
-        "operationId": "GetAccountBalances",
+        "operationId": "AccountBalanceService_GetAccountBalances",
         "parameters": [
           {
             "type": "array",
@@ -155,6 +163,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetAccountBalancesResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -165,7 +179,7 @@
           "ParticipationScoreService"
         ],
         "summary": "GetParticipationScores return list of participation score history recorded by node",
-        "operationId": "GetParticipationScores",
+        "operationId": "ParticipationScoreService_GetParticipationScores",
         "parameters": [
           {
             "type": "integer",
@@ -186,6 +200,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetParticipationScoresResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -195,7 +215,7 @@
         "tags": [
           "AccountDatasetService"
         ],
-        "operationId": "GetAccountDataset",
+        "operationId": "AccountDatasetService_GetAccountDataset",
         "parameters": [
           {
             "type": "string",
@@ -214,6 +234,12 @@
             "schema": {
               "$ref": "#/definitions/modelAccountDataset"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -223,7 +249,7 @@
         "tags": [
           "AccountDatasetService"
         ],
-        "operationId": "GetAccountDatasets",
+        "operationId": "AccountDatasetService_GetAccountDatasets",
         "parameters": [
           {
             "type": "string",
@@ -285,6 +311,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetAccountDatasetsResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -294,7 +326,7 @@
         "tags": [
           "BlockService"
         ],
-        "operationId": "GetBlock",
+        "operationId": "BlockService_GetBlock",
         "parameters": [
           {
             "type": "integer",
@@ -324,6 +356,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetBlockResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -333,7 +371,7 @@
         "tags": [
           "BlockService"
         ],
-        "operationId": "GetBlocks",
+        "operationId": "BlockService_GetBlocks",
         "parameters": [
           {
             "type": "integer",
@@ -363,6 +401,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetBlocksResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -372,7 +416,7 @@
         "tags": [
           "EscrowTransactionService"
         ],
-        "operationId": "GetEscrowTransaction",
+        "operationId": "EscrowTransactionService_GetEscrowTransaction",
         "parameters": [
           {
             "type": "string",
@@ -387,6 +431,12 @@
             "schema": {
               "$ref": "#/definitions/modelEscrow"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -396,12 +446,18 @@
         "tags": [
           "EscrowTransactionService"
         ],
-        "operationId": "GetEscrowTransactions",
+        "operationId": "EscrowTransactionService_GetEscrowTransactions",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetEscrowTransactionsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -412,7 +468,7 @@
         "tags": [
           "FileDownloadService"
         ],
-        "operationId": "FileDownload",
+        "operationId": "FileDownloadService_FileDownload",
         "parameters": [
           {
             "type": "string",
@@ -437,6 +493,12 @@
             "schema": {
               "$ref": "#/definitions/modelFileDownloadResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -446,12 +508,18 @@
         "tags": [
           "HealthCheckService"
         ],
-        "operationId": "HealthCheck",
+        "operationId": "HealthCheckService_HealthCheck",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelHealthCheckResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -462,12 +530,18 @@
         "tags": [
           "HostService"
         ],
-        "operationId": "GetHostInfo",
+        "operationId": "HostService_GetHostInfo",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelHostInfo"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -478,12 +552,18 @@
         "tags": [
           "HostService"
         ],
-        "operationId": "GetHostPeers",
+        "operationId": "HostService_GetHostPeers",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetHostPeersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -494,7 +574,7 @@
         "tags": [
           "MempoolService"
         ],
-        "operationId": "GetMempoolTransaction",
+        "operationId": "MempoolService_GetMempoolTransaction",
         "parameters": [
           {
             "type": "string",
@@ -510,6 +590,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetMempoolTransactionResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -519,7 +605,7 @@
         "tags": [
           "MempoolService"
         ],
-        "operationId": "GetMempoolTransactions",
+        "operationId": "MempoolService_GetMempoolTransactions",
         "parameters": [
           {
             "type": "string",
@@ -575,6 +661,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetMempoolTransactionsResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -584,7 +676,7 @@
         "tags": [
           "MultisigService"
         ],
-        "operationId": "GetMultisigAddressByParticipantAddress",
+        "operationId": "MultisigService_GetMultisigAddressByParticipantAddress",
         "parameters": [
           {
             "type": "string",
@@ -625,6 +717,75 @@
             "schema": {
               "$ref": "#/definitions/modelGetMultisigAddressByParticipantAddressResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/multisig/GetMultisigAddressesByBlockHeightRange": {
+      "get": {
+        "tags": [
+          "MultisigService"
+        ],
+        "operationId": "MultisigService_GetMultisigAddressesByBlockHeightRange",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "FromBlockHeight",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "ToBlockHeight",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetMultisigAddressesByBlockHeightRangeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -634,7 +795,7 @@
         "tags": [
           "MultisigService"
         ],
-        "operationId": "GetMultisignatureInfo",
+        "operationId": "MultisigService_GetMultisignatureInfo",
         "parameters": [
           {
             "type": "string",
@@ -675,6 +836,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetMultisignatureInfoResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -684,7 +851,7 @@
         "tags": [
           "MultisigService"
         ],
-        "operationId": "GetPendingTransactionDetailByTransactionHash",
+        "operationId": "MultisigService_GetPendingTransactionDetailByTransactionHash",
         "parameters": [
           {
             "type": "string",
@@ -699,6 +866,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetPendingTransactionDetailByTransactionHashResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -708,7 +881,7 @@
         "tags": [
           "MultisigService"
         ],
-        "operationId": "GetPendingTransactions",
+        "operationId": "MultisigService_GetPendingTransactions",
         "parameters": [
           {
             "type": "string",
@@ -761,6 +934,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetPendingTransactionsResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -771,7 +950,7 @@
           "MultisigService"
         ],
         "summary": "GetPendingTransactionsByHeight fetch list of pending transactions (latest = 1 and latest = 0) within `fromHeight` and `toHeight`",
-        "operationId": "GetPendingTransactionsByHeight",
+        "operationId": "MultisigService_GetPendingTransactionsByHeight",
         "parameters": [
           {
             "type": "integer",
@@ -794,6 +973,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetPendingTransactionsByHeightResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -803,7 +988,7 @@
         "tags": [
           "NodeAddressInfoService"
         ],
-        "operationId": "GetNodeAddressInfo",
+        "operationId": "NodeAddressInfoService_GetNodeAddressInfo",
         "parameters": [
           {
             "type": "array",
@@ -822,6 +1007,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetNodeAddressesInfoResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -832,12 +1023,18 @@
           "NodeRegistrationService"
         ],
         "summary": "GetMyNodePublicKey return the public key of the node",
-        "operationId": "GetMyNodePublicKey",
+        "operationId": "NodeRegistrationService_GetMyNodePublicKey",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetMyNodePublicKeyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -848,7 +1045,7 @@
         "tags": [
           "NodeRegistrationService"
         ],
-        "operationId": "GetNodeRegistration",
+        "operationId": "NodeRegistrationService_GetNodeRegistration",
         "parameters": [
           {
             "type": "string",
@@ -874,6 +1071,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetNodeRegistrationResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -883,7 +1086,7 @@
         "tags": [
           "NodeRegistrationService"
         ],
-        "operationId": "GetNodeRegistrations",
+        "operationId": "NodeRegistrationService_GetNodeRegistrations",
         "parameters": [
           {
             "type": "array",
@@ -944,6 +1147,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetNodeRegistrationsResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -953,7 +1162,7 @@
         "tags": [
           "NodeRegistrationService"
         ],
-        "operationId": "GetNodeRegistrationsByNodePublicKeys",
+        "operationId": "NodeRegistrationService_GetNodeRegistrationsByNodePublicKeys",
         "parameters": [
           {
             "type": "array",
@@ -999,6 +1208,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetNodeRegistrationsByNodePublicKeysResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -1008,12 +1223,18 @@
         "tags": [
           "NodeAdminService"
         ],
-        "operationId": "GenerateNodeKey",
+        "operationId": "NodeAdminService_GenerateNodeKey",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGenerateNodeKeyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -1024,12 +1245,18 @@
         "tags": [
           "NodeAdminService"
         ],
-        "operationId": "GetProofOfOwnership",
+        "operationId": "NodeAdminService_GetProofOfOwnership",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelProofOfOwnership"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -1041,7 +1268,7 @@
           "ParticipationScoreService"
         ],
         "summary": "GetLatestParticipationScoreByNodeID returns the latest participation score accumulated by node",
-        "operationId": "GetLatestParticipationScoreByNodeID",
+        "operationId": "ParticipationScoreService_GetLatestParticipationScoreByNodeID",
         "parameters": [
           {
             "type": "string",
@@ -1056,6 +1283,12 @@
             "schema": {
               "$ref": "#/definitions/modelParticipationScore"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -1065,7 +1298,7 @@
         "tags": [
           "PublishedReceiptService"
         ],
-        "operationId": "GetPublishedReceipts",
+        "operationId": "PublishedReceiptService_GetPublishedReceipts",
         "parameters": [
           {
             "type": "integer",
@@ -1086,6 +1319,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetPublishedReceiptsResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -1095,7 +1334,7 @@
         "tags": [
           "SkippedBlockSmithsService"
         ],
-        "operationId": "GetSkippedBlockSmiths",
+        "operationId": "SkippedBlockSmithsService_GetSkippedBlockSmiths",
         "parameters": [
           {
             "type": "integer",
@@ -1116,6 +1355,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetSkippedBlocksmithsResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -1125,7 +1370,7 @@
         "tags": [
           "TransactionService"
         ],
-        "operationId": "GetTransaction",
+        "operationId": "TransactionService_GetTransaction",
         "parameters": [
           {
             "type": "string",
@@ -1141,6 +1386,12 @@
             "schema": {
               "$ref": "#/definitions/modelTransaction"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -1150,12 +1401,18 @@
         "tags": [
           "TransactionService"
         ],
-        "operationId": "GetTransactionMinimumFee",
+        "operationId": "TransactionService_GetTransactionMinimumFee",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetTransactionMinimumFeeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -1166,7 +1423,7 @@
         "tags": [
           "TransactionService"
         ],
-        "operationId": "GetTransactions",
+        "operationId": "TransactionService_GetTransactions",
         "parameters": [
           {
             "type": "string",
@@ -1231,6 +1488,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetTransactionsResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -1240,12 +1503,18 @@
         "tags": [
           "TransactionService"
         ],
-        "operationId": "PostTransaction",
+        "operationId": "TransactionService_PostTransaction",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelPostTransactionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -1946,6 +2215,28 @@
           "type": "integer",
           "format": "int64",
           "title": "Total of participant address"
+        }
+      }
+    },
+    "modelGetMultisigAddressesByBlockHeightRangeResponse": {
+      "type": "object",
+      "properties": {
+        "Count": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of item in current page"
+        },
+        "MultisignatureInfo": {
+          "type": "array",
+          "title": "content of the request",
+          "items": {
+            "$ref": "#/definitions/modelMultiSignatureInfo"
+          }
+        },
+        "Page": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Starting page"
         }
       }
     },
@@ -3153,6 +3444,27 @@
         }
       }
     },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "error": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
     "runtimeStreamError": {
       "type": "object",
       "properties": {
@@ -3177,20 +3489,6 @@
           "type": "string"
         }
       }
-    }
-  },
-  "x-stream-definitions": {
-    "modelGetNodeHardwareResponse": {
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/runtimeStreamError"
-        },
-        "result": {
-          "$ref": "#/definitions/modelGetNodeHardwareResponse"
-        }
-      },
-      "title": "Stream result of modelGetNodeHardwareResponse",
-      "type": "object"
     }
   }
 }
