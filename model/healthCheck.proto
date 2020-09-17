@@ -20,8 +20,3 @@ message GetNodeStatusResponse {
   uint32 ResolvedPeers = 8;
   int32 BlocksmithIndex = 9;
 }
-
-// Get Node Current Time Base on UTC
-message GetNodeTimeResponse {
-    int64 NodeTime = 1 [ jstype = JS_STRING ];
-}

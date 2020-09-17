@@ -17,11 +17,4 @@ service HealthCheckService {
         };
     }
 
-    // GetNodeTime return current UTC Time
-    rpc GetNodeTime(model.Empty) returns (model.GetNodeTimeResponse) {
-           option (google.api.http) = {
-               get: "/v1/health/GetNodeTimeResponse"
-           };
-    }
-
 }
