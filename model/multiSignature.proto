@@ -133,3 +133,17 @@ message GetMultisigAddressesByBlockHeightRangeResponse {
     // content of the request
     repeated MultiSignatureInfo MultisignatureInfo = 3;
 }
+
+message GetParticipantsByMultisigAddressesRequest {
+    repeated string MultisigAddresses = 1;
+    Pagination Pagination = 2;
+}
+
+message MultiSignatureParticipants {
+    repeated MultiSignatureParticipant MultiSignatureParticipants = 1;
+}
+
+message GetParticipantsByMultisigAddressesResponse {
+    uint32 Total = 1;
+    map<string, MultiSignatureParticipants> MultiSignatureParticipants = 2;
+}

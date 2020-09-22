@@ -869,6 +869,66 @@
         }
       }
     },
+    "/v1/multisig/GetParticipantsByMultisigAddresses": {
+      "get": {
+        "tags": [
+          "MultisigService"
+        ],
+        "operationId": "MultisigService_GetParticipantsByMultisigAddresses",
+        "parameters": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi",
+            "name": "MultisigAddresses",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetParticipantsByMultisigAddressesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        }
+      }
+    },
     "/v1/multisig/GetPendingTransactionDetailByTransactionHash": {
       "get": {
         "tags": [
@@ -2365,6 +2425,21 @@
         }
       }
     },
+    "modelGetParticipantsByMultisigAddressesResponse": {
+      "type": "object",
+      "properties": {
+        "MultiSignatureParticipants": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelMultiSignatureParticipants"
+          }
+        },
+        "Total": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
     "modelGetParticipationScoresResponse": {
       "type": "object",
       "properties": {
@@ -2721,6 +2796,41 @@
         "Nonce": {
           "type": "string",
           "format": "int64"
+        }
+      }
+    },
+    "modelMultiSignatureParticipant": {
+      "type": "object",
+      "title": "represent the multi signature's participant account addresses",
+      "properties": {
+        "AccountAddress": {
+          "type": "string"
+        },
+        "AccountAddressIndex": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "MultiSignatureAddress": {
+          "type": "string"
+        }
+      }
+    },
+    "modelMultiSignatureParticipants": {
+      "type": "object",
+      "properties": {
+        "MultiSignatureParticipants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelMultiSignatureParticipant"
+          }
         }
       }
     },

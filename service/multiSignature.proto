@@ -45,4 +45,10 @@ service MultisigService {
             get: "/v1/multisig/GetMultisigAddressesByBlockHeightRange"
         };
     }
+
+    rpc GetParticipantsByMultisigAddresses(model.GetParticipantsByMultisigAddressesRequest) returns (model.GetParticipantsByMultisigAddressesResponse) {
+        option (google.api.http) = {
+            get: "/v1/multisig/GetParticipantsByMultisigAddresses"
+        };
+    }
 }
