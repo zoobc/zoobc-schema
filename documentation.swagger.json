@@ -506,10 +506,10 @@
     "/v1/health/GetNodeTimeResponse": {
       "get": {
         "tags": [
-          "HealthCheckService"
+          "NodeHardwareService"
         ],
         "summary": "GetNodeTime return current UTC Time",
-        "operationId": "HealthCheckService_GetNodeTime",
+        "operationId": "NodeHardwareService_GetNodeTime",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -739,6 +739,69 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetMultisigAddressByParticipantAddressResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/multisig/GetMultisigAddressesByBlockHeightRange": {
+      "get": {
+        "tags": [
+          "MultisigService"
+        ],
+        "operationId": "MultisigService_GetMultisigAddressesByBlockHeightRange",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "FromBlockHeight",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "ToBlockHeight",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetMultisigAddressesByBlockHeightRangeResponse"
             }
           },
           "default": {
@@ -2178,6 +2241,28 @@
         }
       }
     },
+    "modelGetMultisigAddressesByBlockHeightRangeResponse": {
+      "type": "object",
+      "properties": {
+        "Count": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of item in current page"
+        },
+        "MultisignatureInfo": {
+          "type": "array",
+          "title": "content of the request",
+          "items": {
+            "$ref": "#/definitions/modelMultiSignatureInfo"
+          }
+        },
+        "Page": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Starting page"
+        }
+      }
+    },
     "modelGetMultisignatureInfoResponse": {
       "type": "object",
       "properties": {
@@ -2272,7 +2357,7 @@
     },
     "modelGetNodeTimeResponse": {
       "type": "object",
-      "title": "Get Node Current Time Base on UTC",
+      "title": "Get Node Current Time Based on UTC",
       "properties": {
         "NodeTime": {
           "type": "string",

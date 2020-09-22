@@ -39,4 +39,10 @@ service MultisigService {
             get: "/v1/multisig/GetPendingTransactionsByHeight"
         };
     }
+
+    rpc GetMultisigAddressesByBlockHeightRange(model.GetMultisigAddressesByBlockHeightRangeRequest) returns (model.GetMultisigAddressesByBlockHeightRangeResponse) {
+        option (google.api.http) = {
+            get: "/v1/multisig/GetMultisigAddressesByBlockHeightRange"
+        };
+    }
 }
