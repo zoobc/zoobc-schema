@@ -503,6 +503,29 @@
         }
       }
     },
+    "/v1/health/GetNodeTimeResponse": {
+      "get": {
+        "tags": [
+          "NodeHardwareService"
+        ],
+        "summary": "GetNodeTime return current UTC Time",
+        "operationId": "NodeHardwareService_GetNodeTime",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetNodeTimeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        }
+      }
+    },
     "/v1/health/check": {
       "get": {
         "tags": [
@@ -2329,6 +2352,16 @@
           "type": "string",
           "format": "uint64",
           "title": "Number of node registry in total"
+        }
+      }
+    },
+    "modelGetNodeTimeResponse": {
+      "type": "object",
+      "title": "Get Node Current Time Based on UTC",
+      "properties": {
+        "NodeTime": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },
