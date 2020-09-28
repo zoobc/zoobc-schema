@@ -12,10 +12,11 @@ message MempoolTransaction {
     int64 FeePerByte = 3 [jstype = JS_STRING];
     int64 ArrivalTimestamp = 4 [jstype = JS_STRING];
     bytes TransactionBytes = 5;
-    string SenderAccountAddress = 6;
-    string RecipientAccountAddress = 7;
-    Escrow Escrow = 8;
-    
+    bytes SenderAccountAddressType = 6;
+    string SenderAccountAddress = 7;
+    bytes RecipientAccountAddressType = 8;
+    string RecipientAccountAddress = 9;
+    Escrow Escrow = 10;
 }
 
 message GetMempoolTransactionRequest {

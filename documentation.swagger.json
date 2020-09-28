@@ -2536,8 +2536,16 @@
         "RecipientAccountAddress": {
           "type": "string"
         },
+        "RecipientAccountAddressType": {
+          "type": "string",
+          "format": "byte"
+        },
         "SenderAccountAddress": {
           "type": "string"
+        },
+        "SenderAccountAddressType": {
+          "type": "string",
+          "format": "byte"
         },
         "TransactionBytes": {
           "type": "string",
