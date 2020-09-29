@@ -7,8 +7,9 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 // FeeVoteCommitmentVote represent the commitment vote of fee vote structure stored in the database
 message FeeVoteCommitmentVote {
    bytes  VoteHash = 1;
-   string  VoterAddress = 2;
-   uint32 BlockHeight = 3 ;
+   uint32 VoterAddressType = 2;
+   bytes  VoterAddress = 3;
+   uint32 BlockHeight = 4;
 }
 
 // FeeVoteInfo represents the fields might be contains what previous commitmentVote submitted
@@ -21,6 +22,7 @@ message FeeVoteInfo {
 message FeeVoteRevealVote {
    FeeVoteInfo VoteInfo = 1;
    bytes VoterSignature = 2;
-   string VoterAddress = 3;
-   uint32 BlockHeight = 4;
+   uint32 VoterAddressType = 3;
+   bytes  VoterAddress = 4;
+   uint32 BlockHeight = 5;
 }

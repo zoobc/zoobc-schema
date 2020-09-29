@@ -12,10 +12,10 @@ message MempoolTransaction {
     int64 FeePerByte = 3 [jstype = JS_STRING];
     int64 ArrivalTimestamp = 4 [jstype = JS_STRING];
     bytes TransactionBytes = 5;
-    bytes SenderAccountAddressType = 6;
-    string SenderAccountAddress = 7;
-    bytes RecipientAccountAddressType = 8;
-    string RecipientAccountAddress = 9;
+    uint32 SenderAccountAddressType = 6;
+    bytes SenderAccountAddress = 7;
+    uint32 RecipientAccountAddressType = 8;
+    bytes RecipientAccountAddress = 9;
     Escrow Escrow = 10;
 }
 
@@ -33,8 +33,9 @@ message GetMempoolTransactionsRequest {
     // Fetch Mempool transactions to arrival timestamp end until n
     int64 timestampEnd = 2 [jstype = JS_STRING];
     // SenderAddress and RecipientAddress
-    string address = 3;
-    Pagination Pagination = 4;
+    uint32 addressType = 3;
+    bytes address = 4;
+    Pagination Pagination = 5;
 }
 
 message GetMempoolTransactionsResponse {

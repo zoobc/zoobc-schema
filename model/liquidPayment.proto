@@ -5,14 +5,16 @@ option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 message LiquidPayment {
     int64 ID = 1 [ jstype = JS_STRING ];
-    string SenderAddress = 2;
-    string RecipientAddress = 3;
-    int64 Amount = 4 [ jstype = JS_STRING ];
-    int64 AppliedTime = 5 [ jstype = JS_STRING ];
-    uint64 CompleteMinutes = 6 [ jstype = JS_STRING ];
-    LiquidPaymentStatus Status = 7;
-    uint32 BlockHeight = 8;
-    bool Latest = 9;
+    uint32 SenderAddressType = 2;
+    bytes SenderAddress = 3;
+    uint32 RecipientAddressType = 4;
+    bytes RecipientAddress = 5;
+    int64 Amount = 6 [ jstype = JS_STRING ];
+    int64 AppliedTime = 7 [ jstype = JS_STRING ];
+    uint64 CompleteMinutes = 8 [ jstype = JS_STRING ];
+    LiquidPaymentStatus Status = 9;
+    uint32 BlockHeight = 10;
+    bool Latest = 11;
 }
 enum LiquidPaymentStatus {
     LiquidPaymentPending = 0;
