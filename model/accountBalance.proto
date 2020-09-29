@@ -28,7 +28,7 @@ message GetAccountBalanceResponse {
 message GetAccountBalancesRequest {
     // Fetch AccountBalances by type/addresses
     uint32 AccountAddressType =1;
-    repeated bytes AccountAddress = 2;
+    repeated bytes AccountAddresses = 2;
 }
 
 message GetAccountBalancesResponse {

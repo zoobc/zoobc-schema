@@ -166,7 +166,7 @@
               "format": "byte"
             },
             "collectionFormat": "multi",
-            "name": "AccountAddress",
+            "name": "AccountAddresses",
             "in": "query"
           }
         ],
