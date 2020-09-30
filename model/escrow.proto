@@ -7,20 +7,17 @@ import "model/pagination.proto";
 
 message Escrow {
     int64 ID = 1 [ jstype = JS_STRING ];
-    uint32 SenderAddressType = 2;
-    bytes SenderAddress = 3;
-    uint32 RecipientAddressType = 4;
-    bytes RecipientAddress = 5;
-    uint32 ApproverAddressType = 6;
-    bytes ApproverAddress = 7;
-    int64 Amount = 8 [ jstype = JS_STRING ];
-    int64 Commission = 9 [ jstype = JS_STRING ];
+    bytes SenderAddress = 2;
+    bytes RecipientAddress = 3;
+    bytes ApproverAddress = 4;
+    int64 Amount = 5 [ jstype = JS_STRING ];
+    int64 Commission = 6 [ jstype = JS_STRING ];
     // Timeout is BlockHeight gap 
-    uint64 Timeout = 10 [ jstype = JS_STRING ];
-    EscrowStatus Status = 11;
-    uint32 BlockHeight = 12;
-    bool Latest = 13;
-    string Instruction = 14;
+    uint64 Timeout = 7 [ jstype = JS_STRING ];
+    EscrowStatus Status = 8;
+    uint32 BlockHeight = 9;
+    bool Latest = 10;
+    string Instruction = 11;
 }
 enum EscrowStatus {
     Pending = 0;
@@ -37,18 +34,15 @@ enum EscrowApproval {
 
 // GetEscrowTransactionsRequest message for get escrow transactions
 message GetEscrowTransactionsRequest {
-    uint32 ApproverAddressType = 1;
-    bytes ApproverAddress = 2;
-    uint32 SenderAddressType = 3;
-    bytes SenderAddress = 4;
-    uint32 RecipientAddressType = 5;
-    bytes RecipientAddress = 6;
-    int64 ID = 7 [jstype = JS_STRING];
-    repeated EscrowStatus  Statuses = 8;
-    uint32 BlockHeightStart = 9;
-    uint32 BlockHeightEnd = 10;
-    bool Latest = 11;
-    Pagination Pagination = 12;
+    bytes ApproverAddress = 1;
+    bytes SenderAddress = 2;
+    bytes RecipientAddress = 3;
+    int64 ID = 4 [jstype = JS_STRING];
+    repeated EscrowStatus  Statuses = 5;
+    uint32 BlockHeightStart = 6;
+    uint32 BlockHeightEnd = 7;
+    bool Latest = 8;
+    Pagination Pagination = 9;
 }
 // GetEscrowTransactionsResponse returns fields of GetEscrowTransactionsRequest
 message GetEscrowTransactionsResponse {

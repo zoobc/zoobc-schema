@@ -10,10 +10,9 @@ message ProofOfOwnership {
 }
 
 message ProofOfOwnershipMessage {
-    uint32 AccountAddressType = 1;
-    bytes AccountAddress = 2;
-    bytes BlockHash = 3;
-    uint32 BlockHeight = 4;
+    bytes AccountAddress = 1;
+    bytes BlockHash = 2;
+    uint32 BlockHeight = 3;
 }
 
 message GetProofOfOwnershipRequest {}

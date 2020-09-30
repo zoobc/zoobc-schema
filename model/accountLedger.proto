@@ -7,23 +7,21 @@ import "model/event.proto";
 import "model/pagination.proto";
 
 message AccountLedger {
-    uint32 AccountAddressType = 1;
-    bytes AccountAddress = 2;
-    int64 BalanceChange = 3;
-    uint32 BlockHeight = 4;
-    int64 TransactionID = 5 [ jstype = JS_STRING ];
-    uint64 Timestamp = 6;
-    EventType EventType = 7;
+    bytes AccountAddress = 1;
+    int64 BalanceChange = 2;
+    uint32 BlockHeight = 3;
+    int64 TransactionID = 4 [ jstype = JS_STRING ];
+    uint64 Timestamp = 5;
+    EventType EventType = 6;
 }
 
 message GetAccountLedgersRequest {
-    uint32 AccountAddressType = 1;
-    bytes AccountAddress = 2;
-    EventType EventType = 3;
-    int64 TransactionID = 4 [ jstype = JS_STRING ];
-    uint64 TimestampStart = 5;
-    uint32 TimestampEnd = 6;
-    Pagination Pagination = 7;
+    bytes AccountAddress = 1;
+    EventType EventType = 2;
+    int64 TransactionID = 3 [ jstype = JS_STRING ];
+    uint64 TimestampStart = 4;
+    uint32 TimestampEnd = 5;
+    Pagination Pagination = 6;
 }
 message GetAccountLedgersResponse {
     // Number of transactions in total

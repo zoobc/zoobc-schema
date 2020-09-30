@@ -87,12 +87,11 @@ message SendMoneyTransactionBody {
 
 message NodeRegistrationTransactionBody {
     bytes NodePublicKey = 1;
-    uint32 AccountAddressType = 2;
-    bytes AccountAddress = 3;
+    bytes AccountAddress = 2;
     // Funds to be locked to register the node
-    int64 LockedBalance = 4 [ jstype = JS_STRING ];
+    int64 LockedBalance = 3 [ jstype = JS_STRING ];
     // Proof of ownership (message + signature)
-    ProofOfOwnership Poown = 5;
+    ProofOfOwnership Poown = 4;
 }
 
 message UpdateNodeRegistrationTransactionBody {
@@ -170,13 +169,12 @@ message GetTransactionRequest {
 
 // GetTransactions return GetTransactionsResponse
 message GetTransactionsRequest {
-    uint32 AccountAddressType = 1;
-    bytes AccountAddress = 2;
-    uint32 Height = 3;
-    int64 TimestampStart = 4 [ jstype = JS_STRING ];
-    int64 TimestampEnd = 5 [ jstype = JS_STRING ];
-    uint32 TransactionType = 6;
-    Pagination Pagination = 7;
+    bytes AccountAddress = 1;
+    uint32 Height = 2;
+    int64 TimestampStart = 3 [ jstype = JS_STRING ];
+    int64 TimestampEnd = 4 [ jstype = JS_STRING ];
+    uint32 TransactionType = 5;
+    Pagination Pagination = 6;
 }
 
 message GetTransactionsResponse {

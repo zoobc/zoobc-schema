@@ -8,16 +8,14 @@ import "model/pagination.proto";
 message MultiSignatureInfo {
     uint32 MinimumSignatures = 1;
     int64 Nonce = 2 [ jstype = JS_STRING ];
-    uint32 MultisigAddressType = 3;
-    bytes MultisigAddress = 4;
-    uint32 BlockHeight = 5;
-    bool Latest = 6;
-    repeated string Addresses = 7;
+    bytes MultisigAddress = 3;
+    uint32 BlockHeight = 4;
+    bool Latest = 5;
+    repeated string Addresses = 6;
 }
 
 message MultiSignatureAccountTypeAddress {
-    uint32 MultisigAddressType = 1;
-    bytes MultisigAddress = 2;
+    bytes MultisigAddress = 1;
 }
 
 // represent the signature posted by account
@@ -27,33 +25,29 @@ message SignatureInfo {
 }
 // represent the multi signature's participant account addresses
 message MultiSignatureParticipant {
-    uint32 MultiSignatureAddressType = 1;
-    bytes MultiSignatureAddress = 2;
-    uint32 AccountAddressType = 3;
-    bytes AccountAddress = 4;
-    uint32 AccountAddressIndex = 5;
-    bool Latest = 6;
-    uint32 BlockHeight = 7;
+    bytes MultiSignatureAddress = 1;
+    bytes AccountAddress = 2;
+    uint32 AccountAddressIndex = 3;
+    bool Latest = 4;
+    uint32 BlockHeight = 5;
 }
 // represent the pending signature counter stored by node for multi-signature transaction
 message PendingSignature {
     bytes TransactionHash = 1;
-    uint32 AccountAddressType = 2;
-    bytes AccountAddress = 3;
-    bytes Signature = 4;
-    uint32 BlockHeight = 5;
-    bool Latest = 6;
+    bytes AccountAddress = 2;
+    bytes Signature = 3;
+    uint32 BlockHeight = 4;
+    bool Latest = 5;
 }
 
 // represent transaction inside multisig body
 message PendingTransaction {
-    uint32 SenderAddressType = 1;
-    bytes SenderAddress = 2;
-    bytes TransactionHash = 3;
-    bytes TransactionBytes = 4;
-    PendingTransactionStatus Status = 5;
-    uint32 BlockHeight = 6;
-    bool Latest = 7;
+    bytes SenderAddress = 1;
+    bytes TransactionHash = 2;
+    bytes TransactionBytes = 3;
+    PendingTransactionStatus Status = 4;
+    uint32 BlockHeight = 5;
+    bool Latest = 6;
 }
 
 enum PendingTransactionStatus {
@@ -66,10 +60,9 @@ enum PendingTransactionStatus {
 // API model
 
 message GetPendingTransactionsRequest {
-    uint32 SenderAddressType = 1;
-    bytes SenderAddress = 2;
-    PendingTransactionStatus Status = 3;
-    Pagination Pagination = 4;
+    bytes SenderAddress = 1;
+    PendingTransactionStatus Status = 2;
+    Pagination Pagination = 3;
 }
 
 message GetPendingTransactionsResponse {
@@ -93,9 +86,8 @@ message GetPendingTransactionDetailByTransactionHashResponse {
 }
 
 message GetMultisignatureInfoRequest {
-    uint32 MultisigAddressType = 1;
-    bytes MultisigAddress = 2;
-    Pagination Pagination = 3;
+    bytes MultisigAddress = 1;
+    Pagination Pagination = 2;
 }
 
 message GetMultisignatureInfoResponse {
@@ -108,9 +100,8 @@ message GetMultisignatureInfoResponse {
 }
 
 message GetMultisigAddressByParticipantAddressRequest {
-    uint32 ParticipantAddressType = 1;
-    bytes ParticipantAddress = 2;
-    Pagination Pagination = 3;
+    bytes ParticipantAddress = 1;
+    Pagination Pagination = 2;
 }
 
 message GetMultisigAddressByParticipantAddressResponse {

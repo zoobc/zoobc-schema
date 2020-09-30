@@ -23,12 +23,6 @@
         "operationId": "GetAccountLedgers",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
-            "name": "AccountAddressType",
-            "in": "query"
-          },
-          {
             "type": "string",
             "format": "byte",
             "name": "AccountAddress",
@@ -122,15 +116,9 @@
         "operationId": "GetAccountBalance",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch AccountBalance by type/address.",
-            "name": "AccountAddressType",
-            "in": "query"
-          },
-          {
             "type": "string",
             "format": "byte",
+            "description": "Fetch AccountBalance by type/address.",
             "name": "AccountAddress",
             "in": "query"
           }
@@ -153,19 +141,13 @@
         "operationId": "GetAccountBalances",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
-            "description": "Fetch AccountBalances by type/addresses.",
-            "name": "AccountAddressType",
-            "in": "query"
-          },
-          {
             "type": "array",
             "items": {
               "type": "string",
               "format": "byte"
             },
             "collectionFormat": "multi",
+            "description": "Fetch AccountBalances by type/addresses.",
             "name": "AccountAddresses",
             "in": "query"
           }
@@ -224,12 +206,6 @@
             "in": "query"
           },
           {
-            "type": "integer",
-            "format": "int64",
-            "name": "RecipientAccountAddressType",
-            "in": "query"
-          },
-          {
             "type": "string",
             "format": "byte",
             "name": "RecipientAccountAddress",
@@ -264,21 +240,9 @@
             "in": "query"
           },
           {
-            "type": "integer",
-            "format": "int64",
-            "name": "RecipientAccountAddressType",
-            "in": "query"
-          },
-          {
             "type": "string",
             "format": "byte",
             "name": "RecipientAccountAddress",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "name": "SetterAccountAddressType",
             "in": "query"
           },
           {
@@ -595,15 +559,9 @@
             "in": "query"
           },
           {
-            "type": "integer",
-            "format": "int64",
-            "description": "SenderAddress and RecipientAddress.",
-            "name": "addressType",
-            "in": "query"
-          },
-          {
             "type": "string",
             "format": "byte",
+            "description": "SenderAddress and RecipientAddress.",
             "name": "address",
             "in": "query"
           },
@@ -652,12 +610,6 @@
         ],
         "operationId": "GetMultisigAddressByParticipantAddress",
         "parameters": [
-          {
-            "type": "integer",
-            "format": "int64",
-            "name": "ParticipantAddressType",
-            "in": "query"
-          },
           {
             "type": "string",
             "format": "byte",
@@ -766,12 +718,6 @@
         ],
         "operationId": "GetMultisignatureInfo",
         "parameters": [
-          {
-            "type": "integer",
-            "format": "int64",
-            "name": "MultisigAddressType",
-            "in": "query"
-          },
           {
             "type": "string",
             "format": "byte",
@@ -901,12 +847,6 @@
         ],
         "operationId": "GetPendingTransactions",
         "parameters": [
-          {
-            "type": "integer",
-            "format": "int64",
-            "name": "SenderAddressType",
-            "in": "query"
-          },
           {
             "type": "string",
             "format": "byte",
@@ -1052,12 +992,6 @@
             "type": "string",
             "format": "byte",
             "name": "NodePublicKey",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int64",
-            "name": "AccountAddressType",
             "in": "query"
           },
           {
@@ -1374,12 +1308,6 @@
         "operationId": "GetTransactions",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
-            "name": "AccountAddressType",
-            "in": "query"
-          },
-          {
             "type": "string",
             "format": "byte",
             "name": "AccountAddress",
@@ -1473,10 +1401,6 @@
           "type": "string",
           "format": "byte"
         },
-        "AccountAddressType": {
-          "type": "integer",
-          "format": "int64"
-        },
         "Balance": {
           "type": "string",
           "format": "int64"
@@ -1522,17 +1446,9 @@
           "type": "string",
           "format": "byte"
         },
-        "RecipientAccountAddressType": {
-          "type": "integer",
-          "format": "int64"
-        },
         "SetterAccountAddress": {
           "type": "string",
           "format": "byte"
-        },
-        "SetterAccountAddressType": {
-          "type": "integer",
-          "format": "int64"
         },
         "Value": {
           "type": "string"
@@ -1545,10 +1461,6 @@
         "AccountAddress": {
           "type": "string",
           "format": "byte"
-        },
-        "AccountAddressType": {
-          "type": "integer",
-          "format": "int64"
         },
         "BalanceChange": {
           "type": "string",
@@ -1827,10 +1739,6 @@
           "type": "string",
           "format": "byte"
         },
-        "ApproverAddressType": {
-          "type": "integer",
-          "format": "int64"
-        },
         "BlockHeight": {
           "type": "integer",
           "format": "int64"
@@ -1854,17 +1762,9 @@
           "type": "string",
           "format": "byte"
         },
-        "RecipientAddressType": {
-          "type": "integer",
-          "format": "int64"
-        },
         "SenderAddress": {
           "type": "string",
           "format": "byte"
-        },
-        "SenderAddressType": {
-          "type": "integer",
-          "format": "int64"
         },
         "Status": {
           "$ref": "#/definitions/modelEscrowStatus"
@@ -2656,17 +2556,9 @@
           "type": "string",
           "format": "byte"
         },
-        "RecipientAccountAddressType": {
-          "type": "integer",
-          "format": "int64"
-        },
         "SenderAccountAddress": {
           "type": "string",
           "format": "byte"
-        },
-        "SenderAccountAddressType": {
-          "type": "integer",
-          "format": "int64"
         },
         "TransactionBytes": {
           "type": "string",
@@ -2680,10 +2572,6 @@
         "MultisigAddress": {
           "type": "string",
           "format": "byte"
-        },
-        "MultisigAddressType": {
-          "type": "integer",
-          "format": "int64"
         }
       }
     },
@@ -2712,10 +2600,6 @@
           "type": "string",
           "format": "byte"
         },
-        "MultisigAddressType": {
-          "type": "integer",
-          "format": "int64"
-        },
         "Nonce": {
           "type": "string",
           "format": "int64"
@@ -2734,10 +2618,6 @@
           "type": "integer",
           "format": "int64"
         },
-        "AccountAddressType": {
-          "type": "integer",
-          "format": "int64"
-        },
         "BlockHeight": {
           "type": "integer",
           "format": "int64"
@@ -2749,10 +2629,6 @@
         "MultiSignatureAddress": {
           "type": "string",
           "format": "byte"
-        },
-        "MultiSignatureAddressType": {
-          "type": "integer",
-          "format": "int64"
         }
       }
     },
@@ -2894,10 +2770,6 @@
           "type": "string",
           "format": "byte"
         },
-        "AccountAddressType": {
-          "type": "integer",
-          "format": "int64"
-        },
         "Height": {
           "type": "integer",
           "format": "int64"
@@ -2937,10 +2809,6 @@
         "AccountAddress": {
           "type": "string",
           "format": "byte"
-        },
-        "AccountAddressType": {
-          "type": "integer",
-          "format": "int64"
         },
         "LockedBalance": {
           "type": "string",
@@ -3047,10 +2915,6 @@
           "type": "string",
           "format": "byte"
         },
-        "AccountAddressType": {
-          "type": "integer",
-          "format": "int64"
-        },
         "BlockHeight": {
           "type": "integer",
           "format": "int64"
@@ -3084,10 +2948,6 @@
         "SenderAddress": {
           "type": "string",
           "format": "byte"
-        },
-        "SenderAddressType": {
-          "type": "integer",
-          "format": "int64"
         },
         "Status": {
           "$ref": "#/definitions/modelPendingTransactionStatus"
