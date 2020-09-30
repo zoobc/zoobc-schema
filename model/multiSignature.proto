@@ -11,7 +11,7 @@ message MultiSignatureInfo {
     bytes MultisigAddress = 3;
     uint32 BlockHeight = 4;
     bool Latest = 5;
-    repeated string Addresses = 6;
+    repeated bytes Addresses = 6;
 }
 
 message MultiSignatureAccountTypeAddress {
@@ -139,7 +139,7 @@ message GetMultisigAddressesByBlockHeightRangeResponse {
 }
 
 message GetParticipantsByMultisigAddressesRequest {
-    repeated string MultisigAddresses = 1;
+    repeated bytes MultisigAddresses = 1;
     Pagination Pagination = 2;
 }
 

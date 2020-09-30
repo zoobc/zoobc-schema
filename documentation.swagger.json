@@ -772,7 +772,8 @@
           {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "string",
+              "format": "byte"
             },
             "collectionFormat": "multi",
             "name": "MultisigAddresses",
@@ -2593,7 +2594,8 @@
         "Addresses": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "format": "byte"
           }
         },
         "BlockHeight": {
