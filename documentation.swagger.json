@@ -1571,6 +1571,14 @@
           "type": "string",
           "format": "int64"
         },
+        "MerkleRoot": {
+          "type": "string",
+          "format": "byte"
+        },
+        "MerkleTree": {
+          "type": "string",
+          "format": "byte"
+        },
         "PayloadHash": {
           "type": "string",
           "format": "byte"
@@ -1588,6 +1596,10 @@
           "items": {
             "$ref": "#/definitions/modelPublishedReceipt"
           }
+        },
+        "ReferenceBlockHeight": {
+          "type": "integer",
+          "format": "int64"
         },
         "SpineBlockManifests": {
           "type": "array",
@@ -2682,6 +2694,10 @@
         "Port": {
           "type": "integer",
           "format": "int64"
+        },
+        "PublicKey": {
+          "type": "string",
+          "format": "byte"
         },
         "SharedAddress": {
           "type": "string"
