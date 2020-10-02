@@ -2095,11 +2095,12 @@
     "modelGetMultisigAddressByParticipantAddressResponse": {
       "type": "object",
       "properties": {
-        "MultiSignAddresses": {
+        "MultisigAddresses": {
           "type": "array",
           "title": "content of the request",
           "items": {
-            "$ref": "#/definitions/modelMultiSignatureAccountTypeAddress"
+            "type": "string",
+            "format": "byte"
           }
         },
         "Total": {
@@ -2574,15 +2575,6 @@
           "format": "byte"
         },
         "TransactionBytes": {
-          "type": "string",
-          "format": "byte"
-        }
-      }
-    },
-    "modelMultiSignatureAccountTypeAddress": {
-      "type": "object",
-      "properties": {
-        "MultisigAddress": {
           "type": "string",
           "format": "byte"
         }

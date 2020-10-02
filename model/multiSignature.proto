@@ -14,10 +14,6 @@ message MultiSignatureInfo {
     repeated bytes Addresses = 6;
 }
 
-message MultiSignatureAccountTypeAddress {
-    bytes MultisigAddress = 1;
-}
-
 // represent the signature posted by account
 message SignatureInfo {
     bytes TransactionHash = 1;
@@ -108,7 +104,7 @@ message GetMultisigAddressByParticipantAddressResponse {
     // Total of participant address
     uint32 Total = 1;
     // content of the request
-    repeated MultiSignatureAccountTypeAddress MultiSignAddresses = 2;
+    repeated bytes MultisigAddresses = 2;
 }
 
 message GetPendingTransactionsByHeightRequest {
