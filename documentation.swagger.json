@@ -3304,17 +3304,9 @@
           "type": "string",
           "format": "byte"
         },
-        "RecipientAccountType": {
-          "type": "integer",
-          "format": "int64"
-        },
         "SenderAccountAddress": {
           "type": "string",
           "format": "byte"
-        },
-        "SenderAccountType": {
-          "type": "integer",
-          "format": "int64"
         },
         "Signature": {
           "type": "string",
