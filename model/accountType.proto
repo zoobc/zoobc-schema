@@ -16,4 +16,5 @@ message AccountAddress {
 enum AccountType {
     ZbcAccountType = 0; // Default account type
     BTCAccountType = 1;
+    EmptyAccountType = 2; // To facilitate parsing transactions that allow empty account address
 }
