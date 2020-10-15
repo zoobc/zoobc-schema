@@ -4,7 +4,7 @@ package model;
 option go_package = "github.com/zoobc/zoobc-core/common/model";
 
 import "model/transaction.proto";
-import "model/batchReceipt.proto";
+import "model/receipt.proto";
 import "model/publishedReceipt.proto";
 import "model/skippedBlocksmith.proto";
 import "model/spine.proto";
@@ -108,5 +108,5 @@ message SendBlockRequest {
     bytes SenderPublicKey = 3;
 }
 message SendBlockResponse {
-    BatchReceipt BatchReceipt = 1;
+    Receipt BatchReceipt = 1;
 }
