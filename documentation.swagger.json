@@ -3296,6 +3296,9 @@
           "type": "string",
           "format": "int64"
         },
+        "Message": {
+          "type": "string"
+        },
         "MultisigChild": {
           "type": "boolean",
           "format": "boolean"
