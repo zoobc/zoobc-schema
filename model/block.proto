@@ -108,5 +108,5 @@ message SendBlockRequest {
     bytes SenderPublicKey = 3;
 }
 message SendBlockResponse {
-    Receipt BatchReceipt = 1;
+    Receipt Receipt = 1;
 }

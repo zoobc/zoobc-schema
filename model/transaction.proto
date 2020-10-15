@@ -196,7 +196,7 @@ message SendTransactionRequest {
     bytes SenderPublicKey = 3;
 }
 // SendTransactionResponse a model response of send a transaction in p2pCommunication service
-message SendTransactionResponse { Receipt BatchReceipt = 1; }
+message SendTransactionResponse { Receipt Receipt = 1; }
 
 
 
@@ -216,7 +216,7 @@ message SendBlockTransactionsRequest {
 
 // SendBlockTransactionsResponse a model response of a process sending block's transactions
 message SendBlockTransactionsResponse {
-    repeated Receipt BatchReceipts = 1;
+    repeated Receipt Receipts = 1;
 }
 
 // GetTransactionMinimumFeeRequest a model request for getting minimum fee required to post the transaction
