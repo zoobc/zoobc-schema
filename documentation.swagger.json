@@ -1520,23 +1520,6 @@
         }
       }
     },
-    "modelBatchReceipt": {
-      "type": "object",
-      "title": "BatchReceipt is a receipt that already includes RMR ready to publish",
-      "properties": {
-        "BatchReceipt": {
-          "$ref": "#/definitions/modelReceipt"
-        },
-        "RMR": {
-          "type": "string",
-          "format": "byte"
-        },
-        "RMRIndex": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
     "modelBlock": {
       "type": "object",
       "title": "Block represent the block data structure stored in the database",
@@ -3036,9 +3019,6 @@
     "modelPublishedReceipt": {
       "type": "object",
       "properties": {
-        "BatchReceipt": {
-          "$ref": "#/definitions/modelBatchReceipt"
-        },
         "BlockHeight": {
           "type": "integer",
           "format": "int64"
@@ -3050,6 +3030,9 @@
         "PublishedIndex": {
           "type": "integer",
           "format": "int64"
+        },
+        "Receipt": {
+          "$ref": "#/definitions/modelReceipt"
         },
         "ReceiptIndex": {
           "type": "integer",
@@ -3120,7 +3103,7 @@
     "modelSendBlockResponse": {
       "type": "object",
       "properties": {
-        "BatchReceipt": {
+        "Receipt": {
           "$ref": "#/definitions/modelReceipt"
         }
       }
@@ -3129,7 +3112,7 @@
       "type": "object",
       "title": "SendBlockTransactionsResponse a model response of a process sending block's transactions",
       "properties": {
-        "BatchReceipts": {
+        "Receipts": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/modelReceipt"
@@ -3150,7 +3133,7 @@
       "type": "object",
       "title": "SendTransactionResponse a model response of send a transaction in p2pCommunication service",
       "properties": {
-        "BatchReceipt": {
+        "Receipt": {
           "$ref": "#/definitions/modelReceipt"
         }
       }
