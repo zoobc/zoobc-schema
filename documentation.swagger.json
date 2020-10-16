@@ -3036,9 +3036,6 @@
     "modelPublishedReceipt": {
       "type": "object",
       "properties": {
-        "BatchReceipt": {
-          "$ref": "#/definitions/modelBatchReceipt"
-        },
         "BlockHeight": {
           "type": "integer",
           "format": "int64"
@@ -3050,6 +3047,9 @@
         "PublishedIndex": {
           "type": "integer",
           "format": "int64"
+        },
+        "Receipt": {
+          "$ref": "#/definitions/modelReceipt"
         },
         "ReceiptIndex": {
           "type": "integer",
@@ -3120,7 +3120,7 @@
     "modelSendBlockResponse": {
       "type": "object",
       "properties": {
-        "BatchReceipt": {
+        "Receipt": {
           "$ref": "#/definitions/modelReceipt"
         }
       }
@@ -3129,7 +3129,7 @@
       "type": "object",
       "title": "SendBlockTransactionsResponse a model response of a process sending block's transactions",
       "properties": {
-        "BatchReceipts": {
+        "Receipts": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/modelReceipt"
@@ -3150,7 +3150,7 @@
       "type": "object",
       "title": "SendTransactionResponse a model response of send a transaction in p2pCommunication service",
       "properties": {
-        "BatchReceipt": {
+        "Receipt": {
           "$ref": "#/definitions/modelReceipt"
         }
       }
