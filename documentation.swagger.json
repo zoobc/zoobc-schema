@@ -1520,6 +1520,23 @@
         }
       }
     },
+    "modelBatchReceipt": {
+      "type": "object",
+      "title": "BatchReceipt is a receipt that already includes RMR ready to publish",
+      "properties": {
+        "BatchReceipt": {
+          "$ref": "#/definitions/modelReceipt"
+        },
+        "RMR": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RMRIndex": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
     "modelBlock": {
       "type": "object",
       "title": "Block represent the block data structure stored in the database",
