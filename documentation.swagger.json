@@ -414,29 +414,6 @@
         }
       }
     },
-    "/v1/feeVote/GetFeeVoteTransactions": {
-      "get": {
-        "tags": [
-          "FeeVoteTransactionService"
-        ],
-        "operationId": "GetFeeVoteTransactions",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "A",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/modelGetFeeVoteTransactionsResponse"
-            }
-          }
-        }
-      }
-    },
     "/v1/file/FileDownload": {
       "get": {
         "tags": [
@@ -1520,23 +1497,6 @@
         }
       }
     },
-    "modelBatchReceipt": {
-      "type": "object",
-      "title": "BatchReceipt is a receipt that already includes RMR ready to publish",
-      "properties": {
-        "BatchReceipt": {
-          "$ref": "#/definitions/modelReceipt"
-        },
-        "RMR": {
-          "type": "string",
-          "format": "byte"
-        },
-        "RMRIndex": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
     "modelBlock": {
       "type": "object",
       "title": "Block represent the block data structure stored in the database",
@@ -2043,14 +2003,6 @@
           "type": "string",
           "format": "uint64",
           "title": "Number of transactions in total"
-        }
-      }
-    },
-    "modelGetFeeVoteTransactionsResponse": {
-      "type": "object",
-      "properties": {
-        "B": {
-          "type": "string"
         }
       }
     },
@@ -3344,6 +3296,9 @@
         "ID": {
           "type": "string",
           "format": "int64"
+        },
+        "Message": {
+          "type": "string"
         },
         "MultisigChild": {
           "type": "boolean",
