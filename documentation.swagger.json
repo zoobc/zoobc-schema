@@ -3340,7 +3340,6 @@
           "format": "int64"
         },
         "Escrow": {
-          "title": "nullable",
           "$ref": "#/definitions/modelEscrow"
         },
         "Fee": {
@@ -3354,6 +3353,9 @@
         "ID": {
           "type": "string",
           "format": "int64"
+        },
+        "Message": {
+          "type": "string"
         },
         "MultisigChild": {
           "type": "boolean",

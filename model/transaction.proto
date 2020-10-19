@@ -46,8 +46,8 @@ message Transaction {
         AtomicTransactionBody atomicTransactionBody = 31;
     }
     bytes Signature = 32;
-    // nullable
     Escrow Escrow = 33;
+    string Message = 34;
 }
 
 enum TransactionType {
