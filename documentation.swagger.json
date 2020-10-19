@@ -46,7 +46,8 @@
               "EventLiquidPaymentTransaction",
               "EventLiquidPaymentPaidTransaction",
               "EventLiquidPaymentStopTransaction",
-              "EventEscrowedTransaction"
+              "EventEscrowedTransaction",
+              "EventAtomicTransaction"
             ],
             "type": "string",
             "default": "EventAny",
@@ -1520,20 +1521,28 @@
         }
       }
     },
-    "modelBatchReceipt": {
+    "modelAtomicInnerTransaction": {
       "type": "object",
-      "title": "BatchReceipt is a receipt that already includes RMR ready to publish",
+      "title": "AtomicInnerItem item of atomic transactions which is bytes of UnsignedTransaction and signature",
       "properties": {
-        "BatchReceipt": {
-          "$ref": "#/definitions/modelReceipt"
-        },
-        "RMR": {
-          "type": "string",
-          "format": "byte"
-        },
-        "RMRIndex": {
-          "type": "integer",
-          "format": "int64"
+        "AtomicInnerItem": {
+          "type": "array",
+          "title": "AtomicInnerItem 0: Unsigned transaction bytes 1: Signature bytes",
+          "items": {
+            "type": "string",
+            "format": "byte"
+          }
+        }
+      }
+    },
+    "modelAtomicTransactionBody": {
+      "type": "object",
+      "properties": {
+        "AtomicInnerTransactions": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelAtomicInnerTransaction"
+          }
         }
       }
     },
@@ -1832,7 +1841,8 @@
         "EventLiquidPaymentTransaction",
         "EventLiquidPaymentPaidTransaction",
         "EventLiquidPaymentStopTransaction",
-        "EventEscrowedTransaction"
+        "EventEscrowedTransaction",
+        "EventAtomicTransaction"
       ]
     },
     "modelFeeVoteCommitTransactionBody": {
@@ -3391,6 +3401,9 @@
         },
         "approvalEscrowTransactionBody": {
           "$ref": "#/definitions/modelApprovalEscrowTransactionBody"
+        },
+        "atomicTransactionBody": {
+          "$ref": "#/definitions/modelAtomicTransactionBody"
         },
         "claimNodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelClaimNodeRegistrationTransactionBody"

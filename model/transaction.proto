@@ -43,10 +43,11 @@ message Transaction {
         FeeVoteRevealTransactionBody feeVoteRevealTransactionBody = 28;
         LiquidPaymentTransactionBody liquidPaymentTransactionBody = 29;
         LiquidPaymentStopTransactionBody liquidPaymentStopTransactionBody = 30;
+        AtomicTransactionBody atomicTransactionBody = 31;
     }
-    bytes Signature = 31;
+    bytes Signature = 32;
     // nullable
-    Escrow Escrow = 32;
+    Escrow Escrow = 33;
 }
 
 enum TransactionType {
@@ -74,6 +75,8 @@ enum TransactionType {
     FeeVoteCommitmentVoteTransaction  = 7;
     // in bytes: []byte{7,1,0,0}
     FeeVoteRevealVoteTransaction = 263;
+    // in bytes: []byte{8,0,0,0}
+    AtomicTransaction = 8;
 }
 
 
@@ -155,6 +158,14 @@ message LiquidPaymentStopTransactionBody {
     int64 TransactionID = 1 [ jstype = JS_STRING ];
 }
 
+// AtomicInnerItem item of atomic transactions which is bytes of UnsignedTransaction and signature
+message AtomicInnerTransaction {
+    // AtomicInnerItem 0: Unsigned transaction bytes 1: Signature bytes
+    repeated bytes AtomicInnerItem = 1;
+}
+message AtomicTransactionBody {
+    map<string, AtomicInnerTransaction> AtomicInnerTransactions  = 2;
+}
 //------------
 // P2P Content
 //------------
