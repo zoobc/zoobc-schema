@@ -8,8 +8,10 @@ message PublishedReceipt {
     Receipt Receipt = 1;
     bytes IntermediateHashes = 2;
     uint32 BlockHeight = 3;
-    uint32 ReceiptIndex = 4;
-    uint32 PublishedIndex = 5;
+    uint32 BatchReferenceBlockHeight = 4;
+    uint32 ReceiptIndex = 5;
+    uint32 PublishedIndex = 6;
+    PublishedReceiptType PublishedReceiptType = 7;
 }
 
 message GetPublishedReceiptsRequest {
@@ -20,4 +22,12 @@ message GetPublishedReceiptsRequest {
 message GetPublishedReceiptsResponse {
     // PublishedReceipts list of published receipts in `FromHeight` to `ToHeight`
     repeated PublishedReceipt PublishedReceipts = 1;
+}
+
+enum PublishedReceiptType {
+    // FreeReceipt is a receipt that isn't bound to any other receipt, but used to let other node prove their receipt by linking
+    // its rmr_link to the proved receipt merkle root.
+    FreeReceipt = 0;
+    // ProvedReceipt can be proved by linking to previously published FreeReceipt in which its rmr_link is of the ProvedReceipt
+    ProvedReceipt = 1;
 }

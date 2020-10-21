@@ -31,10 +31,11 @@ message Block {
   bytes MerkleTree = 17;
   uint32 ReferenceBlockHeight = 18;
   repeated Transaction Transactions = 19;
-  repeated PublishedReceipt PublishedReceipts = 20;
-  repeated SpinePublicKey SpinePublicKeys = 21;
-  repeated SpineBlockManifest SpineBlockManifests = 22;
-  repeated int64 TransactionIDs = 23;
+  repeated PublishedReceipt FreeReceipts = 20;
+  repeated PublishedReceipt ProvedReceipts = 21;
+  repeated SpinePublicKey SpinePublicKeys = 22;
+  repeated SpineBlockManifest SpineBlockManifests = 23;
+  repeated int64 TransactionIDs = 24;
 }
 
 // BlockExtendedInfo represent the Block data plus part of block data not to be persisted to database

@@ -1520,6 +1520,12 @@
         "CumulativeDifficulty": {
           "type": "string"
         },
+        "FreeReceipts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelPublishedReceipt"
+          }
+        },
         "Height": {
           "type": "integer",
           "format": "int64"
@@ -1548,7 +1554,7 @@
           "type": "string",
           "format": "byte"
         },
-        "PublishedReceipts": {
+        "ProvedReceipts": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/modelPublishedReceipt"
@@ -2988,6 +2994,10 @@
     "modelPublishedReceipt": {
       "type": "object",
       "properties": {
+        "BatchReferenceBlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
         "BlockHeight": {
           "type": "integer",
           "format": "int64"
@@ -3000,6 +3010,9 @@
           "type": "integer",
           "format": "int64"
         },
+        "PublishedReceiptType": {
+          "$ref": "#/definitions/modelPublishedReceiptType"
+        },
         "Receipt": {
           "$ref": "#/definitions/modelReceipt"
         },
@@ -3008,6 +3021,15 @@
           "format": "int64"
         }
       }
+    },
+    "modelPublishedReceiptType": {
+      "type": "string",
+      "title": "- FreeReceipt: FreeReceipt is a receipt that isn't bound to any other receipt, but used to let other node prove their receipt by linking\nits rmr_link to the proved receipt merkle root.\n - ProvedReceipt: ProvedReceipt can be proved by linking to previously published FreeReceipt in which its rmr_link is of the ProvedReceipt",
+      "default": "FreeReceipt",
+      "enum": [
+        "FreeReceipt",
+        "ProvedReceipt"
+      ]
     },
     "modelReceipt": {
       "type": "object",

@@ -9,5 +9,4 @@ message BatchReceipt {
     Receipt Receipt = 1;
     bytes RMR = 2;
     uint32 RMRIndex = 3;
-
 }
