@@ -1,0 +1,15 @@
+syntax="proto3";
+
+package model;
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+message Atomic {
+    int64 ID = 1;
+    // TransactionID is reference transaction.id which is the wrapper
+    int64 TransactionID =2;
+    bytes SenderAddress = 3;
+    uint32 BlockHeight = 4;
+    bytes UnsignedTransaction = 5;
+    bytes Signature = 6;
+    uint32 AtomicIndex = 7;
+}

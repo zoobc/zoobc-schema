@@ -16,6 +16,7 @@ import "model/skippedBlocksmith.proto";
 import "model/feeScale.proto";
 import "model/feeVote.proto";
 import "model/liquidPayment.proto";
+import "model/atomic.proto";
 
 // SnapshotFileInfo model to pass data between snapshot and spineBlockManifest interfaces
 message SnapshotFileInfo {
@@ -46,5 +47,6 @@ message SnapshotPayload {
     repeated LiquidPayment LiquidPayment = 15;
     repeated NodeAdmissionTimestamp NodeAdmissionTimestamp = 16;
     repeated MultiSignatureParticipant MultiSignatureParticipants = 17;
+    repeated Atomic AtomicTransaction = 18;
 }
 

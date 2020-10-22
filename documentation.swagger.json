@@ -1521,27 +1521,23 @@
         }
       }
     },
-    "modelAtomicInnerTransaction": {
-      "type": "object",
-      "title": "AtomicInnerItem item of atomic transactions which is bytes of UnsignedTransaction and signature",
-      "properties": {
-        "AtomicInnerItem": {
-          "type": "array",
-          "title": "AtomicInnerItem 0: Unsigned transaction bytes 1: Signature bytes",
-          "items": {
-            "type": "string",
-            "format": "byte"
-          }
-        }
-      }
-    },
     "modelAtomicTransactionBody": {
       "type": "object",
       "properties": {
-        "AtomicInnerTransactions": {
+        "Signatures": {
           "type": "object",
+          "title": "Signatures is \u003caddressHex, Signature\u003e",
           "additionalProperties": {
-            "$ref": "#/definitions/modelAtomicInnerTransaction"
+            "type": "string",
+            "format": "byte"
+          }
+        },
+        "UnsignedTransactionBytes": {
+          "type": "array",
+          "title": "UnsignedTransactionBytes is collection of unsigned transaction bytes",
+          "items": {
+            "type": "string",
+            "format": "byte"
           }
         }
       }
@@ -3339,6 +3335,9 @@
           "type": "string",
           "format": "int64"
         },
+        "ChildType": {
+          "$ref": "#/definitions/modelTransactionChildType"
+        },
         "Escrow": {
           "$ref": "#/definitions/modelEscrow"
         },
@@ -3356,10 +3355,6 @@
         },
         "Message": {
           "type": "string"
-        },
-        "MultisigChild": {
-          "type": "boolean",
-          "format": "boolean"
         },
         "RecipientAccountAddress": {
           "type": "string",
@@ -3447,6 +3442,16 @@
           "$ref": "#/definitions/modelUpdateNodeRegistrationTransactionBody"
         }
       }
+    },
+    "modelTransactionChildType": {
+      "type": "string",
+      "title": "TransactionChildType transaction child type it will reference to transaction.child_type",
+      "default": "NoneChild",
+      "enum": [
+        "NoneChild",
+        "MultiSignatureChild",
+        "AtomicChild"
+      ]
     },
     "modelUpdateNodeRegistrationTransactionBody": {
       "type": "object",

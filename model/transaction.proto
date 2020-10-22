@@ -26,7 +26,7 @@ message Transaction {
     uint32 TransactionBodyLength = 11;
     bytes TransactionBodyBytes = 12;
     uint32 TransactionIndex = 13;
-    bool MultisigChild = 14;
+    TransactionChildType ChildType = 14;
     // transactionbody
     oneof TransactionBody {
         EmptyTransactionBody emptyTransactionBody = 17;
@@ -79,6 +79,12 @@ enum TransactionType {
     AtomicTransaction = 8;
 }
 
+// TransactionChildType transaction child type it will reference to transaction.child_type
+enum TransactionChildType {
+    NoneChild = 0;
+    MultiSignatureChild = 1;
+    AtomicChild = 2;
+}
 
 message EmptyTransactionBody {}
 
@@ -158,13 +164,11 @@ message LiquidPaymentStopTransactionBody {
     int64 TransactionID = 1 [ jstype = JS_STRING ];
 }
 
-// AtomicInnerItem item of atomic transactions which is bytes of UnsignedTransaction and signature
-message AtomicInnerTransaction {
-    // AtomicInnerItem 0: Unsigned transaction bytes 1: Signature bytes
-    repeated bytes AtomicInnerItem = 1;
-}
 message AtomicTransactionBody {
-    map<string, AtomicInnerTransaction> AtomicInnerTransactions  = 2;
+    // UnsignedTransactionBytes is collection of unsigned transaction bytes
+    repeated bytes UnsignedTransactionBytes = 1;
+    // Signatures is <addressHex, Signature>
+    map<string, bytes> Signatures  = 2;
 }
 //------------
 // P2P Content
