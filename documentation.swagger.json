@@ -3354,7 +3354,8 @@
           "format": "int64"
         },
         "Message": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "RecipientAccountAddress": {
           "type": "string",
