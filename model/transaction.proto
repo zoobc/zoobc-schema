@@ -47,7 +47,7 @@ message Transaction {
     }
     bytes Signature = 32;
     Escrow Escrow = 33;
-    string Message = 34;
+    bytes Message = 34;
 }
 
 enum TransactionType {
