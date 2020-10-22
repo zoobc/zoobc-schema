@@ -71,6 +71,10 @@ enum TransactionType {
     ApprovalEscrowTransaction = 4;
     // in bytes: []byte{5,0,0,0}
     MultiSignatureTransaction = 5;
+    // in bytes: []byte{6,0,0,0}
+    LiquidPaymentTransaction = 6;
+    // in bytes: []byte{6,1,0,0}
+    LiquidPaymentStopTransaction = 262;
     // in bytes: []byte{7,0,0,0}
     FeeVoteCommitmentVoteTransaction  = 7;
     // in bytes: []byte{7,1,0,0}
