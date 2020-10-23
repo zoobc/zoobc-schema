@@ -471,6 +471,29 @@
         }
       }
     },
+    "/v1/feeVote/GetFeeVoteTransactions": {
+      "get": {
+        "tags": [
+          "FeeVoteTransactionService"
+        ],
+        "operationId": "GetFeeVoteTransactions",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "A",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetFeeVoteTransactionsResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/file/FileDownload": {
       "get": {
         "tags": [
@@ -2253,6 +2276,14 @@
         }
       }
     },
+    "modelGetFeeVoteTransactionsResponse": {
+      "type": "object",
+      "properties": {
+        "B": {
+          "type": "string"
+        }
+      }
+    },
     "modelGetHostPeersResponse": {
       "type": "object",
       "properties": {
@@ -3545,7 +3576,8 @@
           "format": "int64"
         },
         "Message": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "MultisigChild": {
           "type": "boolean",
