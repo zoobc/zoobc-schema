@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package model;
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+import "model/accountDataset.proto";
+
+// BlockchainObject represent the blockchain object structure stored in the database
+message BlockchainObject {
+    bytes ID = 1;
+    bytes OwnerAccountAddress = 2;
+    uint32 BlockHeight = 3;
+    bool Latest = 4;
+    repeated BlockchainObjectProperty ImmutableProperties = 5;
+    repeated AccountDataset MutableProperties = 6;
+} 
+
+// BlockchainObjectProperty represent the immutable blockchain object property structure stored in the database
+message BlockchainObjectProperty {
+    bytes BlockchainObjectID = 1;
+    string Key = 2;
+    string Value = 3;
+    uint32 BlockHeight = 4;
+} 
+
