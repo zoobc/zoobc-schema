@@ -989,23 +989,6 @@
         }
       }
     },
-    "/v1/nodeRegistration/GetMyNodePublicKey": {
-      "get": {
-        "tags": [
-          "NodeRegistrationService"
-        ],
-        "summary": "GetMyNodePublicKey return the public key of the node",
-        "operationId": "GetMyNodePublicKey",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/modelGetMyNodePublicKeyResponse"
-            }
-          }
-        }
-      }
-    },
     "/v1/nodeRegistration/GetNodeRegistration": {
       "get": {
         "tags": [
@@ -1178,6 +1161,23 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGenerateNodeKeyResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nodeadmin/getLastNodeKey": {
+      "get": {
+        "tags": [
+          "NodeAdminService"
+        ],
+        "summary": "GetLastNodeKey handles request to get last node key",
+        "operationId": "GetLastNodeKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetLastNodeKeyResponse"
             }
           }
         }
@@ -2054,6 +2054,15 @@
         }
       }
     },
+    "modelGetLastNodeKeyResponse": {
+      "type": "object",
+      "properties": {
+        "NodePublicKey": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
     "modelGetMempoolTransactionResponse": {
       "type": "object",
       "properties": {
@@ -2147,15 +2156,6 @@
           "type": "integer",
           "format": "int64",
           "title": "Starting page"
-        }
-      }
-    },
-    "modelGetMyNodePublicKeyResponse": {
-      "type": "object",
-      "properties": {
-        "NodePublicKey": {
-          "type": "string",
-          "format": "byte"
         }
       }
     },

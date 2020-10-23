@@ -30,3 +30,7 @@ message GenerateNodeKeyRequest {}
 message GenerateNodeKeyResponse {
     bytes NodePublicKey = 1;
 }
+
+message GetLastNodeKeyResponse {
+	bytes NodePublicKey = 1;
+}
