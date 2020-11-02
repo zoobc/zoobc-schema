@@ -471,29 +471,6 @@
         }
       }
     },
-    "/v1/feeVote/GetFeeVoteTransactions": {
-      "get": {
-        "tags": [
-          "FeeVoteTransactionService"
-        ],
-        "operationId": "GetFeeVoteTransactions",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "A",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/modelGetFeeVoteTransactionsResponse"
-            }
-          }
-        }
-      }
-    },
     "/v1/file/FileDownload": {
       "get": {
         "tags": [
@@ -2273,14 +2250,6 @@
           "type": "string",
           "format": "uint64",
           "title": "Number of transactions in total"
-        }
-      }
-    },
-    "modelGetFeeVoteTransactionsResponse": {
-      "type": "object",
-      "properties": {
-        "B": {
-          "type": "string"
         }
       }
     },
