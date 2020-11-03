@@ -1,0 +1,18 @@
+syntax="proto3";
+
+package model;
+
+option go_package = "github.com/zoobc/zoobc-core/common/model";
+
+enum PrefixConstant {
+    // Prefix ZOOBC Default Account
+    ZBC = 0;
+    // Prefix ZOOBC Node Account
+    ZNK = 1;
+    // Prefix ZOOBC MainBlockHash
+    ZBL = 2;
+    // Prefix ZOOBC SpineBlockHash
+    ZSP = 3;
+    // Prefix ZOOBC Multi Signature Account
+    ZMS = 4;
+}
