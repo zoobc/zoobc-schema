@@ -24,6 +24,7 @@
         "parameters": [
           {
             "type": "string",
+            "format": "byte",
             "name": "AccountAddress",
             "in": "query"
           },
@@ -44,7 +45,8 @@
               "EventFeeVoteRevealTransaction",
               "EventLiquidPaymentTransaction",
               "EventLiquidPaymentPaidTransaction",
-              "EventLiquidPaymentStopTransaction"
+              "EventLiquidPaymentStopTransaction",
+              "EventEscrowedTransaction"
             ],
             "type": "string",
             "default": "EventAny",
@@ -116,6 +118,7 @@
         "parameters": [
           {
             "type": "string",
+            "format": "byte",
             "description": "Fetch AccountBalance by type/address.",
             "name": "AccountAddress",
             "in": "query"
@@ -141,7 +144,8 @@
           {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "string",
+              "format": "byte"
             },
             "collectionFormat": "multi",
             "description": "Fetch AccountBalances by type/addresses.",
@@ -204,6 +208,7 @@
           },
           {
             "type": "string",
+            "format": "byte",
             "name": "RecipientAccountAddress",
             "in": "query"
           }
@@ -237,11 +242,13 @@
           },
           {
             "type": "string",
+            "format": "byte",
             "name": "RecipientAccountAddress",
             "in": "query"
           },
           {
             "type": "string",
+            "format": "byte",
             "name": "SetterAccountAddress",
             "in": "query"
           },
@@ -407,6 +414,29 @@
         }
       }
     },
+    "/v1/feeVote/GetFeeVoteTransactions": {
+      "get": {
+        "tags": [
+          "FeeVoteTransactionService"
+        ],
+        "operationId": "GetFeeVoteTransactions",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "A",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetFeeVoteTransactionsResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/file/FileDownload": {
       "get": {
         "tags": [
@@ -436,6 +466,23 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelFileDownloadResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/health/GetNodeTimeResponse": {
+      "get": {
+        "tags": [
+          "NodeHardwareService"
+        ],
+        "summary": "GetNodeTime return current UTC Time",
+        "operationId": "GetNodeTime",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetNodeTimeResponse"
             }
           }
         }
@@ -537,6 +584,7 @@
           },
           {
             "type": "string",
+            "format": "byte",
             "description": "SenderAddress and RecipientAddress.",
             "name": "address",
             "in": "query"
@@ -588,6 +636,7 @@
         "parameters": [
           {
             "type": "string",
+            "format": "byte",
             "name": "ParticipantAddress",
             "in": "query"
           },
@@ -629,6 +678,63 @@
         }
       }
     },
+    "/v1/multisig/GetMultisigAddressesByBlockHeightRange": {
+      "get": {
+        "tags": [
+          "MultisigService"
+        ],
+        "operationId": "GetMultisigAddressesByBlockHeightRange",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "FromBlockHeight",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "ToBlockHeight",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetMultisigAddressesByBlockHeightRangeResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/multisig/GetMultisignatureInfo": {
       "get": {
         "tags": [
@@ -638,6 +744,7 @@
         "parameters": [
           {
             "type": "string",
+            "format": "byte",
             "name": "MultisigAddress",
             "in": "query"
           },
@@ -679,6 +786,61 @@
         }
       }
     },
+    "/v1/multisig/GetParticipantsByMultisigAddresses": {
+      "get": {
+        "tags": [
+          "MultisigService"
+        ],
+        "operationId": "GetParticipantsByMultisigAddresses",
+        "parameters": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "byte"
+            },
+            "collectionFormat": "multi",
+            "name": "MultisigAddresses",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Pagination.OrderField",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "default": "DESC",
+            "name": "Pagination.OrderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "name": "Pagination.Limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/modelGetParticipantsByMultisigAddressesResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/multisig/GetPendingTransactionDetailByTransactionHash": {
       "get": {
         "tags": [
@@ -712,6 +874,7 @@
         "parameters": [
           {
             "type": "string",
+            "format": "byte",
             "name": "SenderAddress",
             "in": "query"
           },
@@ -858,6 +1021,7 @@
           },
           {
             "type": "string",
+            "format": "byte",
             "name": "AccountAddress",
             "in": "query"
           },
@@ -1170,6 +1334,7 @@
         "parameters": [
           {
             "type": "string",
+            "format": "byte",
             "name": "AccountAddress",
             "in": "query"
           },
@@ -1258,7 +1423,8 @@
       "title": "AccountBalance represent the transaction data structure stored in the database",
       "properties": {
         "AccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Balance": {
           "type": "string",
@@ -1302,10 +1468,12 @@
           "type": "string"
         },
         "RecipientAccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "SetterAccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Value": {
           "type": "string"
@@ -1316,7 +1484,8 @@
       "type": "object",
       "properties": {
         "AccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "BalanceChange": {
           "type": "string",
@@ -1351,43 +1520,6 @@
         }
       }
     },
-    "modelBatchReceipt": {
-      "type": "object",
-      "properties": {
-        "DatumHash": {
-          "type": "string",
-          "format": "byte"
-        },
-        "DatumType": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "RMRLinked": {
-          "type": "string",
-          "format": "byte"
-        },
-        "RecipientPublicKey": {
-          "type": "string",
-          "format": "byte"
-        },
-        "RecipientSignature": {
-          "type": "string",
-          "format": "byte"
-        },
-        "ReferenceBlockHash": {
-          "type": "string",
-          "format": "byte"
-        },
-        "ReferenceBlockHeight": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "SenderPublicKey": {
-          "type": "string",
-          "format": "byte"
-        }
-      }
-    },
     "modelBlock": {
       "type": "object",
       "title": "Block represent the block data structure stored in the database",
@@ -1419,6 +1551,14 @@
           "type": "string",
           "format": "int64"
         },
+        "MerkleRoot": {
+          "type": "string",
+          "format": "byte"
+        },
+        "MerkleTree": {
+          "type": "string",
+          "format": "byte"
+        },
         "PayloadHash": {
           "type": "string",
           "format": "byte"
@@ -1436,6 +1576,10 @@
           "items": {
             "$ref": "#/definitions/modelPublishedReceipt"
           }
+        },
+        "ReferenceBlockHeight": {
+          "type": "integer",
+          "format": "int64"
         },
         "SpineBlockManifests": {
           "type": "array",
@@ -1592,7 +1736,8 @@
           "format": "int64"
         },
         "ApproverAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "BlockHeight": {
           "type": "integer",
@@ -1614,10 +1759,12 @@
           "format": "boolean"
         },
         "RecipientAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "SenderAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Status": {
           "$ref": "#/definitions/modelEscrowStatus"
@@ -1667,7 +1814,8 @@
         "EventFeeVoteRevealTransaction",
         "EventLiquidPaymentTransaction",
         "EventLiquidPaymentPaidTransaction",
-        "EventLiquidPaymentStopTransaction"
+        "EventLiquidPaymentStopTransaction",
+        "EventEscrowedTransaction"
       ]
     },
     "modelFeeVoteCommitTransactionBody": {
@@ -1881,6 +2029,14 @@
         }
       }
     },
+    "modelGetFeeVoteTransactionsResponse": {
+      "type": "object",
+      "properties": {
+        "B": {
+          "type": "string"
+        }
+      }
+    },
     "modelGetHostPeersResponse": {
       "type": "object",
       "properties": {
@@ -1935,17 +2091,40 @@
     "modelGetMultisigAddressByParticipantAddressResponse": {
       "type": "object",
       "properties": {
-        "MultiSignAddresses": {
+        "MultisigAddresses": {
           "type": "array",
           "title": "content of the request",
           "items": {
-            "type": "string"
+            "type": "string",
+            "format": "byte"
           }
         },
         "Total": {
           "type": "integer",
           "format": "int64",
           "title": "Total of participant address"
+        }
+      }
+    },
+    "modelGetMultisigAddressesByBlockHeightRangeResponse": {
+      "type": "object",
+      "properties": {
+        "Count": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Number of item in current page"
+        },
+        "MultisignatureInfo": {
+          "type": "array",
+          "title": "content of the request",
+          "items": {
+            "$ref": "#/definitions/modelMultiSignatureInfo"
+          }
+        },
+        "Page": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Starting page"
         }
       }
     },
@@ -2038,6 +2217,31 @@
           "type": "string",
           "format": "uint64",
           "title": "Number of node registry in total"
+        }
+      }
+    },
+    "modelGetNodeTimeResponse": {
+      "type": "object",
+      "title": "Get Node Current Time Based on UTC",
+      "properties": {
+        "NodeTime": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "modelGetParticipantsByMultisigAddressesResponse": {
+      "type": "object",
+      "properties": {
+        "MultiSignatureParticipants": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/modelMultiSignatureParticipants"
+          }
+        },
+        "Total": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
@@ -2359,10 +2563,12 @@
           "format": "int64"
         },
         "RecipientAccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "SenderAccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "TransactionBytes": {
           "type": "string",
@@ -2376,7 +2582,8 @@
         "Addresses": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "format": "byte"
           }
         },
         "BlockHeight": {
@@ -2392,11 +2599,49 @@
           "format": "int64"
         },
         "MultisigAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Nonce": {
           "type": "string",
           "format": "int64"
+        }
+      }
+    },
+    "modelMultiSignatureParticipant": {
+      "type": "object",
+      "title": "represent the multi signature's participant account addresses",
+      "properties": {
+        "AccountAddress": {
+          "type": "string",
+          "format": "byte"
+        },
+        "AccountAddressIndex": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "BlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Latest": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "MultiSignatureAddress": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "modelMultiSignatureParticipants": {
+      "type": "object",
+      "properties": {
+        "MultiSignatureParticipants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/modelMultiSignatureParticipant"
+          }
         }
       }
     },
@@ -2439,6 +2684,10 @@
         "Port": {
           "type": "integer",
           "format": "int64"
+        },
+        "PublicKey": {
+          "type": "string",
+          "format": "byte"
         },
         "SharedAddress": {
           "type": "string"
@@ -2520,7 +2769,8 @@
       "type": "object",
       "properties": {
         "AccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Height": {
           "type": "integer",
@@ -2559,7 +2809,8 @@
       "type": "object",
       "properties": {
         "AccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "LockedBalance": {
           "type": "string",
@@ -2663,7 +2914,8 @@
       "title": "represent the pending signature counter stored by node for multi-signature transaction",
       "properties": {
         "AccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "BlockHeight": {
           "type": "integer",
@@ -2696,7 +2948,8 @@
           "format": "boolean"
         },
         "SenderAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Status": {
           "$ref": "#/definitions/modelPendingTransactionStatus"
@@ -2766,9 +3019,6 @@
     "modelPublishedReceipt": {
       "type": "object",
       "properties": {
-        "BatchReceipt": {
-          "$ref": "#/definitions/modelBatchReceipt"
-        },
         "BlockHeight": {
           "type": "integer",
           "format": "int64"
@@ -2781,9 +3031,50 @@
           "type": "integer",
           "format": "int64"
         },
+        "Receipt": {
+          "$ref": "#/definitions/modelReceipt"
+        },
         "ReceiptIndex": {
           "type": "integer",
           "format": "int64"
+        }
+      }
+    },
+    "modelReceipt": {
+      "type": "object",
+      "title": "Receipt is a pure receipt that was generated by others",
+      "properties": {
+        "DatumHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "DatumType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "RMRLinked": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RecipientPublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RecipientSignature": {
+          "type": "string",
+          "format": "byte"
+        },
+        "ReferenceBlockHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "ReferenceBlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "SenderPublicKey": {
+          "type": "string",
+          "format": "byte"
         }
       }
     },
@@ -2812,8 +3103,8 @@
     "modelSendBlockResponse": {
       "type": "object",
       "properties": {
-        "BatchReceipt": {
-          "$ref": "#/definitions/modelBatchReceipt"
+        "Receipt": {
+          "$ref": "#/definitions/modelReceipt"
         }
       }
     },
@@ -2821,10 +3112,10 @@
       "type": "object",
       "title": "SendBlockTransactionsResponse a model response of a process sending block's transactions",
       "properties": {
-        "BatchReceipts": {
+        "Receipts": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/modelBatchReceipt"
+            "$ref": "#/definitions/modelReceipt"
           }
         }
       }
@@ -2842,8 +3133,8 @@
       "type": "object",
       "title": "SendTransactionResponse a model response of send a transaction in p2pCommunication service",
       "properties": {
-        "BatchReceipt": {
-          "$ref": "#/definitions/modelBatchReceipt"
+        "Receipt": {
+          "$ref": "#/definitions/modelReceipt"
         }
       }
     },
@@ -3037,15 +3328,21 @@
           "type": "string",
           "format": "int64"
         },
+        "Message": {
+          "type": "string",
+          "format": "byte"
+        },
         "MultisigChild": {
           "type": "boolean",
           "format": "boolean"
         },
         "RecipientAccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "SenderAccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Signature": {
           "type": "string",
