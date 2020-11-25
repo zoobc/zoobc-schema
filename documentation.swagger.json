@@ -24,6 +24,7 @@
         "parameters": [
           {
             "type": "string",
+            "format": "byte",
             "name": "AccountAddress",
             "in": "query"
           },
@@ -117,6 +118,7 @@
         "parameters": [
           {
             "type": "string",
+            "format": "byte",
             "description": "Fetch AccountBalance by type/address.",
             "name": "AccountAddress",
             "in": "query"
@@ -142,7 +144,8 @@
           {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "string",
+              "format": "byte"
             },
             "collectionFormat": "multi",
             "description": "Fetch AccountBalances by type/addresses.",
@@ -205,6 +208,7 @@
           },
           {
             "type": "string",
+            "format": "byte",
             "name": "RecipientAccountAddress",
             "in": "query"
           }
@@ -238,11 +242,13 @@
           },
           {
             "type": "string",
+            "format": "byte",
             "name": "RecipientAccountAddress",
             "in": "query"
           },
           {
             "type": "string",
+            "format": "byte",
             "name": "SetterAccountAddress",
             "in": "query"
           },
@@ -578,6 +584,7 @@
           },
           {
             "type": "string",
+            "format": "byte",
             "description": "SenderAddress and RecipientAddress.",
             "name": "address",
             "in": "query"
@@ -629,6 +636,7 @@
         "parameters": [
           {
             "type": "string",
+            "format": "byte",
             "name": "ParticipantAddress",
             "in": "query"
           },
@@ -736,6 +744,7 @@
         "parameters": [
           {
             "type": "string",
+            "format": "byte",
             "name": "MultisigAddress",
             "in": "query"
           },
@@ -787,7 +796,8 @@
           {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "string",
+              "format": "byte"
             },
             "collectionFormat": "multi",
             "name": "MultisigAddresses",
@@ -864,6 +874,7 @@
         "parameters": [
           {
             "type": "string",
+            "format": "byte",
             "name": "SenderAddress",
             "in": "query"
           },
@@ -1010,6 +1021,7 @@
           },
           {
             "type": "string",
+            "format": "byte",
             "name": "AccountAddress",
             "in": "query"
           },
@@ -1322,6 +1334,7 @@
         "parameters": [
           {
             "type": "string",
+            "format": "byte",
             "name": "AccountAddress",
             "in": "query"
           },
@@ -1410,7 +1423,8 @@
       "title": "AccountBalance represent the transaction data structure stored in the database",
       "properties": {
         "AccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Balance": {
           "type": "string",
@@ -1454,10 +1468,12 @@
           "type": "string"
         },
         "RecipientAccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "SetterAccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Value": {
           "type": "string"
@@ -1468,7 +1484,8 @@
       "type": "object",
       "properties": {
         "AccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "BalanceChange": {
           "type": "string",
@@ -1503,43 +1520,6 @@
         }
       }
     },
-    "modelBatchReceipt": {
-      "type": "object",
-      "properties": {
-        "DatumHash": {
-          "type": "string",
-          "format": "byte"
-        },
-        "DatumType": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "RMRLinked": {
-          "type": "string",
-          "format": "byte"
-        },
-        "RecipientPublicKey": {
-          "type": "string",
-          "format": "byte"
-        },
-        "RecipientSignature": {
-          "type": "string",
-          "format": "byte"
-        },
-        "ReferenceBlockHash": {
-          "type": "string",
-          "format": "byte"
-        },
-        "ReferenceBlockHeight": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "SenderPublicKey": {
-          "type": "string",
-          "format": "byte"
-        }
-      }
-    },
     "modelBlock": {
       "type": "object",
       "title": "Block represent the block data structure stored in the database",
@@ -1571,6 +1551,14 @@
           "type": "string",
           "format": "int64"
         },
+        "MerkleRoot": {
+          "type": "string",
+          "format": "byte"
+        },
+        "MerkleTree": {
+          "type": "string",
+          "format": "byte"
+        },
         "PayloadHash": {
           "type": "string",
           "format": "byte"
@@ -1588,6 +1576,10 @@
           "items": {
             "$ref": "#/definitions/modelPublishedReceipt"
           }
+        },
+        "ReferenceBlockHeight": {
+          "type": "integer",
+          "format": "int64"
         },
         "SpineBlockManifests": {
           "type": "array",
@@ -1744,7 +1736,8 @@
           "format": "int64"
         },
         "ApproverAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "BlockHeight": {
           "type": "integer",
@@ -1766,10 +1759,12 @@
           "format": "boolean"
         },
         "RecipientAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "SenderAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Status": {
           "$ref": "#/definitions/modelEscrowStatus"
@@ -2096,11 +2091,12 @@
     "modelGetMultisigAddressByParticipantAddressResponse": {
       "type": "object",
       "properties": {
-        "MultiSignAddresses": {
+        "MultisigAddresses": {
           "type": "array",
           "title": "content of the request",
           "items": {
-            "type": "string"
+            "type": "string",
+            "format": "byte"
           }
         },
         "Total": {
@@ -2567,10 +2563,12 @@
           "format": "int64"
         },
         "RecipientAccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "SenderAccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "TransactionBytes": {
           "type": "string",
@@ -2584,7 +2582,8 @@
         "Addresses": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "format": "byte"
           }
         },
         "BlockHeight": {
@@ -2600,7 +2599,8 @@
           "format": "int64"
         },
         "MultisigAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Nonce": {
           "type": "string",
@@ -2613,7 +2613,8 @@
       "title": "represent the multi signature's participant account addresses",
       "properties": {
         "AccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "AccountAddressIndex": {
           "type": "integer",
@@ -2628,7 +2629,8 @@
           "format": "boolean"
         },
         "MultiSignatureAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         }
       }
     },
@@ -2682,6 +2684,10 @@
         "Port": {
           "type": "integer",
           "format": "int64"
+        },
+        "PublicKey": {
+          "type": "string",
+          "format": "byte"
         },
         "SharedAddress": {
           "type": "string"
@@ -2763,7 +2769,8 @@
       "type": "object",
       "properties": {
         "AccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Height": {
           "type": "integer",
@@ -2802,7 +2809,8 @@
       "type": "object",
       "properties": {
         "AccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "LockedBalance": {
           "type": "string",
@@ -2906,7 +2914,8 @@
       "title": "represent the pending signature counter stored by node for multi-signature transaction",
       "properties": {
         "AccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "BlockHeight": {
           "type": "integer",
@@ -2939,7 +2948,8 @@
           "format": "boolean"
         },
         "SenderAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Status": {
           "$ref": "#/definitions/modelPendingTransactionStatus"
@@ -3009,9 +3019,6 @@
     "modelPublishedReceipt": {
       "type": "object",
       "properties": {
-        "BatchReceipt": {
-          "$ref": "#/definitions/modelBatchReceipt"
-        },
         "BlockHeight": {
           "type": "integer",
           "format": "int64"
@@ -3024,9 +3031,50 @@
           "type": "integer",
           "format": "int64"
         },
+        "Receipt": {
+          "$ref": "#/definitions/modelReceipt"
+        },
         "ReceiptIndex": {
           "type": "integer",
           "format": "int64"
+        }
+      }
+    },
+    "modelReceipt": {
+      "type": "object",
+      "title": "Receipt is a pure receipt that was generated by others",
+      "properties": {
+        "DatumHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "DatumType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "RMRLinked": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RecipientPublicKey": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RecipientSignature": {
+          "type": "string",
+          "format": "byte"
+        },
+        "ReferenceBlockHash": {
+          "type": "string",
+          "format": "byte"
+        },
+        "ReferenceBlockHeight": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "SenderPublicKey": {
+          "type": "string",
+          "format": "byte"
         }
       }
     },
@@ -3055,8 +3103,8 @@
     "modelSendBlockResponse": {
       "type": "object",
       "properties": {
-        "BatchReceipt": {
-          "$ref": "#/definitions/modelBatchReceipt"
+        "Receipt": {
+          "$ref": "#/definitions/modelReceipt"
         }
       }
     },
@@ -3064,10 +3112,10 @@
       "type": "object",
       "title": "SendBlockTransactionsResponse a model response of a process sending block's transactions",
       "properties": {
-        "BatchReceipts": {
+        "Receipts": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/modelBatchReceipt"
+            "$ref": "#/definitions/modelReceipt"
           }
         }
       }
@@ -3085,8 +3133,8 @@
       "type": "object",
       "title": "SendTransactionResponse a model response of send a transaction in p2pCommunication service",
       "properties": {
-        "BatchReceipt": {
-          "$ref": "#/definitions/modelBatchReceipt"
+        "Receipt": {
+          "$ref": "#/definitions/modelReceipt"
         }
       }
     },
@@ -3280,15 +3328,21 @@
           "type": "string",
           "format": "int64"
         },
+        "Message": {
+          "type": "string",
+          "format": "byte"
+        },
         "MultisigChild": {
           "type": "boolean",
           "format": "boolean"
         },
         "RecipientAccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "SenderAccountAddress": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Signature": {
           "type": "string",
