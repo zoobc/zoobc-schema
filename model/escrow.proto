@@ -16,9 +16,9 @@ message Escrow {
     int64 Timeout = 7 [ jstype = JS_STRING ];
     EscrowStatus Status = 8;
     uint32 BlockHeight = 9;
+    int64 BlockTimestamp = 12;
     bool Latest = 10;
     string Instruction = 11;
-    int64 BlockTimestamp = 12;
 }
 enum EscrowStatus {
     Pending = 0;
