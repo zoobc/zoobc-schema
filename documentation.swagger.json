@@ -1743,6 +1743,10 @@
           "type": "integer",
           "format": "int64"
         },
+        "BlockTimestamp": {
+          "type": "string",
+          "format": "int64"
+        },
         "Commission": {
           "type": "string",
           "format": "int64"
@@ -1771,7 +1775,7 @@
         },
         "Timeout": {
           "type": "string",
-          "format": "uint64",
+          "format": "int64",
           "title": "Timeout is BlockHeight gap"
         }
       }
