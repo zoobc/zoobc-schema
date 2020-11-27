@@ -1743,10 +1743,6 @@
           "type": "integer",
           "format": "int64"
         },
-        "BlockTimestamp": {
-          "type": "string",
-          "format": "int64"
-        },
         "Commission": {
           "type": "string",
           "format": "int64"
