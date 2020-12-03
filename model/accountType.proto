@@ -18,4 +18,5 @@ enum AccountType {
     BTCAccountType = 1;
     EmptyAccountType = 2; // To facilitate parsing transactions that allow empty account address
     MultiSignatureAccountType = 3;
+    EstoniaEidAccountType = 4; // Account type coming from Estonian eID
 }
