@@ -45,11 +45,35 @@ service MultisigService {
             get: "/v1/multisig/GetPendingTransactionDetailByTransactionHash"
         };
     }
+
     rpc GetMultisignatureInfo(model.GetMultisignatureInfoRequest) returns (model.GetMultisignatureInfoResponse) {
         option (google.api.http) = {
             get: "/v1/multisig/GetMultisignatureInfo"
         };
-    } 
+    }
     
+    rpc GetMultisigAddressByParticipantAddress(model.GetMultisigAddressByParticipantAddressRequest) returns (model.GetMultisigAddressByParticipantAddressResponse) {
+        option (google.api.http) = {
+            get: "/v1/multisig/GetMultisigAddressByParticipantAddress"
+        };
+    }
 
+    // GetPendingTransactionsByHeight fetch list of pending transactions (latest = 1 and latest = 0) within `fromHeight` and `toHeight`
+    rpc GetPendingTransactionsByHeight(model.GetPendingTransactionsByHeightRequest) returns (model.GetPendingTransactionsByHeightResponse) {
+        option (google.api.http) = {
+            get: "/v1/multisig/GetPendingTransactionsByHeight"
+        };
+    }
+
+    rpc GetMultisigAddressesByBlockHeightRange(model.GetMultisigAddressesByBlockHeightRangeRequest) returns (model.GetMultisigAddressesByBlockHeightRangeResponse) {
+        option (google.api.http) = {
+            get: "/v1/multisig/GetMultisigAddressesByBlockHeightRange"
+        };
+    }
+
+    rpc GetParticipantsByMultisigAddresses(model.GetParticipantsByMultisigAddressesRequest) returns (model.GetParticipantsByMultisigAddressesResponse) {
+        option (google.api.http) = {
+            get: "/v1/multisig/GetParticipantsByMultisigAddresses"
+        };
+    }
 }

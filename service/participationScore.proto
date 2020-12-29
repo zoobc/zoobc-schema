@@ -1,0 +1,24 @@
+syntax="proto3";
+
+package service;
+
+option go_package = "github.com/zoobc/zoobc-core/common/service";
+
+import "model/participationScore.proto";
+import "google/api/annotations.proto";
+
+// ParticipationScoreService represent request on db participation_score
+service ParticipationScoreService {
+    // GetParticipationScores return list of participation score history recorded by node
+    rpc GetParticipationScores(model.GetParticipationScoresRequest) returns (model.GetParticipationScoresResponse) {
+        option (google.api.http) = {
+            get: "/v1/account/GetParticipationScores"
+        };
+    }
+    // GetLatestParticipationScoreByNodeID returns the latest participation score accumulated by node
+    rpc GetLatestParticipationScoreByNodeID(model.GetLatestParticipationScoreByNodeIDRequest) returns (model.ParticipationScore) {
+        option (google.api.http) = {
+          get: "/v1/participationScore/latest"
+        };
+    }
+}

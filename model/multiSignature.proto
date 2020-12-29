@@ -33,10 +33,10 @@ import "model/pagination.proto";
 message MultiSignatureInfo {
     uint32 MinimumSignatures = 1;
     int64 Nonce = 2 [ jstype = JS_STRING ];
-    repeated string Addresses = 3;
-    string MultisigAddress = 4;
-    uint32 BlockHeight = 5;
-    bool Latest = 6;
+    bytes MultisigAddress = 3;
+    uint32 BlockHeight = 4;
+    bool Latest = 5;
+    repeated bytes Addresses = 6;
 }
 
 // represent the signature posted by account
@@ -44,11 +44,18 @@ message SignatureInfo {
     bytes TransactionHash = 1;
     map<string, bytes> Signatures = 2; 
 }
-
+// represent the multi signature's participant account addresses
+message MultiSignatureParticipant {
+    bytes MultiSignatureAddress = 1;
+    bytes AccountAddress = 2;
+    uint32 AccountAddressIndex = 3;
+    bool Latest = 4;
+    uint32 BlockHeight = 5;
+}
 // represent the pending signature counter stored by node for multi-signature transaction
 message PendingSignature {
     bytes TransactionHash = 1;
-    string AccountAddress = 2;
+    bytes AccountAddress = 2;
     bytes Signature = 3;
     uint32 BlockHeight = 4;
     bool Latest = 5;
@@ -56,7 +63,7 @@ message PendingSignature {
 
 // represent transaction inside multisig body
 message PendingTransaction {
-    string SenderAddress = 1;
+    bytes SenderAddress = 1;
     bytes TransactionHash = 2;
     bytes TransactionBytes = 3;
     PendingTransactionStatus Status = 4;
@@ -74,7 +81,7 @@ enum PendingTransactionStatus {
 // API model
 
 message GetPendingTransactionsRequest {
-    string SenderAddress = 1;
+    bytes SenderAddress = 1;
     PendingTransactionStatus Status = 2;
     Pagination Pagination = 3;
 }
@@ -100,8 +107,8 @@ message GetPendingTransactionDetailByTransactionHashResponse {
 }
 
 message GetMultisignatureInfoRequest {
-    string MultisigAddress = 1;
-    Pagination Pagination = 2; 
+    bytes MultisigAddress = 1;
+    Pagination Pagination = 2;
 }
 
 message GetMultisignatureInfoResponse {
@@ -111,4 +118,57 @@ message GetMultisignatureInfoResponse {
     uint32 Page = 2;
     // content of the request
     repeated MultiSignatureInfo MultisignatureInfo = 3;
+}
+
+message GetMultisigAddressByParticipantAddressRequest {
+    bytes ParticipantAddress = 1;
+    Pagination Pagination = 2;
+}
+
+message GetMultisigAddressByParticipantAddressResponse {
+    // Total of participant address
+    uint32 Total = 1;
+    // content of the request
+    repeated bytes MultisigAddresses = 2;
+}
+
+message GetPendingTransactionsByHeightRequest {
+    // Starting Height (inclusive) of request
+    uint32 FromHeight = 1;
+    // Ending Height (inclusive) of request
+    uint32 ToHeight = 2;
+}
+
+message GetPendingTransactionsByHeightResponse {
+    // List of pending transaction within requested height
+    repeated PendingTransaction PendingTransactions = 1;
+}
+
+message GetMultisigAddressesByBlockHeightRangeRequest {
+    uint32 FromBlockHeight = 1;
+    uint32 ToBlockHeight = 2;
+    Pagination Pagination = 3;
+}
+
+message GetMultisigAddressesByBlockHeightRangeResponse {
+    // Number of item in current page
+    uint32 Count = 1;
+    // Starting page
+    uint32 Page = 2;
+    // content of the request
+    repeated MultiSignatureInfo MultisignatureInfo = 3;
+}
+
+message GetParticipantsByMultisigAddressesRequest {
+    repeated bytes MultisigAddresses = 1;
+    Pagination Pagination = 2;
+}
+
+message MultiSignatureParticipants {
+    repeated MultiSignatureParticipant MultiSignatureParticipants = 1;
+}
+
+message GetParticipantsByMultisigAddressesResponse {
+    uint32 Total = 1;
+    map<string, MultiSignatureParticipants> MultiSignatureParticipants = 2;
 }

@@ -27,12 +27,22 @@ syntax="proto3";
 
 package model;
 option go_package = "github.com/zoobc/zoobc-core/common/model";
-import "model/batchReceipt.proto";
+import "model/receipt.proto";
 
 message PublishedReceipt {
-    BatchReceipt BatchReceipt = 1;
+    Receipt Receipt = 1;
     bytes IntermediateHashes = 2;
     uint32 BlockHeight = 3;
     uint32 ReceiptIndex = 4;
     uint32 PublishedIndex = 5;
+}
+
+message GetPublishedReceiptsRequest {
+    uint32 FromHeight = 1;
+    uint32 ToHeight = 2;
+}
+
+message GetPublishedReceiptsResponse {
+    // PublishedReceipts list of published receipts in `FromHeight` to `ToHeight`
+    repeated PublishedReceipt PublishedReceipts = 1;
 }
