@@ -43,11 +43,12 @@ message Transaction {
         FeeVoteRevealTransactionBody feeVoteRevealTransactionBody = 28;
         LiquidPaymentTransactionBody liquidPaymentTransactionBody = 29;
         LiquidPaymentStopTransactionBody liquidPaymentStopTransactionBody = 30;
+        CreateBlockchainObjectTransactionBody createBlockchainObjectTransactionBody = 31;
     }
-    bytes Signature = 31;
+    bytes Signature = 32;
     // nullable
-    Escrow Escrow = 32;
-    bytes Message = 33;
+    Escrow Escrow = 33;
+    bytes Message = 34;
 }
 
 enum TransactionType {
@@ -79,6 +80,8 @@ enum TransactionType {
     FeeVoteCommitmentVoteTransaction  = 7;
     // in bytes: []byte{7,1,0,0}
     FeeVoteRevealVoteTransaction = 263;
+    // in bytes: []byte{9,0,0,0}
+    CreateBlockchainObjectProperty = 9;
 }
 
 
@@ -160,6 +163,12 @@ message LiquidPaymentStopTransactionBody {
     int64 TransactionID = 1 [ jstype = JS_STRING ];
 }
 
+
+message CreateBlockchainObjectTransactionBody {
+    int64 BlockchainObjectBalance = 1 [ jstype = JS_STRING ];
+    map<string, string> BlockchainObjectImmutableProperties = 2;
+    map<string, string> BlockchainObjectMutableProperties = 3;
+}
 //------------
 // P2P Content
 //------------

@@ -5,10 +5,6 @@
   "produces": [
     "application/json"
   ],
-  "schemes": [
-    "http",
-    "https"
-  ],
   "swagger": "2.0",
   "info": {
     "title": "service/accountBalance.proto",
@@ -46,7 +42,8 @@
               "EventLiquidPaymentTransaction",
               "EventLiquidPaymentPaidTransaction",
               "EventLiquidPaymentStopTransaction",
-              "EventEscrowedTransaction"
+              "EventEscrowedTransaction",
+              "EventCreateBlockchainObjectTransaction"
             ],
             "type": "string",
             "default": "EventAny",
@@ -105,6 +102,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetAccountLedgersResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -129,6 +132,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetAccountBalanceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -158,6 +167,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetAccountBalancesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -190,6 +205,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetParticipationScoresResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -218,6 +239,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelAccountDataset"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -292,6 +319,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetAccountDatasetsResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -330,6 +363,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetBlockResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -370,6 +409,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetBlocksResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -394,6 +439,12 @@
             "schema": {
               "$ref": "#/definitions/modelEscrow"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -410,28 +461,11 @@
             "schema": {
               "$ref": "#/definitions/modelGetEscrowTransactionsResponse"
             }
-          }
-        }
-      }
-    },
-    "/v1/feeVote/GetFeeVoteTransactions": {
-      "get": {
-        "tags": [
-          "FeeVoteTransactionService"
-        ],
-        "operationId": "GetFeeVoteTransactions",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "A",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
+          },
+          "default": {
+            "description": "An unexpected error response",
             "schema": {
-              "$ref": "#/definitions/modelGetFeeVoteTransactionsResponse"
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -467,6 +501,12 @@
             "schema": {
               "$ref": "#/definitions/modelFileDownloadResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -484,6 +524,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetNodeTimeResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -499,6 +545,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelHealthCheckResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -516,6 +568,12 @@
             "schema": {
               "$ref": "#/definitions/modelHostInfo"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -531,6 +589,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetHostPeersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -556,6 +620,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetMempoolTransactionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -623,6 +693,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetMempoolTransactionsResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -673,6 +749,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetMultisigAddressByParticipantAddressResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -731,6 +813,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetMultisigAddressesByBlockHeightRangeResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -781,6 +869,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetMultisignatureInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -837,6 +931,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetParticipantsByMultisigAddressesResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -860,6 +960,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetPendingTransactionDetailByTransactionHashResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -924,6 +1030,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetPendingTransactionsResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -957,6 +1069,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetPendingTransactionsByHeightResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -985,6 +1103,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetNodeAddressesInfoResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -1001,6 +1125,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetMyNodePublicKeyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -1037,6 +1167,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetNodeRegistrationResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -1108,6 +1244,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetNodeRegistrationsResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -1163,6 +1305,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetNodeRegistrationsByNodePublicKeysResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -1179,6 +1327,12 @@
             "schema": {
               "$ref": "#/definitions/modelGenerateNodeKeyResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -1194,6 +1348,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelProofOfOwnership"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -1219,6 +1379,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelParticipationScore"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -1250,6 +1416,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetPublishedReceiptsResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -1280,6 +1452,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetSkippedBlocksmithsResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -1305,6 +1483,12 @@
             "schema": {
               "$ref": "#/definitions/modelTransaction"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -1320,6 +1504,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelGetTransactionMinimumFeeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -1396,6 +1586,12 @@
             "schema": {
               "$ref": "#/definitions/modelGetTransactionsResponse"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
           }
         }
       }
@@ -1411,6 +1607,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/modelPostTransactionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
             }
           }
         }
@@ -1721,6 +1923,27 @@
         }
       }
     },
+    "modelCreateBlockchainObjectTransactionBody": {
+      "type": "object",
+      "properties": {
+        "BlockchainObjectBalance": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BlockchainObjectImmutableProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "BlockchainObjectMutableProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "modelEmpty": {
       "type": "object",
       "title": "Empty structure to represent empty parameter in proto"
@@ -1815,7 +2038,8 @@
         "EventLiquidPaymentTransaction",
         "EventLiquidPaymentPaidTransaction",
         "EventLiquidPaymentStopTransaction",
-        "EventEscrowedTransaction"
+        "EventEscrowedTransaction",
+        "EventCreateBlockchainObjectTransaction"
       ]
     },
     "modelFeeVoteCommitTransactionBody": {
@@ -2026,14 +2250,6 @@
           "type": "string",
           "format": "uint64",
           "title": "Number of transactions in total"
-        }
-      }
-    },
-    "modelGetFeeVoteTransactionsResponse": {
-      "type": "object",
-      "properties": {
-        "B": {
-          "type": "string"
         }
       }
     },
@@ -3382,6 +3598,9 @@
         "claimNodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelClaimNodeRegistrationTransactionBody"
         },
+        "createBlockchainObjectTransactionBody": {
+          "$ref": "#/definitions/modelCreateBlockchainObjectTransactionBody"
+        },
         "emptyTransactionBody": {
           "$ref": "#/definitions/modelEmptyTransactionBody"
         },
@@ -3450,6 +3669,27 @@
         }
       }
     },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "error": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
     "runtimeStreamError": {
       "type": "object",
       "properties": {
@@ -3474,20 +3714,6 @@
           "type": "string"
         }
       }
-    }
-  },
-  "x-stream-definitions": {
-    "modelGetNodeHardwareResponse": {
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/runtimeStreamError"
-        },
-        "result": {
-          "$ref": "#/definitions/modelGetNodeHardwareResponse"
-        }
-      },
-      "title": "Stream result of modelGetNodeHardwareResponse",
-      "type": "object"
     }
   }
 }
