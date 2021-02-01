@@ -2999,6 +2999,10 @@
           "type": "boolean",
           "format": "boolean"
         },
+        "MultiSignatureAddress": {
+          "type": "string",
+          "format": "byte"
+        },
         "Signature": {
           "type": "string",
           "format": "byte"

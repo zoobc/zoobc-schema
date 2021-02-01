@@ -56,9 +56,10 @@ message MultiSignatureParticipant {
 message PendingSignature {
     bytes TransactionHash = 1;
     bytes AccountAddress = 2;
-    bytes Signature = 3;
-    uint32 BlockHeight = 4;
-    bool Latest = 5;
+    bytes MultiSignatureAddress =3;
+    bytes Signature = 4;
+    uint32 BlockHeight = 5;
+    bool Latest = 6;
 }
 
 // represent transaction inside multisig body
