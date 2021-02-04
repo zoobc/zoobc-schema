@@ -1845,7 +1845,7 @@
         },
         "Timeout": {
           "type": "string",
-          "format": "uint64",
+          "format": "int64",
           "title": "Timeout is BlockHeight gap"
         }
       }
