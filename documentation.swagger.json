@@ -31,7 +31,7 @@
           {
             "enum": [
               "EventAny",
-              "EventSendMoneyTransaction",
+              "EventsendZBCTransaction",
               "EventNodeRegistrationTransaction",
               "EventUpdateNodeRegistrationTransaction",
               "EventRemoveNodeRegistrationTransaction",
@@ -1874,7 +1874,7 @@
       "default": "EventAny",
       "enum": [
         "EventAny",
-        "EventSendMoneyTransaction",
+        "EventsendZBCTransaction",
         "EventNodeRegistrationTransaction",
         "EventUpdateNodeRegistrationTransaction",
         "EventRemoveNodeRegistrationTransaction",
@@ -3194,7 +3194,7 @@
         }
       }
     },
-    "modelSendMoneyTransactionBody": {
+    "modelsendZBCTransactionBody": {
       "type": "object",
       "properties": {
         "Amount": {
@@ -3483,8 +3483,8 @@
         "removeNodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelRemoveNodeRegistrationTransactionBody"
         },
-        "sendMoneyTransactionBody": {
-          "$ref": "#/definitions/modelSendMoneyTransactionBody"
+        "sendZBCTransactionBody": {
+          "$ref": "#/definitions/modelsendZBCTransactionBody"
         },
         "setupAccountDatasetTransactionBody": {
           "$ref": "#/definitions/modelSetupAccountDatasetTransactionBody"
