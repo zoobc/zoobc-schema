@@ -46,7 +46,8 @@
               "EventLiquidPaymentTransaction",
               "EventLiquidPaymentPaidTransaction",
               "EventLiquidPaymentStopTransaction",
-              "EventEscrowedTransaction"
+              "EventEscrowedTransaction",
+              "EventAtomicTransaction"
             ],
             "type": "string",
             "default": "EventAny",
@@ -1594,6 +1595,27 @@
         }
       }
     },
+    "modelAtomicTransactionBody": {
+      "type": "object",
+      "properties": {
+        "Signatures": {
+          "type": "object",
+          "title": "Signatures is \u003caddressHex, Signature\u003e",
+          "additionalProperties": {
+            "type": "string",
+            "format": "byte"
+          }
+        },
+        "UnsignedTransactionBytes": {
+          "type": "array",
+          "title": "UnsignedTransactionBytes is collection of unsigned transaction bytes",
+          "items": {
+            "type": "string",
+            "format": "byte"
+          }
+        }
+      }
+    },
     "modelBlock": {
       "type": "object",
       "title": "Block represent the block data structure stored in the database",
@@ -1889,7 +1911,8 @@
         "EventLiquidPaymentTransaction",
         "EventLiquidPaymentPaidTransaction",
         "EventLiquidPaymentStopTransaction",
-        "EventEscrowedTransaction"
+        "EventEscrowedTransaction",
+        "EventAtomicTransaction"
       ]
     },
     "modelFeeVoteCommitTransactionBody": {
@@ -3386,8 +3409,10 @@
           "type": "string",
           "format": "int64"
         },
+        "ChildType": {
+          "$ref": "#/definitions/modelTransactionChildType"
+        },
         "Escrow": {
-          "title": "nullable",
           "$ref": "#/definitions/modelEscrow"
         },
         "Fee": {
@@ -3405,10 +3430,6 @@
         "Message": {
           "type": "string",
           "format": "byte"
-        },
-        "MultisigChild": {
-          "type": "boolean",
-          "format": "boolean"
         },
         "RecipientAccountAddress": {
           "type": "string",
@@ -3453,6 +3474,9 @@
         "approvalEscrowTransactionBody": {
           "$ref": "#/definitions/modelApprovalEscrowTransactionBody"
         },
+        "atomicTransactionBody": {
+          "$ref": "#/definitions/modelAtomicTransactionBody"
+        },
         "claimNodeRegistrationTransactionBody": {
           "$ref": "#/definitions/modelClaimNodeRegistrationTransactionBody"
         },
@@ -3493,6 +3517,16 @@
           "$ref": "#/definitions/modelUpdateNodeRegistrationTransactionBody"
         }
       }
+    },
+    "modelTransactionChildType": {
+      "type": "string",
+      "title": "TransactionChildType transaction child type it will reference to transaction.child_type",
+      "default": "NoneChild",
+      "enum": [
+        "NoneChild",
+        "MultiSignatureChild",
+        "AtomicChild"
+      ]
     },
     "modelUpdateNodeRegistrationTransactionBody": {
       "type": "object",

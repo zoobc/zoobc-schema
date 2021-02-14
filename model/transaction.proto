@@ -51,7 +51,7 @@ message Transaction {
     uint32 TransactionBodyLength = 11;
     bytes TransactionBodyBytes = 12;
     uint32 TransactionIndex = 13;
-    bool MultisigChild = 14;
+    TransactionChildType ChildType = 14;
     // transactionbody
     oneof TransactionBody {
         EmptyTransactionBody emptyTransactionBody = 17;
@@ -68,11 +68,11 @@ message Transaction {
         FeeVoteRevealTransactionBody feeVoteRevealTransactionBody = 28;
         LiquidPaymentTransactionBody liquidPaymentTransactionBody = 29;
         LiquidPaymentStopTransactionBody liquidPaymentStopTransactionBody = 30;
+        AtomicTransactionBody atomicTransactionBody = 31;
     }
-    bytes Signature = 31;
-    // nullable
-    Escrow Escrow = 32;
-    bytes Message = 33;
+    bytes Signature = 32;
+    Escrow Escrow = 33;
+    bytes Message = 34;
 }
 
 enum TransactionType {
@@ -104,8 +104,16 @@ enum TransactionType {
     FeeVoteCommitmentVoteTransaction  = 7;
     // in bytes: []byte{7,1,0,0}
     FeeVoteRevealVoteTransaction = 263;
+    // in bytes: []byte{8,0,0,0}
+    AtomicTransaction = 8;
 }
 
+// TransactionChildType transaction child type it will reference to transaction.child_type
+enum TransactionChildType {
+    NoneChild = 0;
+    MultiSignatureChild = 1;
+    AtomicChild = 2;
+}
 
 message EmptyTransactionBody {}
 
@@ -185,6 +193,12 @@ message LiquidPaymentStopTransactionBody {
     int64 TransactionID = 1 [ jstype = JS_STRING ];
 }
 
+message AtomicTransactionBody {
+    // UnsignedTransactionBytes is collection of unsigned transaction bytes
+    repeated bytes UnsignedTransactionBytes = 1;
+    // Signatures is <addressHex, Signature>
+    map<string, bytes> Signatures  = 2;
+}
 //------------
 // P2P Content
 //------------
