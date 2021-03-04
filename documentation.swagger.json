@@ -3160,10 +3160,6 @@
         },
         "Receipt": {
           "$ref": "#/definitions/modelReceipt"
-        },
-        "ReceiptIndex": {
-          "type": "integer",
-          "format": "int64"
         }
       }
     },
