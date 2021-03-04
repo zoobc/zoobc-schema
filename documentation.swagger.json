@@ -3150,11 +3150,11 @@
           "type": "integer",
           "format": "int64"
         },
-        "RMR": {
+        "RMRLinked": {
           "type": "string",
           "format": "byte"
         },
-        "RMRIndex": {
+        "RMRLinkedIndex": {
           "type": "integer",
           "format": "int64"
         },
@@ -3179,7 +3179,7 @@
           "type": "integer",
           "format": "int64"
         },
-        "RMRLinked": {
+        "RMR": {
           "type": "string",
           "format": "byte"
         },
