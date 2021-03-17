@@ -1262,6 +1262,11 @@
             "format": "int64",
             "name": "NodeID",
             "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "NodeAddress",
+            "in": "query"
           }
         ],
         "responses": {
